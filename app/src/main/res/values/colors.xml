@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00A86B</color>
+    <color name="colorPrimaryDark">#014421</color>
+    <color name="colorAccent">#539E7F</color>
+    <color name="npcMessage">#D4D4D4</color>
+    <color name="myMessage">#3C1361</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

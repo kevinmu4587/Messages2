@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
+    <!--    The conversations fragment-->
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:id="@+id/conversation_fragment_container">-->
+
+    <!--        <androidx.recyclerview.widget.RecyclerView-->
+    <!--            android:id="@+id/conversation_recycler_view"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            tools:listitem="@layout/conversation_row"/>-->
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--    <androidx.fragment.app.FragmentContainerView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
+    <!--        android:id="@+id/nav_host_fragment_container"-->
+    <!--        app:defaultNavHost="true"-->
+    <!--        app:navGraph="@navigation/nav_graph"/>-->
+
+    <!--    The chat fragment-->
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/chat_recycler_view"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/chat_horizontal_line"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        tools:listitem="@layout/my_message" />-->
+
+    <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--            android:id="@+id/jump_button"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_margin="16dp"-->
+    <!--            android:tint="@color/cardview_light_background"-->
+    <!--            android:visibility="invisible"-->
+    <!--            app:layout_constraintBottom_toTopOf="@+id/horizontal_line"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:srcCompat="@android:drawable/arrow_down_float" />-->
+
+    <!--    <View-->
+    <!--        android:id="@+id/chat_horizontal_line"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="2dp"-->
+    <!--        android:background="#dfdfdf"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/chat_chatbox"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/chat_chatbox"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="#FFFFFF"-->
+    <!--        android:minHeight="48dp"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent">-->
+
+    <!--        <EditText-->
+    <!--            android:id="@+id/chat_edittext"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:layout_margin="10dp"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:background="@android:color/transparent"-->
+    <!--            android:gravity="top|start"-->
+    <!--            android:hint="@string/chatbox_hint"-->
+    <!--            android:maxLines="6" />-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/chat_send_button"-->
+    <!--            android:layout_width="64dp"-->
+    <!--            android:layout_height="48dp"-->
+    <!--            android:layout_gravity="bottom"-->
+    <!--            android:background="?attr/selectableItemBackground"-->
+    <!--            android:clickable="true"-->
+    <!--            android:focusable="true"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="@string/send_button"-->
+    <!--            android:textColor="@color/black" />-->
+    <!--    </LinearLayout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>

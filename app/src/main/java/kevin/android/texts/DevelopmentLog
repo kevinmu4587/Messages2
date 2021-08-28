@@ -1,0 +1,44 @@
+[Tuesday, August 17th, 2021]
+    - Room architecture works (DAO, Repository, Database w/ prepopulating)
+[Wednesday, August 18th, 2021]
+    - MainActivity observes LiveData for sentMessages and upcomingMessages
+    - working recycler view with two ViewHolder types: NPCMessage and MyMessage
+    - started working on PlayThread
+        - NPC messages are loaded immediately
+        - My messages are loaded in after button click on sendButton
+        - no more messages are loaded by the end of the group
+[Thursday, August 19th, 2021]
+    - ConversationFragment now successfully navigates to ChatFragment and sends a Conversation object
+[Friday, August 20st, 2021]
+    - MessageDatabase is now pre-populated using JSON asset
+    - conversations now select the appropriate messages
+[Sunday, August 22nd, 2021]
+    - replaced PlayThread with PlayRunnable
+        - fixed issue with the Runnable -- thought there was a problem with database pre-populating, but
+          it was due to many PlayThreads being instantiated
+[Monday, August 23rd, 2021]
+    - Conversation can now be sent back from ChatFragment to ConversationFragment
+    - corresponding Conversation object now updated in the ConversationDatabase
+[Tuesday, August 24th, 2021]
+    - fixed issue where different conversations loaded the same messages of player 1
+    - fixed issue where messages of player 2 would not render to the screen
+    - fixed Runnable timing issues (messages would sometimes load in at the wrong time)
+[Wednesday, August 25th, 2021]
+    - conversation can now update the last message live using SharedViewModel
+    - last message is bolded if it belongs to an npc
+[Thursday, August 26th, 2021]
+    - tried these, but ended up removing them:
+        - changed all "state" to "conversation.getChatState()" in ChatFragment, but this caused an issue where
+          if the chat was left on "choose," the PlayRunnable would never assign the next message
+        - made the SharedViewModel store the only instance of the conversation in chat, but updating fields
+          of an object does not count as an update to LiveData
+    - implemented groups
+    - removed sending conversation object back to ConversationFragment and the observer of the lastMessage field
+        - ConversationFragment now only observes the active conversation object
+        - this observer updates the group number and the last message
+
+TODO
+    - figure out how blocks may work
+    - load the conversation json
+    - make only the unread npc messages bold
+    - implement chat info fragments

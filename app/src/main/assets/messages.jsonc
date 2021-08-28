@@ -1,0 +1,156 @@
+[
+    // player 1
+    [
+        // group 1
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "Hello"
+                ],
+                "block": 1,
+                "time": "8:01pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "What is your name?"
+                ],
+                "block": 1,
+                "time": "8:02pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Alice",
+                    "Bob",
+                    "Charlie"
+                ],
+                "block": 1,
+                "time": "8:03pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Hello Alice",
+                    "Hi Bob",
+                    "Nice to meet you Charlie"
+                ],
+                "block": 1,
+                "time": "8:04pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Okay bye!"
+                ],
+                "block": 1,
+                "time": "8:05pm"
+            }
+        ],
+        // group 2
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "This is group 2 of player 1."
+                ],
+                "block": 1,
+                "time": "9:01pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Does it work?"
+                ],
+                "block": 1,
+                "time": "9:00pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yes.",
+                    "I hope so!",
+                    "It should."
+                ],
+                "block": 1,
+                "time": "9:09pm"
+            }
+        ]
+    ],
+    // player 2
+    [
+        // group 1
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "Hi this should be player 2 right?"
+                ],
+                "block": 1,
+                "time": "7:09am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yes.",
+                    "No.",
+                    "I don't know."
+                ],
+                "block": 1,
+                "time": "7:07am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Good to hear.",
+                    "Whoops.",
+                    "That's strange."
+                ],
+                "block": 1,
+                "time": "7:10am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Bye",
+                    "See you later.",
+                    "Adios."
+                ],
+                "block": 1,
+                "time": "7:17am"
+            }
+        ],
+        // group 2
+        [
+            {
+                "type": "npc",
+                "content":[
+                    "Hmm..."
+                ],
+                "block": 1,
+                "time": "12:12pm"
+            },
+            {
+                "type": "my",
+                "content":[
+                    "What?",
+                    "It worked!",
+                    "Good."
+                ],
+                "block": 1,
+                "time": "12:05pm"
+            },
+            {
+                "type": "npc",
+                "content":[
+                    "Just checking if it worked.",
+                    "Excellent",
+                    "Great!"
+                ],
+                "block": 1,
+                "time": "1:05pm"
+            }
+        ]
+    ]
+]
