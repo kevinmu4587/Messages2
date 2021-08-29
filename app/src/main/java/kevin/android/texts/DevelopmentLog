@@ -41,6 +41,10 @@
     - the plan is now to freeze the thread every time the fragment is closed
     - Thread now freezes whenever the Fragment is closed
     - a new one is created whenever the fragment opens
+[Sunday, August 28th, 2021]
+    - implemented ChatInfoFragments and Menu
 TODO
+    - fix bug where chat does not start sometimes.
+    - finish sending conversation back to ChatFragmetnt
     - figure out how blocks may work
     - load the conversation json

@@ -4,6 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import kevin.android.texts.Conversations.Conversation;
+import kevin.android.texts.Conversations.ConversationFragmentDirections;
 import kevin.android.texts.Dialog;
 import kevin.android.texts.R;
 import kevin.android.texts.SharedViewModel;
@@ -50,6 +54,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -158,6 +163,24 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         nextMessage.setChoice(choice);
         chatBox.setText(nextMessage.getContent()[choice]);
         state = "sending";
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_chat_fragment, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_open_chat_info:
+                // navigate to ChatInfoFragment
+                NavController navController = NavHostFragment.findNavController(this);
+                navController.navigate(ChatFragmentDirections.actionChatFragmentToChatInfoFragment(conversation));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void submitMessage() {

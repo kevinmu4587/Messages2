@@ -25,5 +25,17 @@
         <argument
             android:name="conversation"
             app:argType="kevin.android.texts.Conversations.Conversation" />
+        <action
+            android:id="@+id/action_chatFragment_to_chatInfoFragment"
+            app:destination="@id/chatInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatInfoFragment"
+        android:name="kevin.android.texts.ChatInfoFragment"
+        android:label="fragment_chat_info"
+        tools:layout="@layout/fragment_chat_info" >
+        <argument
+            android:name="conversation"
+            app:argType="kevin.android.texts.Conversations.Conversation" />
     </fragment>
 </navigation>
