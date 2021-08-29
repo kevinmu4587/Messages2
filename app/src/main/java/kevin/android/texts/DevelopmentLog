@@ -36,7 +36,9 @@
     - removed sending conversation object back to ConversationFragment and the observer of the lastMessage field
         - ConversationFragment now only observes the active conversation object
         - this observer updates the group number and the last message
-
+[Saturday, August 27th, 2021]
+    - tried to fix the issue of when to create new Threads, without success
+    - the plan is now to freeze the thread every time the fragment is closed
 TODO
     - figure out how blocks may work
     - load the conversation json
