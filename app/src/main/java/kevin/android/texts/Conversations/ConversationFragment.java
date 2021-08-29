@@ -67,28 +67,6 @@ public class ConversationFragment extends Fragment {
             }
         });
 
-        // receive data back from ChatFragment
-//        NavController navController = NavHostFragment.findNavController(this);
-//        MutableLiveData<Conversation> liveData = navController.getCurrentBackStackEntry()
-//                .getSavedStateHandle()
-//                .getLiveData("key");
-//        liveData.observe(getViewLifecycleOwner(), new Observer<Conversation>() {
-//            @Override
-//            public void onChanged(Conversation conversation) {
-//                Log.e(TAG, "received this back: " + conversation.getFullName() + " id: " + conversation.getId());
-//                //conversationViewModel.bubbleToTop(conversation);
-//
-//                if (conversation.getConversationState() == Conversation.STATE_DONE) {
-//                    // check to advance group
-//                    // right now just assume it will advance unconditionally
-//                    conversation.setGroup(conversation.getGroup() + 1);
-//                    conversation.setConversationState(Conversation.STATE_RUNNING);
-//                }
-//                // use this if we only want to update the conversation, but not move it to the top
-//                conversationViewModel.update(conversation);
-//            }
-//        });
-
         // ViewModel for the last message
         sharedViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
                 getInstance(getActivity().getApplication())).get(SharedViewModel.class);
@@ -102,14 +80,5 @@ public class ConversationFragment extends Fragment {
                 conversationViewModel.update(conversation);
             }
         });
-//        sharedViewModel.getLastMessage().observe(getViewLifecycleOwner(), new Observer<CharSequence>() {
-//            @Override
-//            public void onChanged(CharSequence charSequence) {
-//                //Log.e(TAG, "lastmessage livedata: " + charSequence);
-//                Conversation currentRunning = sharedViewModel.getCurrentRunning();
-//                currentRunning.setLastMessage(charSequence.toString());
-//                conversationViewModel.update(currentRunning);
-//            }
-//        });
     }
 }

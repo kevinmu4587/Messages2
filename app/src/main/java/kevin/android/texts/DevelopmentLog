@@ -39,8 +39,8 @@
 [Saturday, August 27th, 2021]
     - tried to fix the issue of when to create new Threads, without success
     - the plan is now to freeze the thread every time the fragment is closed
+    - Thread now freezes whenever the Fragment is closed
+    - a new one is created whenever the fragment opens
 TODO
     - figure out how blocks may work
     - load the conversation json
-    - make only the unread npc messages bold
-    - implement chat info fragments

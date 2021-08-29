@@ -95,7 +95,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             }
         });
 
-//        if (conversation.getConversationState() == Conversation.STATE_RUNNING) {
         // observe the upcoming messages
         messageViewModel.getUpcomingMessages(conversation.getId(), conversation.getGroup()).observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
             @Override
@@ -107,36 +106,20 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     conversation.setConversationState(Conversation.STATE_DONE);
                     sharedViewModel.setCurrentRunning(conversation);
                     playRunnable.finished = true;
-//                    playRunnable = null;
-                } else if (conversation.getConversationState() == Conversation.STATE_PAUSED) {
-                    playRunnable = new PlayRunnable();
-                    new Thread(playRunnable).start();
-                    conversation.setConversationState(Conversation.STATE_RUNNING);
-                    Log.e(TAG, "Starting a new Runnable");
                 } else {
-                    Log.e(TAG, "Reusing old runnable");
+                    conversation.setConversationState(Conversation.STATE_RUNNING);
                 }
             }
         });
-//        }
+        playRunnable = new PlayRunnable();
+        new Thread(playRunnable).start();
     }
 
     @Override
-    public void onAttach(@NonNull final Context context) {
-        super.onAttach(context);
-        // check when the back button is pressed
-//        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
-//            @Override
-//            public void handleOnBackPressed() {
-//                // send data back to ConversationFragment
-//                Log.e(TAG, "sending conversation of " + conversation.getFullName() + " back. id: " + conversation.getId());
-//                NavController navController = NavHostFragment.findNavController(ChatFragment.this);
-//                navController.getPreviousBackStackEntry().getSavedStateHandle().set("key", conversation);
-//                this.setEnabled(false);
-//                requireActivity().onBackPressed();
-//            }
-//        };
-//        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+    public void onDestroyView() {
+        playRunnable.finished = true;
+        playRunnable = null;
+        super.onDestroyView();
     }
 
     @Override
@@ -147,7 +130,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     Log.e(TAG, "Sending my message now.");
                     state = "sent";
                     submitMessage();
-                    //messageViewModel.update(nextMessage);
                     chatBox.setText("");
                 }
                 return;
@@ -176,14 +158,14 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         nextMessage.setChoice(choice);
         chatBox.setText(nextMessage.getContent()[choice]);
         state = "sending";
-//        Log.e(TAG, "text applied to chat box");
     }
 
     public void submitMessage() {
         if (nextMessage.getContent().length > 1) {
             nextMessage.setChoice(lastPlayerChoice);
         }
-        messageViewModel.update(nextMessage);
+        messageViewModel.submitMessage(nextMessage);
+
         String lastMessage = nextMessage.getContent()[nextMessage.getChoice()];
         if (nextMessage.getType().equals("npc")) {
             lastMessage = conversation.getFirstName() + ": " + lastMessage;
@@ -205,7 +187,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
 
         @Override
         public void run() {
-            while (true) {
+            while (!finished) {
                 if (state.equals("sending") || state.equals("choose")) {
                     // wait, we are waiting for user input
                     Log.e(TAG, "Awaiting user input. state: " + state);

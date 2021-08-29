@@ -52,8 +52,12 @@ public class MessageViewModel extends AndroidViewModel {
             return null;
         }
         Message next = upcomingMessages.get(0);
+        return next;
+    }
+
+    public void submitMessage(Message next) {
         next.setSent(true);
         upcomingMessages.remove(0);
-        return next;
+        update(next);
     }
 }
