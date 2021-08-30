@@ -8,7 +8,7 @@
                 "content": [
                     "Hello"
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "8:01pm"
             },
             {
@@ -16,7 +16,7 @@
                 "content": [
                     "What is your name?"
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "8:02pm"
             },
             {
@@ -26,7 +26,7 @@
                     "Bob",
                     "Charlie"
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "8:03pm"
             },
             {
@@ -36,7 +36,7 @@
                     "Hi Bob",
                     "Nice to meet you Charlie"
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "8:04pm"
             },
             {
@@ -44,7 +44,7 @@
                 "content": [
                     "Okay bye!"
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "8:05pm"
             }
         ],
@@ -55,7 +55,7 @@
                 "content": [
                     "This is group 2 of player 1."
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "9:01pm"
             },
             {
@@ -63,7 +63,7 @@
                 "content": [
                     "Does it work?"
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "9:00pm"
             },
             {
@@ -73,9 +73,126 @@
                     "I hope so!",
                     "It should."
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "9:09pm"
             }
+        ],
+        // group 3
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "It's time to test blocks."
+                ],
+                "block": 0,
+                "time": "9:01am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Let's test block 1.",
+                    "I want block 2"
+                ],
+                "block": 0,
+                "time": "9:01pm"
+            },
+            {
+                "type": "block",
+                "content": [
+                    "blockTest"  // use this to fetch the saved decision
+                ],
+                "block": 0,      // this tells us which one to go back to
+                "time": "9:01pm"
+            },
+            //////////////////////// V V BLOCK 1 V V ///////////////////////////////
+            {
+                "type": "npc",
+                "content": [
+                    "This is the first block."
+                ],
+                "block": 1,
+                "time": "9:01am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "I like the first block.",
+                    "The first block is pretty interesting.",
+                    "Actually, the first block sucks."
+                ],
+                "block": 1,
+                "time": "9:01am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I like it too.",
+                    "A little interesting.",
+                    "I think it's pretty good."
+                ],
+                "block": 1,
+                "time": "9:01am"
+            },
+            //////////////////////// ^ ^ BLOCK 1 ^ ^ ///////////////////////////////
+            //////////////////////// V V BLOCK 2 V V /////////////////////////////////
+            {
+                "type": "npc",
+                "content": [
+                    "Okay, let's talk about the second block."
+                ],
+                "block": 2,
+                "time": "9:01am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Number 2 is better.",
+                    "Second time is a charm.",
+                    "I should've chose the first block."
+                ],
+                "block": 2,
+                "time": "9:01am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I agree.",
+                    "Actually, it's the third time.",
+                    "Too bad."
+                ],
+                "block": 2,
+                "time": "9:01am"
+            },
+            //////////////////////// ^ ^ BLOCK 2 ^ ^ ///////////////////////////////
+            {
+                "type": "npc",
+                "content": [
+                    "Blocks are done, I hope they worked."
+                ],
+                "block": 0,
+                "time": "9:01am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "It did.",
+                    "It was a lot of work.",
+                    "It did not work."
+                ],
+                "block": 0,
+                "time": "9:01am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "That's good. Bye!",
+                    "At least it works. bye!",
+                    "Unfortunate. See ya."
+                ],
+                "block": 0,
+                "time": "9:01am"
+            }
+            
         ]
     ],
     // player 2
@@ -87,7 +204,7 @@
                 "content": [
                     "Hi this should be player 2 right?"
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "7:09am"
             },
             {
@@ -97,7 +214,7 @@
                     "No.",
                     "I don't know."
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "7:07am"
             },
             {
@@ -107,7 +224,7 @@
                     "Whoops.",
                     "That's strange."
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "7:10am"
             },
             {
@@ -117,7 +234,7 @@
                     "See you later.",
                     "Adios."
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "7:17am"
             }
         ],
@@ -128,7 +245,7 @@
                 "content":[
                     "Hmm..."
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "12:12pm"
             },
             {
@@ -138,7 +255,7 @@
                     "It worked!",
                     "Good."
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "12:05pm"
             },
             {
@@ -148,7 +265,7 @@
                     "Excellent",
                     "Great!"
                 ],
-                "block": 1,
+                "block": 0,
                 "time": "1:05pm"
             }
         ]

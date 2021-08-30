@@ -179,6 +179,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         lastPlayerChoice = choice;
         nextMessage.setChoice(choice);
         chatBox.setText(nextMessage.getContent()[choice]);
+        // if it was a key decision, add it to the gameManager
         state = "sending";
     }
 
@@ -239,7 +240,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     state = "npc";
                 }
                 nextMessage = messageViewModel.getNextMessage();
-                //Log.e(TAG, state);
                 if (nextMessage == null) {
                     if (finished) {
                         playRunnable = null;
@@ -255,10 +255,14 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                         submitMessage();
                         sleep(2000);
                     } else if (nextMessage.getType().equals("my")) {
+                        // or if it is a key decision
                         Log.e(TAG, "Found a my message, " + nextMessage.getContent()[0] + " awaiting input");
                         // get the choice by opening the dialog
                         state = "choose";
                     }
+                    // if it is a block
+                    // get the decision of the block from game manager
+                    // set the conversation's current block to the decision
                 }
             }
         }

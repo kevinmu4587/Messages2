@@ -45,6 +45,11 @@
     - implemented ChatInfoFragments and Menu
     - first and last name can now be updated and saved
     - fixed a bug where PlayRunnable did not start when ChatFragment was opened
+    - started working on blocks
+        - if a key my message is found, save the decision to GameManager and save the block to return to
+        - if a block comes, get the saved decision from GameManager
+        - update the Conversation's current block
+        - if the block ends, return to the original block (if any)
 TODO
     - figure out how blocks may work
     - load the conversation json
