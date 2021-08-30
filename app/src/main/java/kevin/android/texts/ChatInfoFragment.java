@@ -25,6 +25,7 @@ public class ChatInfoFragment  extends Fragment {
     private TextView description;
 
     private Conversation conversation;
+    public static final String CHAT_INFO_KEY = "chat_info_key";
 
     public ChatInfoFragment() {
     }
@@ -49,11 +50,14 @@ public class ChatInfoFragment  extends Fragment {
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-//                // send data back to ChatFragment
-//                NavController navController = NavHostFragment.findNavController(ChatInfoFragment.this);
-//                navController.getPreviousBackStackEntry().getSavedStateHandle().set("key", conversation);
-//                this.setEnabled(false);
-//                requireActivity().onBackPressed();
+                // send data back to ChatFragment
+                String[] firstAndLast = editName.getText().toString().split(" ");
+                conversation.setFirstName(firstAndLast[0]);
+                conversation.setLastName(firstAndLast[1]);
+                NavController navController = NavHostFragment.findNavController(ChatInfoFragment.this);
+                navController.getPreviousBackStackEntry().getSavedStateHandle().set(CHAT_INFO_KEY, conversation);
+                this.setEnabled(false);
+                requireActivity().onBackPressed();
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);

@@ -17,6 +17,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -27,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import kevin.android.texts.ChatInfoFragment;
 import kevin.android.texts.Conversations.Conversation;
 import kevin.android.texts.Conversations.ConversationFragmentDirections;
 import kevin.android.texts.Dialog;
@@ -111,13 +113,28 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     conversation.setConversationState(Conversation.STATE_DONE);
                     sharedViewModel.setCurrentRunning(conversation);
                     playRunnable.finished = true;
-                } else {
+                    Log.e(TAG, "Chat is finished, playRunnable killed");
+                } else if (playRunnable == null) {
                     conversation.setConversationState(Conversation.STATE_RUNNING);
+                    playRunnable = new PlayRunnable();
+                    new Thread(playRunnable).start();
                 }
             }
         });
-        playRunnable = new PlayRunnable();
-        new Thread(playRunnable).start();
+
+        // get data back from ChatInfoFragment
+                NavController navController = NavHostFragment.findNavController(this);
+        MutableLiveData<Conversation> liveData = navController.getCurrentBackStackEntry()
+                .getSavedStateHandle()
+                .getLiveData(ChatInfoFragment.CHAT_INFO_KEY);
+        liveData.observe(getViewLifecycleOwner(), new Observer<Conversation>() {
+            @Override
+            public void onChanged(Conversation conversation) {
+                Log.e(TAG, "Received updated conversation from ChatInfoFragment");
+                ChatFragment.this.conversation = conversation;
+                getActivity().setTitle(conversation.getFullName());
+            }
+        });
     }
 
     @Override

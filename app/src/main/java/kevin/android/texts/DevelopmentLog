@@ -43,8 +43,9 @@
     - a new one is created whenever the fragment opens
 [Sunday, August 28th, 2021]
     - implemented ChatInfoFragments and Menu
+    - first and last name can now be updated and saved
+    - fixed a bug where PlayRunnable did not start when ChatFragment was opened
 TODO
-    - fix bug where chat does not start sometimes.
-    - finish sending conversation back to ChatFragmetnt
     - figure out how blocks may work
     - load the conversation json
+    - setup player info on first download
