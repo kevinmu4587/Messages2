@@ -32,6 +32,7 @@ import kevin.android.texts.ChatInfoFragment;
 import kevin.android.texts.Conversations.Conversation;
 import kevin.android.texts.Conversations.ConversationFragmentDirections;
 import kevin.android.texts.Dialog;
+import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
 import kevin.android.texts.SharedViewModel;
 
@@ -93,7 +94,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         messageViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
                 getInstance(getActivity().getApplication())).get(MessageViewModel.class);
         Log.e(TAG, "id: " + conversation.getId() + " group: " + conversation.getGroup());
-        messageViewModel.getSentMessages(conversation.getId(), conversation.getGroup()).observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
+        messageViewModel.getSentMessages(conversation.getId(), conversation.getGroup(), conversation.getCurrentBlock()).observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
             @Override
             public void onChanged(List<Message> notes) {
                 // update recycler view
@@ -103,10 +104,11 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         });
 
         // observe the upcoming messages
-        messageViewModel.getUpcomingMessages(conversation.getId(), conversation.getGroup()).observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
+        messageViewModel.getUpcomingMessages(conversation.getId(), conversation.getGroup(), conversation.getCurrentBlock()).
+                observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
             @Override
             public void onChanged(List<Message> messages) {
-                Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
+                Log.e(TAG, "loaded " + messages.size() + " upcoming messages from block " + conversation.getCurrentBlock());
                 messageViewModel.setUpcomingMessages(messages);
                 if (messages.size() == 0 && playRunnable != null) {
                     // we already finished this chat
@@ -181,6 +183,13 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         chatBox.setText(nextMessage.getContent()[choice]);
         // if it was a key decision, add it to the gameManager
         state = "sending";
+        String type = nextMessage.getType();
+        if (type.length() >= 3 && type.substring(0, 3).equals("key")) {
+            String blockName = type.substring(4);
+            GameManager.addKeyDecision(blockName, choice);
+            Log.e(TAG, "Added key decision " + blockName + " with choice " + choice);
+            nextMessage.setType("my");
+        }
     }
 
     @Override
@@ -205,6 +214,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         if (nextMessage.getContent().length > 1) {
             nextMessage.setChoice(lastPlayerChoice);
         }
+        Log.e(TAG, "Submitted message " + nextMessage.getContent()[nextMessage.getChoice()]);
         messageViewModel.submitMessage(nextMessage);
 
         String lastMessage = nextMessage.getContent()[nextMessage.getChoice()];
@@ -242,23 +252,30 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 nextMessage = messageViewModel.getNextMessage();
                 if (nextMessage == null) {
                     if (finished) {
-                        playRunnable = null;
                         break;
                     }
                     sleep(2000);
                 } else {
-                    if (nextMessage.getType().equals("npc") && !state.equals("choose")) {
-                        Log.e(TAG, "npc message: " + nextMessage.getContent()[0] + " , adding now.");
-                        if (nextMessage.getContent().length > 1) {
-                            nextMessage.setChoice(lastPlayerChoice);
-                        }
+                    String type = nextMessage.getType();
+                    if (type.equals("npc") && !state.equals("choose")) {
+//                        Log.e(TAG, "npc message: " + nextMessage.getContent()[0] + " , adding now.");
+//                        if (nextMessage.getContent().length > 1) {
+//                            nextMessage.setChoice(lastPlayerChoice);
+//                        }
                         submitMessage();
                         sleep(2000);
-                    } else if (nextMessage.getType().equals("my")) {
+                    } else if (type.equals("my") || type.substring(0, 3).equals("key")) {
                         // or if it is a key decision
                         Log.e(TAG, "Found a my message, " + nextMessage.getContent()[0] + " awaiting input");
                         // get the choice by opening the dialog
                         state = "choose";
+                    } else if (type.equals("block")) {
+                        String blockName = nextMessage.getContent()[0];
+                        int blockChoice = GameManager.getKeyDecision(blockName) + 1;
+                        conversation.setCurrentBlock(blockChoice);
+                        Log.e(TAG, "found block " + blockName + ", choice " + blockChoice + ". return to: " + nextMessage.getBlock());
+                        GameManager.setReturnToBlock(nextMessage.getBlock());
+                        messageViewModel.removeNextMessage();
                     }
                     // if it is a block
                     // get the decision of the block from game manager

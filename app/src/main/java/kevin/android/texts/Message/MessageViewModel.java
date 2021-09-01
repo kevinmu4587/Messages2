@@ -12,9 +12,11 @@ import java.util.List;
 
 public class MessageViewModel extends AndroidViewModel {
     private MessageRepository repository;
-    private LiveData<List<Message>> sentMessages;
+    private LiveData<List<Message>> liveUpcomingMessages;
     private List<Message> upcomingMessages = new ArrayList<>();
     private LiveData<List<Message>> allMessages;
+
+    private static final String TAG = "MessageViewModel";
 
     public MessageViewModel(@NonNull Application application) {
         super(application);
@@ -28,14 +30,15 @@ public class MessageViewModel extends AndroidViewModel {
         Log.e("MessageViewModel", "Updated the Database");
     }
 
-    public LiveData<List<Message>> getUpcomingMessages(int owner, int group) {
-        return repository.getUpcomingMessages(owner, group);
+    public LiveData<List<Message>> getUpcomingMessages(int owner, int group, int block) {
+        Log.e(TAG, "loading messages from block " + block);
+        return repository.getUpcomingMessages(owner, group, block);
     }
 
-    public LiveData<List<Message>> getSentMessages(int owner, int group) {
+    public LiveData<List<Message>> getSentMessages(int owner, int group, int block) {
         //return sentMessages;
 //        upcomingMessages = repository.getUpcomingMessages(owner, group);
-        return repository.getSentMessages(owner, group);
+        return repository.getSentMessages(owner, group, block);
     }
 
     public LiveData<List<Message>> getAllMessages() {
@@ -59,5 +62,9 @@ public class MessageViewModel extends AndroidViewModel {
         next.setSent(true);
         upcomingMessages.remove(0);
         update(next);
+    }
+
+    public void removeNextMessage() {
+        upcomingMessages.remove(0);
     }
 }

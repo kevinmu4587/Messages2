@@ -26,14 +26,14 @@ public class MessageRepository {
         new UpdateMessageAsyncTask(messageDao).execute(message);
     }
 
-    public LiveData<List<Message>> getUpcomingMessages(int owner, int group) {
+    public LiveData<List<Message>> getUpcomingMessages(int owner, int group, int block) {
         // idk if this should really be live but idk how to make an AsyncTask return the List
-        return messageDao.getUpcomingMessages(owner, group);
+        return messageDao.getUpcomingMessages(owner, group, block);
     }
 
-    public LiveData<List<Message>> getSentMessages(int owner, int group) {
+    public LiveData<List<Message>> getSentMessages(int owner, int group, int block) {
         // livedata is returned on a background thread, so no need for AsyncTask
-        return messageDao.getSentMessages(owner, group);
+        return messageDao.getSentMessages(owner, group, block);
         //return sentMessages;
     }
 

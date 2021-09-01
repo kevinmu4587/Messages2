@@ -22,6 +22,7 @@ public class Conversation implements Parcelable  {
     private boolean active;
     private int recentValue;
     private boolean unread;
+    private int currentBlock;
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -36,6 +37,7 @@ public class Conversation implements Parcelable  {
         this.active = active;
         this.recentValue = recentValue;
         this.unread = true;
+        this.currentBlock = 0;
     }
 
     protected Conversation(Parcel in) {
@@ -144,6 +146,14 @@ public class Conversation implements Parcelable  {
 //    public void setChatState(String chatState) {
 //        this.chatState = chatState;
 //    }
+
+    public int getCurrentBlock() {
+        return currentBlock;
+    }
+
+    public void setCurrentBlock(int currentBlock) {
+        this.currentBlock = currentBlock;
+    }
 
     @Override
     public int describeContents() {

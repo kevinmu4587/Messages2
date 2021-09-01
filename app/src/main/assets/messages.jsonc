@@ -88,7 +88,7 @@
                 "time": "9:01am"
             },
             {
-                "type": "my",
+                "type": "key_blockTest",
                 "content": [
                     "Let's test block 1.",
                     "I want block 2"
