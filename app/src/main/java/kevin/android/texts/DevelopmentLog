@@ -36,12 +36,12 @@
     - removed sending conversation object back to ConversationFragment and the observer of the lastMessage field
         - ConversationFragment now only observes the active conversation object
         - this observer updates the group number and the last message
-[Saturday, August 27th, 2021]
+[Saturday, August 28th, 2021]
     - tried to fix the issue of when to create new Threads, without success
     - the plan is now to freeze the thread every time the fragment is closed
     - Thread now freezes whenever the Fragment is closed
     - a new one is created whenever the fragment opens
-[Sunday, August 28th, 2021]
+[Sunday, August 29th, 2021]
     - implemented ChatInfoFragments and Menu
     - first and last name can now be updated and saved
     - fixed a bug where PlayRunnable did not start when ChatFragment was opened
@@ -50,7 +50,15 @@
         - if a block comes, get the saved decision from GameManager
         - update the Conversation's current block
         - if the block ends, return to the original block (if any)
+[Tuesday, August 31st, 2021]
+    - tried getting blocks to work:
+        - if we come across a block, update a LiveData field in the messageViewModel
+        - this will then fetch the upcoming messages again
+        - some messages after the block may come in while the block is loading; implemented a stall (not tested)
+
 TODO
     - figure out how blocks may work
+        - add the livedata for currentBlock to sent messages so they can render to the screen
+        - needs more testing.
     - load the conversation json
     - setup player info on first download

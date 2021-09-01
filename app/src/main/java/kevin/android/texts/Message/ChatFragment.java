@@ -104,7 +104,9 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         });
 
         // observe the upcoming messages
-        messageViewModel.getUpcomingMessages(conversation.getId(), conversation.getGroup(), conversation.getCurrentBlock()).
+        messageViewModel.setCurrentBlock(conversation.getCurrentBlock());
+        messageViewModel.loadUpcomingMessage(conversation.getId(), conversation.getGroup());
+        messageViewModel.getUpcomingMessages().
                 observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
             @Override
             public void onChanged(List<Message> messages) {
@@ -256,6 +258,9 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     }
                     sleep(2000);
                 } else {
+                    if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
+                        sleep(2000);
+                    }
                     String type = nextMessage.getType();
                     if (type.equals("npc") && !state.equals("choose")) {
 //                        Log.e(TAG, "npc message: " + nextMessage.getContent()[0] + " , adding now.");
@@ -273,9 +278,11 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                         String blockName = nextMessage.getContent()[0];
                         int blockChoice = GameManager.getKeyDecision(blockName) + 1;
                         conversation.setCurrentBlock(blockChoice);
+                        messageViewModel.setCurrentBlock(blockChoice);
                         Log.e(TAG, "found block " + blockName + ", choice " + blockChoice + ". return to: " + nextMessage.getBlock());
                         GameManager.setReturnToBlock(nextMessage.getBlock());
                         messageViewModel.removeNextMessage();
+                        messageViewModel.loadUpcomingMessage(conversation.getId(), conversation.getGroup());
                     }
                     // if it is a block
                     // get the decision of the block from game manager
