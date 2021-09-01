@@ -30,6 +30,8 @@ public class MessageViewModel extends AndroidViewModel {
         Log.e("MessageViewModel", "Updated the Database");
     }
 
+    
+
     public LiveData<List<Message>> getUpcomingMessages(int owner, int group, int block) {
         Log.e(TAG, "loading messages from block " + block);
         return repository.getUpcomingMessages(owner, group, block);
