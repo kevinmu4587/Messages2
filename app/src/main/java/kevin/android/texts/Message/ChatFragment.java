@@ -120,11 +120,11 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                         sharedViewModel.setCurrentRunning(conversation);
                         playRunnable.finished = true;
                         Log.e(TAG, "Chat is finished, playRunnable killed");
-                    } else {
-                        int top = conversation.popTopBlock();
-                        messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
-                        Log.e(TAG, "popped block " + top);
-                    }
+                    } //else {
+//                        int top = conversation.popTopBlock();
+//                        messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
+//                        Log.e(TAG, "popped block " + top);
+//                    }
                 } else if (playRunnable == null) {
                     conversation.setConversationState(Conversation.STATE_RUNNING);
                     playRunnable = new PlayRunnable();
@@ -265,10 +265,11 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     }
                     sleep(2000);
                 } else {
-                    if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
-                        sleep(2000);
-                        continue;
-                    }
+//                    if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
+//                        sleep(2000);
+//                        Log.e(TAG, "current message does not match block; waiting for correct ones");
+//                        continue;
+//                    }
                     String type = nextMessage.getType();
                     if (type.equals("npc") && !state.equals("choose")) {
 //                        Log.e(TAG, "npc message: " + nextMessage.getContent()[0] + " , adding now.");

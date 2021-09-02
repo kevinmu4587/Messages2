@@ -68,6 +68,8 @@
 TODO
     - figure out how blocks may work
         - return to the starter block after there are no more messages
+    - typing animation
+    - make state choose occur sooner
     - load the conversation json
     - setup player info on first download
     - backgrounds and sounds

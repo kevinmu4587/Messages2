@@ -17,8 +17,8 @@ public interface MessageDao {
     void update(Message message);
 
     // load all upcoming messages
-    @Query("SELECT * FROM messages_table WHERE owner = :owner AND msg_group = :msg_group AND sent = 0 AND block = :block")
-    LiveData<List<Message>> getUpcomingMessages(int owner, int msg_group, int block);
+    @Query("SELECT * FROM messages_table WHERE owner = :owner AND msg_group = :msg_group AND sent = 0 AND block IN (:block)")
+    LiveData<List<Message>> getUpcomingMessages(int owner, int msg_group, int... block);
 
     // load ones that were previously sent
     @Query("SELECT * FROM messages_table WHERE owner = :owner AND msg_group = :msg_group AND sent = 1 AND block IN (:blocks)")

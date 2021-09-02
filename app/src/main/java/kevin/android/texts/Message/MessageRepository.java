@@ -31,9 +31,9 @@ public class MessageRepository {
         new UpdateMessageAsyncTask(messageDao).execute(message);
     }
 
-    public LiveData<List<Message>> getUpcomingMessages(int owner, int group, int block) {
+    public LiveData<List<Message>> getUpcomingMessages(int owner, int group, int... blocks) {
         // idk if this should really be live but idk how to make an AsyncTask return the List
-        return messageDao.getUpcomingMessages(owner, group, block);
+        return messageDao.getUpcomingMessages(owner, group, blocks);
     }
 
     public LiveData<List<Message>> getSentMessages(int owner, int group, int... blocks) {
