@@ -7,6 +7,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity(tableName = "conversation_table")
 public class Conversation implements Parcelable  {
     public static final int STATE_RUNNING = 0;
@@ -16,13 +19,15 @@ public class Conversation implements Parcelable  {
     private String firstName;
     private String lastName;
     private String lastMessage;
+
     private int group;
     private int conversationState;
-//    private String chatState;
+
     private boolean active;
     private int recentValue;
     private boolean unread;
-    private int currentBlock;
+//    private int currentBlock;
+    private List<Integer> currentBlocks = new ArrayList<>();
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -37,7 +42,7 @@ public class Conversation implements Parcelable  {
         this.active = active;
         this.recentValue = recentValue;
         this.unread = true;
-        this.currentBlock = 0;
+        this.currentBlocks.add(0);
     }
 
     protected Conversation(Parcel in) {
@@ -139,21 +144,33 @@ public class Conversation implements Parcelable  {
         return unread;
     }
 
-//    public String getChatState() {
-//        return chatState;
-//    }
-//
-//    public void setChatState(String chatState) {
-//        this.chatState = chatState;
-//    }
+    public List<Integer> getCurrentBlocks() {
+        return currentBlocks;
+    }
+
+    public void setCurrentBlocks(List<Integer> currentBlocks) {
+        this.currentBlocks = currentBlocks;
+    }
 
     public int getCurrentBlock() {
-        return currentBlock;
+        return currentBlocks.get(currentBlocks.size() - 1);
     }
 
-    public void setCurrentBlock(int currentBlock) {
-        this.currentBlock = currentBlock;
+    public void popTopBlock() {
+        currentBlocks.remove(currentBlocks.size() - 1);
     }
+
+    public void pushBlock(int block) {
+        currentBlocks.add(block);
+    }
+
+    //    public int getCurrentBlock() {
+//        return currentBlock;
+//    }
+//
+//    public void setCurrentBlock(int currentBlock) {
+//        this.currentBlock = currentBlock;
+//    }
 
     @Override
     public int describeContents() {

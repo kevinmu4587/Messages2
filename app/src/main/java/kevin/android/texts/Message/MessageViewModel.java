@@ -13,9 +13,12 @@ import androidx.lifecycle.Transformations;
 import java.util.ArrayList;
 import java.util.List;
 
+import kevin.android.texts.GameManager;
+
 public class MessageViewModel extends AndroidViewModel {
     private MessageRepository repository;
     private LiveData<List<Message>> liveUpcomingMessages;
+    private LiveData<List<Message>> liveSentMessages;
     private List<Message> upcomingMessages = new ArrayList<>();
     private LiveData<List<Message>> allMessages;
     private MutableLiveData<Integer> liveCurrentBlock = new MutableLiveData<>();
@@ -53,6 +56,22 @@ public class MessageViewModel extends AndroidViewModel {
     public LiveData<List<Message>> getUpcomingMessages() {
         return liveUpcomingMessages;
 //        return repository.getUpcomingMessages(owner, group, block);
+    }
+
+    public void loadSentMessages(final int owner, final int group, final List<Integer> currentBlocks) {
+        liveSentMessages = Transformations.switchMap(
+                liveCurrentBlock,
+                new Function<Integer, LiveData<List<Message>>>() {
+                    @Override
+                    public LiveData<List<Message>> apply(Integer block) {
+                        Log.e(TAG, "loading messages from block " + block);
+                        return repository.getSentMessages(owner, group, block);
+                    }
+                });
+    }
+
+    public LiveData<List<Message>> getSentMessages() {
+        return liveSentMessages;
     }
 
     public LiveData<List<Message>> getSentMessages(int owner, int group, int block) {

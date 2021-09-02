@@ -2,16 +2,21 @@ package kevin.android.texts.Message;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
+import java.util.Arrays;
 import java.util.List;
+
+import kevin.android.texts.GameManager;
 
 public class MessageRepository {
     private MessageDao messageDao;
     private LiveData<List<Message>> sentMessages;
     private LiveData<List<Message>> allMessages;
     //private List<Message> upcomingMessages;
+    private static final String TAG = "MessageRepository";
 
     public MessageRepository(Application application) {
         MessageDatabase database = MessageDatabase.getInstance(application);
@@ -33,7 +38,10 @@ public class MessageRepository {
 
     public LiveData<List<Message>> getSentMessages(int owner, int group, int block) {
         // livedata is returned on a background thread, so no need for AsyncTask
-        return messageDao.getSentMessages(owner, group, block);
+        GameManager.addPrecedingBlock(block);
+        int[] blocks = GameManager.getPrecedingBlocks();
+        Log.e(TAG, "getting sent messages from blocks " + Arrays.toString(blocks));
+        return messageDao.getSentMessages(owner, group, GameManager.getPrecedingBlocks());
         //return sentMessages;
     }
 

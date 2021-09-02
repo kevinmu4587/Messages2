@@ -55,10 +55,18 @@
         - if we come across a block, update a LiveData field in the messageViewModel
         - this will then fetch the upcoming messages again
         - some messages after the block may come in while the block is loading; implemented a stall (not tested)
+[Wednesday, September 1st, 2021]
+    - worked on blocks.
+        - added LiveData current block to sentMessages
+        - added preceding blocks List in GameManager
+            - move this to the individual conversation
+
 
 TODO
     - figure out how blocks may work
-        - add the livedata for currentBlock to sent messages so they can render to the screen
-        - needs more testing.
+        - return to the starter block after there are no more messages
+        - how about we just make the preceding blocks a stack
     - load the conversation json
     - setup player info on first download
+    - backgrounds and sounds
+    - figure out when to advance the group

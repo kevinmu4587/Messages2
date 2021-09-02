@@ -5,23 +5,40 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 // this class is for saving game-wide decisions, like which blocks were picked, and what ending were reached
 public class GameManager {
     private static Map<String, Integer> keyChoices = new HashMap<String, Integer>();
-    private static int returnToBlock = -1;
+//    private static int returnToBlock = -1;
+    private static List<Integer> precedingBlocks = new ArrayList<>();
 
     public GameManager() {
     }
 
-    public static int getReturnToBlock() {
-        return returnToBlock;
+//    public static int getReturnToBlock() {
+//        return returnToBlock;
+//    }
+//
+//    public static void setReturnToBlock(int returnToBlock) {
+//        GameManager.returnToBlock = returnToBlock;
+//    }
+
+    public static void addPrecedingBlock(int block) {
+        if (precedingBlocks.contains(Integer.valueOf(block))) {
+            return;
+        }
+        precedingBlocks.add(Integer.valueOf(block));
     }
 
-    public static void setReturnToBlock(int returnToBlock) {
-        GameManager.returnToBlock = returnToBlock;
+    public static int[] getPrecedingBlocks() {
+        int[] ret = new int[precedingBlocks.size()];
+        for(int i = 0; i < precedingBlocks.size();i++)
+            ret[i] = precedingBlocks.get(i);
+        return ret;
     }
 
     public Map<String, Integer> getKeyChoices() {

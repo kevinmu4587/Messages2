@@ -94,7 +94,9 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         messageViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
                 getInstance(getActivity().getApplication())).get(MessageViewModel.class);
         Log.e(TAG, "id: " + conversation.getId() + " group: " + conversation.getGroup());
-        messageViewModel.getSentMessages(conversation.getId(), conversation.getGroup(), conversation.getCurrentBlock()).observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
+        messageViewModel.setCurrentBlock(conversation.getCurrentBlock());
+        messageViewModel.loadSentMessages(conversation.getId(), conversation.getGroup(), conversation.getCurrentBlocks());
+        messageViewModel.getSentMessages().observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
             @Override
             public void onChanged(List<Message> notes) {
                 // update recycler view
@@ -104,7 +106,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         });
 
         // observe the upcoming messages
-        messageViewModel.setCurrentBlock(conversation.getCurrentBlock());
         messageViewModel.loadUpcomingMessage(conversation.getId(), conversation.getGroup());
         messageViewModel.getUpcomingMessages().
                 observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
@@ -260,6 +261,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 } else {
                     if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
                         sleep(2000);
+                        continue;
                     }
                     String type = nextMessage.getType();
                     if (type.equals("npc") && !state.equals("choose")) {
@@ -277,10 +279,12 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     } else if (type.equals("block")) {
                         String blockName = nextMessage.getContent()[0];
                         int blockChoice = GameManager.getKeyDecision(blockName) + 1;
-                        conversation.setCurrentBlock(blockChoice);
+                        conversation.pushBlock(blockChoice);
+//                        conversation.setCurrentBlock(blockChoice);
                         messageViewModel.setCurrentBlock(blockChoice);
                         Log.e(TAG, "found block " + blockName + ", choice " + blockChoice + ". return to: " + nextMessage.getBlock());
-                        GameManager.setReturnToBlock(nextMessage.getBlock());
+//                        GameManager.setReturnToBlock(nextMessage.getBlock());
+                        GameManager.addPrecedingBlock(nextMessage.getBlock());
                         messageViewModel.removeNextMessage();
                         messageViewModel.loadUpcomingMessage(conversation.getId(), conversation.getGroup());
                     }
