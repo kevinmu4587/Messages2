@@ -14,7 +14,7 @@ import java.util.Map;
 public class GameManager {
     private static Map<String, Integer> keyChoices = new HashMap<String, Integer>();
 //    private static int returnToBlock = -1;
-    private static List<Integer> precedingBlocks = new ArrayList<>();
+//    private static List<Integer> precedingBlocks = new ArrayList<>();
 
     public GameManager() {
     }
@@ -27,19 +27,19 @@ public class GameManager {
 //        GameManager.returnToBlock = returnToBlock;
 //    }
 
-    public static void addPrecedingBlock(int block) {
-        if (precedingBlocks.contains(Integer.valueOf(block))) {
-            return;
-        }
-        precedingBlocks.add(Integer.valueOf(block));
-    }
-
-    public static int[] getPrecedingBlocks() {
-        int[] ret = new int[precedingBlocks.size()];
-        for(int i = 0; i < precedingBlocks.size();i++)
-            ret[i] = precedingBlocks.get(i);
-        return ret;
-    }
+//    public static void addPrecedingBlock(int block) {
+//        if (precedingBlocks.contains(Integer.valueOf(block))) {
+//            return;
+//        }
+//        precedingBlocks.add(Integer.valueOf(block));
+//    }
+//
+//    public static int[] getPrecedingBlocks() {
+//        int[] ret = new int[precedingBlocks.size()];
+//        for(int i = 0; i < precedingBlocks.size();i++)
+//            ret[i] = precedingBlocks.get(i);
+//        return ret;
+//    }
 
     public Map<String, Integer> getKeyChoices() {
         return keyChoices;

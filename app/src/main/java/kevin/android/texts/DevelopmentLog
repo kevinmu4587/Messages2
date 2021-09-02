@@ -1,5 +1,5 @@
 [Tuesday, August 17th, 2021]
-    - Room architecture works (DAO, Repository, Database w/ prepopulating)
+    - Room architecture works (DAO, Repository, Database w/ pre-populating)
 [Wednesday, August 18th, 2021]
     - MainActivity observes LiveData for sentMessages and upcomingMessages
     - working recycler view with two ViewHolder types: NPCMessage and MyMessage
@@ -60,12 +60,14 @@
         - added LiveData current block to sentMessages
         - added preceding blocks List in GameManager
             - move this to the individual conversation
+        - added a currentBlocks stack to conversation, implemented using a List<>
+            - added a TypeConverter for it
+            - blocks can now be successfully loaded and displayed
 
 
 TODO
     - figure out how blocks may work
         - return to the starter block after there are no more messages
-        - how about we just make the preceding blocks a stack
     - load the conversation json
     - setup player info on first download
     - backgrounds and sounds

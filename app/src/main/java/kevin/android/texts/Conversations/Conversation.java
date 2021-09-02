@@ -6,11 +6,15 @@ import android.os.Parcelable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import kevin.android.texts.Converters;
+
 @Entity(tableName = "conversation_table")
+@TypeConverters(Converters.class)
 public class Conversation implements Parcelable  {
     public static final int STATE_RUNNING = 0;
     public static final int STATE_PAUSED = 1;
@@ -156,8 +160,10 @@ public class Conversation implements Parcelable  {
         return currentBlocks.get(currentBlocks.size() - 1);
     }
 
-    public void popTopBlock() {
+    public int popTopBlock() {
+        int top = currentBlocks.get(currentBlocks.size() - 1);
         currentBlocks.remove(currentBlocks.size() - 1);
+        return top;
     }
 
     public void pushBlock(int block) {

@@ -94,8 +94,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         messageViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
                 getInstance(getActivity().getApplication())).get(MessageViewModel.class);
         Log.e(TAG, "id: " + conversation.getId() + " group: " + conversation.getGroup());
-        messageViewModel.setCurrentBlock(conversation.getCurrentBlock());
-        messageViewModel.loadSentMessages(conversation.getId(), conversation.getGroup(), conversation.getCurrentBlocks());
+        messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
+        messageViewModel.loadSentMessages(conversation.getId(), conversation.getGroup());
         messageViewModel.getSentMessages().observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
             @Override
             public void onChanged(List<Message> notes) {
@@ -106,7 +106,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         });
 
         // observe the upcoming messages
-        messageViewModel.loadUpcomingMessage(conversation.getId(), conversation.getGroup());
+        messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
         messageViewModel.getUpcomingMessages().
                 observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
             @Override
@@ -114,11 +114,17 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 Log.e(TAG, "loaded " + messages.size() + " upcoming messages from block " + conversation.getCurrentBlock());
                 messageViewModel.setUpcomingMessages(messages);
                 if (messages.size() == 0 && playRunnable != null) {
-                    // we already finished this chat
-                    conversation.setConversationState(Conversation.STATE_DONE);
-                    sharedViewModel.setCurrentRunning(conversation);
-                    playRunnable.finished = true;
-                    Log.e(TAG, "Chat is finished, playRunnable killed");
+                    if (conversation.getCurrentBlock() == 0) {
+                        // we already finished this chat
+                        conversation.setConversationState(Conversation.STATE_DONE);
+                        sharedViewModel.setCurrentRunning(conversation);
+                        playRunnable.finished = true;
+                        Log.e(TAG, "Chat is finished, playRunnable killed");
+                    } else {
+                        int top = conversation.popTopBlock();
+                        messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
+                        Log.e(TAG, "popped block " + top);
+                    }
                 } else if (playRunnable == null) {
                     conversation.setConversationState(Conversation.STATE_RUNNING);
                     playRunnable = new PlayRunnable();
@@ -281,12 +287,12 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                         int blockChoice = GameManager.getKeyDecision(blockName) + 1;
                         conversation.pushBlock(blockChoice);
 //                        conversation.setCurrentBlock(blockChoice);
-                        messageViewModel.setCurrentBlock(blockChoice);
+                        messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
                         Log.e(TAG, "found block " + blockName + ", choice " + blockChoice + ". return to: " + nextMessage.getBlock());
 //                        GameManager.setReturnToBlock(nextMessage.getBlock());
-                        GameManager.addPrecedingBlock(nextMessage.getBlock());
+//                        GameManager.addPrecedingBlock(nextMessage.getBlock());
                         messageViewModel.removeNextMessage();
-                        messageViewModel.loadUpcomingMessage(conversation.getId(), conversation.getGroup());
+                        messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
                     }
                     // if it is a block
                     // get the decision of the block from game manager

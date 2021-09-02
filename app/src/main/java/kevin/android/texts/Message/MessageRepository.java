@@ -36,12 +36,11 @@ public class MessageRepository {
         return messageDao.getUpcomingMessages(owner, group, block);
     }
 
-    public LiveData<List<Message>> getSentMessages(int owner, int group, int block) {
+    public LiveData<List<Message>> getSentMessages(int owner, int group, int... blocks) {
         // livedata is returned on a background thread, so no need for AsyncTask
-        GameManager.addPrecedingBlock(block);
-        int[] blocks = GameManager.getPrecedingBlocks();
-        Log.e(TAG, "getting sent messages from blocks " + Arrays.toString(blocks));
-        return messageDao.getSentMessages(owner, group, GameManager.getPrecedingBlocks());
+//        GameManager.addPrecedingBlock(block);
+//        int[] blocks = GameManager.getPrecedingBlocks();
+        return messageDao.getSentMessages(owner, group, blocks);
         //return sentMessages;
     }
 

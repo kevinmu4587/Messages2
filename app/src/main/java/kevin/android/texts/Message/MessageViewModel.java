@@ -11,9 +11,11 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import kevin.android.texts.GameManager;
+import kevin.android.texts.Utils;
 
 public class MessageViewModel extends AndroidViewModel {
     private MessageRepository repository;
@@ -21,7 +23,7 @@ public class MessageViewModel extends AndroidViewModel {
     private LiveData<List<Message>> liveSentMessages;
     private List<Message> upcomingMessages = new ArrayList<>();
     private LiveData<List<Message>> allMessages;
-    private MutableLiveData<Integer> liveCurrentBlock = new MutableLiveData<>();
+    private MutableLiveData<List<Integer>> liveCurrentBlocks = new MutableLiveData<>();
 
     private static final String TAG = "MessageViewModel";
 
@@ -37,20 +39,21 @@ public class MessageViewModel extends AndroidViewModel {
         Log.e("MessageViewModel", "Updated the Database");
     }
 
-    public void loadUpcomingMessage(final int owner, final int group) {
+    public void loadUpcomingMessages(final int owner, final int group) {
         liveUpcomingMessages = Transformations.switchMap(
-                liveCurrentBlock,
-                new Function<Integer, LiveData<List<Message>>>() {
+                liveCurrentBlocks,
+                new Function<List<Integer>, LiveData<List<Message>>>() {
                     @Override
-                    public LiveData<List<Message>> apply(Integer block) {
+                    public LiveData<List<Message>> apply(List<Integer> blocks) {
+                        int block = blocks.get(blocks.size() - 1);
                         Log.e(TAG, "loading messages from block " + block);
                         return repository.getUpcomingMessages(owner, group, block);
                     }
                 });
     }
 
-    public void setCurrentBlock(int block) {
-        liveCurrentBlock.postValue(Integer.valueOf(block));
+    public void setCurrentBlocks(List<Integer> blocks) {
+        liveCurrentBlocks.postValue(blocks);
     }
 
     public LiveData<List<Message>> getUpcomingMessages() {
@@ -58,14 +61,15 @@ public class MessageViewModel extends AndroidViewModel {
 //        return repository.getUpcomingMessages(owner, group, block);
     }
 
-    public void loadSentMessages(final int owner, final int group, final List<Integer> currentBlocks) {
+    public void loadSentMessages(final int owner, final int group) {
         liveSentMessages = Transformations.switchMap(
-                liveCurrentBlock,
-                new Function<Integer, LiveData<List<Message>>>() {
+                liveCurrentBlocks,
+                new Function<List<Integer>, LiveData<List<Message>>>() {
                     @Override
-                    public LiveData<List<Message>> apply(Integer block) {
-                        Log.e(TAG, "loading messages from block " + block);
-                        return repository.getSentMessages(owner, group, block);
+                    public LiveData<List<Message>> apply(List<Integer> blocks) {
+                        int[] blocksArray = Utils.listToIntArray(blocks);
+                        Log.e(TAG, "getting sent messages from blocks " + Arrays.toString(blocksArray));
+                        return repository.getSentMessages(owner, group, blocksArray);
                     }
                 });
     }
@@ -74,11 +78,11 @@ public class MessageViewModel extends AndroidViewModel {
         return liveSentMessages;
     }
 
-    public LiveData<List<Message>> getSentMessages(int owner, int group, int block) {
-        //return sentMessages;
-//        upcomingMessages = repository.getUpcomingMessages(owner, group);
-        return repository.getSentMessages(owner, group, block);
-    }
+//    public LiveData<List<Message>> getSentMessages(int owner, int group, int block) {
+//        //return sentMessages;
+////        upcomingMessages = repository.getUpcomingMessages(owner, group);
+//        return repository.getSentMessages(owner, group, block);
+//    }
 
     public LiveData<List<Message>> getAllMessages() {
         return allMessages;
