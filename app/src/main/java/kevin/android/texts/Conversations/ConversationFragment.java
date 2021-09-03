@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
 import kevin.android.texts.R;
@@ -28,6 +31,7 @@ public class ConversationFragment extends Fragment {
     private static final String TAG = "ConversationFragment";
     private ConversationViewModel conversationViewModel;
     private SharedViewModel sharedViewModel;
+    private FloatingActionButton testNextConversationButton;
 
     public ConversationFragment() {
     }
@@ -56,7 +60,7 @@ public class ConversationFragment extends Fragment {
         // request the conversation ViewModel from the system, owner is the underlying activity
         conversationViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
                 getInstance(getActivity().getApplication())).get(ConversationViewModel.class);
-        // start observing the conversation list
+        // start observing the active conversation list
         conversationViewModel.getActiveConversations().observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
             @Override
             // when an update is changed
@@ -67,7 +71,14 @@ public class ConversationFragment extends Fragment {
             }
         });
 
-        // ViewModel for the last message
+        conversationViewModel.getInactiveConversations().observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
+            @Override
+            public void onChanged(List<Conversation> conversations) {
+                conversationViewModel.setInactiveConversations(conversations);
+            }
+        });
+
+        // shared ViewModel for the last message
         sharedViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
                 getInstance(getActivity().getApplication())).get(SharedViewModel.class);
         sharedViewModel.getCurrentRunning().observe(getViewLifecycleOwner(), new Observer<Conversation>() {
@@ -78,6 +89,14 @@ public class ConversationFragment extends Fragment {
                     conversation.setGroup(conversation.getGroup() + 1);
                 }
                 conversationViewModel.update(conversation);
+            }
+        });
+
+        testNextConversationButton = view.findViewById(R.id.test_add_conversation_button);
+        testNextConversationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                conversationViewModel.loadNextConversation();
             }
         });
     }

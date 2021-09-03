@@ -22,13 +22,14 @@ public class Conversation implements Parcelable  {
 
     private String firstName;
     private String lastName;
+    private String nickname;
     private String lastMessage;
 
     private int group;
     private int conversationState;
 
     private boolean active;
-    private int recentValue;
+//    private int recentValue;
     private boolean unread;
 //    private int currentBlock;
     private List<Integer> currentBlocks = new ArrayList<>();
@@ -36,15 +37,16 @@ public class Conversation implements Parcelable  {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    public Conversation(String firstName, String lastName, int group, boolean active, int recentValue) {
+    public Conversation(String firstName, String lastName, String nickname) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.nickname = nickname;
         this.lastMessage = "New message!";
-        this.group = group;
-        this.conversationState = Conversation.STATE_PAUSED;
+        this.group = 1;
+        this.conversationState = Conversation.STATE_RUNNING;
 //        this.chatState = "";
-        this.active = active;
-        this.recentValue = recentValue;
+        this.active = false;
+//        this.recentValue = recentValue;
         this.unread = true;
         this.currentBlocks.add(0);
     }
@@ -132,13 +134,13 @@ public class Conversation implements Parcelable  {
         this.active = active;
     }
 
-    public int getRecentValue() {
-        return recentValue;
-    }
-
-    public void setRecentValue(int recentValue) {
-        this.recentValue = recentValue;
-    }
+//    public int getRecentValue() {
+//        return recentValue;
+//    }
+//
+//    public void setRecentValue(int recentValue) {
+//        this.recentValue = recentValue;
+//    }
 
     public void setUnread(boolean unread) {
         this.unread = unread;
@@ -156,6 +158,14 @@ public class Conversation implements Parcelable  {
         this.currentBlocks = currentBlocks;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
     public int getCurrentBlock() {
         return currentBlocks.get(currentBlocks.size() - 1);
     }
@@ -169,14 +179,6 @@ public class Conversation implements Parcelable  {
     public void pushBlock(int block) {
         currentBlocks.add(block);
     }
-
-    //    public int getCurrentBlock() {
-//        return currentBlock;
-//    }
-//
-//    public void setCurrentBlock(int currentBlock) {
-//        this.currentBlock = currentBlock;
-//    }
 
     @Override
     public int describeContents() {

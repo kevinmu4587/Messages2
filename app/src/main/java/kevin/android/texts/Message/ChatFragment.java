@@ -26,6 +26,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Arrays;
 import java.util.List;
 
 import kevin.android.texts.ChatInfoFragment;
@@ -35,6 +36,7 @@ import kevin.android.texts.Dialog;
 import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
 import kevin.android.texts.SharedViewModel;
+import kevin.android.texts.Utils;
 
 public class ChatFragment extends Fragment implements View.OnClickListener, Dialog.DialogListener {
     private MessageViewModel messageViewModel;
@@ -111,20 +113,20 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
             @Override
             public void onChanged(List<Message> messages) {
-                Log.e(TAG, "loaded " + messages.size() + " upcoming messages from block " + conversation.getCurrentBlock());
+                Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
                 messageViewModel.setUpcomingMessages(messages);
                 if (messages.size() == 0 && playRunnable != null) {
                     if (conversation.getCurrentBlock() == 0) {
                         // we already finished this chat
                         conversation.setConversationState(Conversation.STATE_DONE);
-                        sharedViewModel.setCurrentRunning(conversation);
+//                        sharedViewModel.setCurrentRunning(conversation);
                         playRunnable.finished = true;
                         Log.e(TAG, "Chat is finished, playRunnable killed");
-                    } //else {
-//                        int top = conversation.popTopBlock();
-//                        messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
-//                        Log.e(TAG, "popped block " + top);
-//                    }
+                    } else {
+                        int top = conversation.popTopBlock();
+                        messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
+                        Log.e(TAG, "popped block " + top);
+                    }
                 } else if (playRunnable == null) {
                     conversation.setConversationState(Conversation.STATE_RUNNING);
                     playRunnable = new PlayRunnable();
@@ -152,6 +154,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     public void onDestroyView() {
         playRunnable.finished = true;
         playRunnable = null;
+        sharedViewModel.setCurrentRunning(conversation);
+        Log.e(TAG, "Leaving chat fragment with blocks " + Arrays.toString(Utils.listToIntArray(conversation.getCurrentBlocks())));
         super.onDestroyView();
     }
 
@@ -265,19 +269,19 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     }
                     sleep(2000);
                 } else {
-//                    if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
-//                        sleep(2000);
-//                        Log.e(TAG, "current message does not match block; waiting for correct ones");
-//                        continue;
-//                    }
+                    if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
+                        sleep(2000);
+                        Log.e(TAG, "current message does not match block; waiting for correct ones");
+                        continue;
+                    }
                     String type = nextMessage.getType();
                     if (type.equals("npc") && !state.equals("choose")) {
+                        sleep(2000);
 //                        Log.e(TAG, "npc message: " + nextMessage.getContent()[0] + " , adding now.");
 //                        if (nextMessage.getContent().length > 1) {
 //                            nextMessage.setChoice(lastPlayerChoice);
 //                        }
                         submitMessage();
-                        sleep(2000);
                     } else if (type.equals("my") || type.substring(0, 3).equals("key")) {
                         // or if it is a key decision
                         Log.e(TAG, "Found a my message, " + nextMessage.getContent()[0] + " awaiting input");
@@ -289,11 +293,13 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                         conversation.pushBlock(blockChoice);
 //                        conversation.setCurrentBlock(blockChoice);
                         messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
-                        Log.e(TAG, "found block " + blockName + ", choice " + blockChoice + ". return to: " + nextMessage.getBlock());
 //                        GameManager.setReturnToBlock(nextMessage.getBlock());
 //                        GameManager.addPrecedingBlock(nextMessage.getBlock());
-                        messageViewModel.removeNextMessage();
-                        messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
+                        if (!finished) {
+                            messageViewModel.submitMessage(nextMessage);
+                            messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
+                            Log.e(TAG, "found block " + blockName + ", choice " + blockChoice + ". return to: " + nextMessage.getBlock());
+                        }
                     }
                     // if it is a block
                     // get the decision of the block from game manager

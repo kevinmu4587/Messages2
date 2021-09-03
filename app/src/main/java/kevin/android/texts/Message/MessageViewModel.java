@@ -24,7 +24,7 @@ public class MessageViewModel extends AndroidViewModel {
     private List<Message> upcomingMessages = new ArrayList<>();
     private LiveData<List<Message>> allMessages;
     private MutableLiveData<List<Integer>> liveCurrentBlocks = new MutableLiveData<>();
-    private MutableLiveData<Integer> liveCurrentBlock = new MutableLiveData<>();
+//    private MutableLiveData<Integer> liveCurrentBlock = new MutableLiveData<>();
 
     private static final String TAG = "MessageViewModel";
 
@@ -42,12 +42,13 @@ public class MessageViewModel extends AndroidViewModel {
 
     public void loadUpcomingMessages(final int owner, final int group) {
         liveUpcomingMessages = Transformations.switchMap(
-                liveCurrentBlock,
-                new Function<Integer, LiveData<List<Message>>>() {
+                liveCurrentBlocks,
+                new Function<List<Integer>, LiveData<List<Message>>>() {
                     @Override
-                    public LiveData<List<Message>> apply(Integer block) {
-//                        int block = blocks.get(blocks.size() - 1);
-                        Log.e(TAG, "loading messages from block " + block);
+                    public LiveData<List<Message>> apply(List<Integer> blocks) {
+                        int block = blocks.get(blocks.size() - 1);
+                        Log.e(TAG, "loading upcoming messages from block " + block + ". all current blocks: " +
+                                Arrays.toString(Utils.listToIntArray(blocks)));
                         return repository.getUpcomingMessages(owner, group, block);
                     }
                 });
@@ -55,7 +56,8 @@ public class MessageViewModel extends AndroidViewModel {
 
     public void setCurrentBlocks(List<Integer> blocks) {
         liveCurrentBlocks.postValue(blocks);
-        liveCurrentBlock.postValue(blocks.get(blocks.size() - 1));
+        Log.e(TAG, "posted current blocks: " + Arrays.toString(Utils.listToIntArray(blocks)));
+//        liveCurrentBlock.postValue(blocks.get(blocks.size() - 1));
     }
 
     public LiveData<List<Message>> getUpcomingMessages() {
@@ -64,19 +66,22 @@ public class MessageViewModel extends AndroidViewModel {
     }
 
     public void loadSentMessages(final int owner, final int group) {
-        liveSentMessages = Transformations.switchMap(
-                liveCurrentBlocks,
-                new Function<List<Integer>, LiveData<List<Message>>>() {
-                    @Override
-                    public LiveData<List<Message>> apply(List<Integer> blocks) {
-                        int[] blocksArray = Utils.listToIntArray(blocks);
-                        Log.e(TAG, "getting sent messages from blocks " + Arrays.toString(blocksArray));
-                        return repository.getSentMessages(owner, group, blocksArray);
-                    }
-                });
+        liveSentMessages = repository.getSentMessages(owner, group);
+//        liveSentMessages = Transformations.switchMap(
+//                liveCurrentBlocks,
+//                new Function<List<Integer>, LiveData<List<Message>>>() {
+//                    @Override
+//                    public LiveData<List<Message>> apply(List<Integer> blocks) {
+//                        int[] blocksArray = Utils.listToIntArray(blocks);
+//                        return repository.getSentMessages(owner, group, blocksArray);
+//                    }
+//                });
     }
 
     public LiveData<List<Message>> getSentMessages() {
+        if (liveCurrentBlocks.getValue() != null) {
+            Log.e(TAG, "getting sent messages from blocks " + Arrays.toString(Utils.listToIntArray(liveCurrentBlocks.getValue())));
+        }
         return liveSentMessages;
     }
 

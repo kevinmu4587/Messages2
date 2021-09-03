@@ -16,8 +16,11 @@ public interface ConversationDao {
     @Update
     void update(Conversation conversation);
 
-    @Query("SELECT * FROM conversation_table WHERE active = 1 ORDER BY recentValue")
+    @Query("SELECT * FROM conversation_table WHERE active = 1")
     LiveData<List<Conversation>> getActiveConversations();
+
+    @Query("SELECT * FROM conversation_table WHERE active = 0")
+    LiveData<List<Conversation>> getInactiveConversations();
 
     @Query("SELECT * FROM conversation_table WHERE id = :id")
     LiveData<Conversation> getConversationById(int id);

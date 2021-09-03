@@ -17,6 +17,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 
+import kevin.android.texts.Utils;
+
 @Database(entities = Message.class, version = 1)
 public abstract class MessageDatabase extends RoomDatabase {
     private static MessageDatabase instance;  // database instance (singleton)
@@ -65,7 +67,7 @@ public abstract class MessageDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             // prepopulate
-            String json = loadJSONFromAssets(activity);
+            String json = Utils.loadJSONFromAssets(activity, "messages.jsonc");
             int count = 0;
             try {
                 JSONArray players = new JSONArray(json);
@@ -116,21 +118,5 @@ public abstract class MessageDatabase extends RoomDatabase {
             Log.e("MessageDatabase", "Added " + count + " messages");
             return null;
         }
-    }
-
-    public static String loadJSONFromAssets(Context context) {
-        String json;
-        try {
-            InputStream is = context.getAssets().open("messages.jsonc");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
     }
 }

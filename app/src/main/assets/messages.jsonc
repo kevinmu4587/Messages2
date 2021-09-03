@@ -48,35 +48,35 @@
                 "time": "8:05pm"
             }
         ],
-        // group 2
-        [
-            {
-                "type": "npc",
-                "content": [
-                    "This is group 2 of player 1."
-                ],
-                "block": 0,
-                "time": "9:01pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Does it work?"
-                ],
-                "block": 0,
-                "time": "9:00pm"
-            },
-            {
-                "type": "my",
-                "content": [
-                    "Yes.",
-                    "I hope so!",
-                    "It should."
-                ],
-                "block": 0,
-                "time": "9:09pm"
-            }
-        ],
+        // // group 2
+        // [
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "This is group 2 of player 1."
+        //         ],
+        //         "block": 0,
+        //         "time": "9:01pm"
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "Does it work?"
+        //         ],
+        //         "block": 0,
+        //         "time": "9:00pm"
+        //     },
+        //     {
+        //         "type": "my",
+        //         "content": [
+        //             "Yes.",
+        //             "I hope so!",
+        //             "It should."
+        //         ],
+        //         "block": 0,
+        //         "time": "9:09pm"
+        //     }
+        // ],
         // group 3
         [
             {

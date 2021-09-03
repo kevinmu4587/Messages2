@@ -39,6 +39,10 @@ public class ConversationRepository {
         return conversationDao.getConversationById(id);
     }
 
+    public LiveData<List<Conversation>> getInactiveConversations() {
+        return conversationDao.getInactiveConversations();
+    }
+
     private static class UpdateConversationAsyncTask extends AsyncTask<Conversation, Void, Void> {
         private ConversationDao conversationDao; // passed to this class
 
