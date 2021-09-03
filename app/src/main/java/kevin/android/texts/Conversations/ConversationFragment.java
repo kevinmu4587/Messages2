@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -27,7 +28,7 @@ import java.util.List;
 import kevin.android.texts.R;
 import kevin.android.texts.SharedViewModel;
 
-public class ConversationFragment extends Fragment {
+public class ConversationFragment extends Fragment implements EditTextDialog.EditTextDialogListener {
     private static final String TAG = "ConversationFragment";
     private ConversationViewModel conversationViewModel;
     private SharedViewModel sharedViewModel;
@@ -97,6 +98,41 @@ public class ConversationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 conversationViewModel.loadNextConversation();
+            }
+        });
+
+        // setup
+        final LiveData<List<Conversation>> liveData = conversationViewModel.getAllConversations();
+        liveData.observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
+            @Override
+            public void onChanged(List<Conversation> conversations) {
+                for (int i = conversations.size() - 1; i >= 0; i--) {
+                    Conversation conversation = conversations.get(i);
+                    EditTextDialog editTextDialog = new EditTextDialog("Enter player information",
+                            conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
+                    editTextDialog.show(getChildFragmentManager(), "setup");
+                }
+//                Log.e(TAG, "opened all EditTextDialog windows.");
+                // we don't need to observe all conversations anymore
+                liveData.removeObserver(this);
+            }
+        });
+    }
+
+
+    @Override
+    public void applyNames(final String firstName, final String lastName, final String nickname, int id) {
+        final LiveData<Conversation> liveData = conversationViewModel.getConversationById(id);
+        liveData.observe(getViewLifecycleOwner(), new Observer<Conversation>() {
+            @Override
+            public void onChanged(Conversation conversation) {
+                conversation.setFirstName(firstName);
+                conversation.setLastName(lastName);
+                conversation.setNickname(nickname);
+                conversation.setInitialized(true);
+                conversationViewModel.update(conversation);
+//                Log.e(TAG, "initialized conversation. name: " + conversation.getFullName());
+                liveData.removeObserver(this);
             }
         });
     }

@@ -73,6 +73,7 @@
     - temporarily removed recentValue for conversations
     - added action button to add new conversation
     - GameManager's key decisions are now saved and reloaded from SharedPreferences
+    - can now set up all player names (this happens every time)
 
 TODO
     - typing animation

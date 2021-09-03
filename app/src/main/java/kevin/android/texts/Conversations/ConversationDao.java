@@ -16,12 +16,15 @@ public interface ConversationDao {
     @Update
     void update(Conversation conversation);
 
-    @Query("SELECT * FROM conversation_table WHERE active = 1")
+    @Query("SELECT * FROM conversation_table WHERE active = 1 AND initialized = 1")
     LiveData<List<Conversation>> getActiveConversations();
 
-    @Query("SELECT * FROM conversation_table WHERE active = 0")
+    @Query("SELECT * FROM conversation_table WHERE active = 0 AND initialized = 1")
     LiveData<List<Conversation>> getInactiveConversations();
 
     @Query("SELECT * FROM conversation_table WHERE id = :id")
     LiveData<Conversation> getConversationById(int id);
+
+    @Query("SELECT * FROM conversation_table")
+    LiveData<List<Conversation>> getAllConversations();
 }

@@ -51,6 +51,10 @@ public class ConversationViewModel extends AndroidViewModel {
         update(next);
     }
 
+    public LiveData<List<Conversation>> getAllConversations() {
+        return repository.getAllConversations();
+    }
+
 //    public void bubbleToTop(Conversation conversation) {
 //        List<Conversation> list = activeConversations.getValue();
 ////        Log.e(TAG, "size: " + list.size());

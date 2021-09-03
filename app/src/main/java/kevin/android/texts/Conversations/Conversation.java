@@ -31,6 +31,7 @@ public class Conversation implements Parcelable  {
     private boolean active;
 //    private int recentValue;
     private boolean unread;
+    private boolean initialized;
 //    private int currentBlock;
     private List<Integer> currentBlocks = new ArrayList<>();
 
@@ -46,6 +47,7 @@ public class Conversation implements Parcelable  {
         this.conversationState = Conversation.STATE_RUNNING;
 //        this.chatState = "";
         this.active = false;
+        this.initialized = false;
 //        this.recentValue = recentValue;
         this.unread = true;
         this.currentBlocks.add(0);
@@ -164,6 +166,14 @@ public class Conversation implements Parcelable  {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public boolean isInitialized() {
+        return initialized;
+    }
+
+    public void setInitialized(boolean initialized) {
+        this.initialized = initialized;
     }
 
     public int getCurrentBlock() {
