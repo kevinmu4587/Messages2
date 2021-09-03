@@ -2,13 +2,51 @@ package kevin.android.texts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // load the GameManager key decisions from shared preferences
+        Gson gson = new Gson();
+        SharedPreferences sharedPref = getSharedPreferences("MyPreference", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        String json = sharedPref.getString("MyHashMap", null);
+        if (json != null) {
+            Type myType = new TypeToken<Map<String, Integer>>() {}.getType();
+            Map<String, Integer> keyChoices = gson.fromJson(json, myType);
+            Log.e(TAG, "loading key decisions from sharedPrefs. size: " + keyChoices.size());
+            GameManager.setKeyChoices(keyChoices);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // save the GameManager key decisions to shared preferences
+        SharedPreferences sharedPref = getSharedPreferences("MyPreference", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("MyHashMap", new Gson().toJson(GameManager.getKeyChoices()));
+        editor.apply();
+        Log.e(TAG, "Saved " + GameManager.getKeyChoices().size() + " key decisions to shared preferences");
     }
 }

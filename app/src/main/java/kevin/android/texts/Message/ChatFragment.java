@@ -154,8 +154,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     public void onDestroyView() {
         playRunnable.finished = true;
         playRunnable = null;
-        sharedViewModel.setCurrentRunning(conversation);
-        Log.e(TAG, "Leaving chat fragment with blocks " + Arrays.toString(Utils.listToIntArray(conversation.getCurrentBlocks())));
+//        sharedViewModel.setCurrentRunning(conversation);
+//        Log.e(TAG, "Leaving chat fragment with blocks " + Arrays.toString(Utils.listToIntArray(conversation.getCurrentBlocks())));
         super.onDestroyView();
     }
 

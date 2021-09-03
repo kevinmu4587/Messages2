@@ -41,8 +41,12 @@ public class GameManager {
 //        return ret;
 //    }
 
-    public Map<String, Integer> getKeyChoices() {
+    public static Map<String, Integer> getKeyChoices() {
         return keyChoices;
+    }
+
+    public static void setKeyChoices(Map<String, Integer> keyChoices) {
+        GameManager.keyChoices = keyChoices;
     }
 
     public static int getKeyDecision(String block) {
