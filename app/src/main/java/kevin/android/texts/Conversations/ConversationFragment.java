@@ -25,6 +25,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
+import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
 import kevin.android.texts.SharedViewModel;
 
@@ -102,21 +103,25 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         });
 
         // setup
-        final LiveData<List<Conversation>> liveData = conversationViewModel.getAllConversations();
-        liveData.observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
-            @Override
-            public void onChanged(List<Conversation> conversations) {
-                for (int i = conversations.size() - 1; i >= 0; i--) {
-                    Conversation conversation = conversations.get(i);
-                    EditTextDialog editTextDialog = new EditTextDialog("Enter player information",
-                            conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
-                    editTextDialog.show(getChildFragmentManager(), "setup");
-                }
-//                Log.e(TAG, "opened all EditTextDialog windows.");
-                // we don't need to observe all conversations anymore
-                liveData.removeObserver(this);
-            }
-        });
+        if (GameManager.isFirstRun()) {
+            Log.e(TAG, "first run! Running setup.");
+//            GameManager.setFirstRun(false);
+//            final LiveData<List<Conversation>> liveData = conversationViewModel.getAllConversations();
+//            liveData.observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
+//                @Override
+//                public void onChanged(List<Conversation> conversations) {
+//                    for (int i = conversations.size() - 1; i >= 0; i--) {
+//                        Conversation conversation = conversations.get(i);
+//                        EditTextDialog editTextDialog = new EditTextDialog("Enter player information",
+//                                conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
+//                        editTextDialog.show(getChildFragmentManager(), "setup");
+//                    }
+////                Log.e(TAG, "opened all EditTextDialog windows.");
+//                    // we don't need to observe all conversations anymore
+//                    liveData.removeObserver(this);
+//                }
+//            });
+        }
     }
 
 

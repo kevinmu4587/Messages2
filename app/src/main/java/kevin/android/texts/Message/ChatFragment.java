@@ -41,6 +41,8 @@ import kevin.android.texts.Utils;
 public class ChatFragment extends Fragment implements View.OnClickListener, Dialog.DialogListener {
     private MessageViewModel messageViewModel;
     private SharedViewModel sharedViewModel;
+    private MessageAdapter adapter = null;
+
     private Button sendButton;
     private EditText chatBox;
     private PlayRunnable playRunnable;
@@ -79,7 +81,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         RecyclerView recyclerView = view.findViewById(R.id.chat_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
-        final MessageAdapter adapter = new MessageAdapter();
+        adapter = new MessageAdapter();
         recyclerView.setAdapter(adapter);
 
         // for updating the shared ViewModel
@@ -276,7 +278,9 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     }
                     String type = nextMessage.getType();
                     if (type.equals("npc") && !state.equals("choose")) {
+                        adapter.startTypingAnim();
                         sleep(2000);
+                        adapter.stopTypingAnim();
 //                        Log.e(TAG, "npc message: " + nextMessage.getContent()[0] + " , adding now.");
 //                        if (nextMessage.getContent().length > 1) {
 //                            nextMessage.setChoice(lastPlayerChoice);

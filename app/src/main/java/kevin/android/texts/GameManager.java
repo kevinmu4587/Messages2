@@ -13,33 +13,7 @@ import java.util.Map;
 // this class is for saving game-wide decisions, like which blocks were picked, and what ending were reached
 public class GameManager {
     private static Map<String, Integer> keyChoices = new HashMap<String, Integer>();
-//    private static int returnToBlock = -1;
-//    private static List<Integer> precedingBlocks = new ArrayList<>();
-
-    public GameManager() {
-    }
-
-//    public static int getReturnToBlock() {
-//        return returnToBlock;
-//    }
-//
-//    public static void setReturnToBlock(int returnToBlock) {
-//        GameManager.returnToBlock = returnToBlock;
-//    }
-
-//    public static void addPrecedingBlock(int block) {
-//        if (precedingBlocks.contains(Integer.valueOf(block))) {
-//            return;
-//        }
-//        precedingBlocks.add(Integer.valueOf(block));
-//    }
-//
-//    public static int[] getPrecedingBlocks() {
-//        int[] ret = new int[precedingBlocks.size()];
-//        for(int i = 0; i < precedingBlocks.size();i++)
-//            ret[i] = precedingBlocks.get(i);
-//        return ret;
-//    }
+    private static boolean firstRun = true;
 
     public static Map<String, Integer> getKeyChoices() {
         return keyChoices;
@@ -60,5 +34,13 @@ public class GameManager {
 
     public static void addKeyDecision(String block, int choice) {
         keyChoices.put(block, Integer.valueOf(choice));
+    }
+
+    public static boolean isFirstRun() {
+        return firstRun;
+    }
+
+    public static void setFirstRun(boolean firstRun) {
+        GameManager.firstRun = firstRun;
     }
 }

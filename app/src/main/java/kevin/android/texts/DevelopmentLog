@@ -74,9 +74,20 @@
     - added action button to add new conversation
     - GameManager's key decisions are now saved and reloaded from SharedPreferences
     - can now set up all player names (this happens every time)
+[Sunday, September 12th, 2021]
+    - todo: fix bug where setup does not properly load only on first run
+    - started working on adding typing animation
+        - only works for the first message
+        - had to make the message adapter global scope inside ChatFragment
+        - problem: after starting typing anim, database is uploaded and sentMessages gets set to nothing
+            - tried adding the set messages above the typing anim (not tested)
+        - also tried making refresh more efficient; if only one new message is added, use notifyItemChanged.
+            - if there is a size change > 1, notifyDataSetChanged.
+
 
 TODO
     - typing animation
-    - setup player info on first download
     - backgrounds and sounds
     - figure out when to advance the group
+    - notes
+    - profile picture setup (MessageAdapter needs to be passed the profilePicture id)
