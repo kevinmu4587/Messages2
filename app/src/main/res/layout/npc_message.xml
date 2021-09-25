@@ -15,20 +15,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="5dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/npc_msg_profile_pic"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
     <TextView
         android:id="@+id/npc_msg_content"
         style="@style/NPCTextBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="3dp"
+        android:layout_weight="1"
         android:background="@drawable/rounded_rectangle"
+        android:clickable="true"
+        android:focusable="true"
+        android:maxWidth="300dp"
+        android:foreground="?android:attr/selectableItemBackground"
         android:text="This is a test this is a test this is a test"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/npc_msg_profile_pic"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-
+<!--        <TextView-->
+<!--            android:id="@+id/npc_msg_timestamp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_weight="0"-->
+<!--            android:text="12:12pm" />-->
+<!--    </LinearLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

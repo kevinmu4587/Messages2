@@ -20,6 +20,7 @@
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="Testing this is a test, another test this one is my text"
+        android:maxWidth="300dp"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/my_msg_read_sign"

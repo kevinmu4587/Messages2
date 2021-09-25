@@ -36,7 +36,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
     public void onBindViewHolder(@NonNull ConversationViewHolder holder, int position) {
         Conversation current = activeConversations.get(position);
 
-        holder.profilePicture.setImageResource(R.drawable.ic_check_filled);
+        holder.profilePicture.setImageResource(current.getProfilePictureID());
         holder.name.setText(current.getFullName());
         holder.lastMessage.setText(current.getLastMessage());
         if (current.isUnread()) {
@@ -53,8 +53,13 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
     }
 
     public void setActiveConversations(List<Conversation> activeConversations) {
+        int oldSize = this.activeConversations.size();
         this.activeConversations = activeConversations;
-        notifyDataSetChanged();
+        if (activeConversations.size() - oldSize == 1) {
+            notifyItemInserted(oldSize);
+        } else {
+            notifyDataSetChanged();
+        }
     }
 
     class ConversationViewHolder extends RecyclerView.ViewHolder {

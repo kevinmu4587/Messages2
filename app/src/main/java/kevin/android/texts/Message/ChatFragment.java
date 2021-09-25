@@ -1,7 +1,10 @@
 package kevin.android.texts.Message;
 
 import android.content.Context;
+import android.media.AudioAttributes;
+import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,6 +29,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,15 +47,22 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     private MessageViewModel messageViewModel;
     private SharedViewModel sharedViewModel;
     private MessageAdapter adapter = null;
+    private RecyclerView recyclerView;
+    private Handler mainHandler = new Handler();
 
     private Button sendButton;
     private EditText chatBox;
     private PlayRunnable playRunnable;
+    private FloatingActionButton jumpDownButton;
 
     private String state = "npc";
     private int lastPlayerChoice = 0;
     private Message nextMessage;
     private Conversation conversation;
+
+    // for playing sounds
+    private SoundPool soundPool;
+    private int npcTypingSound, sendMessageSound, receivedMessageSound;
 
     private static final String TAG = "ChatFragment";
 
@@ -70,20 +82,30 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
         sendButton = view.findViewById(R.id.chat_send_button);
         chatBox = view.findViewById(R.id.chat_edittext);
+        jumpDownButton = view.findViewById(R.id.chat_jump_button);
         sendButton.setOnClickListener(this);
         chatBox.setOnClickListener(this);
+        jumpDownButton.setOnClickListener(this);
+
+        // manage sound effects
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_GAME)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build();
+        soundPool = new SoundPool.Builder()
+                .setMaxStreams(2)
+                .setAudioAttributes(audioAttributes)
+                .build();
+
+        //npcTypingSound = soundPool.load(this, R.raw.npc_typing_cut, 1);
+        sendMessageSound = soundPool.load(getContext(), R.raw.send_message, 1);
+        receivedMessageSound = soundPool.load(getContext(), R.raw.receive_message, 1);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        RecyclerView recyclerView = view.findViewById(R.id.chat_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setHasFixedSize(true);
-        adapter = new MessageAdapter();
-        recyclerView.setAdapter(adapter);
-
         // for updating the shared ViewModel
         sharedViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
                 getInstance(getActivity().getApplication())).get(SharedViewModel.class);
@@ -93,6 +115,13 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         getActivity().setTitle(conversation.getFullName());
         Log.e(TAG, "Conversation Owner: " + conversation.getFullName());
 
+        recyclerView = view.findViewById(R.id.chat_recycler_view);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        adapter = new MessageAdapter(conversation.getProfilePictureID());
+        recyclerView.setAdapter(adapter);
 
         // observe the sent messages
         messageViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
@@ -104,8 +133,10 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             @Override
             public void onChanged(List<Message> notes) {
                 // update recycler view
-                adapter.setSentMessages(notes);
-                Log.e(TAG, "Chat updated");
+                if (notes.size() > 0) {
+                    adapter.setSentMessages(notes);
+                    checkScroll();
+                }
             }
         });
 
@@ -115,7 +146,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
             @Override
             public void onChanged(List<Message> messages) {
-                Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
+//                Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
                 messageViewModel.setUpcomingMessages(messages);
                 if (messages.size() == 0 && playRunnable != null) {
                     if (conversation.getCurrentBlock() == 0) {
@@ -150,6 +181,26 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 getActivity().setTitle(conversation.getFullName());
             }
         });
+
+        //scroll to bottom if keyboard appears
+        recyclerView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View v,
+                                       int left, int top, int right, int bottom,
+                                       int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                if (bottom < oldBottom) {
+                    recyclerView.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (adapter.getItemCount() != 0) {
+                                recyclerView.smoothScrollToPosition(
+                                        recyclerView.getAdapter().getItemCount() - 1);
+                            }
+                        }
+                    }, 100);
+                }
+            }
+        });
     }
 
     @Override
@@ -170,12 +221,18 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     state = "sent";
                     submitMessage();
                     chatBox.setText("");
+                    soundPool.play(sendMessageSound, 0.5f, 0.5f, 0, 0, 1);
                 }
                 return;
             case R.id.chat_edittext:
                 if (state.equals("choose")) {
                     openDialog();
                 }
+                return;
+            case R.id.chat_jump_button:
+                recyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);
+                jumpDownButton.setVisibility(View.INVISIBLE);
+                return;
         }
     }
 
@@ -226,12 +283,14 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     }
 
     public void submitMessage() {
+        // add the message
         if (nextMessage.getContent().length > 1) {
             nextMessage.setChoice(lastPlayerChoice);
         }
         Log.e(TAG, "Submitted message " + nextMessage.getContent()[nextMessage.getChoice()]);
         messageViewModel.submitMessage(nextMessage);
 
+        // update sharedViewModel for the last message
         String lastMessage = nextMessage.getContent()[nextMessage.getChoice()];
         if (nextMessage.getType().equals("npc")) {
             lastMessage = conversation.getFirstName() + ": " + lastMessage;
@@ -242,6 +301,21 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         }
         conversation.setLastMessage(lastMessage);
         sharedViewModel.setCurrentRunning(conversation);
+    }
+
+    private void checkScroll() {
+        // scroll down to bottom if needed
+        if (adapter.getItemCount() != 0) {
+            if (!recyclerView.canScrollVertically(1)) {
+                // jump to bottom
+                recyclerView.smoothScrollToPosition(adapter.getItemCount());
+                jumpDownButton.setVisibility(View.INVISIBLE);
+                // Log.e(TAG, "cannot scroll vertically. num sent messages: " + adapter.getItemCount());
+            } else {
+                // make jump button appear
+                jumpDownButton.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     /*
@@ -256,7 +330,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             while (!finished) {
                 if (state.equals("sending") || state.equals("choose")) {
                     // wait, we are waiting for user input
-                    Log.e(TAG, "Awaiting user input. state: " + state);
+//                    Log.e(TAG, "Awaiting user input. state: " + state);
                     sleep(1000);
                     continue;
                 } else if (state.equals("sent")) {
@@ -278,17 +352,26 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     }
                     String type = nextMessage.getType();
                     if (type.equals("npc") && !state.equals("choose")) {
-                        adapter.startTypingAnim();
-                        sleep(2000);
-                        adapter.stopTypingAnim();
-//                        Log.e(TAG, "npc message: " + nextMessage.getContent()[0] + " , adding now.");
-//                        if (nextMessage.getContent().length > 1) {
-//                            nextMessage.setChoice(lastPlayerChoice);
-//                        }
+                        typingAnim();
+//                        mainHandler.post(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                adapter.startTypingAnim();
+//                                checkScroll();
+//                            }
+//                        });
+//                        sleep(2000);
+//                        mainHandler.post(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                adapter.stopTypingAnim();
+//                            }
+//                        });
                         submitMessage();
+                        soundPool.play(receivedMessageSound, 1, 1, 0,0,1);
+                        sleep(1500);
                     } else if (type.equals("my") || type.substring(0, 3).equals("key")) {
                         // or if it is a key decision
-                        Log.e(TAG, "Found a my message, " + nextMessage.getContent()[0] + " awaiting input");
                         // get the choice by opening the dialog
                         state = "choose";
                     } else if (type.equals("block")) {
@@ -305,11 +388,31 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                             Log.e(TAG, "found block " + blockName + ", choice " + blockChoice + ". return to: " + nextMessage.getBlock());
                         }
                     }
-                    // if it is a block
-                    // get the decision of the block from game manager
-                    // set the conversation's current block to the decision
                 }
             }
+        }
+
+        private void typingAnim() {
+            // Log.e(TAG, "started typing anim");
+            // add typing gif
+            adapter.getSentMessages().add(null);
+            mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    adapter.notifyItemInserted(adapter.getItemCount() - 1);
+                    checkScroll();
+                }
+            });
+            // sleep as NPC is typing
+            sleep(3000);
+            adapter.getSentMessages().remove(adapter.getItemCount() - 1);
+            mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    adapter.notifyItemRemoved(adapter.getItemCount());
+                }
+            });
+            // Log.e(TAG, "finished typing anim");
         }
 
         private void sleep(int ms) {

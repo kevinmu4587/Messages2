@@ -76,6 +76,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         conversationViewModel.getInactiveConversations().observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
             @Override
             public void onChanged(List<Conversation> conversations) {
+                Log.e(TAG, "set " + conversations.size() + " inactive conversations.");
                 conversationViewModel.setInactiveConversations(conversations);
             }
         });
@@ -103,25 +104,31 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         });
 
         // setup
-        if (GameManager.isFirstRun()) {
-            Log.e(TAG, "first run! Running setup.");
+//        if (GameManager.isFirstRun()) {
+//            Log.e(TAG, "first run! Running setup.");
 //            GameManager.setFirstRun(false);
 //            final LiveData<List<Conversation>> liveData = conversationViewModel.getAllConversations();
 //            liveData.observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
 //                @Override
 //                public void onChanged(List<Conversation> conversations) {
+//                    // set the profile pictures
+//                    for (Conversation conversation : conversations) {
+//                        int id = conversation.getId();
+//                        conversation.setProfilePictureID(Conversation.profilePictures[id - 1]);
+//                    }
+//                    // get all player and NPC information
 //                    for (int i = conversations.size() - 1; i >= 0; i--) {
 //                        Conversation conversation = conversations.get(i);
 //                        EditTextDialog editTextDialog = new EditTextDialog("Enter player information",
 //                                conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
 //                        editTextDialog.show(getChildFragmentManager(), "setup");
 //                    }
-////                Log.e(TAG, "opened all EditTextDialog windows.");
-//                    // we don't need to observe all conversations anymore
+//                Log.e(TAG, "opened all EditTextDialog windows.");
+                    // we don't need to observe all conversations anymore
 //                    liveData.removeObserver(this);
 //                }
 //            });
-        }
+//        }
     }
 
 

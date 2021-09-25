@@ -77,17 +77,31 @@
 [Sunday, September 12th, 2021]
     - todo: fix bug where setup does not properly load only on first run
     - started working on adding typing animation
-        - only works for the first message
         - had to make the message adapter global scope inside ChatFragment
-        - problem: after starting typing anim, database is uploaded and sentMessages gets set to nothing
-            - tried adding the set messages above the typing anim (not tested)
         - also tried making refresh more efficient; if only one new message is added, use notifyItemChanged.
             - if there is a size change > 1, notifyDataSetChanged.
+[Tuesday, September 14th, 2021]
+    - improved efficiency of updating messages inside recycler view
+        - start/stop typing anim is updated using notifyItemInserted/notifyItemRemoved
+        - so are the basic messages
+[Friday, September 17th, 2021]
+    - made chat recycler view populate from the bottom
+
+        - also automatically jumps down if currently at the bottom of the chat
+    - limited NPC message and my message max length using a quick & dirty method
+[Monday, September 20th, 2021]
+    - added jump down button
+    - recycler view now scrolls down when keyboard is opened
+    - TODO: small bug where the message that occurs right at the end of 1 screen length doesn't cause jump down
+[Tuesday, September 21st, 2021]
+    - added sound effects for sending message and receiving message
+[Friday, September 24th, 2021]
+    - added profile pictures on Conversation rows and chat message rows
+    - updated volume for receiving a message
 
 
 TODO
-    - typing animation
-    - backgrounds and sounds
+    - backgrounds and mediaplayer sounds
     - figure out when to advance the group
     - notes
-    - profile picture setup (MessageAdapter needs to be passed the profilePicture id)
+    - find out if we need to separate loadSentMessages and getSentMessages.

@@ -24,7 +24,6 @@ public class MessageViewModel extends AndroidViewModel {
     private List<Message> upcomingMessages = new ArrayList<>();
     private LiveData<List<Message>> allMessages;
     private MutableLiveData<List<Integer>> liveCurrentBlocks = new MutableLiveData<>();
-//    private MutableLiveData<Integer> liveCurrentBlock = new MutableLiveData<>();
 
     private static final String TAG = "MessageViewModel";
 
@@ -37,7 +36,7 @@ public class MessageViewModel extends AndroidViewModel {
 
     public void update(Message message) {
         repository.update(message);
-        Log.e("MessageViewModel", "Updated the Database");
+//        Log.e("MessageViewModel", "Updated the Database");
     }
 
     public void loadUpcomingMessages(final int owner, final int group) {
@@ -83,6 +82,10 @@ public class MessageViewModel extends AndroidViewModel {
             Log.e(TAG, "getting sent messages from blocks " + Arrays.toString(Utils.listToIntArray(liveCurrentBlocks.getValue())));
         }
         return liveSentMessages;
+    }
+
+    public int getNumSentMessages() {
+        return liveSentMessages.getValue().size();
     }
 
 //    public LiveData<List<Message>> getSentMessages(int owner, int group, int block) {

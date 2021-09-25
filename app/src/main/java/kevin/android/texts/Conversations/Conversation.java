@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kevin.android.texts.Converters;
+import kevin.android.texts.GameManager;
+import kevin.android.texts.R;
 
 @Entity(tableName = "conversation_table")
 @TypeConverters(Converters.class)
@@ -19,11 +22,15 @@ public class Conversation implements Parcelable  {
     public static final int STATE_RUNNING = 0;
     public static final int STATE_PAUSED = 1;
     public static final int STATE_DONE = 2;
+    public static final int[] profilePictures = { R.drawable.rose, R.drawable.cat };
 
     private String firstName;
     private String lastName;
     private String nickname;
     private String lastMessage;
+
+    @Ignore
+    private int profilePictureID;
 
     private int group;
     private int conversationState;
@@ -32,7 +39,6 @@ public class Conversation implements Parcelable  {
 //    private int recentValue;
     private boolean unread;
     private boolean initialized;
-//    private int currentBlock;
     private List<Integer> currentBlocks = new ArrayList<>();
 
     @PrimaryKey(autoGenerate = true)
@@ -45,7 +51,6 @@ public class Conversation implements Parcelable  {
         this.lastMessage = "New message!";
         this.group = 1;
         this.conversationState = Conversation.STATE_RUNNING;
-//        this.chatState = "";
         this.active = false;
         this.initialized = false;
 //        this.recentValue = recentValue;
@@ -189,6 +194,14 @@ public class Conversation implements Parcelable  {
     public void pushBlock(int block) {
         currentBlocks.add(block);
     }
+
+    public int getProfilePictureID() {
+        return profilePictures[this.id - 1];
+    }
+
+//    public void setProfilePictureID(int profilePictureID) {
+//        this.profilePictureID = profilePictureID;
+//    }
 
     @Override
     public int describeContents() {

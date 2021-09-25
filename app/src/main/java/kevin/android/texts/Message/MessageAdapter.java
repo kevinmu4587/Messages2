@@ -23,6 +23,11 @@ public class MessageAdapter extends RecyclerView.Adapter {
     private List<Message> sentMessages = new ArrayList<>();
 
     private static final String TAG = "MessageAdapter";
+    private int profilePictureID;
+
+    public MessageAdapter(int profilePictureID) {
+        this.profilePictureID = profilePictureID;
+    }
 
     @NonNull
     @Override
@@ -79,31 +84,36 @@ public class MessageAdapter extends RecyclerView.Adapter {
 
     public void setSentMessages(List<Message> sentMessages) {
         int originalSize = this.sentMessages.size();
-        this.sentMessages.addAll(0, sentMessages); // add messages to the top
-//        int position = sentMessages.size() == 0 ? 0 : sentMessages.size() - 1;
-//        Log.e("Test", "Item changed at position " + position);
-//        notifyItemChanged(position);
-//        if (this.sentMessages.size() - originalSize == 1) {
-//            notifyItemChanged(sentMessages.size() - 1);
-//        } else {
+        this.sentMessages = sentMessages; // add messages to the top
+        if (this.sentMessages.size() - originalSize == 1) {
+            notifyItemInserted(sentMessages.size() - 1);
+            // Log.e(TAG, "notified item inserted at " + (sentMessages.size() - 1));
+        } else {
             notifyDataSetChanged();
-//        }
+        }
         Log.e("MessageAdapter", "set sent messages. size(): " + sentMessages.size());
+    }
+
+    public List<Message> getSentMessages() {
+        return sentMessages;
     }
 
     class NPCMessageHolder extends RecyclerView.ViewHolder {
         private ImageView profilePicture;
         private TextView content;
+//        private TextView timeStamp;
 
         public NPCMessageHolder(@NonNull View itemView) {
             super(itemView);
             profilePicture = itemView.findViewById(R.id.npc_msg_profile_pic);
             content = itemView.findViewById(R.id.npc_msg_content);
+//            timeStamp = itemView.findViewById(R.id.npc_msg_timestamp);
         }
 
         void bind(Message message) {
-            profilePicture.setImageResource(R.drawable.ic_check_filled);
+            profilePicture.setImageResource(profilePictureID);
             content.setText(message.getContent()[message.getChoice()]);
+//            timeStamp.setText(message.getTime());
         }
     }
 
@@ -135,19 +145,7 @@ public class MessageAdapter extends RecyclerView.Adapter {
         }
 
         void bind() {
-            profilePicture.setImageResource(R.drawable.ic_check_filled);
+            profilePicture.setImageResource(profilePictureID);
         }
-    }
-
-    public void startTypingAnim() {
-        sentMessages.add(null);
-        notifyDataSetChanged();
-//        notifyItemChanged(sentMessages.size() == 0 ? 0 : sentMessages.size() - 1);
-        Log.e(TAG, "started typing anim");
-    }
-
-    public void stopTypingAnim() {
-        sentMessages.remove(sentMessages.size() - 1);
-        Log.e(TAG, "ended typing anim");
     }
 }

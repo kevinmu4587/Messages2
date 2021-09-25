@@ -73,12 +73,6 @@ public abstract class ConversationDatabase extends RoomDatabase {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-//            conversationDao.insert(new Conversation("Spike", ":)",
-//                    1, true, 1));
-//            conversationDao.insert(new Conversation("Jello", "Bello",
-//                    1, true,2));
-//            conversationDao.insert(new Conversation("Ricardo", "Diaz",
-//                    1,  false,3));
             return null;
         }
     }

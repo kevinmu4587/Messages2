@@ -77,7 +77,7 @@ public abstract class MessageDatabase extends RoomDatabase {
                     // for each group
                     for (int a = 0; a < player.length(); ++a) {
                         JSONArray group = player.getJSONArray(a);
-                        Log.e(TAG, "There are " + group.length() + " messages in group " + (a + 1) + " for player " + (i + 1));
+//                        Log.e(TAG, "There are " + group.length() + " messages in group " + (a + 1) + " for player " + (i + 1));
                         // for each of the player's messages
                         for (int j = 0; j < group.length(); ++j) {
                             JSONObject msg = group.getJSONObject(j);
