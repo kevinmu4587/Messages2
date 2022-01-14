@@ -33,7 +33,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     private static final String TAG = "ConversationFragment";
     private ConversationViewModel conversationViewModel;
     private SharedViewModel sharedViewModel;
-    private FloatingActionButton testNextConversationButton;
+    // private FloatingActionButton testNextConversationButton;
 
     public ConversationFragment() {
     }
@@ -69,7 +69,8 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             public void onChanged(List<Conversation> activeConversations) {
                 // update recycler view
                 adapter.setActiveConversations(activeConversations);
-//                Log.e(TAG, "conversations updated");
+                conversationViewModel.setActiveConversations(activeConversations);
+                Log.e(TAG, "active conversations updated");
             }
         });
 
@@ -78,6 +79,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             public void onChanged(List<Conversation> conversations) {
                 Log.e(TAG, "set " + conversations.size() + " inactive conversations.");
                 conversationViewModel.setInactiveConversations(conversations);
+                if (conversations.size() == 2) checkAdvance();
             }
         });
 
@@ -87,21 +89,23 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         sharedViewModel.getCurrentRunning().observe(getViewLifecycleOwner(), new Observer<Conversation>() {
             @Override
             public void onChanged(Conversation conversation) {
-                if (conversation.getConversationState() == Conversation.STATE_DONE) {
-                    conversation.setConversationState(Conversation.STATE_RUNNING);
-                    conversation.setGroup(conversation.getGroup() + 1);
-                }
+                // update last message and read status
                 conversationViewModel.update(conversation);
+                if (conversation.getConversationState() == Conversation.STATE_DONE) {
+                    // advance groups
+                    checkAdvance();
+                }
             }
         });
 
-        testNextConversationButton = view.findViewById(R.id.test_add_conversation_button);
-        testNextConversationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                conversationViewModel.loadNextConversation();
-            }
-        });
+
+//        testNextConversationButton = view.findViewById(R.id.test_add_conversation_button);
+//        testNextConversationButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                conversationViewModel.loadNextConversation();
+//            }
+//        });
 
         // setup
 //        if (GameManager.isFirstRun()) {
@@ -131,7 +135,6 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
 //        }
     }
 
-
     @Override
     public void applyNames(final String firstName, final String lastName, final String nickname, int id) {
         final LiveData<Conversation> liveData = conversationViewModel.getConversationById(id);
@@ -147,5 +150,19 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                 liveData.removeObserver(this);
             }
         });
+    }
+
+    private void checkAdvance() {
+        String cmd = GameManager.timeline.get(0);
+        Log.e(TAG, "command: " + cmd);
+        GameManager.timeline.remove(0);
+        if (cmd.substring(0, 4).equals("open")) {
+            Log.e(TAG, "opened next conversation of id: " + cmd.charAt(4));
+            conversationViewModel.loadNextConversation();
+        } else if (cmd.substring(0, 4).equals("incr")) {
+            int conversationId = cmd.charAt(4) - '0';
+            Log.e(TAG, "incremented conversation with id: " + conversationId);
+            conversationViewModel.incrementConversationWithID(conversationId);
+        }
     }
 }

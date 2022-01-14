@@ -12,36 +12,37 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.Arrays;
 import java.util.List;
 
 import kevin.android.texts.ChatInfoFragment;
 import kevin.android.texts.Conversations.Conversation;
-import kevin.android.texts.Conversations.ConversationFragmentDirections;
 import kevin.android.texts.Dialog;
 import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
 import kevin.android.texts.SharedViewModel;
-import kevin.android.texts.Utils;
 
 public class ChatFragment extends Fragment implements View.OnClickListener, Dialog.DialogListener {
     private MessageViewModel messageViewModel;
@@ -54,6 +55,11 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     private EditText chatBox;
     private PlayRunnable playRunnable;
     private FloatingActionButton jumpDownButton;
+    private FloatingActionButton testFinishGroup;
+    private LinearLayout noteContainer;
+    private TextView noteContent;
+    private TextView noteNext;
+    private ImageView background;
 
     private String state = "npc";
     private int lastPlayerChoice = 0;
@@ -63,6 +69,9 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     // for playing sounds
     private SoundPool soundPool;
     private int npcTypingSound, sendMessageSound, receivedMessageSound;
+
+    private Animation fadeIn;
+    private Animation fadeOut;
 
     private static final String TAG = "ChatFragment";
 
@@ -83,9 +92,17 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         sendButton = view.findViewById(R.id.chat_send_button);
         chatBox = view.findViewById(R.id.chat_edittext);
         jumpDownButton = view.findViewById(R.id.chat_jump_button);
+        testFinishGroup = view.findViewById(R.id.test_finish_group);
+        noteContainer = view.findViewById(R.id.note_message_container);
+        noteContent = view.findViewById(R.id.note_content);
+        noteNext = view.findViewById(R.id.note_await_next);
+        background = view.findViewById(R.id.chat_background);
+
         sendButton.setOnClickListener(this);
         chatBox.setOnClickListener(this);
         jumpDownButton.setOnClickListener(this);
+        testFinishGroup.setOnClickListener(this);
+        noteContainer.setOnClickListener(this);
 
         // manage sound effects
         AudioAttributes audioAttributes = new AudioAttributes.Builder()
@@ -97,7 +114,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 .setAudioAttributes(audioAttributes)
                 .build();
 
-        //npcTypingSound = soundPool.load(this, R.raw.npc_typing_cut, 1);
+        npcTypingSound = soundPool.load(getContext(), R.raw.typing, 1);
         sendMessageSound = soundPool.load(getContext(), R.raw.send_message, 1);
         receivedMessageSound = soundPool.load(getContext(), R.raw.receive_message, 1);
         return view;
@@ -128,15 +145,14 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 getInstance(getActivity().getApplication())).get(MessageViewModel.class);
         Log.e(TAG, "id: " + conversation.getId() + " group: " + conversation.getGroup());
         messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
-        messageViewModel.loadSentMessages(conversation.getId(), conversation.getGroup());
-        messageViewModel.getSentMessages().observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
+        messageViewModel.getSentMessages(conversation.getId(), conversation.getGroup()).observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
             @Override
             public void onChanged(List<Message> notes) {
                 // update recycler view
-                if (notes.size() > 0) {
+                //if (notes.size() > 0) {
                     adapter.setSentMessages(notes);
                     checkScroll();
-                }
+                //}
             }
         });
 
@@ -144,32 +160,27 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
         messageViewModel.getUpcomingMessages().
                 observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
-            @Override
-            public void onChanged(List<Message> messages) {
-//                Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
-                messageViewModel.setUpcomingMessages(messages);
-                if (messages.size() == 0 && playRunnable != null) {
-                    if (conversation.getCurrentBlock() == 0) {
-                        // we already finished this chat
-                        conversation.setConversationState(Conversation.STATE_DONE);
-//                        sharedViewModel.setCurrentRunning(conversation);
-                        playRunnable.finished = true;
-                        Log.e(TAG, "Chat is finished, playRunnable killed");
-                    } else {
-                        int top = conversation.popTopBlock();
-                        messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
-                        Log.e(TAG, "popped block " + top);
+                    @Override
+                    public void onChanged(List<Message> messages) {
+                        Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
+                        messageViewModel.setUpcomingMessages(messages);
+                        if (messages.size() == 0 && playRunnable != null) {
+                            if (conversation.getCurrentBlock() == 0) {
+                                // we already finished this chat
+                                conversation.setConversationState(Conversation.STATE_DONE);
+                                playRunnable.finished = true;
+                                Log.e(TAG, "Chat is finished, playRunnable killed");
+                            } else {
+                                int top = conversation.popTopBlock();
+                                messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
+                                Log.e(TAG, "popped block " + top);
+                            }
+                        }
                     }
-                } else if (playRunnable == null) {
-                    conversation.setConversationState(Conversation.STATE_RUNNING);
-                    playRunnable = new PlayRunnable();
-                    new Thread(playRunnable).start();
-                }
-            }
-        });
+                });
 
         // get data back from ChatInfoFragment
-                NavController navController = NavHostFragment.findNavController(this);
+        NavController navController = NavHostFragment.findNavController(this);
         MutableLiveData<Conversation> liveData = navController.getCurrentBackStackEntry()
                 .getSavedStateHandle()
                 .getLiveData(ChatInfoFragment.CHAT_INFO_KEY);
@@ -201,13 +212,19 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 }
             }
         });
+
+        fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.slow_fade_in);
+        fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.slow_fade_out);
+
+        // start the background thread
+        playRunnable = new PlayRunnable();
+        new Thread(playRunnable).start();
     }
 
     @Override
     public void onDestroyView() {
         playRunnable.finished = true;
         playRunnable = null;
-//        sharedViewModel.setCurrentRunning(conversation);
 //        Log.e(TAG, "Leaving chat fragment with blocks " + Arrays.toString(Utils.listToIntArray(conversation.getCurrentBlocks())));
         super.onDestroyView();
     }
@@ -217,7 +234,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         switch (view.getId()) {
             case R.id.chat_send_button:
                 if (state.equals("sending")) {
-                    Log.e(TAG, "Sending my message now.");
                     state = "sent";
                     submitMessage();
                     chatBox.setText("");
@@ -233,6 +249,10 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 recyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);
                 jumpDownButton.setVisibility(View.INVISIBLE);
                 return;
+            case R.id.test_finish_group:
+                playRunnable.finished = true;
+                conversation.setConversationState(Conversation.STATE_DONE);
+                Log.e(TAG, "playrunnable killed, group finished early.");
         }
     }
 
@@ -328,9 +348,9 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         @Override
         public void run() {
             while (!finished) {
-                if (state.equals("sending") || state.equals("choose")) {
+                if (state.equals("sending") || state.equals("choose") || state.equals("setting background")) {
                     // wait, we are waiting for user input
-//                    Log.e(TAG, "Awaiting user input. state: " + state);
+//                    Log.e(TAG, "Runnable paused. state: " + state);
                     sleep(1000);
                     continue;
                 } else if (state.equals("sent")) {
@@ -340,9 +360,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 }
                 nextMessage = messageViewModel.getNextMessage();
                 if (nextMessage == null) {
-                    if (finished) {
-                        break;
-                    }
+                    if (finished) break;
                     sleep(2000);
                 } else {
                     if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
@@ -353,22 +371,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     String type = nextMessage.getType();
                     if (type.equals("npc") && !state.equals("choose")) {
                         typingAnim();
-//                        mainHandler.post(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                adapter.startTypingAnim();
-//                                checkScroll();
-//                            }
-//                        });
-//                        sleep(2000);
-//                        mainHandler.post(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                adapter.stopTypingAnim();
-//                            }
-//                        });
                         submitMessage();
-                        soundPool.play(receivedMessageSound, 1, 1, 0,0,1);
+                        soundPool.play(receivedMessageSound, 1, 1, 0, 0, 1);
                         sleep(1500);
                     } else if (type.equals("my") || type.substring(0, 3).equals("key")) {
                         // or if it is a key decision
@@ -378,15 +382,21 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                         String blockName = nextMessage.getContent()[0];
                         int blockChoice = GameManager.getKeyDecision(blockName) + 1;
                         conversation.pushBlock(blockChoice);
-//                        conversation.setCurrentBlock(blockChoice);
                         messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
-//                        GameManager.setReturnToBlock(nextMessage.getBlock());
-//                        GameManager.addPrecedingBlock(nextMessage.getBlock());
                         if (!finished) {
                             messageViewModel.submitMessage(nextMessage);
                             messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
-                            Log.e(TAG, "found block " + blockName + ", choice " + blockChoice + ". return to: " + nextMessage.getBlock());
+                            Log.e(TAG, "found block " + blockName + ", choice " + blockChoice);
                         }
+                    } else if (type.equals("action")) {
+                        submitMessage();
+                        sleep(1500);
+//                    } else if (type.equals("note") && !state.equals("note")) {
+//                        state = "note";
+//                        displayNote();
+                    } else if (type.equals("background")) {
+                        manageBackgrounds();
+                        state = "setting background";
                     }
                 }
             }
@@ -403,6 +413,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     checkScroll();
                 }
             });
+            soundPool.play(npcTypingSound, 1, 1, 0, 0, 1);
             // sleep as NPC is typing
             sleep(3000);
             adapter.getSentMessages().remove(adapter.getItemCount() - 1);
@@ -413,6 +424,92 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 }
             });
             // Log.e(TAG, "finished typing anim");
+        }
+
+        private void displayNote() {
+            final int TEXT_DISPLAYED = 0;
+            final int AWAIT_NEXT = 1;
+
+            // hide the keyboard and action bar
+            View view = getActivity().getCurrentFocus();
+            if (view != null) {
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+
+            noteContainer.setAnimation(fadeIn);
+            fadeIn.start();
+            mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+                    final String [] notes = nextMessage.getContent();
+                    noteContainer.setVisibility(View.VISIBLE);
+                    noteContent.setText(notes[0]);
+                    noteContainer.setOnClickListener(new View.OnClickListener() {
+                        private int noteState = TEXT_DISPLAYED;
+                        private int curNote = 1;
+
+                        @Override
+                        public void onClick(View view) {
+                            if (curNote >= notes.length) {
+                                // exit the note display
+                                noteContainer.setVisibility(View.INVISIBLE);
+                                messageViewModel.submitMessage(nextMessage);
+                                noteContainer.setAnimation(fadeOut);
+                                fadeOut.start();
+                                state = "";
+                                ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+                                return;
+                            } else if (noteState == TEXT_DISPLAYED) {
+                                noteState = AWAIT_NEXT;
+                                noteNext.setVisibility(View.VISIBLE);
+                            } else if (noteState == AWAIT_NEXT) {
+                                noteNext.setVisibility(View.INVISIBLE);
+                                noteState = TEXT_DISPLAYED;
+                                noteContent.setText(notes[curNote]);
+                                curNote++;
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        private void manageBackgrounds() {
+            if (nextMessage == null) return;
+            String cmd = nextMessage.getContent()[0];
+            if (!conversation.getBgState().equals("")) {
+                // render old background from previous load
+                cmd = conversation.getBgState();
+                Log.e(TAG, "loading previous BG");
+            }
+            if (cmd.equals("fadeout")) {
+                // fadeout existing background
+                Log.e(TAG, "fading background away");
+                background.setAnimation(fadeOut);
+                fadeOut.start();
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        background.setImageResource(0);
+                    }
+                });
+                return;
+            }
+            // load a new background
+            Log.e(TAG, "loading new background");
+            final int bgID = GameManager.getBackgroundIDByName(cmd);
+            conversation.setBgState(cmd);
+            sharedViewModel.setCurrentRunning(conversation);
+            messageViewModel.submitMessage(nextMessage);
+            mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    background.setImageResource(bgID);
+                }
+            });
+            state = "";
         }
 
         private void sleep(int ms) {

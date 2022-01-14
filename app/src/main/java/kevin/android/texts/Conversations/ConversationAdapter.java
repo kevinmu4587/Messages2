@@ -57,9 +57,9 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
         this.activeConversations = activeConversations;
         if (activeConversations.size() - oldSize == 1) {
             notifyItemInserted(oldSize);
-        } else {
-            notifyDataSetChanged();
+            return;
         }
+        notifyDataSetChanged();
     }
 
     class ConversationViewHolder extends RecyclerView.ViewHolder {
@@ -82,7 +82,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
             screen.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Conversation conversation = (Conversation)screen.getTag();
+                    Conversation conversation = (Conversation) screen.getTag();
                     // navigate to chat fragment
                     Navigation.findNavController(view).navigate(ConversationFragmentDirections.
                             actionConversationFragmentToChatFragment(conversation));

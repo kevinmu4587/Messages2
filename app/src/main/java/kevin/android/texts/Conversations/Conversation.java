@@ -34,6 +34,7 @@ public class Conversation implements Parcelable  {
 
     private int group;
     private int conversationState;
+    private String bgState;
 
     private boolean active;
 //    private int recentValue;
@@ -51,6 +52,7 @@ public class Conversation implements Parcelable  {
         this.lastMessage = "New message!";
         this.group = 1;
         this.conversationState = Conversation.STATE_RUNNING;
+        this.bgState = "";
         this.active = false;
         this.initialized = false;
 //        this.recentValue = recentValue;
@@ -202,6 +204,14 @@ public class Conversation implements Parcelable  {
 //    public void setProfilePictureID(int profilePictureID) {
 //        this.profilePictureID = profilePictureID;
 //    }
+
+    public String getBgState() {
+        return bgState;
+    }
+
+    public void setBgState(String bgState) {
+        this.bgState = bgState;
+    }
 
     @Override
     public int describeContents() {

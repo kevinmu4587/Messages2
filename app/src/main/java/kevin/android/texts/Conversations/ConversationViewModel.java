@@ -18,11 +18,11 @@ public class ConversationViewModel extends AndroidViewModel {
     private static final String TAG = "ConversationViewModel";
     private ConversationRepository repository;
     private List<Conversation> inactiveConversations = new ArrayList<>();
+    private List<Conversation> activeConversations = new ArrayList<>();
 
     public ConversationViewModel(@NonNull Application application) {
         super(application);
         repository = new ConversationRepository(application);
-//        activeConversations = repository.getActiveConversations();
     }
 
     public void update(Conversation conversation) {
@@ -31,6 +31,10 @@ public class ConversationViewModel extends AndroidViewModel {
 
     public LiveData<List<Conversation>> getActiveConversations() {
         return repository.getActiveConversations();
+    }
+
+    public void setActiveConversations(List<Conversation> activeConversations) {
+        this.activeConversations = activeConversations;
     }
 
     public LiveData<List<Conversation>> getInactiveConversations() {
@@ -47,12 +51,24 @@ public class ConversationViewModel extends AndroidViewModel {
 
     public void loadNextConversation() {
         Conversation next = inactiveConversations.get(0);
+        Log.e(TAG, "Requested next conversation. name: " + next.getFullName() + ", id: " + next.getId());
         next.setActive(true);
         update(next);
     }
 
     public LiveData<List<Conversation>> getAllConversations() {
         return repository.getAllConversations();
+    }
+
+    public void incrementConversationWithID(int id) {
+        for (Conversation c : activeConversations) {
+            if (c.getId() == id) {
+                c.setGroup(c.getGroup() + 1);
+                Log.e(TAG, "conversation " + c.getFullName() + " is now on group " + c.getGroup());
+                update(c);
+                return;
+            }
+        }
     }
 
 //    public void bubbleToTop(Conversation conversation) {

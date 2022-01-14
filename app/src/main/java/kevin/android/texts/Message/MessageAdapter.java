@@ -42,6 +42,9 @@ public class MessageAdapter extends RecyclerView.Adapter {
             case VIEWHOLDER_TYPING_MESSAGE:
                 return new TypingViewHolder(LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.typing_message, parent, false));
+            case VIEWHOLDER_ACTION_MESSAGE:
+                return new ActionMessageViewHolder(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.action_message, parent, false));
             default:
                 return null;
         }
@@ -59,6 +62,10 @@ public class MessageAdapter extends RecyclerView.Adapter {
                 return;
             case VIEWHOLDER_TYPING_MESSAGE:
                 ((TypingViewHolder) holder).bind();
+                return;
+            case VIEWHOLDER_ACTION_MESSAGE:
+                ((ActionMessageViewHolder) holder).bind(current);
+                return;
             default:
         }
     }
@@ -146,6 +153,19 @@ public class MessageAdapter extends RecyclerView.Adapter {
 
         void bind() {
             profilePicture.setImageResource(profilePictureID);
+        }
+    }
+
+    class ActionMessageViewHolder extends RecyclerView.ViewHolder {
+        private TextView content;
+
+        public ActionMessageViewHolder(@NonNull View itemView) {
+            super(itemView);
+            content = itemView.findViewById(R.id.action_msg_content);
+        }
+
+        void bind(Message message) {
+            content.setText(message.getContent()[0]);
         }
     }
 }

@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Map;
 
 
@@ -26,17 +27,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // load the GameManager key decisions from shared preferences
         Gson gson = new Gson();
         SharedPreferences sharedPref = getSharedPreferences("MyPreference", Context.MODE_PRIVATE);
+        // load timeline
+        String jsonTimeline = sharedPref.getString("Timeline", null);
+        if (jsonTimeline != null) {
+            Type type = new TypeToken<ArrayList<String>>() {}.getType();
+            GameManager.timeline = gson.fromJson(jsonTimeline, type);
+        } else {
+            loadTimeline();
+        }
+
+        // load the GameManager key decisions from shared preferences
         String json = sharedPref.getString("MyHashMap", null);
         GameManager.setFirstRun(sharedPref.getBoolean("firstRun", true));
-        if (json != null) {
-            Type myType = new TypeToken<Map<String, Integer>>() {}.getType();
-            Map<String, Integer> keyChoices = gson.fromJson(json, myType);
-            Log.e(TAG, "loading key decisions from sharedPrefs. size: " + keyChoices.size());
-            GameManager.setKeyChoices(keyChoices);
-        }
+        if (json == null) return;
+        Type myType = new TypeToken<Map<String, Integer>>() {}.getType();
+        Map<String, Integer> keyChoices = gson.fromJson(json, myType);
+        Log.e(TAG, "loading key decisions from sharedPrefs. size: " + keyChoices.size());
+        GameManager.setKeyChoices(keyChoices);
     }
 
     @Override
@@ -46,8 +55,15 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("MyPreference", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("MyHashMap", new Gson().toJson(GameManager.getKeyChoices()));
-        editor.putBoolean("firstRun", GameManager.isFirstRun());
+        Gson gson = new Gson();
+        String timeline = gson.toJson(GameManager.timeline);
+        editor.putString("Timeline", timeline);
         editor.apply();
         Log.e(TAG, "Saved " + GameManager.getKeyChoices().size() + " key decisions to shared preferences");
+    }
+
+    private void loadTimeline() {
+        String json = Utils.loadJSONFromAssets(getApplicationContext(), "timeline.txt");
+        Utils.setupTimeline(json);
     }
 }

@@ -15,6 +15,7 @@ public class GameManager {
     private static Map<String, Integer> keyChoices = new HashMap<String, Integer>();
     private static boolean firstRun = true;
 
+    public static ArrayList<String> timeline = new ArrayList<>();
     public static Map<String, Integer> getKeyChoices() {
         return keyChoices;
     }
@@ -42,5 +43,13 @@ public class GameManager {
 
     public static void setFirstRun(boolean firstRun) {
         GameManager.firstRun = firstRun;
+    }
+
+    public static int getBackgroundIDByName(String name) {
+        if (name.equals("market")) {
+            return R.drawable.market;
+        } else {
+            return R.drawable.market;
+        }
     }
 }

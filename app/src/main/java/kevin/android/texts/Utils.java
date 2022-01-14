@@ -1,14 +1,19 @@
 package kevin.android.texts;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONArray;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Utils {
+    private static final String TAG = "Utils";
+
     public static int[] listToIntArray(List<Integer> list) {
         int[] ret = new int[list.size()];
         for(int i = 0; i < list.size(); i++)
@@ -30,5 +35,15 @@ public class Utils {
             return null;
         }
         return json;
+    }
+
+    public static void setupTimeline(String json) {
+        Log.e(TAG, json);
+        String[] lines = json.split("\n");
+        for (String line : lines) {
+            if (line.charAt(0) != '%') {
+                GameManager.timeline.add(line);
+            }
+        }
     }
 }

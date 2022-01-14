@@ -1,0 +1,7 @@
+%   1 -> 2      -> 3 
+%          -> 1      -> 2   
+open1
+incr1
+open2
+incr1
+incr2

@@ -86,22 +86,54 @@
         - so are the basic messages
 [Friday, September 17th, 2021]
     - made chat recycler view populate from the bottom
-
         - also automatically jumps down if currently at the bottom of the chat
     - limited NPC message and my message max length using a quick & dirty method
 [Monday, September 20th, 2021]
     - added jump down button
     - recycler view now scrolls down when keyboard is opened
-    - TODO: small bug where the message that occurs right at the end of 1 screen length doesn't cause jump down
 [Tuesday, September 21st, 2021]
     - added sound effects for sending message and receiving message
 [Friday, September 24th, 2021]
     - added profile pictures on Conversation rows and chat message rows
     - updated volume for receiving a message
-
-
+[Saturday, September 25th, 2021]
+    - discovered cause of recycler view bug; just don't have a large message at the length of the screen
+[Sunday, September 26th, 2021]
+    - removed loadSentMessages in MessageViewModel; only need getSentMessages
+    - cleaned up outdated methods and imports
+    - added action messages
+    - added npc typing sound
+[Tuesday, September 20th, 2021]
+    - started working on notes
+[Wednesday, October 6th, 2021]
+    - fixed bug where next note prompt displayed incorrectly
+    - support action bar is now hidden during note
+    - notes are now fully functional
+[Saturday, October 9th, 2021]
+    - started working on an automated group advancement system
+[Monday, October 11th, 2021]
+    - added quick-group-finish button for testing
+    - re-added last message updating -- must have been removed by accident
+    - cannot reproduce bug where leaving during typing anim causes inconsistency. marking as resolved
+    - cannot reproduce bug where the incorrect group advancement command was executed. marking as resolved
+    - likely fixed bug where an inconsistency occured after the note finished (note now finishes properly)
+[Thursday, October 12th, 2021]
+    - fixed bug where incrementing group via checkAdvance did not apply when re-entering the chat by calling notifyDataSetChanged
+    - fixed bug where AppCompatActionBar couldn't hide by moving it to the main thread
+    - decrease fadeIn and fadeOut animation time
+    - started working on backgrounds
+    - remove unnecessary lines of code about checking if playRunnable is null
+[Saturday, October 30th, 2021]
+    - finished implementing backgrounds -- but slow and not tested
+    - discovered big inconsistency bug: it is caused by our group skip button
+        - fix this next time
+[Tuesday, November 30th, 2021]
+    - we back
+    - tested backgrounds, still slow. will learn the debugger next
 TODO
     - backgrounds and mediaplayer sounds
     - figure out when to advance the group
-    - notes
-    - find out if we need to separate loadSentMessages and getSentMessages.
+
+Things to check at the end:
+    - check if messages & conversation state are saved if the user leaves by closing the app instead of returning to the ConversationFragment
+    - check if we are waiting for ALL messages to be unpacked from JSON before our first chat starts. If so, it may take a while

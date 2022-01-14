@@ -48,9 +48,9 @@
                 "time": "8:05pm"
             },
             {
-                "type": "npc",
+                "type": "action",
                 "content": [
-                    "Hello! fasdlkjfnldskjvnlkjalkjfjdklfkasdjblvakhbvlkwehriquewhrpiuthoireuhtoiweruhgoiudfhlkgbdslkbsdf;lkva[fpqwe[jfoinvlksdfjblskdfghbperwufhp"
+                    "Spike used the gadget"
                 ],
                 "block": 0,
                 "time": "8:01pm"
@@ -70,80 +70,69 @@
                 ],
                 "block": 0,
                 "time": "8:02pm"
+            }
+        ],
+        // group 2
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "This is group 2 of player 1."
+                ],
+                "block": 0,
+                "time": "9:01pm"
+            },
+            {
+                "type": "background",
+                "content": ["market"],
+                "block": 0,
+                "time": ""
+            },
+            {
+                "type": "npc",
+                "content": ["We are in the market now."],
+                "block": 0,
+                "time": "12:21pm"
             },
             {
                 "type": "my",
                 "content": [
-                    "asdafasdfasdfasdfasdfasfasdfasdfasdfasdfasdfasdf",
-                    "ghjkgjhkghjkghjkghjkghjkghjkghjkghjkghjkghjkghjkg",
-                    "lololololololololololoololololoololololololololololololol"
+                    "Looks good.",
+                    "Doesn't look very good.",
+                    "Okay, so it works."
                 ],
                 "block": 0,
-                "time": "8:03pm"
+                "time": "12:22pm"
+            },
+            {
+                "type": "background",
+                "content": ["fadeout"],
+                "block": 0,
+                "time": "12:23pm"
+            },
+            {
+                "type": "npc",
+                "content": ["background is done now."],
+                "block": 0,
+                "time": "12:23pm"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "After getting the blocks and groups to work, I started working on the notes.",
+                    "Soon we will be done.",
+                    "Still need to do sounds though."
+                ],
+                "block": 0,
+                "time": "10:10pm"
             },
             {
                 "type": "npc",
                 "content": [
-                    "UBHFUIWDNOIDNOWIHBD",
-                    "FJSODFJWUJFIUNPFOJNPDJVNDPOUWJNEUFNPDWJNCPKJSDFb",
-                    "DJPHUFISDJVBKSJDNP:OSUDHEUHDPKJASNKDJS KVJNDJVBPWOEUHPFONKDJVNLnd"
+                    "Note is done"
                 ],
                 "block": 0,
-                "time": "8:04pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
-                ],
-                "block": 0,
-                "time": "8:05pm"
-            },
-            {
-            "type": "npc",
-            "content": [
-                "Hello hello hello hello hellohello hello hello hello hello hello hello hello  hello hello hello hello hello hello hello hello hello hello hello hello"
-            ],
-            "block": 0,
-            "time": "8:01pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    " What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?What is your name?"
-                ],
-                "block": 0,
-                "time": "8:02pm"
-            },
-            {
-                "type": "my",
-                "content": [
-                    "AliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAliceAlice",
-                    "BobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBobBob",
-                    "CharlieCharlieCharlieCharlieCharlieCharlieCharlieCharlieCharlieCharlieCharlieCharlieCharlieCharlieCharlieCharlie"
-                ],
-                "block": 0,
-                "time": "8:03pm"
-            },
-            {
-                "type": "my",
-                "content": [
-                    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-                    "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
-                ],
-                "block": 0,
-                "time": "8:03pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Hello AliceHello AliceHello AliceHello AliceHello AliceHello AliceHello AliceHello AliceHello AliceHello AliceHello AliceHello AliceHello Alice",
-                    "Hi BobHi BobHi BobHi BobHi BobHi BobHi BobHi BobHi Bob",
-                    "Nice to meet you CharlieNice to meet you CharlieNice to meet you CharlieNice to meet you CharlieNice to meet you CharlieNice to meet you CharlieNice to meet you CharlieNice to meet you Charlie"
-                ],
-                "block": 0,
-                "time": "8:04pm"
+                "time": "9:00pm"
             },
             {
                 "type": "npc",
@@ -151,38 +140,9 @@
                     "Okay bye!"
                 ],
                 "block": 0,
-                "time": "8:05pm"
+                "time": "9:00pm"
             }
         ],
-        // // group 2
-        // [
-        //     {
-        //         "type": "npc",
-        //         "content": [
-        //             "This is group 2 of player 1."
-        //         ],
-        //         "block": 0,
-        //         "time": "9:01pm"
-        //     },
-        //     {
-        //         "type": "npc",
-        //         "content": [
-        //             "Does it work?"
-        //         ],
-        //         "block": 0,
-        //         "time": "9:00pm"
-        //     },
-        //     {
-        //         "type": "my",
-        //         "content": [
-        //             "Yes.",
-        //             "I hope so!",
-        //             "It should."
-        //         ],
-        //         "block": 0,
-        //         "time": "9:09pm"
-        //     }
-        // ],
         // group 3
         [
             {
@@ -194,7 +154,7 @@
                 "time": "9:01am"
             },
             {
-                "type": "key_blockTest",
+                "type": "key_blockTest",  // key_<block_name> saves a key decision for an upcoming block
                 "content": [
                     "Let's test block 1.",
                     "I want block 2"
@@ -207,7 +167,7 @@
                 "content": [
                     "blockTest"  // use this to fetch the saved decision
                 ],
-                "block": 0,      // this tells us which one to go back to
+                "block": 0,
                 "time": "9:01pm"
             },
             //////////////////////// V V BLOCK 1 V V ///////////////////////////////
