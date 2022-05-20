@@ -98,7 +98,7 @@ public class MessageAdapter extends RecyclerView.Adapter {
         } else {
             notifyDataSetChanged();
         }
-        Log.e("MessageAdapter", "set sent messages. size(): " + sentMessages.size());
+        // Log.e("MessageAdapter", "set sent messages. size(): " + sentMessages.size());
     }
 
     public List<Message> getSentMessages() {

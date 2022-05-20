@@ -130,7 +130,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         conversation = ChatFragmentArgs.fromBundle(getArguments()).getConversation();
         sharedViewModel.setCurrentRunning(conversation);
         getActivity().setTitle(conversation.getFullName());
-        Log.e(TAG, "Conversation Owner: " + conversation.getFullName());
+        // Log.e(TAG, "Conversation Owner: " + conversation.getFullName());
 
         recyclerView = view.findViewById(R.id.chat_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -149,10 +149,10 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             @Override
             public void onChanged(List<Message> notes) {
                 // update recycler view
-                //if (notes.size() > 0) {
+                if (notes.size() > 0) {
                     adapter.setSentMessages(notes);
                     checkScroll();
-                //}
+                }
             }
         });
 
@@ -162,7 +162,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
                     @Override
                     public void onChanged(List<Message> messages) {
-                        Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
+                        // Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
                         messageViewModel.setUpcomingMessages(messages);
                         if (messages.size() == 0 && playRunnable != null) {
                             if (conversation.getCurrentBlock() == 0) {
@@ -250,8 +250,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 jumpDownButton.setVisibility(View.INVISIBLE);
                 return;
             case R.id.test_finish_group:
-                playRunnable.finished = true;
                 conversation.setConversationState(Conversation.STATE_DONE);
+                playRunnable.finished = true;
                 Log.e(TAG, "playrunnable killed, group finished early.");
         }
     }
@@ -391,13 +391,14 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     } else if (type.equals("action")) {
                         submitMessage();
                         sleep(1500);
-//                    } else if (type.equals("note") && !state.equals("note")) {
-//                        state = "note";
-//                        displayNote();
-                    } else if (type.equals("background")) {
-                        manageBackgrounds();
-                        state = "setting background";
+                    } else if (type.equals("note") && !state.equals("note")) {
+                        state = "note";
+                        displayNote();
                     }
+//                    } else if (type.equals("background")) {
+//                        manageBackgrounds();
+//                        state = "setting background";
+//                    }
                 }
             }
         }
@@ -476,6 +477,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             });
         }
 
+        /*
         private void manageBackgrounds() {
             if (nextMessage == null) return;
             String cmd = nextMessage.getContent()[0];
@@ -511,6 +513,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             });
             state = "";
         }
+         */
 
         private void sleep(int ms) {
             try {

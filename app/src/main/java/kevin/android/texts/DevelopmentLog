@@ -130,6 +130,14 @@
 [Tuesday, November 30th, 2021]
     - we back
     - tested backgrounds, still slow. will learn the debugger next
+[Tuesday, May 2nd, 2022]
+    - wrote out entire script for player 1 group 1
+    - did some basic testing. looks like the group advancement algorithm is still glitchy
+[Sunday, May 9th, 2022]
+    - removed background functionality (too hard to maintain)
+    - need to fix group advancement. added 2 lines to update conversation state but it's not really tested (commented with 'not tested')
+
+
 TODO
     - backgrounds and mediaplayer sounds
     - figure out when to advance the group

@@ -6,7 +6,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Hello"
+                    "Hi %playername! 😊"
                 ],
                 "block": 0,
                 "time": "8:01pm"
@@ -14,7 +14,15 @@
             {
                 "type": "npc",
                 "content": [
-                    "What is your name?"
+                    "I don't think you know me but"
+                ],
+                "block": 0,
+                "time": "8:02pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "We share a desk in the math room!"
                 ],
                 "block": 0,
                 "time": "8:02pm"
@@ -22,9 +30,27 @@
             {
                 "type": "my",
                 "content": [
-                    "Alice",
-                    "Bob",
-                    "Charlie"
+                    "Hi!",
+                    "What's up?",
+                    "Yeah, I don't know you"
+                ],
+                "block": 0,
+                "time": "8:02pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Hey 😉",
+                    "Not much! It's just that",
+                    "Yeah you're right, but that's about to change 😎"
+                ],
+                "block": 0,
+                "time": "8:02pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I'm reaching out because I think you left your notebook on your desk"
                 ],
                 "block": 0,
                 "time": "8:03pm"
@@ -32,9 +58,25 @@
             {
                 "type": "npc",
                 "content": [
-                    "Hello Alice",
-                    "Hi Bob",
-                    "Nice to meet you Charlie"
+                    "It's a black spiral-bound notebook"
+                ],
+                "block": 0,
+                "time": "8:03pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I tried to find you in person but wasn't able to 🤤"
+                ],
+                "block": 0,
+                "time": "8:03pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Oh thanks!",
+                    "Yeah, I leave class pretty quick",
+                    "That's not my notebook."
                 ],
                 "block": 0,
                 "time": "8:04pm"
@@ -42,35 +84,154 @@
             {
                 "type": "npc",
                 "content": [
-                    "Okay bye!"
+                    "No worries!",
+                    "Haha yeah, who doesn't want to leave class quickly? 😆",
+                    "Really? It says your name on it 🙁"
+                ],
+                "block": 0,
+                "time": "8:04pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I can return it to you tomorrow!"
+                ],
+                "block": 0,
+                "time": "8:04pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Sure!",
+                    "Sorry for the trouble :(",
+                    "Thanks"
                 ],
                 "block": 0,
                 "time": "8:05pm"
             },
             {
-                "type": "action",
+                "type": "npc",
                 "content": [
-                    "Spike used the gadget"
+                    "Okay perfect 🥰",
+                    "Not at all! 🥰",
+                    "No probs! 🥰"
                 ],
                 "block": 0,
-                "time": "8:01pm"
+                "time": "8:05pm"
             },
             {
                 "type": "npc",
                 "content": [
-                    "Bug after this message"
+                    "Wow by the way, your writing is very neat"
                 ],
                 "block": 0,
-                "time": "8:02pm"
+                "time": "8:06pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Thanks!",
+                    "I try :p",
+                    "Don't look at my notebook."
+                ],
+                "block": 0,
+                "time": "8:06pm"
             },
             {
                 "type": "npc",
                 "content": [
-                    "qwertyuiopqwertyuiopqweruiopqweriupeortiupwoqweiryqowieuryqweoirtqweiurqoweiuryqoweiruyqwoer"
+                    "I wish my notes were this pretty haha",
+                    "Haha I admire your humbleness",
+                    "Oh sorry.. just thought it looked nice"
                 ],
                 "block": 0,
-                "time": "8:02pm"
+                "time": "8:07pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "It's nice to meet you by the way, I'm %npc1name 😀"
+                ],
+                "block": 0,
+                "time": "8:07pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yup.",
+                    "Nice to meet you too!",
+                    "I'm %playername."
+                ],
+                "block": 0,
+                "time": "8:07pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "🙌",
+                    "👋",
+                    "👍"
+                ],
+                "block": 0,
+                "time": "8:08pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright well I'm going to get some work done 😶"
+                ],
+                "block": 0,
+                "time": "8:09pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Let's talk again next time?"
+                ],
+                "block": 0,
+                "time": "8:10pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Sure.",
+                    "Whatever you like!",
+                    "Alright, good luck"
+                ],
+                "block": 0,
+                "time": "8:10pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright sounds good 👍",
+                    "Alright! 👍",
+                    "Thank you!"
+                ],
+                "block": 0,
+                "time": "8:11pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Bye bye!",
+                    "Thanks again!",
+                    "See you at school"
+                ],
+                "block": 0,
+                "time": "8:11pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "See you!",
+                    "No worries!",
+                    "Yupp sounds good"
+                ],
+                "block": 0,
+                "time": "8:12pm"
             }
+
         ],
         // group 2
         [
@@ -82,12 +243,12 @@
                 "block": 0,
                 "time": "9:01pm"
             },
-            // {
-            //     "type": "background",
-            //     "content": ["market"],
-            //     "block": 0,
-            //     "time": ""
-            // },
+            {
+                "type": "background",
+                "content": ["market"],
+                "block": 0,
+                "time": ""
+            },
             {
                 "type": "npc",
                 "content": ["We are in the market now."],
@@ -104,12 +265,12 @@
                 "block": 0,
                 "time": "12:22pm"
             },
-            // {
-            //     "type": "background",
-            //     "content": ["fadeout"],
-            //     "block": 0,
-            //     "time": "12:23pm"
-            // },
+            {
+                "type": "background",
+                "content": ["fadeout"],
+                "block": 0,
+                "time": "12:23pm"
+            },
             {
                 "type": "npc",
                 "content": ["background is done now."],

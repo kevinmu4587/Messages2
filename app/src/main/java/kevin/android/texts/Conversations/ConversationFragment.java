@@ -70,14 +70,14 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                 // update recycler view
                 adapter.setActiveConversations(activeConversations);
                 conversationViewModel.setActiveConversations(activeConversations);
-                Log.e(TAG, "active conversations updated");
+                // Log.e(TAG, "active conversations updated");
             }
         });
 
         conversationViewModel.getInactiveConversations().observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
             @Override
             public void onChanged(List<Conversation> conversations) {
-                Log.e(TAG, "set " + conversations.size() + " inactive conversations.");
+                // Log.e(TAG, "set " + conversations.size() + " inactive conversations.");
                 conversationViewModel.setInactiveConversations(conversations);
                 if (conversations.size() == 2) checkAdvance();
             }
@@ -92,7 +92,9 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                 // update last message and read status
                 conversationViewModel.update(conversation);
                 if (conversation.getConversationState() == Conversation.STATE_DONE) {
-                    // advance groups
+                    // advance group
+                    // not tested
+                    conversation.setConversationState(Conversation.STATE_PAUSED);
                     checkAdvance();
                 }
             }

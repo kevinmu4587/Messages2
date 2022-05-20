@@ -97,7 +97,7 @@ public abstract class MessageDatabase extends RoomDatabase {
                     }
                 }
             } catch (JSONException e) {
-                Log.e("MessageDatabase", "JSONException.");
+                Log.e("MessageDatabase", "JSONException " + e);
             }
 //            messageDao.insert(new Message(1, "npc", new String[] {"Message 1", "Message 2", "Message 3"},
 //                      1, 1, "12:30pm" ));
