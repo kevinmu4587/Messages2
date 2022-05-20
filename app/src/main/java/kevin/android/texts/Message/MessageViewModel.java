@@ -42,8 +42,9 @@ public class MessageViewModel extends AndroidViewModel {
                 new Function<List<Integer>, LiveData<List<Message>>>() {
                     @Override
                     public LiveData<List<Message>> apply(List<Integer> blocks) {
+                        // load from the last block number on the blocks stack
                         int block = blocks.get(blocks.size() - 1);
-                        Log.e(TAG, "loading upcoming messages from block " + block + "group: " + group + ". all current blocks: " +
+                        Log.e(TAG, "loading upcoming messages from block " + block + ", group: " + group + ". all current blocks: " +
                                 Arrays.toString(Utils.listToIntArray(blocks)));
                         return repository.getUpcomingMessages(owner, group, block);
                     }
@@ -66,21 +67,17 @@ public class MessageViewModel extends AndroidViewModel {
         return repository.getSentMessages(owner, group);
     }
 
-    public LiveData<List<Message>> getAllMessages() {
-        return allMessages;
-    }
+//    public LiveData<List<Message>> getAllMessages() {
+//        return allMessages;
+//    }
 
     public void setUpcomingMessages(List<Message> upcomingMessages) {
         this.upcomingMessages = upcomingMessages;
     }
 
     public Message getNextMessage() {
-        if (upcomingMessages.size() == 0) {
-            Log.e("MessageViewModel", "No more upcoming messages");
-            return null;
-        }
-        Message next = upcomingMessages.get(0);
-        return next;
+        if (upcomingMessages.size() == 0) return null;
+        return upcomingMessages.get(0);
     }
 
     public void submitMessage(Message next) {

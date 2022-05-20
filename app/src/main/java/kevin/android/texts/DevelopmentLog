@@ -136,6 +136,11 @@
 [Sunday, May 9th, 2022]
     - removed background functionality (too hard to maintain)
     - need to fix group advancement. added 2 lines to update conversation state but it's not really tested (commented with 'not tested')
+[Thursday, May 20th, 2022]
+    - re-familiarized myself with the code
+        - still not sure why we need getUpcomingMessages and loadUpcomingMessages
+    - figured out the bug that was happening when the note finished. there was a logic error in the playthread that started submitting
+       new messages as soon as the note was submitted. probably just happening too fast
 
 
 TODO

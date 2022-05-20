@@ -171,6 +171,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                                 playRunnable.finished = true;
                                 Log.e(TAG, "Chat is finished, playRunnable killed");
                             } else {
+                                // this part is somehow only triggered during blocks
                                 int top = conversation.popTopBlock();
                                 messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
                                 Log.e(TAG, "popped block " + top);
@@ -307,7 +308,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         if (nextMessage.getContent().length > 1) {
             nextMessage.setChoice(lastPlayerChoice);
         }
-        Log.e(TAG, "Submitted message " + nextMessage.getContent()[nextMessage.getChoice()]);
+        // Log.e(TAG, "Submitted message " + nextMessage.getContent()[nextMessage.getChoice()]);
         messageViewModel.submitMessage(nextMessage);
 
         // update sharedViewModel for the last message
@@ -354,52 +355,64 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     sleep(1000);
                     continue;
                 } else if (state.equals("sent")) {
-                    Log.e(TAG, "message sent, waiting some time");
+                    // Log.e(TAG, "message sent, waiting some time");
                     sleep(2000);
-                    state = "npc";
+                    state = "can load next message";
+                    continue;
+                } else if (state.equals("note")) {
+                    // A note is currently running. we shouldn't load more messages until it is done.
+                    sleep(1500);
+                    continue;
                 }
                 nextMessage = messageViewModel.getNextMessage();
                 if (nextMessage == null) {
-                    if (finished) break;
+                    // the thread is over, conversation ended
+                    if (finished) {
+                        Log.e(TAG, "No more upcoming messages since Thread is over");
+                        break;
+                    }
+                    // at the start, maybe the upcoming messages haven't loaded yet
+                    Log.e(TAG, "Waiting for the first upcoming messages to arrive");
                     sleep(2000);
-                } else {
-                    if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
-                        sleep(2000);
-                        Log.e(TAG, "current message does not match block; waiting for correct ones");
-                        continue;
+                    continue;
+                }
+                if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
+                    sleep(2000);
+                    Log.e(TAG, "current message does not match block; waiting for correct ones to load in");
+                    continue;
+                }
+                String type = nextMessage.getType();
+                if (type.equals("npc") && !state.equals("choose")) {
+                    state = "npc";
+                    typingAnim();   // an npc message is next, so do a typing animation
+                    submitMessage();    // submit the npc messages
+                    soundPool.play(receivedMessageSound, 1, 1, 0, 0, 1);
+                    sleep(1500);
+                } else if (type.equals("my") || type.substring(0, 3).equals("key")) {
+                    // or if it is a key decision
+                    // get the choice by opening the dialog
+                    state = "choose";
+                } else if (type.equals("block")) {
+                    String blockName = nextMessage.getContent()[0];
+                    int blockChoice = GameManager.getKeyDecision(blockName) + 1;
+                    conversation.pushBlock(blockChoice);
+                    messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
+                    if (!finished) {
+                        messageViewModel.submitMessage(nextMessage);  // get rid of the message of type 'block'
+                        messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
+                        Log.e(TAG, "found block " + blockName + ", choice " + blockChoice);
                     }
-                    String type = nextMessage.getType();
-                    if (type.equals("npc") && !state.equals("choose")) {
-                        typingAnim();
-                        submitMessage();
-                        soundPool.play(receivedMessageSound, 1, 1, 0, 0, 1);
-                        sleep(1500);
-                    } else if (type.equals("my") || type.substring(0, 3).equals("key")) {
-                        // or if it is a key decision
-                        // get the choice by opening the dialog
-                        state = "choose";
-                    } else if (type.equals("block")) {
-                        String blockName = nextMessage.getContent()[0];
-                        int blockChoice = GameManager.getKeyDecision(blockName) + 1;
-                        conversation.pushBlock(blockChoice);
-                        messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
-                        if (!finished) {
-                            messageViewModel.submitMessage(nextMessage);
-                            messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
-                            Log.e(TAG, "found block " + blockName + ", choice " + blockChoice);
-                        }
-                    } else if (type.equals("action")) {
-                        submitMessage();
-                        sleep(1500);
-                    } else if (type.equals("note") && !state.equals("note")) {
-                        state = "note";
-                        displayNote();
-                    }
+                } else if (type.equals("action")) {
+                    submitMessage();
+                    sleep(1500);
+                } else if (type.equals("note")) {
+                    state = "note";
+                    displayNote();
+                }
 //                    } else if (type.equals("background")) {
 //                        manageBackgrounds();
 //                        state = "setting background";
 //                    }
-                }
             }
         }
 
@@ -411,7 +424,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 @Override
                 public void run() {
                     adapter.notifyItemInserted(adapter.getItemCount() - 1);
-                    checkScroll();
+                    // checkScroll();  // do we need this?
                 }
             });
             soundPool.play(npcTypingSound, 1, 1, 0, 0, 1);
@@ -459,7 +472,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                                 messageViewModel.submitMessage(nextMessage);
                                 noteContainer.setAnimation(fadeOut);
                                 fadeOut.start();
-                                state = "";
+                                state = "can load next message";
                                 ((AppCompatActivity) getActivity()).getSupportActionBar().show();
                                 return;
                             } else if (noteState == TEXT_DISPLAYED) {

@@ -46,31 +46,31 @@
                 ],
                 "block": 0,
                 "time": "8:05pm"
-            },
-            {
-                "type": "action",
-                "content": [
-                    "Spike used the gadget"
-                ],
-                "block": 0,
-                "time": "8:01pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Bug after this message"
-                ],
-                "block": 0,
-                "time": "8:02pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "qwertyuiopqwertyuiopqweruiopqweriupeortiupwoqweiryqowieuryqweoirtqweiurqoweiuryqoweiruyqwoer"
-                ],
-                "block": 0,
-                "time": "8:02pm"
             }
+            // {
+            //     "type": "action",
+            //     "content": [
+            //         "Spike used the gadget"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:01pm"
+            // },
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Bug after this message"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:02pm"
+            // },
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "qwertyuiopqwertyuiopqweruiopqweriupeortiupwoqweiryqowieuryqweoirtqweiurqoweiuryqoweiruyqwoer"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:02pm"
+            // }
         ],
         // group 2
         [
