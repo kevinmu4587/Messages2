@@ -70,7 +70,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                 // update recycler view
                 adapter.setActiveConversations(activeConversations);
                 conversationViewModel.setActiveConversations(activeConversations);
-                // Log.e(TAG, "active conversations updated");
+                Log.e(TAG, "active conversations updated");
             }
         });
 
@@ -79,6 +79,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             public void onChanged(List<Conversation> conversations) {
                 // Log.e(TAG, "set " + conversations.size() + " inactive conversations.");
                 conversationViewModel.setInactiveConversations(conversations);
+                // load the first conversation at the start
                 if (conversations.size() == 2) checkAdvance();
             }
         });
@@ -91,10 +92,12 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             public void onChanged(Conversation conversation) {
                 // update last message and read status
                 conversationViewModel.update(conversation);
+                Log.e(TAG, "Conversation returned a state of " + conversation.getConversationState());
                 if (conversation.getConversationState() == Conversation.STATE_DONE) {
                     // advance group
-                    // not tested
+                    Log.e(TAG, "Conversation " + conversation.getFullName() + " set to PAUSED");
                     conversation.setConversationState(Conversation.STATE_PAUSED);
+                    conversationViewModel.update(conversation);
                     checkAdvance();
                 }
             }
@@ -110,31 +113,35 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
 //        });
 
         // setup
-//        if (GameManager.isFirstRun()) {
-//            Log.e(TAG, "first run! Running setup.");
-//            GameManager.setFirstRun(false);
-//            final LiveData<List<Conversation>> liveData = conversationViewModel.getAllConversations();
-//            liveData.observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
-//                @Override
-//                public void onChanged(List<Conversation> conversations) {
-//                    // set the profile pictures
+        if (GameManager.isFirstRun()) {
+            Log.e(TAG, "first run! Running setup.");
+            GameManager.setFirstRun(false);
+            final LiveData<List<Conversation>> liveData = conversationViewModel.getAllConversations();
+            liveData.observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
+                @Override
+                public void onChanged(List<Conversation> conversations) {
+                    if (conversations.size() == 0) {
+                        Log.e(TAG, "waiting for first conversations to arrive");
+                        return;
+                    }
+                    // set the profile pictures | i don't think we need to do this unless profile picture are customizable
 //                    for (Conversation conversation : conversations) {
 //                        int id = conversation.getId();
 //                        conversation.setProfilePictureID(Conversation.profilePictures[id - 1]);
 //                    }
-//                    // get all player and NPC information
-//                    for (int i = conversations.size() - 1; i >= 0; i--) {
-//                        Conversation conversation = conversations.get(i);
-//                        EditTextDialog editTextDialog = new EditTextDialog("Enter player information",
-//                                conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
-//                        editTextDialog.show(getChildFragmentManager(), "setup");
-//                    }
-//                Log.e(TAG, "opened all EditTextDialog windows.");
+                    // get all player and NPC information
+                    for (int i = conversations.size() - 1; i >= 0; i--) {
+                        Conversation conversation = conversations.get(i);
+                        EditTextDialog editTextDialog = new EditTextDialog("Enter player information",
+                                conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
+                        editTextDialog.show(getChildFragmentManager(), "setup");
+                    }
+                Log.e(TAG, "opened all EditTextDialog windows.");
                     // we don't need to observe all conversations anymore
-//                    liveData.removeObserver(this);
-//                }
-//            });
-//        }
+                    liveData.removeObserver(this);
+                }
+            });
+        }
     }
 
     @Override
@@ -159,8 +166,9 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         Log.e(TAG, "command: " + cmd);
         GameManager.timeline.remove(0);
         if (cmd.substring(0, 4).equals("open")) {
-            Log.e(TAG, "opened next conversation of id: " + cmd.charAt(4));
-            conversationViewModel.loadNextConversation();
+            int conversationId = cmd.charAt(4) - '0';
+            Log.e(TAG, "opened next conversation of id: " + conversationId);
+            conversationViewModel.loadNextConversation(conversationId);
         } else if (cmd.substring(0, 4).equals("incr")) {
             int conversationId = cmd.charAt(4) - '0';
             Log.e(TAG, "incremented conversation with id: " + conversationId);

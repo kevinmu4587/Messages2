@@ -53,7 +53,7 @@ public class MessageViewModel extends AndroidViewModel {
 
     public void setCurrentBlocks(List<Integer> blocks) {
         liveCurrentBlocks.postValue(blocks);
-        Log.e(TAG, "posted current blocks: " + Arrays.toString(Utils.listToIntArray(blocks)));
+        // Log.e(TAG, "posted current blocks: " + Arrays.toString(Utils.listToIntArray(blocks)));
     }
 
     public LiveData<List<Message>> getUpcomingMessages() {
@@ -81,7 +81,7 @@ public class MessageViewModel extends AndroidViewModel {
     }
 
     public void submitMessage(Message next) {
-        if (next == null) return;
+        if (next == null || upcomingMessages.size() == 0) return;
         next.setSent(true);
         upcomingMessages.remove(0);
         update(next);

@@ -13,7 +13,7 @@ import java.util.Map;
 // this class is for saving game-wide decisions, like which blocks were picked, and what ending were reached
 public class GameManager {
     private static Map<String, Integer> keyChoices = new HashMap<String, Integer>();
-    private static boolean firstRun = true;
+    private static volatile boolean firstRun = true;
 
     public static ArrayList<String> timeline = new ArrayList<>();
     public static Map<String, Integer> getKeyChoices() {

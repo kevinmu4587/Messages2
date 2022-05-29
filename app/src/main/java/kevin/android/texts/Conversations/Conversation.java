@@ -36,7 +36,7 @@ public class Conversation implements Parcelable  {
     private int conversationState;
     private String bgState;
 
-    private boolean active;
+    private boolean active; // whether the conversation is displayed on the ConversationFragment
 //    private int recentValue;
     private boolean unread;
     private boolean initialized;
@@ -201,9 +201,9 @@ public class Conversation implements Parcelable  {
         return profilePictures[this.id - 1];
     }
 
-//    public void setProfilePictureID(int profilePictureID) {
-//        this.profilePictureID = profilePictureID;
-//    }
+    public void setProfilePictureID(int profilePictureID) {
+        this.profilePictureID = profilePictureID;
+    }
 
     public String getBgState() {
         return bgState;

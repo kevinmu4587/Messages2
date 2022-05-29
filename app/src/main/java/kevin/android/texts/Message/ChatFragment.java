@@ -43,6 +43,7 @@ import kevin.android.texts.Dialog;
 import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
 import kevin.android.texts.SharedViewModel;
+import kevin.android.texts.Utils;
 
 public class ChatFragment extends Fragment implements View.OnClickListener, Dialog.DialogListener {
     private MessageViewModel messageViewModel;
@@ -156,29 +157,37 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             }
         });
 
-        // observe the upcoming messages
-        messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
-        messageViewModel.getUpcomingMessages().
-                observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
-                    @Override
-                    public void onChanged(List<Message> messages) {
-                        // Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
-                        messageViewModel.setUpcomingMessages(messages);
-                        if (messages.size() == 0 && playRunnable != null) {
-                            if (conversation.getCurrentBlock() == 0) {
-                                // we already finished this chat
-                                conversation.setConversationState(Conversation.STATE_DONE);
-                                playRunnable.finished = true;
-                                Log.e(TAG, "Chat is finished, playRunnable killed");
-                            } else {
-                                // this part is somehow only triggered during blocks
-                                int top = conversation.popTopBlock();
-                                messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
-                                Log.e(TAG, "popped block " + top);
+        Log.e(TAG, "Conversation state stars as " + conversation.getConversationState());
+        if (conversation.getConversationState() == Conversation.STATE_RUNNING) {
+            // observe the upcoming messages
+            messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
+            messageViewModel.getUpcomingMessages().
+                    observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
+                        @Override
+                        public void onChanged(List<Message> messages) {
+                            // Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
+                            messageViewModel.setUpcomingMessages(messages);
+                            if (messages.size() == 0 && playRunnable != null) {
+                                if (conversation.getCurrentBlock() == 0) {
+                                    // we already finished this chat
+                                    conversation.setConversationState(Conversation.STATE_DONE);
+                                    conversation.setUnread(false);
+                                    sharedViewModel.setCurrentRunning(conversation);
+                                    playRunnable.finished = true;
+                                    Log.e(TAG, "Chat is finished, playRunnable killed. Set conversation state to DONE");
+                                } else {
+                                    // when we finish the current block
+                                    int top = conversation.popTopBlock();
+                                    messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
+                                    Log.e(TAG, "popped block " + top);
+                                }
                             }
                         }
-                    }
-                });
+                    });
+            // start the background thread
+            playRunnable = new PlayRunnable();
+            new Thread(playRunnable).start();
+        }
 
         // get data back from ChatInfoFragment
         NavController navController = NavHostFragment.findNavController(this);
@@ -216,15 +225,11 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
 
         fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.slow_fade_in);
         fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.slow_fade_out);
-
-        // start the background thread
-        playRunnable = new PlayRunnable();
-        new Thread(playRunnable).start();
     }
 
     @Override
     public void onDestroyView() {
-        playRunnable.finished = true;
+        if (playRunnable != null) playRunnable.finished = true;
         playRunnable = null;
 //        Log.e(TAG, "Leaving chat fragment with blocks " + Arrays.toString(Utils.listToIntArray(conversation.getCurrentBlocks())));
         super.onDestroyView();
@@ -349,7 +354,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         @Override
         public void run() {
             while (!finished) {
-                if (state.equals("sending") || state.equals("choose") || state.equals("setting background")) {
+                if (Utils.contains(state, new String[]{"sending", "choose", "setting background"})) {
+//                if (state.equals("sending") || state.equals("choose") || state.equals("setting background")) {
                     // wait, we are waiting for user input
 //                    Log.e(TAG, "Runnable paused. state: " + state);
                     sleep(1000);
@@ -361,8 +367,11 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     continue;
                 } else if (state.equals("note")) {
                     // A note is currently running. we shouldn't load more messages until it is done.
-                    sleep(1500);
+                    sleep(2000);
                     continue;
+                } else if (state.equals("note finished")) {
+                    messageViewModel.submitMessage(nextMessage);
+                    state = "note submitted";
                 }
                 nextMessage = messageViewModel.getNextMessage();
                 if (nextMessage == null) {
@@ -424,7 +433,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 @Override
                 public void run() {
                     adapter.notifyItemInserted(adapter.getItemCount() - 1);
-                    // checkScroll();  // do we need this?
+                    checkScroll();
                 }
             });
             soundPool.play(npcTypingSound, 1, 1, 0, 0, 1);
@@ -469,12 +478,11 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                             if (curNote >= notes.length) {
                                 // exit the note display
                                 noteContainer.setVisibility(View.INVISIBLE);
-                                messageViewModel.submitMessage(nextMessage);
+                                // messageViewModel.submitMessage(nextMessage);
                                 noteContainer.setAnimation(fadeOut);
                                 fadeOut.start();
-                                state = "can load next message";
                                 ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-                                return;
+                                state = "note finished";
                             } else if (noteState == TEXT_DISPLAYED) {
                                 noteState = AWAIT_NEXT;
                                 noteNext.setVisibility(View.VISIBLE);

@@ -119,7 +119,8 @@ public class MessageAdapter extends RecyclerView.Adapter {
 
         void bind(Message message) {
             profilePicture.setImageResource(profilePictureID);
-            content.setText(message.getContent()[message.getChoice()]);
+            int unicode = 0x1f972;
+            content.setText(message.getContent()[message.getChoice()] + new String(Character.toChars(unicode)));
 //            timeStamp.setText(message.getTime());
         }
     }

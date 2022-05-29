@@ -38,12 +38,21 @@ public class Utils {
     }
 
     public static void setupTimeline(String json) {
-        Log.e(TAG, json);
+        // Log.e(TAG, json);
         String[] lines = json.split("\n");
         for (String line : lines) {
             if (line.charAt(0) != '%') {
                 GameManager.timeline.add(line);
             }
         }
+    }
+
+    public static boolean contains(String needle, String[] haystack) {
+        for (String h : haystack) {
+            if (needle.equals(h)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

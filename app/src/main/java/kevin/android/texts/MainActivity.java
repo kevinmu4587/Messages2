@@ -1,6 +1,8 @@
 package kevin.android.texts;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.emoji2.bundled.BundledEmojiCompatConfig;
+import androidx.emoji2.text.EmojiCompat;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        EmojiCompat.Config config = new BundledEmojiCompatConfig(this);
+        EmojiCompat.init(config);
     }
 
     @Override
@@ -49,17 +53,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         // save the GameManager key decisions to shared preferences
         SharedPreferences sharedPref = getSharedPreferences("MyPreference", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("MyHashMap", new Gson().toJson(GameManager.getKeyChoices()));
+        editor.putBoolean("firstRun", GameManager.isFirstRun());
         Gson gson = new Gson();
         String timeline = gson.toJson(GameManager.timeline);
         editor.putString("Timeline", timeline);
         editor.apply();
-        Log.e(TAG, "Saved " + GameManager.getKeyChoices().size() + " key decisions to shared preferences");
+        // Log.e(TAG, "Saved " + GameManager.getKeyChoices().size() + " key decisions to shared preferences");
     }
 
     private void loadTimeline() {

@@ -60,4 +60,14 @@ dependencies {
     implementation "com.google.android.material:material:1.5.0-alpha02"
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
+
+    // emoji compat
+    def emoji2_version = "1.2.0-alpha04"
+
+    implementation "androidx.emoji2:emoji2:$emoji2_version"
+    implementation "androidx.emoji2:emoji2-bundled:$emoji2_version"
+    implementation "androidx.emoji2:emoji2-views:$emoji2_version"
+    implementation "androidx.emoji2:emoji2-views-helper:$emoji2_version"
+
+
 }

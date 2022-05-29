@@ -49,10 +49,15 @@ public class ConversationViewModel extends AndroidViewModel {
         this.inactiveConversations = inactiveConversations;
     }
 
-    public void loadNextConversation() {
+    public void loadNextConversation(int id) {
         Conversation next = inactiveConversations.get(0);
-        Log.e(TAG, "Requested next conversation. name: " + next.getFullName() + ", id: " + next.getId());
+        if (next.getId() != id) {
+            Log.e(TAG, "FATAL: Requesting incorrect next conversation. Requesting " + id + ", received " + next.getId());
+            throw new RuntimeException();
+        }
+        Log.e(TAG, "Requested next conversation (SET TO RUNNING). name: " + next.getFullName() + ", id: " + next.getId());
         next.setActive(true);
+        next.setConversationState(Conversation.STATE_RUNNING);
         update(next);
     }
 
@@ -66,6 +71,7 @@ public class ConversationViewModel extends AndroidViewModel {
                 c.setGroup(c.getGroup() + 1);
                 // not tested
                 c.setConversationState(Conversation.STATE_RUNNING);
+                update(c);
                 Log.e(TAG, "conversation " + c.getFullName() + " is now on group " + c.getGroup());
                 update(c);
                 return;

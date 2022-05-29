@@ -9,7 +9,7 @@
         - no more messages are loaded by the end of the group
 [Thursday, August 19th, 2021]
     - ConversationFragment now successfully navigates to ChatFragment and sends a Conversation object
-[Friday, August 20st, 2021]
+[Friday, August 20th, 2021]
     - MessageDatabase is now pre-populated using JSON asset
     - conversations now select the appropriate messages
 [Sunday, August 22nd, 2021]
@@ -116,9 +116,9 @@
     - re-added last message updating -- must have been removed by accident
     - cannot reproduce bug where leaving during typing anim causes inconsistency. marking as resolved
     - cannot reproduce bug where the incorrect group advancement command was executed. marking as resolved
-    - likely fixed bug where an inconsistency occured after the note finished (note now finishes properly)
+    - likely fixed bug where an inconsistency occurred after the note finished (note now finishes properly)
 [Thursday, October 12th, 2021]
-    - fixed bug where incrementing group via checkAdvance did not apply when re-entering the chat by calling notifyDataSetChanged
+    - fixed bug where incrementing group via checkAdvance did not apply when re-entering the chat. by calling notifyDataSetChanged
     - fixed bug where AppCompatActionBar couldn't hide by moving it to the main thread
     - decrease fadeIn and fadeOut animation time
     - started working on backgrounds
@@ -141,6 +141,37 @@
         - still not sure why we need getUpcomingMessages and loadUpcomingMessages
     - figured out the bug that was happening when the note finished. there was a logic error in the playthread that started submitting
        new messages as soon as the note was submitted. probably just happening too fast
+[Sunday, May 22nd, 2022]
+    - bug: the first click on a note fragment does not bring up the "Next" text. I'm guessing it has something to do with switching focus
+        to the fragment (ignoring for now)
+    - investigated the group incrementing bug. because conversation is set to STATE_DONE, loading the next command. need to pause it.
+        - need to check if the STATE_PAUSED is being set. if so, don't set to STATE_DONE when the chat is "finished"
+        - Solved: getTag was getting an outdated version of the Conversation. Switched to a position-based click handler
+    - the weird bug when the note closes still happens. it's hard to reproduce. IF ALL ELSE FAILS: just change notifyItemInserted to notifyDataSetChanged in typingAnim
+        - moving on for now. it's hard to reproduce and i'm not sure what's causing it besides complicated ideas of multithreading
+[Tuesday, May 24th, 2022]
+    - i now believe the note inconsistency is caused because both the UI thread and the play thread are modifying the recyclerview data. i moved the submitMessage call out of
+        displayNote() and is now called in the playthread
+        - continue to test it. not sure if it works
+    - tested blocks. they work well
+    - updated conversation unread state when chat endstu
+[Wednesday, May 25th, 2022]
+    - fixed AVD waiting for debugger to attach issue, using a cold boot
+    - re-enabled first-run dialogs
+        - fixed issue where the dialogs only appear on second run
+        - TODO: GameManager.isFirstRun is not persisting. It is true every time ConversationAdapter is created. Should watch the variable.
+[Saturday, May 28th, 2022]
+    - tried getting smiling face with tear emoji encoded in the project
+        - it has unicode U+1f972 but Android can't render a 5-digit unicode
+        - tried using https://stackoverflow.com/questions/19557026/how-to-display-5-digit-unicode-characters-such-as-a-speaker-u1f50a
+            and http://www.russellcottrell.com/greek/utilities/SurrogatePairCalculator.htm but it does not work
+        - now i'm thinking that android just can't support these emoijs, may need a textview that supports emojis like https://stackoverflow.com/a/49512524
+TODO: finalize what causes the weird desync between open/incr commands. i've only seen it appear when re-building the app, but just make sure it doesn't happen by the user
+    (ex. closing the app when the chat is done instead of going back to ConversationFragment)
+[Sunday, May 29th, 2022]
+    - finally figured out how to display 5-digit unicode emojis
+        - added bundled-emoji dependency & init in MainActivity
+
 
 
 TODO
@@ -149,4 +180,5 @@ TODO
 
 Things to check at the end:
     - check if messages & conversation state are saved if the user leaves by closing the app instead of returning to the ConversationFragment
-    - check if we are waiting for ALL messages to be unpacked from JSON before our first chat starts. If so, it may take a while
+        - messages are saved. i think conversations might be okay too, since it will just open the chat with state RUNNING, then set to DONE when there are no more upcoming messaegs
+    - check if we are waiting for ALL messages to be unpacked from JSON before our first chat starts. If so, it may take a while -- loading screen may be needed

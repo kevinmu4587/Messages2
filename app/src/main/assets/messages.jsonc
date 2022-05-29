@@ -3,50 +3,50 @@
     [
         // group 1
         [
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Hello"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:01pm"
+            // },
             {
                 "type": "npc",
                 "content": [
-                    "Hello"
-                ],
-                "block": 0,
-                "time": "8:01pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "What is your name?"
+                    "What is your name? 🙂 \uD83E\uDD72 🥲 📧 "
                 ],
                 "block": 0,
                 "time": "8:02pm"
-            },
-            {
-                "type": "my",
-                "content": [
-                    "Alice",
-                    "Bob",
-                    "Charlie"
-                ],
-                "block": 0,
-                "time": "8:03pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Hello Alice",
-                    "Hi Bob",
-                    "Nice to meet you Charlie"
-                ],
-                "block": 0,
-                "time": "8:04pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Okay bye!"
-                ],
-                "block": 0,
-                "time": "8:05pm"
             }
+            // {
+            //     "type": "my",
+            //     "content": [
+            //         "Alice",
+            //         "Bob",
+            //         "Charlie"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:03pm"
+            // },
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Hello Alice",
+            //         "Hi Bob",
+            //         "Nice to meet you Charlie"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:04pm"
+            // }
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Okay bye!"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:05pm"
+            // }
             // {
             //     "type": "action",
             //     "content": [
@@ -88,34 +88,34 @@
             //     "block": 0,
             //     "time": ""
             // },
-            {
-                "type": "npc",
-                "content": ["We are in the market now."],
-                "block": 0,
-                "time": "12:21pm"
-            },
-            {
-                "type": "my",
-                "content": [
-                    "Looks good.",
-                    "Doesn't look very good.",
-                    "Okay, so it works."
-                ],
-                "block": 0,
-                "time": "12:22pm"
-            },
+            // {
+            //     "type": "npc",
+            //     "content": ["We are in the market now."],
+            //     "block": 0,
+            //     "time": "12:21pm"
+            // },
+            // {
+            //     "type": "my",
+            //     "content": [
+            //         "Looks good.",
+            //         "Doesn't look very good.",
+            //         "Okay, so it works."
+            //     ],
+            //     "block": 0,
+            //     "time": "12:22pm"
+            // },
             // {
             //     "type": "background",
             //     "content": ["fadeout"],
             //     "block": 0,
             //     "time": "12:23pm"
             // },
-            {
-                "type": "npc",
-                "content": ["background is done now."],
-                "block": 0,
-                "time": "12:23pm"
-            },
+            // {
+            //     "type": "npc",
+            //     "content": ["background is done now."],
+            //     "block": 0,
+            //     "time": "12:23pm"
+            // },
             {
                 "type": "note",
                 "content": [
@@ -133,15 +133,15 @@
                 ],
                 "block": 0,
                 "time": "9:00pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Okay bye!"
-                ],
-                "block": 0,
-                "time": "9:00pm"
             }
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Okay bye!"
+            //     ],
+            //     "block": 0,
+            //     "time": "9:00pm"
+            // }
         ],
         // group 3
         [

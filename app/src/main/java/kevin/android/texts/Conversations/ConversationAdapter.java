@@ -82,7 +82,9 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
             screen.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Conversation conversation = (Conversation) screen.getTag();
+                    int position = getLayoutPosition();
+                    Conversation conversation = activeConversations.get(position);
+                    // Conversation conversation = (Conversation) screen.getTag();
                     // navigate to chat fragment
                     Navigation.findNavController(view).navigate(ConversationFragmentDirections.
                             actionConversationFragmentToChatFragment(conversation));

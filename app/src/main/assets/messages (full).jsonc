@@ -1,7 +1,7 @@
 [
     // player 1
     [
-        // group 1
+        // group 1: Introduction
         [
             {
                 "type": "npc",
@@ -233,7 +233,7 @@
             }
 
         ],
-        // group 2
+        // group 2: Acquintance
         [
             {
                 "type": "npc",
