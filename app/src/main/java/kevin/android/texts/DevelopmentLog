@@ -171,7 +171,8 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
 [Sunday, May 29th, 2022]
     - finally figured out how to display 5-digit unicode emojis
         - added bundled-emoji dependency & init in MainActivity
-
+    - i think i figured out why the edit text dialog were appearing at the wrong times
+        - no need to observe all conversations; overlapping observers caused difficult-to-track behaviour
 
 
 TODO

@@ -108,7 +108,7 @@ public class MessageAdapter extends RecyclerView.Adapter {
     class NPCMessageHolder extends RecyclerView.ViewHolder {
         private ImageView profilePicture;
         private TextView content;
-//        private TextView timeStamp;
+//        private TextView timeStamp;se
 
         public NPCMessageHolder(@NonNull View itemView) {
             super(itemView);

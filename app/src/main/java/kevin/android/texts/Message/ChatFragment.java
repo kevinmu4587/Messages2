@@ -141,6 +141,9 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         adapter = new MessageAdapter(conversation.getProfilePictureID());
         recyclerView.setAdapter(adapter);
 
+        fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.slow_fade_in);
+        fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.slow_fade_out);
+
         // observe the sent messages
         messageViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
                 getInstance(getActivity().getApplication())).get(MessageViewModel.class);
@@ -222,9 +225,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 }
             }
         });
-
-        fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.slow_fade_in);
-        fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.slow_fade_out);
     }
 
     @Override

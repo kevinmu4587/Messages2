@@ -80,7 +80,16 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                 // Log.e(TAG, "set " + conversations.size() + " inactive conversations.");
                 conversationViewModel.setInactiveConversations(conversations);
                 // load the first conversation at the start
-                if (conversations.size() == 2) checkAdvance();
+                if (conversations.size() == 2) {
+                    for (int i = conversations.size() - 1; i >= 0; i--) {
+                        Conversation conversation = conversations.get(i);
+                        EditTextDialog editTextDialog = new EditTextDialog("Enter player information",
+                                conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
+                        editTextDialog.show(getChildFragmentManager(), "setup");
+                    }
+                    Log.e(TAG, "opened all EditTextDialog windows.");
+                    checkAdvance();
+                }
             }
         });
 
@@ -113,15 +122,17 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
 //        });
 
         // setup
-        if (GameManager.isFirstRun()) {
+        /*
+        if (GameManager.firstRun) {
             Log.e(TAG, "first run! Running setup.");
-            GameManager.setFirstRun(false);
+            GameManager.firstRun = false;
             final LiveData<List<Conversation>> liveData = conversationViewModel.getAllConversations();
             liveData.observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
                 @Override
                 public void onChanged(List<Conversation> conversations) {
                     if (conversations.size() == 0) {
                         Log.e(TAG, "waiting for first conversations to arrive");
+                        // liveData.removeObserver(this);
                         return;
                     }
                     // set the profile pictures | i don't think we need to do this unless profile picture are customizable
@@ -142,6 +153,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                 }
             });
         }
+         */
     }
 
     @Override
