@@ -23,8 +23,6 @@ public class EditTextDialog  extends AppCompatDialogFragment {
     private int id;
     private EditText firstName_editText, lastName_editText, nickname_editText;
 
-
-
     private EditTextDialogListener listener;
     private static final String TAG = "EditTextDialog";
 

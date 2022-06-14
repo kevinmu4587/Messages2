@@ -3,9 +3,7 @@ package kevin.android.texts.Conversations;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
@@ -13,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kevin.android.texts.Converters;
-import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
 
 @Entity(tableName = "conversation_table")
@@ -27,42 +24,39 @@ public class Conversation implements Parcelable  {
     private String firstName;
     private String lastName;
     private String nickname;
-    private String lastMessage;
+    private String description;
+    private String lastMessage = "New message!";
 
-    @Ignore
-    private int profilePictureID;
+//    @Ignore
+//    private int profilePictureID;
 
-    private int group;
+    private int group = 1;
     private int conversationState;
-    private String bgState;
+    // private String bgState;
 
-    private boolean active; // whether the conversation is displayed on the ConversationFragment
+    private boolean active = false; // whether the conversation is displayed on the ConversationFragment
 //    private int recentValue;
-    private boolean unread;
-    private boolean initialized;
+    private boolean unread = true;
+    private boolean initialized = false;
     private List<Integer> currentBlocks = new ArrayList<>();
 
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    public Conversation(String firstName, String lastName, String nickname) {
+    public Conversation(String firstName, String lastName, String nickname, String description) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.nickname = nickname;
-        this.lastMessage = "New message!";
-        this.group = 1;
+        this.description = description;
         this.conversationState = Conversation.STATE_RUNNING;
-        this.bgState = "";
-        this.active = false;
-        this.initialized = false;
-//        this.recentValue = recentValue;
-        this.unread = true;
+        // this.bgState = "";
         this.currentBlocks.add(0);
     }
 
     protected Conversation(Parcel in) {
         firstName = in.readString();
         lastName = in.readString();
+        description = in.readString();
         lastMessage = in.readString();
         group = in.readInt();
         conversationState = in.readInt();
@@ -98,6 +92,10 @@ public class Conversation implements Parcelable  {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public void setDescription(String description) { this.description = description; }
+
+    public String getDescription() { return description; }
 
     public String getFullName() {
         return firstName + " " + lastName;
@@ -201,17 +199,17 @@ public class Conversation implements Parcelable  {
         return profilePictures[this.id - 1];
     }
 
-    public void setProfilePictureID(int profilePictureID) {
-        this.profilePictureID = profilePictureID;
-    }
+//    public void setProfilePictureID(int profilePictureID) {
+//        this.profilePictureID = profilePictureID;
+//    }
 
-    public String getBgState() {
-        return bgState;
-    }
+//    public String getBgState() {
+//        return bgState;
+//    }
 
-    public void setBgState(String bgState) {
-        this.bgState = bgState;
-    }
+//    public void setBgState(String bgState) {
+//        this.bgState = bgState;
+//    }
 
     @Override
     public int describeContents() {

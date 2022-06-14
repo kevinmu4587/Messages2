@@ -2,6 +2,7 @@ package kevin.android.texts.Conversations;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -68,9 +69,11 @@ public abstract class ConversationDatabase extends RoomDatabase {
                     String firstName = jsonObject.getString("firstName");
                     String lastName = jsonObject.getString("lastName");
                     String nickname = jsonObject.getString("nickname");
-                    conversationDao.insert(new Conversation(firstName, lastName, nickname));
+                    String description = jsonObject.getString("description");
+                    conversationDao.insert(new Conversation(firstName, lastName, nickname, description));
                 }
             } catch (JSONException e) {
+                Log.e("ERROR", "JSONException when parsing conversations");
                 e.printStackTrace();
             }
             return null;

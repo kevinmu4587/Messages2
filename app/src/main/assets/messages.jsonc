@@ -14,21 +14,29 @@
             {
                 "type": "npc",
                 "content": [
-                    "What is your name? 🙂 \uD83E\uDD72 🥲 📧 "
+                    "Are you %playername? 🙂 \uD83E\uDD72 🥲 📧 "
+                ],
+                "block": 0,
+                "time": "8:02pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Alice",
+                    "Bob",
+                    "Charlie"
+                ],
+                "block": 0,
+                "time": "8:03pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Wow that's really cool"
                 ],
                 "block": 0,
                 "time": "8:02pm"
             }
-            // {
-            //     "type": "my",
-            //     "content": [
-            //         "Alice",
-            //         "Bob",
-            //         "Charlie"
-            //     ],
-            //     "block": 0,
-            //     "time": "8:03pm"
-            // },
             // {
             //     "type": "npc",
             //     "content": [

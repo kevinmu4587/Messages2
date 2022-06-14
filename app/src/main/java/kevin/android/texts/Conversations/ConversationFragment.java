@@ -80,14 +80,17 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                 // Log.e(TAG, "set " + conversations.size() + " inactive conversations.");
                 conversationViewModel.setInactiveConversations(conversations);
                 // load the first conversation at the start
-                if (conversations.size() == 2) {
+                if (conversations.size() == 3) {
                     for (int i = conversations.size() - 1; i >= 0; i--) {
                         Conversation conversation = conversations.get(i);
-                        EditTextDialog editTextDialog = new EditTextDialog("Enter player information",
+                        EditTextDialog editTextDialog = new EditTextDialog("Enter NPC #" + (i+1) + " information:",
                                 conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
                         editTextDialog.show(getChildFragmentManager(), "setup");
                     }
-                    Log.e(TAG, "opened all EditTextDialog windows.");
+                    EditTextDialog editTextDialog = new EditTextDialog("Enter your player information:",
+                            "Oliver", "Queen", "Oli", -1);
+                    editTextDialog.show(getChildFragmentManager(), "setup");
+                    // Log.e(TAG, "opened all EditTextDialog windows.");
                     checkAdvance();
                 }
             }
@@ -158,6 +161,12 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
 
     @Override
     public void applyNames(final String firstName, final String lastName, final String nickname, int id) {
+        if (id == -1) {
+            GameManager.playerFirstName = firstName;
+            GameManager.playerLastName = lastName;
+            GameManager.playerNickname = nickname;
+            return;
+        }
         final LiveData<Conversation> liveData = conversationViewModel.getConversationById(id);
         liveData.observe(getViewLifecycleOwner(), new Observer<Conversation>() {
             @Override

@@ -55,4 +55,14 @@ public class Utils {
         }
         return false;
     }
+
+    public static String replaceName(String old) {
+        if (old.contains("%playername")) {
+            return old.replace("%playername", GameManager.playerFirstName);
+        }
+        return "";
+//        } else if (old.contains("%npc1name")) {
+//            return old.replace("%npc1name", )
+//        }
+    }
 }

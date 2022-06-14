@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         // load the GameManager key decisions from shared preferences
         String json = sharedPref.getString("MyHashMap", null);
         GameManager.firstRun = sharedPref.getBoolean("firstRun", true);
+        GameManager.playerFirstName = sharedPref.getString("playerFirstName", "Default First Name");
+        GameManager.playerLastName = sharedPref.getString("playerLastName", "Default Last Name");
+        GameManager.playerNickname = sharedPref.getString("playerNickname", "Default Nickname");
         if (json == null) return;
         Type myType = new TypeToken<Map<String, Integer>>() {}.getType();
         Map<String, Integer> keyChoices = gson.fromJson(json, myType);
@@ -60,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("MyHashMap", new Gson().toJson(GameManager.getKeyChoices()));
         editor.putBoolean("firstRun", GameManager.firstRun);
+        editor.putString("playerFirstName", GameManager.playerFirstName);
+        editor.putString("playerLastName", GameManager.playerLastName);
+        editor.putString("playerNickname", GameManager.playerNickname);
         Gson gson = new Gson();
         String timeline = gson.toJson(GameManager.timeline);
         editor.putString("Timeline", timeline);

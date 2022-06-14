@@ -21,22 +21,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Spike :)"
+        android:hint="Player Name"
+        android:gravity="center"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chat_info_profile_picture"/>
 
-    <EditText
-        android:id="@+id/chat_info_nickname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Spike"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chat_info_name"/>
+<!--    <EditText-->
+<!--        android:id="@+id/chat_info_nickname"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:hint="Player Nickname"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/chat_info_name"/>-->
 
     <TextView
         android:id="@+id/chat_info_description"
@@ -45,10 +46,10 @@
         android:layout_margin="15dp"
         android:textAlignment="center"
         android:text="Default character description."
-        android:textSize="23sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chat_info_nickname"/>
+        app:layout_constraintTop_toBottomOf="@+id/chat_info_name"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

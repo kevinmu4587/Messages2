@@ -14,6 +14,9 @@ import java.util.Map;
 public class GameManager {
     private static Map<String, Integer> keyChoices = new HashMap<String, Integer>();
     public static boolean firstRun = true;
+    public static String playerFirstName;
+    public static String playerLastName;
+    public static String playerNickname;
 
     public static ArrayList<String> timeline = new ArrayList<>();
     public static Map<String, Integer> getKeyChoices() {
@@ -37,13 +40,13 @@ public class GameManager {
         keyChoices.put(block, Integer.valueOf(choice));
     }
 
-    public static boolean isFirstRun() {
-        return firstRun;
-    }
+//    public static boolean isFirstRun() {
+//        return firstRun;
+//    }
 
-    public static void setFirstRun(boolean firstRun) {
-        GameManager.firstRun = firstRun;
-    }
+//    public static void setFirstRun(boolean firstRun) {
+//        GameManager.firstRun = firstRun;
+//    }
 
     public static int getBackgroundIDByName(String name) {
         if (name.equals("market")) {

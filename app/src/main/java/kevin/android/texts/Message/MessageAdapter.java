@@ -108,7 +108,7 @@ public class MessageAdapter extends RecyclerView.Adapter {
     class NPCMessageHolder extends RecyclerView.ViewHolder {
         private ImageView profilePicture;
         private TextView content;
-//        private TextView timeStamp;se
+//        private TextView timeStamp;
 
         public NPCMessageHolder(@NonNull View itemView) {
             super(itemView);
@@ -119,8 +119,7 @@ public class MessageAdapter extends RecyclerView.Adapter {
 
         void bind(Message message) {
             profilePicture.setImageResource(profilePictureID);
-            int unicode = 0x1f972;
-            content.setText(message.getContent()[message.getChoice()] + new String(Character.toChars(unicode)));
+            content.setText(message.getContent()[message.getChoice()]);
 //            timeStamp.setText(message.getTime());
         }
     }

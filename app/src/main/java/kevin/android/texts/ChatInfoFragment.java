@@ -21,7 +21,7 @@ import kevin.android.texts.Message.ChatFragment;
 public class ChatInfoFragment  extends Fragment {
     private ImageView profilePicture;
     private EditText editName;
-    private EditText editNickname;
+    // private EditText editNickname;
     private TextView description;
 
     private Conversation conversation;
@@ -36,7 +36,7 @@ public class ChatInfoFragment  extends Fragment {
         View view = inflater.inflate(R.layout.fragment_chat_info, container, false);
         profilePicture = view.findViewById(R.id.chat_info_profile_picture);
         editName = view.findViewById(R.id.chat_info_name);
-        editNickname = view.findViewById(R.id.chat_info_nickname);
+        // editNickname = view.findViewById(R.id.chat_info_nickname);
         description = view.findViewById(R.id.chat_info_description);
         return view;
     }
@@ -46,6 +46,9 @@ public class ChatInfoFragment  extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         conversation = ChatInfoFragmentArgs.fromBundle(getArguments()).getConversation();
         editName.setText(conversation.getFullName());
+        profilePicture.setImageResource(conversation.getProfilePictureID());
+        description.setText(conversation.getDescription());
+
 
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override

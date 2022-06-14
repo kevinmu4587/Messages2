@@ -173,11 +173,23 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - added bundled-emoji dependency & init in MainActivity
     - i think i figured out why the edit text dialog were appearing at the wrong times
         - no need to observe all conversations; overlapping observers caused difficult-to-track behaviour
+[Tuesday, May 31st, 2022]
+    - added group 2 into json format
+[Wednesday, June 1st, 2022]
+    - confirmed that an independent npc message can follow a mymessage
+[Thursday, June 9th, 2022]
+    - added some more groups
+[Monday, June 14th, 2022]
+    - Updated ChatInfoFragment
+        - removed nicknames, added descriptions and profile pictures
+    - added customize player information (saved to shared preferences)
+
+
 
 
 TODO
     - backgrounds and mediaplayer sounds
-    - figure out when to advance the group
+    - %placeholder replacements (i think we need to store globally in game manager)
 
 Things to check at the end:
     - check if messages & conversation state are saved if the user leaves by closing the app instead of returning to the ConversationFragment
