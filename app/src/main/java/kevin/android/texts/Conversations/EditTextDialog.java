@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
 
 public class EditTextDialog  extends AppCompatDialogFragment {
@@ -44,12 +43,6 @@ public class EditTextDialog  extends AppCompatDialogFragment {
 
         builder.setView(view)
                 .setTitle(title)
-//                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        //nothing
-//                    }
-//                })
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

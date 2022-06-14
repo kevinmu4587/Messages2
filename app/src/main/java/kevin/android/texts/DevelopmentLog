@@ -183,13 +183,14 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - Updated ChatInfoFragment
         - removed nicknames, added descriptions and profile pictures
     - added customize player information (saved to shared preferences)
-
+    - added timestamps
 
 
 
 TODO
     - backgrounds and mediaplayer sounds
     - %placeholder replacements (i think we need to store globally in game manager)
+    - timestamps for npc messages
 
 Things to check at the end:
     - check if messages & conversation state are saved if the user leaves by closing the app instead of returning to the ConversationFragment

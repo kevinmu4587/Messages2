@@ -61,16 +61,4 @@ public class MessageRepository {
             return null;
         }
     }
-    /*private static class GetUpcomingMessagesAsyncTask extends AsyncTask<Integer, Void, List<Message>> {
-        private MessageDao messageDao; // passed to this class
-
-        private GetUpcomingMessagesAsyncTask() {
-            this.messageDao = messageDao;
-        }
-
-        @Override
-        protected List<Message> doInBackground(Integer... integers) {
-            return messageDao.getUpcomingMessages(integers[0]);
-        }
-    }*/
 }

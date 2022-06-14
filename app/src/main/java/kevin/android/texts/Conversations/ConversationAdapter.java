@@ -1,19 +1,15 @@
 package kevin.android.texts.Conversations;
 
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.textclassifier.ConversationAction;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -84,7 +80,6 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
                 public void onClick(View view) {
                     int position = getLayoutPosition();
                     Conversation conversation = activeConversations.get(position);
-                    // Conversation conversation = (Conversation) screen.getTag();
                     // navigate to chat fragment
                     Navigation.findNavController(view).navigate(ConversationFragmentDirections.
                             actionConversationFragmentToChatFragment(conversation));

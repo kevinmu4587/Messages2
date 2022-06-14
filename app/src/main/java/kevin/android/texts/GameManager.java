@@ -1,13 +1,7 @@
 package kevin.android.texts;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 // this class is for saving game-wide decisions, like which blocks were picked, and what ending were reached
@@ -19,6 +13,7 @@ public class GameManager {
     public static String playerNickname;
 
     public static ArrayList<String> timeline = new ArrayList<>();
+
     public static Map<String, Integer> getKeyChoices() {
         return keyChoices;
     }

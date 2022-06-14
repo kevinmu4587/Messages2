@@ -27,9 +27,6 @@ public class Conversation implements Parcelable  {
     private String description;
     private String lastMessage = "New message!";
 
-//    @Ignore
-//    private int profilePictureID;
-
     private int group = 1;
     private int conversationState;
     // private String bgState;

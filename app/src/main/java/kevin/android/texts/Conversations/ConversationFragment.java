@@ -5,19 +5,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -124,39 +118,6 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
 //            }
 //        });
 
-        // setup
-        /*
-        if (GameManager.firstRun) {
-            Log.e(TAG, "first run! Running setup.");
-            GameManager.firstRun = false;
-            final LiveData<List<Conversation>> liveData = conversationViewModel.getAllConversations();
-            liveData.observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
-                @Override
-                public void onChanged(List<Conversation> conversations) {
-                    if (conversations.size() == 0) {
-                        Log.e(TAG, "waiting for first conversations to arrive");
-                        // liveData.removeObserver(this);
-                        return;
-                    }
-                    // set the profile pictures | i don't think we need to do this unless profile picture are customizable
-//                    for (Conversation conversation : conversations) {
-//                        int id = conversation.getId();
-//                        conversation.setProfilePictureID(Conversation.profilePictures[id - 1]);
-//                    }
-                    // get all player and NPC information
-                    for (int i = conversations.size() - 1; i >= 0; i--) {
-                        Conversation conversation = conversations.get(i);
-                        EditTextDialog editTextDialog = new EditTextDialog("Enter player information",
-                                conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
-                        editTextDialog.show(getChildFragmentManager(), "setup");
-                    }
-                Log.e(TAG, "opened all EditTextDialog windows.");
-                    // we don't need to observe all conversations anymore
-                    liveData.removeObserver(this);
-                }
-            });
-        }
-         */
     }
 
     @Override

@@ -1,14 +1,9 @@
 package kevin.android.texts;
 
 import android.content.Context;
-import android.util.Log;
-
-import org.json.JSONArray;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Utils {
@@ -16,7 +11,7 @@ public class Utils {
 
     public static int[] listToIntArray(List<Integer> list) {
         int[] ret = new int[list.size()];
-        for(int i = 0; i < list.size(); i++)
+        for (int i = 0; i < list.size(); i++)
             ret[i] = list.get(i);
         return ret;
     }

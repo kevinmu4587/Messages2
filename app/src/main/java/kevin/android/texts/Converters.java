@@ -28,8 +28,6 @@ public class Converters {
 //            Log.e("CONVERTER", s);
 //        }
         return array;
-//        Type type = new TypeToken<String[]>() {}.getType();
-//        return new Gson().fromJson(string, type);
     }
 
     @TypeConverter

@@ -7,10 +7,6 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-import kevin.android.texts.Message.Message;
-import kevin.android.texts.Message.MessageDao;
-import kevin.android.texts.Message.MessageDatabase;
-import kevin.android.texts.Message.MessageRepository;
 
 public class ConversationRepository {
     private ConversationDao conversationDao;
@@ -25,7 +21,6 @@ public class ConversationRepository {
     // API for the ViewModel
     public void update(Conversation conversation) {
         // need to perform the update on a background thread
-//        new MessageRepository.UpdateMessageAsyncTask(messageDao).execute(message);
         new ConversationRepository.UpdateConversationAsyncTask(conversationDao).execute(conversation);
     }
 

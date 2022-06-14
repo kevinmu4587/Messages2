@@ -16,7 +16,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import kevin.android.texts.Conversations.Conversation;
-import kevin.android.texts.Message.ChatFragment;
 
 public class ChatInfoFragment  extends Fragment {
     private ImageView profilePicture;

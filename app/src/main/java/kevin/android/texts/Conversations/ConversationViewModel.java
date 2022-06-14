@@ -8,11 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
-import kevin.android.texts.Message.Message;
-import kevin.android.texts.Message.MessageRepository;
 
 public class ConversationViewModel extends AndroidViewModel {
     private static final String TAG = "ConversationViewModel";
