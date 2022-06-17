@@ -53,11 +53,17 @@ public class Utils {
 
     public static String replaceName(String old) {
         if (old.contains("%playername")) {
-            return old.replace("%playername", GameManager.playerFirstName);
+            old = old.replace("%playername", GameManager.playerFirstName);
         }
-        return "";
-//        } else if (old.contains("%npc1name")) {
-//            return old.replace("%npc1name", )
-//        }
+        if (old.contains("%npc1name")) {
+            old = old.replace("%npc1name", GameManager.npc1FirstName);
+        }
+        if (old.contains("%npc2name")) {
+            old = old.replace("%npc2name", GameManager.npc2FirstName);
+        }
+        if (old.contains("%friendname")) {
+            old = old.replace("%friendname", GameManager.friendFirstName);
+        }
+        return old;
     }
 }

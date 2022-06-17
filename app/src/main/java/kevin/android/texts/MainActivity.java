@@ -3,6 +3,7 @@ package kevin.android.texts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.emoji2.bundled.BundledEmojiCompatConfig;
 import androidx.emoji2.text.EmojiCompat;
+import androidx.preference.PreferenceManager;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Gson gson = new Gson();
-        SharedPreferences sharedPref = getSharedPreferences("MyPreference", Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         // load timeline
         String jsonTimeline = sharedPref.getString("Timeline", null);
         if (jsonTimeline != null) {
@@ -45,9 +46,15 @@ public class MainActivity extends AppCompatActivity {
         // load the GameManager key decisions from shared preferences
         String json = sharedPref.getString("MyHashMap", null);
         GameManager.firstRun = sharedPref.getBoolean("firstRun", true);
-        GameManager.playerFirstName = sharedPref.getString("playerFirstName", "Default First Name");
-        GameManager.playerLastName = sharedPref.getString("playerLastName", "Default Last Name");
-        GameManager.playerNickname = sharedPref.getString("playerNickname", "Default Nickname");
+        GameManager.npc1FirstName = sharedPref.getString("npc1FirstName", "Default NPC1 First Name");
+        GameManager.npc1LastName = sharedPref.getString("npc1LastName", "Default NPC1 Last Name");
+        GameManager.npc1Nickname = sharedPref.getString("npc1Nickname", "Default NPC1 Nickname");
+        GameManager.friendFirstName = sharedPref.getString("friendFirstName", "Default Friend First Name");
+        GameManager.friendLastName = sharedPref.getString("friendLastName", "Default Friend Last Name");
+        GameManager.friendNickname = sharedPref.getString("friendNickname", "Default Friend Nickname");
+        GameManager.npc2FirstName = sharedPref.getString("npc2FirstName", "Default NPC2 First Name");
+        GameManager.npc2LastName = sharedPref.getString("npc2LastName", "Default NPC2 Last Name");
+        GameManager.npc2Nickname = sharedPref.getString("npc2Nickname", "Default NPC2 Nickname");
         if (json == null) return;
         Type myType = new TypeToken<Map<String, Integer>>() {}.getType();
         Map<String, Integer> keyChoices = gson.fromJson(json, myType);
@@ -59,13 +66,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         // save the GameManager key decisions to shared preferences
-        SharedPreferences sharedPref = getSharedPreferences("MyPreference", Context.MODE_PRIVATE);
+        // SharedPreferences sharedPref = getSharedPreferences("MyPreference", Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("MyHashMap", new Gson().toJson(GameManager.getKeyChoices()));
         editor.putBoolean("firstRun", GameManager.firstRun);
-        editor.putString("playerFirstName", GameManager.playerFirstName);
-        editor.putString("playerLastName", GameManager.playerLastName);
-        editor.putString("playerNickname", GameManager.playerNickname);
+        editor.putString("npc1FirstName", GameManager.npc1FirstName);
+        editor.putString("npc1LastName", GameManager.npc1LastName);
+        editor.putString("npc1Nickname", GameManager.npc1Nickname);
+        editor.putString("friendFirstName", GameManager.friendFirstName);
+        editor.putString("friendLastName", GameManager.friendLastName);
+        editor.putString("friendNickname", GameManager.friendNickname);
+        editor.putString("npc2FirstName", GameManager.npc2FirstName);
+        editor.putString("npc2LastName", GameManager.npc2LastName);
+        editor.putString("npc2Nickname", GameManager.npc2Nickname);
         Gson gson = new Gson();
         String timeline = gson.toJson(GameManager.timeline);
         editor.putString("Timeline", timeline);

@@ -1,15 +1,22 @@
 package kevin.android.texts.Message;
 
+import android.util.Log;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import kevin.android.texts.Converters;
+import kevin.android.texts.Utils;
 
 @Entity(tableName = "messages_table")
 @TypeConverters(Converters.class)
 public class Message {
+    @Ignore
+    private static final String TAG="Message";
+
     // fields of a message
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -89,5 +96,10 @@ public class Message {
 
     public String getTime() {
         return time;
+    }
+
+    public void replaceNamePlaceholders() {
+       content[choice] = Utils.replaceName(content[choice]);
+        Log.e(TAG, "Replacing name. Result: " + content[choice]);
     }
 }

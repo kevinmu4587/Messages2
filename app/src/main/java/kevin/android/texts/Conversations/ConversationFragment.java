@@ -1,8 +1,13 @@
 package kevin.android.texts.Conversations;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -12,6 +17,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +28,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 import kevin.android.texts.GameManager;
+import kevin.android.texts.Message.ChatFragmentDirections;
 import kevin.android.texts.R;
 import kevin.android.texts.SharedViewModel;
 
@@ -35,6 +44,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -109,6 +119,15 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             }
         });
 
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String playerFirstName = sharedPref.getString("playerFirstName", "");
+        String playerLastName = sharedPref.getString("playerLastName", "");
+        String playerNickname = sharedPref.getString("playerNickname", "");
+        boolean isFastMode = sharedPref.getBoolean("isFastMode", false);
+        GameManager.playerFirstName = playerFirstName;
+        GameManager.playerLastName = playerLastName;
+        GameManager.playerNickname = playerNickname;
+
 
 //        testNextConversationButton = view.findViewById(R.id.test_add_conversation_button);
 //        testNextConversationButton.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +140,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     }
 
     @Override
-    public void applyNames(final String firstName, final String lastName, final String nickname, int id) {
+    public void applyNames(final String firstName, final String lastName, final String nickname, final int id) {
         if (id == -1) {
             GameManager.playerFirstName = firstName;
             GameManager.playerLastName = lastName;
@@ -132,9 +151,11 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         liveData.observe(getViewLifecycleOwner(), new Observer<Conversation>() {
             @Override
             public void onChanged(Conversation conversation) {
+                Log.e(TAG, "Updating names for ID #" + id + " , their name is " + firstName);
                 conversation.setFirstName(firstName);
                 conversation.setLastName(lastName);
                 conversation.setNickname(nickname);
+                GameManager.setNPCNames(id, firstName, lastName, nickname);
                 conversation.setInitialized(true);
                 conversationViewModel.update(conversation);
 //                Log.e(TAG, "initialized conversation. name: " + conversation.getFullName());
@@ -155,6 +176,24 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             int conversationId = cmd.charAt(4) - '0';
             Log.e(TAG, "incremented conversation with id: " + conversationId);
             conversationViewModel.incrementConversationWithID(conversationId);
+        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_conversation_fragment, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_open_settings:
+                NavController navController = NavHostFragment.findNavController(this);
+               //  navController.navigate(SettingsFragment.actionChatFragmentToChatInfoFragment(conversation));
+                navController.navigate(ConversationFragmentDirections.actionConversationFragmentToSettingsFragment());
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

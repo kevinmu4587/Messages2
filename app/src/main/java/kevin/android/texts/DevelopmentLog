@@ -159,7 +159,6 @@
     - fixed AVD waiting for debugger to attach issue, using a cold boot
     - re-enabled first-run dialogs
         - fixed issue where the dialogs only appear on second run
-        - TODO: GameManager.isFirstRun is not persisting. It is true every time ConversationAdapter is created. Should watch the variable.
 [Saturday, May 28th, 2022]
     - tried getting smiling face with tear emoji encoded in the project
         - it has unicode U+1f972 but Android can't render a 5-digit unicode
@@ -179,18 +178,26 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - confirmed that an independent npc message can follow a mymessage
 [Thursday, June 9th, 2022]
     - added some more groups
-[Monday, June 14th, 2022]
+[Monday, June 13th, 2022]
     - Updated ChatInfoFragment
         - removed nicknames, added descriptions and profile pictures
     - added customize player information (saved to shared preferences)
     - added timestamps
-
+[Tuesday, June 14th, 2022]
+    - added name placeholder replacements
+[Thursday, June 16th, 2022]
+    - added settings fragment
+        - updated navigation
+        - added player name update
+    - replaced custom shared preferences with PreferenceManager default shared preferences for consistency
+       between settings and GameManager
 
 
 TODO
     - backgrounds and mediaplayer sounds
-    - %placeholder replacements (i think we need to store globally in game manager)
-    - timestamps for npc messages
+    - loading screen when populating conversations/messages
+    - BUG: When returning to home after title changed in chat fragment, title is not updated
+    - conversation object is not updated when user quits the app from the chat (name change is not saved, we need them to return home to commit the conversation to DB)
 
 Things to check at the end:
     - check if messages & conversation state are saved if the user leaves by closing the app instead of returning to the ConversationFragment

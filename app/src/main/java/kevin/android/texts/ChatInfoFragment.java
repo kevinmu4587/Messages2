@@ -56,6 +56,7 @@ public class ChatInfoFragment  extends Fragment {
                 String[] firstAndLast = editName.getText().toString().split(" ");
                 conversation.setFirstName(firstAndLast[0]);
                 conversation.setLastName(firstAndLast[1]);
+                GameManager.setNPCNames(conversation.getId(), firstAndLast[0], firstAndLast[1], conversation.getNickname());
                 NavController navController = NavHostFragment.findNavController(ChatInfoFragment.this);
                 navController.getPreviousBackStackEntry().getSavedStateHandle().set(CHAT_INFO_KEY, conversation);
                 this.setEnabled(false);

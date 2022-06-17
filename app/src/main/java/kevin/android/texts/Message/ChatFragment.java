@@ -313,6 +313,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         if (nextMessage.getContent().length > 1) {
             nextMessage.setChoice(lastPlayerChoice);
         }
+        // replace any name placeholders
+        nextMessage.replaceNamePlaceholders();
         // Log.e(TAG, "Submitted message " + nextMessage.getContent()[nextMessage.getChoice()]);
         messageViewModel.submitMessage(nextMessage);
 
