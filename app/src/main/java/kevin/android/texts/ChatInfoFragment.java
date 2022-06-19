@@ -37,6 +37,7 @@ public class ChatInfoFragment  extends Fragment {
         editName = view.findViewById(R.id.chat_info_name);
         // editNickname = view.findViewById(R.id.chat_info_nickname);
         description = view.findViewById(R.id.chat_info_description);
+        getActivity().setTitle("Character Information");
         return view;
     }
 
@@ -46,7 +47,7 @@ public class ChatInfoFragment  extends Fragment {
         conversation = ChatInfoFragmentArgs.fromBundle(getArguments()).getConversation();
         editName.setText(conversation.getFullName());
         profilePicture.setImageResource(conversation.getProfilePictureID());
-        description.setText(conversation.getDescription());
+        description.setText(Utils.replaceName(conversation.getDescription()));
 
 
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
@@ -55,7 +56,8 @@ public class ChatInfoFragment  extends Fragment {
                 // send data back to ChatFragment
                 String[] firstAndLast = editName.getText().toString().split(" ");
                 conversation.setFirstName(firstAndLast[0]);
-                conversation.setLastName(firstAndLast[1]);
+                conversation.setLastName("");
+                if (firstAndLast.length > 1) conversation.setLastName(firstAndLast[1]);
                 GameManager.setNPCNames(conversation.getId(), firstAndLast[0], firstAndLast[1], conversation.getNickname());
                 NavController navController = NavHostFragment.findNavController(ChatInfoFragment.this);
                 navController.getPreviousBackStackEntry().getSavedStateHandle().set(CHAT_INFO_KEY, conversation);

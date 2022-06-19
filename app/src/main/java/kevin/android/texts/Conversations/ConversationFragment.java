@@ -45,6 +45,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        getActivity().setTitle("Schism");
     }
 
     @Nullable
@@ -71,10 +72,14 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             @Override
             // when an update is changed
             public void onChanged(List<Conversation> activeConversations) {
-                // update recycler view
-                adapter.setActiveConversations(activeConversations);
-                conversationViewModel.setActiveConversations(activeConversations);
-                Log.e(TAG, "active conversations updated");
+                if (activeConversations.size() == 0) {
+                    Log.e(TAG, "waiting for first conversations to arrive");
+                } else {
+                    // update recycler view
+                    adapter.setActiveConversations(activeConversations);
+                    conversationViewModel.setActiveConversations(activeConversations);
+                    Log.e(TAG, "active conversations updated");
+                }
             }
         });
 
@@ -119,6 +124,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             }
         });
 
+        // retrieve stored values from settings fragment
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String playerFirstName = sharedPref.getString("playerFirstName", "");
         String playerLastName = sharedPref.getString("playerLastName", "");

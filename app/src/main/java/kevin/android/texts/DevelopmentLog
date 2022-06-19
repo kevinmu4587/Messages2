@@ -191,12 +191,14 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - added player name update
     - replaced custom shared preferences with PreferenceManager default shared preferences for consistency
        between settings and GameManager
+[Sunday, June 19th, 2022]
+    - added "Schism" title on ConversationFragment, and "Character Information" on ChatInfoFragment
+    - added name placeholders replacements in ChatInfoFragment description
 
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
-    - BUG: When returning to home after title changed in chat fragment, title is not updated
     - conversation object is not updated when user quits the app from the chat (name change is not saved, we need them to return home to commit the conversation to DB)
 
 Things to check at the end:
