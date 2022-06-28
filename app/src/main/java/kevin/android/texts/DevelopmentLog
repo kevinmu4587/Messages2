@@ -194,14 +194,25 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
 [Sunday, June 19th, 2022]
     - added "Schism" title on ConversationFragment, and "Character Information" on ChatInfoFragment
     - added name placeholders replacements in ChatInfoFragment description
+    - tried updating conversation object from ChatFragment, since names were not being updated if the user closed the app without going back to
+       ConversationFragment
+        - too complicated to fix. is possible with storing name in shared preferences, and updating conversation object on reload, but too much work
+        - also makes a small bug: if name is updated, then app is swiped up, since GameManager is updated, the description and naming will use new name, but
+           just the display will use old name (since conversation object is not updated)
+[Friday, June 24th, 2022]
+    - wrote a bunch more groups
 
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
-    - conversation object is not updated when user quits the app from the chat (name change is not saved, we need them to return home to commit the conversation to DB)
+    - fast mode
+    - I'm thinking that we can't have multiple blocks in one group, since the gaem fetches all messages under that block name
+        - we can fix this by giving each block a unique ID. we will increment for each block
+        - this ID is reset to 1 on every group
 
 Things to check at the end:
     - check if messages & conversation state are saved if the user leaves by closing the app instead of returning to the ConversationFragment
         - messages are saved. i think conversations might be okay too, since it will just open the chat with state RUNNING, then set to DONE when there are no more upcoming messaegs
+        - VERDICT: Messages are saved. Conversation preferences (name, bgState) are NOT saved. Conversation state works out nicely since states are managed in ConversationFragment
     - check if we are waiting for ALL messages to be unpacked from JSON before our first chat starts. If so, it may take a while -- loading screen may be needed
