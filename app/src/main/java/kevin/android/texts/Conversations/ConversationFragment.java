@@ -133,6 +133,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         GameManager.playerFirstName = playerFirstName;
         GameManager.playerLastName = playerLastName;
         GameManager.playerNickname = playerNickname;
+        GameManager.isFastMode = isFastMode;
 
 
 //        testNextConversationButton = view.findViewById(R.id.test_add_conversation_button);

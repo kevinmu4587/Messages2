@@ -736,7 +736,7 @@
                 "type": "my",
                 "content": [
                     "Why the clock?",
-                    "Does it symbolize something else?",
+                    "Does it symbolize something else?"
                 ],
                 "block": 1,
                 "time": "4:48pm"
@@ -800,7 +800,7 @@
                 "type": "my",
                 "content": [
                     "What does it mean?",
-                    "Why did you choose a star?",
+                    "Why did you choose a star?"
                 ],
                 "block": 2,
                 "time": "4:48pm"
@@ -1815,7 +1815,7 @@
                 ],
                 "block": 0,
                 "time": "6:34pm"
-            }
+            },
             {
                 "type": "npc",
                 "content": [

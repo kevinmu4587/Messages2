@@ -201,15 +201,22 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
            just the display will use old name (since conversation object is not updated)
 [Friday, June 24th, 2022]
     - wrote a bunch more groups
+[Monday, June 27th, 2022]
+    - tested fast mode. looks good
+    - fixed bug where note exit animation restarts if user clicks on the screen during animation
+    - tried out the game with 314 messages. load time is pretty fast.
+    - updated NPCMessage layout to display timestamp on top of the message
+        - can toggle timestamp between Visible and Gone
+        - there is an animation for that message only, but not for other messages. tried but failed
 
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
-    - fast mode
-    - I'm thinking that we can't have multiple blocks in one group, since the gaem fetches all messages under that block name
+    - I'm thinking that we can't have multiple blocks in one group, since the game fetches all messages under that block name
         - we can fix this by giving each block a unique ID. we will increment for each block
         - this ID is reset to 1 on every group
+    - looks like name replacement isn't working properly in my messages
 
 Things to check at the end:
     - check if messages & conversation state are saved if the user leaves by closing the app instead of returning to the ConversationFragment

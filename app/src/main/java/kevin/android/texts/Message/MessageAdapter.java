@@ -115,6 +115,17 @@ public class MessageAdapter extends RecyclerView.Adapter {
             profilePicture = itemView.findViewById(R.id.npc_msg_profile_pic);
             content = itemView.findViewById(R.id.npc_msg_content);
             timeStamp = itemView.findViewById(R.id.npc_msg_timestamp);
+
+            content.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int visibility = View.VISIBLE;
+                    if (timeStamp.getVisibility() == View.VISIBLE) visibility = View.GONE;
+                    timeStamp.setVisibility(visibility);
+                    // i wish this would work. doesn't work because it is asynchronous or something
+                    // notifyItemChanged(getLayoutPosition());
+                }
+            });
         }
 
         void bind(Message message) {

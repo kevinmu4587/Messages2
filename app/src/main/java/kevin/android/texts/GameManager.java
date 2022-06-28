@@ -24,6 +24,7 @@ public class GameManager {
     public static String npc2FirstName;
     public static String npc2LastName;
     public static String npc2Nickname;
+    public static boolean isFastMode;
 
     public static ArrayList<String> timeline = new ArrayList<>();
 

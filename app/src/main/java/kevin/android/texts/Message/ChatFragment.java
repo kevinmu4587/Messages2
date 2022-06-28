@@ -170,7 +170,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                         public void onChanged(List<Message> messages) {
                             // Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
                             messageViewModel.setUpcomingMessages(messages);
-                            if (messages.size() == 0 && playRunnable != null) {
+                            if (messages.size() == 0 && playRunnable != null && !state.equals("waiting")) {
                                 if (conversation.getCurrentBlock() == 0) {
                                     // we already finished this chat
                                     conversation.setConversationState(Conversation.STATE_DONE);
@@ -364,7 +364,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     continue;
                 } else if (state.equals("sent")) {
                     // Log.e(TAG, "message sent, waiting some time");
-                    sleep(2000);
+                    sleep(GameManager.isFastMode ? 500 : 2000);
                     state = "can load next message";
                     continue;
                 } else if (state.equals("note")) {
@@ -384,6 +384,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     }
                     // at the start, maybe the upcoming messages haven't loaded yet
                     Log.e(TAG, "Waiting for the first upcoming messages to arrive");
+                    state = "waiting";
                     sleep(2000);
                     continue;
                 }
@@ -440,7 +441,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             });
             soundPool.play(npcTypingSound, 1, 1, 0, 0, 1);
             // sleep as NPC is typing
-            sleep(3000);
+            sleep(GameManager.isFastMode ? 750 : 3000);
             adapter.getSentMessages().remove(adapter.getItemCount() - 1);
             mainHandler.post(new Runnable() {
                 @Override
@@ -477,6 +478,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
 
                         @Override
                         public void onClick(View view) {
+                            if (state.equals("note finished")) return;
                             if (curNote >= notes.length) {
                                 // exit the note display
                                 noteContainer.setVisibility(View.INVISIBLE);

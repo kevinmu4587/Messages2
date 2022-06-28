@@ -70,7 +70,7 @@ public abstract class MessageDatabase extends RoomDatabase {
             int count = 0;
             try {
                 JSONArray players = new JSONArray(json);
-                // for each player
+                // for each playernp
                 for (int i = 0; i < players.length(); ++i) {
                     JSONArray player = players.getJSONArray(i);
                     // for each group
