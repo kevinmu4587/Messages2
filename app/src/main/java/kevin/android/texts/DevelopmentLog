@@ -208,14 +208,15 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - updated NPCMessage layout to display timestamp on top of the message
         - can toggle timestamp between Visible and Gone
         - there is an animation for that message only, but not for other messages. tried but failed
+[Monday, July 4th, 2022]
+    - updated block encoding system. block type is now of the form key_<first_block_id>_<block_name>
+        - this should allow us to access block within existing blocks
+        - tested nested blocks. looks like it works!
 
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
-    - I'm thinking that we can't have multiple blocks in one group, since the game fetches all messages under that block name
-        - we can fix this by giving each block a unique ID. we will increment for each block
-        - this ID is reset to 1 on every group
     - looks like name replacement isn't working properly in my messages
 
 Things to check at the end:

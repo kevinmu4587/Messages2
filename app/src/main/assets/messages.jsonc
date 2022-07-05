@@ -18,25 +18,25 @@
                 ],
                 "block": 0,
                 "time": "8:02pm"
-            },
-            {
-                "type": "my",
-                "content": [
-                    "Alice",
-                    "Bob",
-                    "Charlie"
-                ],
-                "block": 0,
-                "time": "8:03pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Again: I am %npc1name. You are %playername. Your friend is %friendname, and NPC2 is %npc2name."
-                ],
-                "block": 0,
-                "time": "8:02pm"
             }
+            // {
+            //     "type": "my",
+            //     "content": [
+            //         "Alice",
+            //         "Bob",
+            //         "Charlie"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:03pm"
+            // },
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Again: I am %npc1name. You are %playername. Your friend is %friendname, and NPC2 is %npc2name."
+            //     ],
+            //     "block": 0,
+            //     "time": "8:02pm"
+            // }
             // {
             //     "type": "npc",
             //     "content": [
@@ -81,76 +81,76 @@
             // }
         ],
         // group 2
-        [
-            {
-                "type": "npc",
-                "content": [
-                    "This is group 2 of player 1."
-                ],
-                "block": 0,
-                "time": "9:01pm"
-            },
-            // {
-            //     "type": "background",
-            //     "content": ["market"],
-            //     "block": 0,
-            //     "time": ""
-            // },
-            // {
-            //     "type": "npc",
-            //     "content": ["We are in the market now."],
-            //     "block": 0,
-            //     "time": "12:21pm"
-            // },
-            // {
-            //     "type": "my",
-            //     "content": [
-            //         "Looks good.",
-            //         "Doesn't look very good.",
-            //         "Okay, so it works."
-            //     ],
-            //     "block": 0,
-            //     "time": "12:22pm"
-            // },
-            // {
-            //     "type": "background",
-            //     "content": ["fadeout"],
-            //     "block": 0,
-            //     "time": "12:23pm"
-            // },
-            // {
-            //     "type": "npc",
-            //     "content": ["background is done now."],
-            //     "block": 0,
-            //     "time": "12:23pm"
-            // },
-            {
-                "type": "note",
-                "content": [
-                    "After getting the blocks and groups to work, I started working on the notes.",
-                    "Soon we will be done.",
-                    "Still need to do sounds though."
-                ],
-                "block": 0,
-                "time": "10:10pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Note is done"
-                ],
-                "block": 0,
-                "time": "9:00pm"
-            }
-            // {
-            //     "type": "npc",
-            //     "content": [
-            //         "Okay bye!"
-            //     ],
-            //     "block": 0,
-            //     "time": "9:00pm"
-            // }
-        ],
+        // [
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "This is group 2 of player 1."
+        //         ],
+        //         "block": 0,
+        //         "time": "9:01pm"
+        //     },
+        //     {
+        //         "type": "background",
+        //         "content": ["market"],
+        //         "block": 0,
+        //         "time": ""
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": ["We are in the market now."],
+        //         "block": 0,
+        //         "time": "12:21pm"
+        //     },
+        //     {
+        //         "type": "my",
+        //         "content": [
+        //             "Looks good.",
+        //             "Doesn't look very good.",
+        //             "Okay, so it works."
+        //         ],
+        //         "block": 0,
+        //         "time": "12:22pm"
+        //     },
+        //     {
+        //         "type": "background",
+        //         "content": ["fadeout"],
+        //         "block": 0,
+        //         "time": "12:23pm"
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": ["background is done now."],
+        //         "block": 0,
+        //         "time": "12:23pm"
+        //     },
+        //     {
+        //         "type": "note",
+        //         "content": [
+        //             "After getting the blocks and groups to work, I started working on the notes.",
+        //             "Soon we will be done.",
+        //             "Still need to do sounds though."
+        //         ],
+        //         "block": 0,
+        //         "time": "10:10pm"
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "Note is done"
+        //         ],
+        //         "block": 0,
+        //         "time": "9:00pm"
+        //     }
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "Okay bye!"
+        //         ],
+        //         "block": 0,
+        //         "time": "9:00pm"
+        //     }
+        // ],
         // group 3
         [
             {
@@ -162,7 +162,7 @@
                 "time": "9:01am"
             },
             {
-                "type": "key_blockTest",  // key_<block_name> saves a key decision for an upcoming block
+                "type": "key_1_blockTest",  // key_<block_name> saves a key decision for an upcoming block
                 "content": [
                     "Let's test block 1.",
                     "I want block 2"
@@ -182,27 +182,50 @@
             {
                 "type": "npc",
                 "content": [
-                    "This is the first block."
+                    "This is the first block. Let's try another layer of blocks."
                 ],
                 "block": 1,
                 "time": "9:01am"
             },
             {
-                "type": "my",
+                "type": "key_3_nestedBlocks",
                 "content": [
-                    "I like the first block.",
-                    "The first block is pretty interesting.",
-                    "Actually, the first block sucks."
+                    "To the first sub-block",
+                    "To the second sub-block."
                 ],
                 "block": 1,
+                "time": "9:01am"
+            },
+            {
+                "type": "block",
+                "content": [
+                    "nestedBlocks"  // use this to fetch the saved decision
+                ],
+                "block": 1,
+                "time": "9:01pm"
+            },
+            // -------------------------------------- first sub-block -----------------------
+            {
+                "type": "npc",
+                "content": [
+                    "We are at the first sub-block. Returning to block 1:"
+                ],
+                "block": 3,
+                "time": "9:01am"
+            },
+            // ------------------------------------ second sub-block ---------------------
+            {
+                "type": "npc",
+                "content": [
+                    "We are at the second sub-block. Returning to block 1:"
+                ],
+                "block": 4,
                 "time": "9:01am"
             },
             {
                 "type": "npc",
                 "content": [
-                    "I like it too.",
-                    "A little interesting.",
-                    "I think it's pretty good."
+                    "returned to block 1. it's finishing now though"
                 ],
                 "block": 1,
                 "time": "9:01am"
@@ -241,7 +264,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Blocks are done, I hope they worked."
+                    "All blocks are done, I hope they worked."
                 ],
                 "block": 0,
                 "time": "9:01am"

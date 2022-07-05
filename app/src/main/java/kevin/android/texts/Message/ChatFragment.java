@@ -271,7 +271,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     }
 
     /*
-        - set the player choice
+        - set the player choice (zero-indexed)
         - fill the chat box with the selected choice of text
      */
     @Override
@@ -283,9 +283,12 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         state = "sending";
         String type = nextMessage.getType();
         if (type.length() >= 3 && type.substring(0, 3).equals("key")) {
-            String blockName = type.substring(4);
-            GameManager.addKeyDecision(blockName, choice);
-            Log.e(TAG, "Added key decision " + blockName + " with choice " + choice);
+            String[] blockInformation = type.split("_");
+            String firstBlockNum = blockInformation[1];
+            String blockName = blockInformation[2];
+            GameManager.addKeyDecision(blockName, choice + Integer.parseInt(firstBlockNum));
+            Log.e(TAG, "Added key decision " + blockName + " with choice " + (choice + Integer.parseInt(firstBlockNum)));
+            //  submit this message normally
             nextMessage.setType("my");
         }
     }
@@ -406,7 +409,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     state = "choose";
                 } else if (type.equals("block")) {
                     String blockName = nextMessage.getContent()[0];
-                    int blockChoice = GameManager.getKeyDecision(blockName) + 1;
+                    int blockChoice = GameManager.getKeyDecision(blockName);
                     conversation.pushBlock(blockChoice);
                     messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
                     if (!finished) {
