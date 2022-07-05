@@ -1,3 +1,358 @@
+----------------------------------------------------------------------------------------------------
+PRE-PRE-ALPHA VERSION 0.0.0
+-----------------------------------
+How to Make Versions
+Exporting to ZIP:
+   File -> Export to Zip File
+Importing a Zip:
+   Unzip and Open -> your project
+
+---------------------------------------------------------------
+Version 1.0.0 - Version 1.0.1
+Last edit on: October 2nd, 2020
+Basic single message trading. Messages are loaded upon opening the chat.
+---------------------------------------------------------------
+[August 28th, 2020]
+    - implemented Dialog and openDialog
+    - user can now select an option and have it displayed in the EditText
+    - still need to access MyMessages and display the proper full version
+[August 29th, 2020]
+    - app can now read messages and options from JSON
+    - removed Room dependency
+    - created Utils class to convert JSON strings to ArrayLists
+    - missing dependent message functionality
+[August 30th, 2020]
+    - created message-trading algorithm (PlayThread)
+    - NPC messages are sent after a delay
+    - implemented game states
+    - added dependent message feature
+    - app can now run a simple conversation
+[August 31st, 2020]
+    - allowed last message to be sent and saved in Conversation.java using SharedPreferences
+    - fixed app crashes related to game states and Dialogs
+    - tried to implement saving/loading previously sent messages using SharedPreferences and Gson
+    - completely removed any Room functionality
+    - PlayThread is paused upon pausing ChatActivity
+[September 1st, 2020]
+    - successfully implemented saving & loading messages
+    - modified Utils.java. get list methods shortened with use of get individual objects from JSONObjects
+    - added getSavedMessagesFromJsonString which makes use of the above to return savedMessages
+    - successfully implemented saving gamestate, so chat continues exactly as the user leaves it
+    - created new temporary debug FloatingButton to test resetting the savedMessages and gamestate
+[September 2nd, 2020]
+    - tried to continuously update lastMessage. may need to scrap idea. currently, as ChatActivity pauses, so does the chat.
+    - tried to make message updating dynamic. somehow the names are getting mixed up
+[September 3rd, 2020]
+    - made lastMessage update dynamic. upon returning to MainActivity, the correct Conversation is updated with the last message.
+    - made profile picture only appear on the npcMessage that is lastMessageInGroup.
+    - every ChatActivity is now completely separate from every other one
+        - removed GameManager entirely. optionNum, currentNPCMessage, etc are now all fields of ChatActivity
+        - every ChatActivity has its own sharedPreferences -> SAVE_TO, so every conversation has different saved messages
+[September 4th, 2020]
+    - started managing adding new Conversations
+        - existing Conversations are now saved to sharedPreferences and reloaded when resuming
+        - when the appropriate trigger point, the next Conversation is pulled from allConversations (and conversations.jsonc)
+        - added a temporary debug FloatingButton to add the next conversation (simulate starting a new chapter)
+[September 5th, 2020]
+    - added profilePicture functionality -- however may need to modify
+        - stored profilePictureID in JSON file instead of using R.drawable
+        - send profilePicture data to ChatActivity and MessageAdapter
+[September 6th, 2020]
+    - profile picture now appears on every received NPCMessage, then disappears if a new one comes in
+[September 7th, 2020]
+    - increased loading efficiency; NPCMessages, Options, and MyMessages now only load in from the correct chapter
+    - GameManager now keeps track of the current chapter
+    - added name functionality; %name is replaced with any name
+[September 9th, 2020]
+    - add chapter functionality using GameManager; moving to the next chapter now triggers new messages and options
+    - note on loading: messages/options are only loaded from the current chapter. parsing only stops if the chapter exceeds the
+      current chapter. (any previous messages are still parsed, just not loaded)
+[September 10th, 2020]
+    - replaced chapter with group, now each chat has its own group, independent of other
+    - completely removed GameManager functionality, current group is now a field in ChatActivity
+[September 13th, 2020]
+    - removed field sharedPreferences to save lastMessage; localized it in the method 'saveLastMessage'
+[September 15th, 2020]
+    - removed android:maxWidth on messages; maxWidth is now calculated at run time to account for varying screen sizes
+    - added getAllItems() which updates ArrayList of all items. Called in onResume() and resetGame()
+        - resetGame() now correctly restarts current conversation back to group 1
+    - different conversations now load different npcMessages, myMessages and options
+[September 18th, 2020]
+    - refined Message JSON fields and data
+        - replaced all chapterNum with groups
+        - replaced boolean dependent with String type
+    - added ActionMessages (extends NPCMessage) which displays an action
+[September 19th, 2020]
+    - app now correctly rebuilds action messages
+    - added Sent, Delivered, Read icons for my messages
+    - added typing animation when "npc" state begins
+    - minor refinements to layout files
+[September 24th, 2020]
+    - vastly improved loading times
+        - allItems now loads starting from currentNPCMessage/optionNum
+        - turned allItems into a queue. messages are popped out when needed
+    - improved JSON files
+        - groups are now organized as a 2D array under the name
+        - removed the need to check for the correct group (removed keepParsing)
+[September 26th, 2020]
+    - improved reading and writing choices
+        - removed choices from JSON file, now Utils has a try-catch block
+        - applyText no longer sets the choice for upcoming npcMessage. this is done in playThread
+        - npcMessage choice is now set in "npc" gamestate in PlayThread
+[September 27th - October 1st 2020]
+    - worked towards adding key decision functionality
+    - minor JSON and Utils edits
+---------------------------------------------------------------
+Version 1.1.0
+Last edit on: October 14th, 2020
+Adding message blocks functionality.
+---------------------------------------------------------------
+[October 4th, 2020]
+    - allMessages are now saved upon leaving the chat, and rebuilt upon returning
+    - changed getAllItems to getNewItems
+[October 7th, 2020]
+    - combined extracting allItems from start with extracting allItems fromSaved
+    - minor improvements to Utils
+    - added message blocks; message blocks can now be referenced in JSON using type "variationBlock"
+[October 9th, 2020]
+    - improved getAllItems; now there are 2 separate methods for file->string and string->arraylist
+    - requesting message blocks now appends to the top of the arraylist
+    - successfully implemented message blocks
+[October 10th, 2020]
+    - minor improvements to PlayThread
+    - message blocks are now successfully triggered by a choice
+[October 13th, 2020]
+    - message block decision no longer require multiple files; now just 1 for the block
+    - minor improvements to Options (applying key decisions, remove after send button is clicked)
+    - message blocks can successfully rebuild and load, so long as MainActivity isn't killed
+[October 14th, 2020]
+    - blocks Hashtable is now saved between MainActivity lifecycle changes
+---------------------------------------------------------------
+Version 1.1.1
+Last edit on: December 17, 2020
+[GROUP 4]: Tests a large amount of messages.
+---------------------------------------------------------------
+[October 17-18th, 2020]
+    - story improvements; added group 4
+[October 24th, 2020]
+    - worked on changing themes
+
+[December 6th, 2020]
+    - revisited project after month hiatus
+    - improved style colours
+    - added menu into ChatActivity
+[December 8th, 2020]
+    - theme now successfully changes after calling recreate, only affecting messages and dialogs
+[December 17th, 2020]
+    - want to remove unnecessary code: currentNPCMessage, optionNum and group field from messages
+---------------------------------------------------------------
+Version 1.2.0
+Last edit on: December 17, 2020
+Removing unnecessary code.
+---------------------------------------------------------------
+[December 17th, 2020]
+    - added extra documentation
+    - removed group field from Message/NPCMessage/MyMessage/ActionMessage
+    - removed currentNPCMessage and optionNum
+---------------------------------------------------------------
+Version 1.2.1
+Last edit on: December 20, 2020
+Revamping MainActivity, conversation loading, and communication between MainActivity and ChatActivity
+---------------------------------------------------------------
+[December 17th, 2020]
+    - removed allConversations. storing two arraylists is wasteful.
+        - new Conversations are requested when needed -- this way we don't need to parse 2 json files every time when the app starts
+    - removed chatlist. storing name of json file is useless.
+    - profilePictures are no longer hard coded. added the HashTable visuals which stores the style and profilePicture for each Conversation
+        - style can now be customized for each Conversation. style covers entire app, so style is done.
+[December 18th, 2020]
+    - replaced startActivity with startActivityForResult. (changed ViewHolder in ConversationAdapter to non-static)
+        - lastMessage, profilePictureID, styleID, name and active status are now passed back to MainActivity
+        - Conversation fields are updated upon returning to MainActivity and reloaded
+        - lastMessage now works without sharedPreferences. removed saving/loading process from ChatActivity and MainActivity
+        - styleID and profilePictureID are now stored within the Conversation and sent to ChatActivity
+        - ChatActivity no longer saves lastMessage to sharedPreferences (removed saveLastMessage())
+    - style can be changed if the Activity leaves, and restarted using an intent
+[December 19th, 2020]
+    - tried to get styles to apply through intents and within the activity
+[December 20th, 2020]
+    - giving up on styles for now. style can be changed through intent.
+    - style and color xml improvements
+    - most active conversation now appears on the top
+---------------------------------------------------------------
+Version 1.3.0
+Last edit on: December 25, 2020
+Automatic group advancing. Controlled by GameManager
+---------------------------------------------------------------
+[December 20th, 2020]
+    - group is no longer saved by ChatActivity, instead is passed from MainActivity by intent.
+        - removed SharedPreferences. all functions are normal.
+[December 21st, 2020]
+    - tested automatic group advancement
+    - added chatState to ChatActivity
+        - made loadState() more readable
+        - chatState and passed back to MainActivity and sent back
+        - all functions normal
+[December 22nd, 2020]
+    - tested blocks which are triggered across different chats and groups. works as intended.
+    - nextGroup now increments and finishes the current chat (so twice incrementation)
+    - blocks can be called by multiple chats. christmas key decision is now used both by npc1 and npc2.
+    - christmas block now does the reverse choice for market and park
+[December 23rd, 2020]
+    - implemented automatic chat advancement
+[December 24th, 2020]
+    - tried to implement ViewModel/LiveData
+[December 25th, 2020]
+    - removed implementation of ViewModel/LiveData
+---------------------------------------------------------------
+Version 1.4.0
+Last edit on: December 28, 2020
+Note fragments.
+---------------------------------------------------------------
+[December 27th, 2020]
+    - tested note fragments.
+    - Strings can now be passed to NoteFragments.
+[December 28th, 2020]
+    - worked on hiding soft keyboard in NoteFragment
+    - fragment closes with two consecutive taps
+    - keyboard hides when NoteFragment is opened
+    - SupportActionBar is hidden in fragment and showed upon returning to ChatActivity
+---------------------------------------------------------------
+Version 1.5.0
+Last edit on: December 30, 2020
+EditTextDialogs.
+---------------------------------------------------------------
+[December 30th, 2020]
+    - implemented EditTextDialogs.
+    - Redacted EditTextDialogs.
+    - all functions normal.
+    - independent npc messages should be able to follow dependent npc messages
+---------------------------------------------------------------
+Version 1.6.0
+Last edit on: December 30, 2020
+Beginning setup.
+---------------------------------------------------------------
+[December 30th, 2020]
+    - added EditTextDialog and its layout back
+    - added setup() method
+    - EditTextDialogs work properly in receiving names and nicknames
+    - Dialogs work in choosing gender
+    - fixed crash relating to initVisuals() functioning by name. now functions by id.
+---------------------------------------------------------------
+Version 1.6.1
+Last edit on: January 4, 2021
+Updating Utils and JSON files to function by id, not name. Beginning setup. ChatInfoFragment.
+---------------------------------------------------------------
+[December 31st, 2020]
+    - improvements to JSON files
+        - removed reliance on name, now by id
+        - refined AlertDialogs to setup names
+        - added comments to AlertDialogs
+        - conversation id is now sent to ChatActivity
+    - chats can now function properly with custom names
+    - GameManager fields are now all saved, so AlertDialogs only appear on first run
+    - removed gender customization for now
+[January 1st, 2021]
+    - added new json file to setup name info
+    - created ChatInfoFragment
+    - updated EditTextDialog constructor to only take a string array rather than 8 strings
+    - removed applyNameInfo and split into 4 separate methods, in preparation that names can be changed from fragments
+    - refined ChatInfoFragment layout files
+[January 2nd, 2021]
+    - simplified changing names in ChatInfoFragment -- now only EditTexts are used
+    - names are now passed to ChatInfoFragment
+    - name and nickname are successfully updated across MainActivity and ChatActivity
+    - removed MainActivity's dependency on names
+[January 3rd, 2021]
+    - finished beginning setup. later conversations' names can be updated due to additions in requestNextConversation()
+    - tried implementing changing activity backgrounds.
+[January 4th, 2021]
+    - refined background animations, now works as intended
+---------------------------------------------------------------
+Version 1.7.0
+Last edit on: January 9th, 2021
+Background and sound effect Triggers.
+---------------------------------------------------------------
+[January 4th, 2021]
+    - added BackgroundMessage.
+        - PlayThread can now receive BackgroundMessages and update accordingly
+        - added new field bgState to Conversation
+        - bgState is sent back to MainActivity so bgState is saved across activity deaths
+[January 5th, 2021]
+    - added sound effects. automatically triggered.
+    - NoteFragments can now go through multiple pages of text.
+[January 9th, 2021]
+    - tested MediaPlayer
+---------------------------------------------------------------
+Version 1.8.0
+Last edit on:
+Revisiting and rethinking things.
+    - why is ChatActivity responsible for saving messages? Why don't we just send it back to MainActivity
+      using onActivityResult?
+    - why can't we pause the playThread while NoteFragment is open? Consider just removing the NoteFragment as a whole
+    - should fix NPCMessage json fields. We can combine the booleans into one integer code and we can add
+      a typing timer to each. We can also add a timestamp to each MyMessage
+---------------------------------------------------------------
+[April 20th, 2021]
+    - ChatActivity is no longer responsible for saving messages:
+        - removed all use of SharedPreferences in ChatActivity
+        - all data is now sent back to MainActivity to update the corresponding Conversation
+        - this fixes the bug where multiple chats in chatState paused will incorrectly transfer saved messages
+        - removed onStop()
+        - ConversationAdapter is now responsible for sending jsonStrings to ChatActivity. ChatActivity only decodes it
+    - removed NoteFragment
+        - too expensive and difficult to organize
+[April 21st, 2021]
+    - each MyMessage now displays a predetermined timestamp
+    - re-added a BackgroundMessage to the JSON file. Commented out.
+    - removed lastMessageInGroup and lastMessageInConversation
+        - replaced it with control: continue, pause or stop
+    - fixed bug where leaving turing typingAnim caused the next Message to be skipped
+[April 22nd, 2021]
+    - worked on updating remaining JSON files to new version
+[April 23rd, 2021]
+    - fixed all bugs relating to updated JSON files
+    - added AudioMessage functionality | start and stop
+    - renamed "state" to "gameState"
+[April 25th, 2021]
+    - made Background fade out as well
+    - re-implemented NoteMessages using TextViews instead of a Fragment
+        - exiting a NoteMessage halfway through results in the Note starting over
+        - displayNote() added to ChatActivity
+        - minor modifications to npc json files (replaced field content with noteContent)
+        - keyboard and actionBar are hidden properly
+[April 30th, 2021]
+    - started removing Conversation fields and constants from ChatActivity
+[May 1st, 2021]
+    - all Conversation fields removed
+    - removed Bitmap field from Conversation
+[May 2nd, 2021]
+    - removed name and nickname fields
+        - removed relevant lines from ChatActivity, MainActivity and ConversationAdapter
+    - fixed fatal crash
+    - no longer manually parse a Conversation object -- we can use GSON
+TODO:
+    - info card for ChatActivity
+        - u can also put little icons that describe the character (age, grade, gender,etc)
+    - final additions!
+        - improve Triggers and npcMessages (redundant abstract class for BackgroundMessage, NoteMessage)
+    - what if we run out of memory? for allMessages, are we only storing the relevant messages for the group and person?
+    - saving messages does not work when we press home D:
+Requires Further Testing
+    - general bug where leaving during typing animation causes next npc message to not show up [UPDATE: should be ok now]
+    - weird stuff happens when we try to advance the group while the PlayThread is running. NullPointerException and
+      OutOfBoundsException are possible [UPDATE: just don't advance unless thread is frozen]
+    - advancing groups automatically is a bit funky -- sometimes it only works when the chat is entered then exited,
+      despite being at the correct story trigger point [UPDATE: should be ok now.]
+
+General Notes
+    What we are doing is fine. GSON -> JSON -> SharedPreferences is okay.
+    If we want SQL/Room, then follow "Single Class Inheritance" -- one table with all columns of
+    both independent and dependent NPC messages. We just need to check the type.
+    We will need 3 tables, npc, my, and option.
+----------------------------------------------------------------------------------------------------
+FULL REBUILD USING MVVM ARCHITECTURE:
+----------------------------------------------------------------------------------------------------
 [Tuesday, August 17th, 2021]
     - Room architecture works (DAO, Repository, Database w/ pre-populating)
 [Wednesday, August 18th, 2021]
