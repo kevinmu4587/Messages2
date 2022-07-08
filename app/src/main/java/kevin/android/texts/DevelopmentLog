@@ -567,14 +567,24 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - updated block encoding system. block type is now of the form key_<first_block_id>_<block_name>
         - this should allow us to access block within existing blocks
         - tested nested blocks. looks like it works!
+[Thursday, July 7th, 2022]
+    - tried adding unconditional blocks
+        - luckily, unconditional blocks are not globally accessed across multiple groups, else we need to store the json in a separate file or something
+        - but, getting sent messages currently is ordered by id (the order in the json file)
+[Friday, July 8th, 2022]
+    - finished unconditional blocks. it is a little unstable, i think because the thread may try to add block 0 items after a block has just been popped,
+       before they are loaded in
+        - it works okay in the normal run, but not during debugging
+    - implemented complex blocks requiring two decisions
+        - tested on normal run, works well
 
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
     - looks like name replacement isn't working properly in my messages
-    - we need a way to unconditionally load a chunk of messages (ex. seeing Children block)
     - conditional group incrementing, since the exhibition must come before the park
+
 
 Things to check at the end:
     - check if messages & conversation state are saved if the user leaves by closing the app instead of returning to the ConversationFragment

@@ -174,6 +174,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     private void checkAdvance() {
         String cmd = GameManager.timeline.get(0);
         Log.e(TAG, "command: " + cmd);
+        // timeline is saved by shared preferences in MainActivity
         GameManager.timeline.remove(0);
         if (cmd.substring(0, 4).equals("open")) {
             int conversationId = cmd.charAt(4) - '0';

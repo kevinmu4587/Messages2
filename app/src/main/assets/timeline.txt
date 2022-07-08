@@ -3,5 +3,6 @@
 open1
 incr1
 open2
-incr1
-incr2
+% <increment>_<condition: keyBlock==choice>_<conversation id if true>_<conversation id if false>
+incr_exhibitionDecision==1_1_2
+incr_exhibitionDecision==1_2_1

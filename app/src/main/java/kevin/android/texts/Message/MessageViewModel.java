@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import kevin.android.texts.GameManager;
 import kevin.android.texts.Utils;
 
 public class MessageViewModel extends AndroidViewModel {
@@ -84,6 +85,8 @@ public class MessageViewModel extends AndroidViewModel {
         if (next == null || upcomingMessages.size() == 0) return;
         next.setSent(true);
         upcomingMessages.remove(0);
+        next.setInsertNum(GameManager.nextInsertNum);
+        GameManager.nextInsertNum++;
         update(next);
     }
 }

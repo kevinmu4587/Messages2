@@ -30,6 +30,7 @@ public class Message {
     @ColumnInfo(name = "msg_group")
     private int group;
     private String time;
+    private int insertNum;
 
     public Message(int owner, String type, String[] content, int group, int block, String time) {
         this.owner = owner;
@@ -101,5 +102,13 @@ public class Message {
     public void replaceNamePlaceholders() {
        content[choice] = Utils.replaceName(content[choice]);
         Log.e(TAG, "Replacing name. Result: " + content[choice]);
+    }
+
+    public int getInsertNum() {
+        return this.insertNum;
+    }
+
+    public void setInsertNum(int insertNum) {
+        this.insertNum = insertNum;
     }
 }

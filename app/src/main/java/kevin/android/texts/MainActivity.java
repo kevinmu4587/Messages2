@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         GameManager.npc2FirstName = sharedPref.getString("npc2FirstName", "Default NPC2 First Name");
         GameManager.npc2LastName = sharedPref.getString("npc2LastName", "Default NPC2 Last Name");
         GameManager.npc2Nickname = sharedPref.getString("npc2Nickname", "Default NPC2 Nickname");
+        GameManager.nextInsertNum = sharedPref.getInt("nextInsertNum", 0);
         if (json == null) return;
         Type myType = new TypeToken<Map<String, Integer>>() {}.getType();
         Map<String, Integer> keyChoices = gson.fromJson(json, myType);
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("npc2FirstName", GameManager.npc2FirstName);
         editor.putString("npc2LastName", GameManager.npc2LastName);
         editor.putString("npc2Nickname", GameManager.npc2Nickname);
+        editor.putInt("nextInsertNum", GameManager.nextInsertNum);
         Gson gson = new Gson();
         String timeline = gson.toJson(GameManager.timeline);
         editor.putString("Timeline", timeline);

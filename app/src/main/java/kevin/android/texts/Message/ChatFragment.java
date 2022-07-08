@@ -408,14 +408,29 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     // get the choice by opening the dialog
                     state = "choose";
                 } else if (type.equals("block")) {
-                    String blockName = nextMessage.getContent()[0];
-                    int blockChoice = GameManager.getKeyDecision(blockName);
-                    conversation.pushBlock(blockChoice);
+                    String[] blockInformation = nextMessage.getContent()[0].split("_");
+                    int newBlockNum = -1;
+                    // a basic conditional block
+                    if (blockInformation.length == 1) {
+                        String blockName = blockInformation[0];
+                        newBlockNum = GameManager.getKeyDecision(blockName);
+                    } else if (blockInformation.length == 2) {
+                        if (blockInformation[0].equals("unconditional")) {
+                            // an unconditional block. just switch to the block num
+                            newBlockNum = Integer.parseInt(blockInformation[1]);
+                        } else {
+                            // complex blocks
+                            String block1 = blockInformation[0];
+                            String block2 = blockInformation[1];
+                            newBlockNum = Integer.parseInt(GameManager.getKeyDecision(block1) + "" + GameManager.getKeyDecision(block2));
+                        }
+                    }
+                    conversation.pushBlock(newBlockNum);
                     messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
                     if (!finished) {
                         messageViewModel.submitMessage(nextMessage);  // get rid of the message of type 'block'
                         messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
-                        Log.e(TAG, "found block " + blockName + ", choice " + blockChoice);
+                        Log.e(TAG, "moving to new block: " + newBlockNum);
                     }
                 } else if (type.equals("action")) {
                     submitMessage();
