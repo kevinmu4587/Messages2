@@ -1425,6 +1425,313 @@
                 "block": 0,
                 "time": "10:18pm"
             }
+        ],
+        // group 5: Final Preparations, Part 1 | #14
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "Hey %playernickname!"
+                ],
+                "block": 0,
+                "time": "8:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "So Christmas Eve is tomorrow! Have you decided where we will be going?"
+                ],
+                "block": 0,
+                "time": "8:19pm"
+            },
+            {
+                "type": "block",
+                "content": [
+                    "exhibitionDecision"  // use this to fetch the saved decision
+                ],
+                "block": 0,
+                "time": "8:19pm"
+            },
+            // ---------- Block 1. EXHIBITION with Ax
+            {
+                "type": "my",
+                "content": [
+                    "Hi! Let's go to the exhibition together!",
+                    "To the Christmas exhibition!"
+                ],
+                "block": 1,
+                "time": "8:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Yayy! I'm super happy to hear that 😊"
+                ],
+                "block": 1,
+                "time": "8:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I was really looking forward to checking out the exhibition!"
+                ],
+                "block": 1,
+                "time": "8:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "So we will be exchanging presents too right? 🙂"
+                ],
+                "block": 1,
+                "time": "8:20pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yes!",
+                    "I'll bring your present.",
+                    "Yup, don't forget my present 🙃"
+                ],
+                "block": 1,
+                "time": "8:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright sounds good 😊",
+                    "I'm excited!",
+                    "Haha don't worry I won't 🥲"
+                ],
+                "block": 1,
+                "time": "8:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Let's meet up by the huge Christmas tree. It's right near the middle of the square"
+                ],
+                "block": 1,
+                "time": "8:21pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Umm where??",
+                    "Sounds good!",
+                    "I'm excited!"
+               ],
+                "block": 1,
+                "time": "8:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Oh don't worry, it's very hard to miss",
+                    "Awesome 🥰",
+                    "Me too!"
+                ],
+                "block": 1,
+                "time": "8:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "So that's final then!"
+                ],
+                "block": 1,
+                "time": "8:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Thanks for agreeing to spend this Christmas with me"
+                ],
+                "block": 1,
+                "time": "8:22pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Thanks for being awesome",
+                    "No worries!",
+                    "We'll spend next Christmas together too"
+                ],
+                "block": 1,
+                "time": "8:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Aww that's so sweet %playernickname 🥰",
+                    "🥰",
+                    "Haha one Christmas at a time %playernickname"
+                ],
+                "block": 1,
+                "time": "8:23pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright then I'll see you tomorrow by the tree 🎄"
+                ],
+                "block": 1,
+                "time": "8:23pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "I'll be there!",
+                    "Sorry if I get lost.",
+                    "Don't be late!"
+                ],
+                "block": 1,
+                "time": "8:23pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Perfect 🥰",
+                    "Don't worry, I will wait for you 😉",
+                    "Haha you too %playername"
+                ],
+                "block": 1,
+                "time": "8:24pm"
+            },
+            // ----------- Block 2: PARK with Ax ------
+            {
+                "type": "my",
+                "content": [
+                    "Hi! Let's go to the park together",
+                    "We can meet up at the park"
+                ],
+                "block": 2,
+                "time": "8:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright awesome!"
+                ],
+                "block": 2,
+                "time": "8:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Thanks for telling me 🙂"
+                ],
+                "block": 2,
+                "time": "8:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Sometimes just a simple evening in the park can be more fun than being a busy and crowded exhibition!"
+                ],
+                "block": 2,
+                "time": "8:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Want to meet up on the swings? We can hang out and exchange presents there too"
+                ],
+                "block": 2,
+                "time": "8:21pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "That sounds perfect!",
+                    "The swings sound good",
+                    "I'll be there."
+                ],
+                "block": 2,
+                "time": "8:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alrighty then 🙂 sounds like a plan",
+                    "Sounds good 🙂",
+                    "Awesome 🙂"
+                ],
+                "block": 2,
+                "time": "8:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Thanks for choosing to spend Christmas with me %playernickname"
+                ],
+                "block": 2,
+                "time": "8:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "So I'll see you tomorrow then? The 24th?"
+                ],
+                "block": 2,
+                "time": "8:21pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Actually, can we do the 25th?",
+                    "I'm busy tomorrow.",
+                    "I'm going out with someone else tomorrow."
+                ],
+                "block": 2,
+                "time": "8:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Okay that works too",
+                    "Oh really? Okay then in that case we can do the 25th. Still counts as Christmas 🙂",
+                    "Oh okay %playername, then let's meet up on Christmas Day"
+                ],
+                "block": 2,
+                "time": "8:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "So I'll see you at the swings the day after tomorrow then!"
+                ],
+                "block": 2,
+                "time": "8:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Yup",
+                    "Thanks for understanding",
+                    "Sorry about that"
+                ],
+                "block": 2,
+                "time": "8:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright sounds good 😊",
+                    "No worries 😊",
+                    "That's alright 😊"
+                ],
+                "block": 2,
+                "time": "8:23pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Good night %playername!"
+                ],
+                "block": 2,
+                "time": "8:23pm"
+            }
         ]
     ],
     // player 2: Tommy
@@ -2110,6 +2417,660 @@
                 ],
                 "block": 0,
                 "time": "11:20am"
+            }
+        ],
+        // group 4: Shopping | #11
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "yo %playername"
+                ],
+                "block": 0,
+                "time": "2:15pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "it's almost time for winter break! no more school"
+                ],
+                "block": 0,
+                "time": "2:15pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Heck yeah!",
+                    "Almost there!",
+                    "Let's gooo"
+                ],
+                "block": 0,
+                "time": "2:15pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Time to relax a bit",
+                    "Yupp",
+                    "Very nice"
+                ],
+                "block": 0,
+                "time": "2:16pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "U said you were going to go Christmas shopping tonight?"
+                ],
+                "block": 0,
+                "time": "2:16pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yeah I said that",
+                    "I might go",
+                    "No I didn't"
+                ],
+                "block": 0,
+                "time": "2:16pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright cool",
+                    "Yeah the snow is prety brutal today huh",
+                    "Oh weird. I thought u said that"
+                ],
+                "block": 0,
+                "time": "2:16pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "What will you be shopping for?"
+                ],
+                "block": 0,
+                "time": "2:16pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Presents for a friend.",
+                    "A present for someone special.",
+                    "Presents for a classmate."
+                ],
+                "block": 0,
+                "time": "2:17pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "you mean %npc1name? lol"
+                ],
+                "block": 0,
+                "time": "2:17pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "idk from what I've seen you 2 have been talking a lot recently"
+                ],
+                "block": 0,
+                "time": "2:17pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I only met her that one time but she seems pretty cool"
+                ],
+                "block": 0,
+                "time": "2:18pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "And you've decided what youre going to get her right?"
+                ],
+                "block": 0,
+                "time": "2:18pm"
+            },
+            {
+                "type": "key_1_axChristmasGift",
+                "content": [
+                    "A stuffed bunny.",
+                    "A mini Christmas tree.",
+                    "A set of stickers."
+                ],
+                "block": 0,
+                "time": "2:18pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Wow that's..."
+                ],
+                "block": 0,
+                "time": "2:18pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Romantic >:)"
+                ],
+                "block": 0,
+                "time": "2:18pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright i'll stop teasing lol. is that all you're planning on buying?"
+                ],
+                "block": 0,
+                "time": "2:18pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "I need a gift for %npc2name too.",
+                    "There's another friend named %npc2name."
+                ],
+                "block": 0,
+                "time": "2:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "%npc2name? I think she's in my biology class."
+                ],
+                "block": 0,
+                "time": "2:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Wow nice so you are out here shopping for two ladies huh"
+                ],
+                "block": 0,
+                "time": "2:19pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yeah they are good friends.",
+                    "Yeah she's cute.",
+                    "Stop"
+                ],
+                "block": 0,
+                "time": "2:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright gotchu whatever u say",
+                    "I never really talked with her so i wouldn't know",
+                    "alright sorry just teasing"
+                ],
+                "block": 0,
+                "time": "2:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "What are you getting %npc2name?"
+                ],
+                "block": 0,
+                "time": "2:20pm"
+            },
+            {
+                "type": "key_andreaChristmasGift",
+                "content": [
+                    "A mug.",
+                    "Her favourite childhood movie.",
+                    "A cat plushie."
+                ],
+                "block": 0,
+                "time": "2:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright nice, can't go wrong with a mug",
+                    "That's nice, you guys can watch it together",
+                    "cute"
+                ],
+                "block": 0,
+                "time": "2:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Yeah I don't really know %npc1name or %npc2name at all but can I give u a piece of advice?"
+                ],
+                "block": 0,
+                "time": "2:21pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Sure",
+                    "I guess so",
+                    "Why not"
+                ],
+                "block": 0,
+                "time": "2:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "My advice is to stick with one. remember what happened when i got mugged?"
+                ],
+                "block": 0,
+                "time": "2:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "if you try to commit to both, it might not end very well. for you and them"
+                ],
+                "block": 0,
+                "time": "2:21pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Thanks.",
+                    "That's good advice.",
+                    "No I think I'm good"
+                ],
+                "block": 0,
+                "time": "2:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Lol I gotchu",
+                    "Lol yess I be proudly giving advice since the 8th grade",
+                    "Alright, suit yourself. U know what's best for you."
+                ],
+                "block": 0,
+                "time": "2:22pm"
+            },
+                        {
+                "type": "npc",
+                "content": [
+                    "Anyway enjoy the rest of ur day"
+                ],
+                "block": 0,
+                "time": "2:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Oh yeah and by the way I'm gonna be out of town for the next free weeks because I have my hockey tournament"
+                ],
+                "block": 0,
+                "time": "2:23pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "so U don't need to worry about getting me anything for christmas lol"
+                ],
+                "block": 0,
+                "time": "2:23pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Thanks for telling me",
+                    "Good luck on the touranment",
+                    "I'll still get you something"
+                ],
+                "block": 0,
+                "time": "2:24pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "yup",
+                    "Thanks man",
+                    "aha up to you"
+                ],
+                "block": 0,
+                "time": "2:24pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "cool so ill see you once school starts again"
+                ],
+                "block": 0,
+                "time": "2:24pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "See you!",
+                    "Happy holidays!",
+                    "Take care"
+                ],
+                "block": 0,
+                "time": "2:24pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Peace"
+                ],
+                "block": 0,
+                "time": "2:25pm"
+            }
+        ],
+        // group 5: Upcoming Decision | #12
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "jey %playername! merry early christmas"
+                ],
+                "block": 0,
+                "time": "7:17pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "have you finalized your plans for Christmas?"
+                ],
+                "block": 0,
+                "time": "7:17pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Hey, I'm going to the Christmas exhibition",
+                    "Yo, I'm planning to meet up with %npc1name and %npc2name."
+                ],
+                "block": 0,
+                "time": "7:17pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Oh with %npc1name/%npc2name?",
+                    "Ah that's what I thought haha"
+                ],
+                "block": 0,
+                "time": "7:17pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I remember reading about that new Christmas exhibition being opened. sounds like a really nice place to check out"
+                ],
+                "block": 0,
+                "time": "7:17pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Exactly, I gotta check it out",
+                    "They both mentioned it too"
+                ],
+                "block": 0,
+                "time": "7:18pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Yeahh though I think it's only open on Christmas eve, not Christmas day"
+                ],
+                "block": 0,
+                "time": "7:18pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "And u definitely can't go with both of them individually in one night"
+                ],
+                "block": 0,
+                "time": "7:18pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "U might wanna think of an alternative place to go for another day"
+                ],
+                "block": 0,
+                "time": "7:18pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "True. I was thinking the park.",
+                    "Hmm, not sure where else to go."
+                ],
+                "block": 0,
+                "time": "7:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Yeah that sounds like a good place to chill",
+                    "You could just chill at the park by the elementary school"
+                ],
+                "block": 0,
+                "time": "7:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I think the exhibition is a cooler place to go to though"
+                ],
+                "block": 0,
+                "time": "7:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Looks like you got a pretty big decision on your hands here"
+                ],
+                "block": 0,
+                "time": "7:20pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yeah I guess so.",
+                    "Will be a tough choice.",
+                    "I'll make it work."
+                ],
+                "block": 0,
+                "time": "7:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Yeah",
+                    "You can make it work",
+                    "I'm sure you will"
+                ],
+                "block": 0,
+                "time": "7:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "maybe i'll give you a bit of time to think about that one lol"
+                ],
+                "block": 0,
+                "time": "7:20pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Thanks for clearing things up.",
+                    "Yeah good point"
+                ],
+                "block": 0,
+                "time": "7:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Oh no probs",
+                    "Alrighty"
+                ],
+                "block": 0,
+                "time": "7:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I should get going too"
+                ],
+                "block": 0,
+                "time": "7:21pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "How was your hockey tournament?",
+                    "Okay, see you"
+                ],
+                "block": 0,
+                "time": "7:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Oh well it's still going on lol. I have semi-finals tomorrow, will be a big day. But ya anyway",
+                    "Yupp ya"
+                ],
+                "block": 0,
+                "time": "7:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Bye %playername"
+                ],
+                "block": 0,
+                "time": "7:22pm"
+            }
+        ],
+        // group 6: Ultimate Decision | #13
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "yo %playername"
+                ],
+                "block": 0,
+                "time": "10:24pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "So about what we were talking about earlier"
+                ],
+                "block": 0,
+                "time": "10:24pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "and this is partially to satisfy my own curiousity but"
+                ],
+                "block": 0,
+                "time": "10:24pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Have you decided? Are you going to the exhibition with %npc1name or %npc2name?"
+                ],
+                "block": 0,
+                "time": "10:24pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I'm sure you wouldn't had the time to really think about this one"
+                ],
+                "block": 0,
+                "time": "10:24pm"
+            },
+            {
+                "type": "key_1_exhibitionDecision",
+                "content": [
+                    "I will go with %npc1name.",
+                    "I will go with %npc2name."
+                ],
+                "block": 0,
+                "time": "10:26pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "alright so that's that then. I guess there is nothing left to say but good luck!"
+                ],
+                "block": 0,
+                "time": "10:26pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Thank you.",
+                    "I think I might need it.",
+                    "It'll be great."
+                ],
+                "block": 0,
+                "time": "10:26pm"
+            },           
+            {
+                "type": "npc",
+                "content": [
+                    "Lol i gotchu",
+                    "Nah dw man youll be fine",
+                    "Your confidence is good"
+                ],
+                "block": 0,
+                "time": "10:27pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "alright well anyway, I better get some rest for tomorrow."
+                ],
+                "block": 0,
+                "time": "10:27"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "merry early Christmas again!"
+                ],
+                "block": 0,
+                "time": "10:27pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Bye!",
+                    "Peace",
+                    "Okay, see you"
+                ],
+                "block": 0,
+                "time": "10:27pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "peace"
+                ],
+                "block": 0,
+                "time": "10:28pm"
             }
         ]
     ],
@@ -2843,6 +3804,397 @@
                 "block": 0,
                 "time": "2:50pm"
             }
+        ],
+        // group 4: Final Preparations, Part 2 | #15
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "hihi %playername"
+                ],
+                "block": 0,
+                "time": "9:18pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "so christmas eve is tomorroww"
+                ],
+                "block": 0,
+                "time": "9:18pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "hopefully u didnt forget but have u decided where we are spending christmas together?"
+                ],
+                "block": 0,
+                "time": "9:18pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "the exhibition or the park i mean"
+                ],
+                "block": 0,
+                "time": "9:19pm"
+            },
+            {
+                "type": "block",
+                "content": [
+                    "exhibitionDecision"  // use this to fetch the saved decision
+                ],
+                "block": 0,
+                "time": ""
+            },
+            // ----------- BLOCK 1: Park with Andrea ----------
+            {
+                "type": "my",
+                "content": [
+                    "Let's go to the park.",
+                    "I decided the park."
+                ],
+                "block": 1,
+                "time": "9:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "oh okii"
+                ],
+                "block": 1,
+                "time": "9:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "lets do it!"
+                ],
+                "block": 1,
+                "time": "9:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "so no exhibition then"
+                ],
+                "block": 1,
+                "time": "9:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "where do u want to meet up? maybe by the swings?"
+                ],
+                "block": 1,
+                "time": "9:20pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Swings are good.",
+                    "Sure",
+                    "Why not"
+                ],
+                "block": 1,
+                "time": "9:20pm"
+            },            
+            {
+                "type": "npc",
+                "content": [
+                    "okii"
+                ],
+                "block": 1,
+                "time": "9:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "so we're meeting tomorrow by the swings? is there anything else?"
+                ],
+                "block": 1,
+                "time": "9:20pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Actually, let's go on the 25th",
+                    "I'm busy tomorrow.",
+                    "Could we go on the 25th?"
+                ],
+                "block": 1,
+                "time": "9:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "oh okii",
+                    "T-T",
+                    "okii that works for me"
+                ],
+                "block": 1,
+                "time": "9:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "so ill see you on the 25th then!"
+                ],
+                "block": 1,
+                "time": "9:21pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "That's perfect",
+                    "Yup!",
+                    "We'll exchange presents too!"
+                ],
+                "block": 1,
+                "time": "9:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "^-^",
+                    "^-^",
+                    "oh yea haha"
+                ],
+                "block": 1,
+                "time": "9:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "ill bring your present!!"
+                ],
+                "block": 1,
+                "time": "9:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "okii thenn ill go to bed now. sweet dreams!"
+                ],
+                "block": 1,
+                "time": "9:22pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Good night!",
+                    "Dress warmly.",
+                    "Thanks for understanding"
+                ],
+                "block": 1,
+                "time": "9:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "nighty night",
+                    "okii will do",
+                    "thank uu"
+                ],
+                "block": 1,
+                "time": "9:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "bye byee~"
+                ],
+                "block": 1,
+                "time": "9:23pm"
+            },
+            // -------------- BLOCK 2: Exhibition with Andrea
+            {
+                "type": "my",
+                "content": [
+                    "Let's go to the exhibition!",
+                    "I've decided the exhibition."
+                ],
+                "block": 2,
+                "time": "9:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "oh yayy!!"
+                ],
+                "block": 2,
+                "time": "9:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "i realli wanted to go to the exhibition together ^"
+                ],
+                "block": 2,
+                "time": "9:19pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "where do u want to meet up? by the entrace maybe?"
+                ],
+                "block": 2,
+                "time": "9:19pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "The entrance is good.",
+                    "Whatever you like.",
+                    "I'm not sure"
+                ],
+                "block": 2,
+                "time": "9:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "yayy ^-^",
+                    "okii",
+                    "okii u can let me know later if theres a better spot to meet"
+                ],
+                "block": 2,
+                "time": "9:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "this christmas is going to be so nice ^-^ it'll just be like old times"
+                ],
+                "block": 2,
+                "time": "9:20pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Can't wait!",
+                    "It'll be fun",
+                    "Why do you think of the past so much?"
+                ],
+                "block": 2,
+                "time": "9:20pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "yayy (◡‿◡✿)",
+                    "(◡‿◡✿)",
+                    "oh idkk i just.. those were the good days"
+                ],
+                "block": 2,
+                "time": "9:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "oh and one more thing"
+                ],
+                "block": 2,
+                "time": "9:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "will u be bringing my present?"
+                ],
+                "block": 2,
+                "time": "9:21pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yes",
+                    "Of course",
+                    "Only if you bring mine!"
+                ],
+                "block": 2,
+                "time": "9:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "okii",
+                    "(◡‿◡✿)",
+                    "mmm yess your present is readi"
+                ],
+                "block": 2,
+                "time": "9:21pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "okii then i will see you tomorrow!!"
+                ],
+                "block": 2,
+                "time": "9:22pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "thank uu ᕙ(^▿^-ᕙ)"
+                ],
+                "block": 2,
+                "time": "9:22pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Thank you too!",
+                    "No worries.",
+                    "Why are you thanking me?"
+                ],
+                "block": 2,
+                "time": "9:23pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "(｡◕‿‿◕｡)",
+                    "◕ ◡ ◕",
+                    "oh mm for.. spending this Christmas with me"
+                ],
+                "block": 2,
+                "time": "9:23pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "anywayy im getting super sleepy zZzz"
+                ],
+                "block": 2,
+                "time": "9:23pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "im going to go to sleep noww"
+                ],
+                "block": 2,
+                "time": "9:23pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Good night!",
+                    "See you tomorrow!",
+                    "See you at the entrance!"
+                ],
+                "block": 2,
+                "time": "9:24pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "byebye %playername~"
+                ],
+                "block": 2,
+                "time": "9:24pm"
+            },
         ]
     ]
 ]

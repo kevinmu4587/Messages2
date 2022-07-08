@@ -573,6 +573,8 @@ TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
     - looks like name replacement isn't working properly in my messages
+    - we need a way to unconditionally load a chunk of messages (ex. seeing Children block)
+    - conditional group incrementing, since the exhibition must come before the park
 
 Things to check at the end:
     - check if messages & conversation state are saved if the user leaves by closing the app instead of returning to the ConversationFragment
