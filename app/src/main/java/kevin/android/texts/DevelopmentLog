@@ -577,13 +577,21 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - it works okay in the normal run, but not during debugging
     - implemented complex blocks requiring two decisions
         - tested on normal run, works well
+    - implemented conditional group advancing
+        - added increment instructions ternary operator
+        - TODO: find a better solution to the "\r" problem. the last instruction has an unwanted newline character at the end
+    - QOL changes:
+        - the next conversation the user is supposed to open is now labeled with "New message!"
+            - bug: the first time Ax's conversation is closed, it still reads "New message!"
+        - Also updated Conversation's timestamp to the time of the last message that was sent
+        - Conversation's that return with a state of paused are now set unread=false
 
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
     - looks like name replacement isn't working properly in my messages
-    - conditional group incrementing, since the exhibition must come before the park
+    - in conversationadapter we are checking if inactive conversation .length ==3 (don't do this, store in a config file somewhere)
 
 
 Things to check at the end:

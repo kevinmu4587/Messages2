@@ -38,7 +38,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
         if (current.isUnread()) {
             holder.lastMessage.setTypeface(null, Typeface.BOLD);
         }
-        holder.timestamp.setText("12:34am");
+        holder.timestamp.setText(current.getLastTime());
         holder.readIndication.setImageResource(R.drawable.ic_check_filled);
         holder.screen.setTag(current);
     }

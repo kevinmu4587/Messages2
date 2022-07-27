@@ -67,6 +67,8 @@ public class ConversationViewModel extends AndroidViewModel {
                 c.setGroup(c.getGroup() + 1);
                 // not tested
                 c.setConversationState(Conversation.STATE_RUNNING);
+                c.setLastMessage("New message!");
+                c.setUnread(true);
                 update(c);
                 Log.e(TAG, "conversation " + c.getFullName() + " is now on group " + c.getGroup());
                 update(c);

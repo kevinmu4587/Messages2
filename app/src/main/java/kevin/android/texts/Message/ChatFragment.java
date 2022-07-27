@@ -174,7 +174,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                                 if (conversation.getCurrentBlock() == 0) {
                                     // we already finished this chat
                                     conversation.setConversationState(Conversation.STATE_DONE);
-                                    conversation.setUnread(false);
                                     sharedViewModel.setCurrentRunning(conversation);
                                     playRunnable.finished = true;
                                     Log.e(TAG, "Chat is finished, playRunnable killed. Set conversation state to DONE");
@@ -321,8 +320,9 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         // Log.e(TAG, "Submitted message " + nextMessage.getContent()[nextMessage.getChoice()]);
         messageViewModel.submitMessage(nextMessage);
 
-        // update sharedViewModel for the last message
+        // update sharedViewModel for the last sent message
         String lastMessage = nextMessage.getContent()[nextMessage.getChoice()];
+        String lastTime = nextMessage.getTime();
         if (nextMessage.getType().equals("npc")) {
             lastMessage = conversation.getFirstName() + ": " + lastMessage;
             conversation.setUnread(true);
@@ -331,6 +331,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             conversation.setUnread(false);
         }
         conversation.setLastMessage(lastMessage);
+        conversation.setLastTime(lastTime);
         sharedViewModel.setCurrentRunning(conversation);
     }
 

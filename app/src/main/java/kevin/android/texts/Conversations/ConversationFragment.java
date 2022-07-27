@@ -120,6 +120,9 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                     conversation.setConversationState(Conversation.STATE_PAUSED);
                     conversationViewModel.update(conversation);
                     checkAdvance();
+                } else if (conversation.getConversationState() == Conversation.STATE_PAUSED) {
+                    conversation.setUnread(false);
+                    conversationViewModel.update(conversation);
                 }
             }
         });
@@ -181,9 +184,24 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             Log.e(TAG, "opened next conversation of id: " + conversationId);
             conversationViewModel.loadNextConversation(conversationId);
         } else if (cmd.substring(0, 4).equals("incr")) {
-            int conversationId = cmd.charAt(4) - '0';
-            Log.e(TAG, "incremented conversation with id: " + conversationId);
-            conversationViewModel.incrementConversationWithID(conversationId);
+            String[] incrementInstructions = cmd.split("_");
+            int conversationIdToIncrement = 0;
+            if (incrementInstructions.length == 1) {
+                conversationIdToIncrement = cmd.charAt(4) - '0';
+            } else {
+                String[] conditionParts = incrementInstructions[1].split("=");
+                String keyBlockName = conditionParts[0];
+                int blockCondition = Integer.parseInt(conditionParts[1]);
+                if (GameManager.getKeyDecision(keyBlockName) == blockCondition) {
+                    // value if true
+                    conversationIdToIncrement = Integer.parseInt(incrementInstructions[2]);
+                } else {
+                    // value if false
+                    conversationIdToIncrement = Integer.parseInt(incrementInstructions[3].substring(0,1));
+                }
+            }
+            Log.e(TAG, "incremented conversation with id: " + conversationIdToIncrement);
+            conversationViewModel.incrementConversationWithID(conversationIdToIncrement);
         }
     }
 

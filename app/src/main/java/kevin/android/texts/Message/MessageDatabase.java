@@ -66,7 +66,7 @@ public abstract class MessageDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             // prepopulate
-            String json = Utils.loadJSONFromAssets(activity, "messages.jsonc");
+            String json = Utils.loadFileFromAssets(activity, "messages.jsonc");
             int count = 0;
             try {
                 JSONArray players = new JSONArray(json);

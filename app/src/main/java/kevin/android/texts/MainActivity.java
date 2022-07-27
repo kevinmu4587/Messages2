@@ -5,7 +5,6 @@ import androidx.emoji2.bundled.BundledEmojiCompatConfig;
 import androidx.emoji2.text.EmojiCompat;
 import androidx.preference.PreferenceManager;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadTimeline() {
-        String json = Utils.loadJSONFromAssets(getApplicationContext(), "timeline.txt");
+        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline");
         Utils.setupTimeline(json);
     }
 }

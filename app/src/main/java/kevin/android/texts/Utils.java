@@ -16,7 +16,7 @@ public class Utils {
         return ret;
     }
 
-    public static String loadJSONFromAssets(Context context, String file) {
+    public static String loadFileFromAssets(Context context, String file) {
         String json;
         try {
             InputStream is = context.getAssets().open(file);

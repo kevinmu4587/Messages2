@@ -81,15 +81,15 @@
             // }
         ],
         // group 2
-        // [
-        //     {
-        //         "type": "npc",
-        //         "content": [
-        //             "This is group 2 of player 1."
-        //         ],
-        //         "block": 0,
-        //         "time": "9:01pm"
-        //     },
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "This is group 2 of player 1."
+                ],
+                "block": 0,
+                "time": "9:01pm"
+            }
         //     {
         //         "type": "background",
         //         "content": ["market"],
@@ -150,7 +150,7 @@
         //         "block": 0,
         //         "time": "9:00pm"
         //     }
-        // ],
+        ],
         // group 3
         // [
         //     {
@@ -461,17 +461,16 @@
             {
                 "type": "npc",
                 "content": [
-                    "Hi this should be player 2 right?"
+                    "Make the exhibition decision"
                 ],
                 "block": 0,
                 "time": "7:09am"
             },
             {
-                "type": "my",
+                "type": "key_1_exhibitionDecision",
                 "content": [
-                    "Yes.",
-                    "No.",
-                    "I don't know."
+                    "go with ax",
+                    "go with you"
                 ],
                 "block": 0,
                 "time": "7:07am"
@@ -479,22 +478,10 @@
             {
                 "type": "npc",
                 "content": [
-                    "Good to hear.",
-                    "Whoops.",
-                    "That's strange."
+                    "cool lets see. whoever you picked should be incremented next."
                 ],
                 "block": 0,
                 "time": "7:10am"
-            },
-            {
-                "type": "my",
-                "content": [
-                    "Bye",
-                    "See you later.",
-                    "Adios."
-                ],
-                "block": 0,
-                "time": "7:17am"
             }
         ],
         // group 2

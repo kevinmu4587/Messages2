@@ -26,6 +26,7 @@ public class Conversation implements Parcelable  {
     private String nickname;
     private String description;
     private String lastMessage = "New message!";
+    private String lastTime;
 
     private int group = 1;
     private int conversationState;
@@ -223,5 +224,13 @@ public class Conversation implements Parcelable  {
         parcel.writeByte((byte) (active ? 1 : 0));
         parcel.writeInt(id);
         parcel.writeByte((byte) (unread ? 1 : 0));
+    }
+
+    public String getLastTime() {
+        return lastTime;
+    }
+
+    public void setLastTime(String lastTime) {
+        this.lastTime = lastTime;
     }
 }
