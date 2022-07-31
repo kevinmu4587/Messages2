@@ -3804,12 +3804,12 @@
                 "time": "7:20pm"
             }
         ],
-        // group 9: Crisis | #24 | Tuesday, January 29th
+        // group 9: Crisis Ongoing | #24 | Tuesday, January 29th
         [
             {
                 "type": "action",
                 "content": [
-                    "Chapter 24: Crisis"
+                    "Chapter 24: Crisis Ongoing"
                 ],
                 "block": 0,
                 "time": "none"
@@ -4248,6 +4248,327 @@
                 "block": 0,
                 "time": "11:28pm"
             }
+        ],
+        // group 10: Train | #28-1 | Sunday, February 3rd
+        [
+            {
+                "type": "action",
+                "content": [
+                    "Chapter 28-1: Train"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "Sunday, February 3rd"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "After a few minutes of non-stop running, you arrive at the train station.",
+                    "The station is silent. It is pretty late after all.",
+                    "You hope that you aren't too late."
+                ],
+                "block": 0,
+                "time": ""
+            },
+            {
+                "type": "my",
+                "content": [
+                    "%npc1name!",
+                    "%npc1name are you here?",
+                    "%npc1name where are you?"
+                ],
+                "block": 0,
+                "time": "11:12pm"
+            },
+            {
+                "type": "block",
+                "content": [
+                    "exhibitionAxOrAndrea"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            // Block 1: Path to ending A (Went to exhibition with Ax)
+            [ // start block 1
+            {
+                "type": "npc",
+                "content": [
+                    "%playername?"
+                ],
+                "block": 1,
+                "time": "11:12pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "What are you doing here?"
+                ],
+                "block": 1,
+                "time": "11:12pm"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "To your surprise, you see %npc1name sitting at a bench by herself.",
+                    "It's been over a month since you last saw her, and it was a little difficult recognizing her.",
+                    "Dark eye bags are visible under her eyes.",
+                    "As she gets up and walks towards you, you are able to get a closer look at her eyes.",
+                    "Upon closer inspection, it's only one eye that has a dark circle around it."
+                ],
+                "block": 1,
+                "time": "note"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "I thought you were gone",
+                    "I'm sorry about everything",
+                    "Can we talk?"
+                ],
+                "block": 1,
+                "time": "11:13pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I was just about to leave. But I had a feeling you would come.",
+                    "No it's okay %playername. No need to apologize. I'm sorry too.",
+                    "I'm sorry I don't have long, my train is leaving in a few minutes. But we can talk until then"
+                ],
+                "block": 1,
+                "time": "11:13pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Hey... do you remember what I said?"
+                ],
+                "block": 1,
+                "time": "11:13pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I do",
+                    "No",
+                    "Remember what?"
+                ],
+                "block": 1,
+                "time": "11:13pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I promised that... no matter what..."
+                ],
+                "block": 1,
+                "time": "11:14pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I'd always wait for you."
+                ],
+                "block": 1,
+                "time": "11:14pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I just knew that you wouldn't just let me leave without saying goodbye. So I waited for you."
+                ],
+                "block": 1,
+                "time": "11:14pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Then don't leave and keep waiting",
+                    "Thank you.",
+                    "I don't understand"
+                ],
+                "block": 1,
+                "time": "11:14pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "%playername...",
+                    "You're welcome.",
+                    "Look..."
+                ],
+                "block": 1,
+                "time": "11:15pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I'm really glad to have gotten to know you this year."
+                ],
+                "block": 1,
+                "time": "11:15pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "For a moment I thought that maybe I could just stay here."
+                ],
+                "block": 1,
+                "time": "11:15pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Then life reminded me that there's a part of me that is still stuck somewhere else."
+                ],
+                "block": 1,
+                "time": "11:15pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Where are you going?",
+                    "And that somewhere else is not here?",
+                    "I don't understand"
+                ],
+                "block": 1,
+                "time": "11:15pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I'm going back to my hometown. My father is... expecting me to be there"
+                ],
+                "block": 1,
+                "time": "11:16pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Why?",
+                    "What do you mean 'expecting'?",
+                    "What's at your hometown?"
+                ],
+                "block": 1,
+                "time": "11:16pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Look %playername I don't have much time",
+                    "I mean that he wants to talk.",
+                    "My father"
+                ],
+                "block": 1,
+                "time": "11:16pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Where I'm going... it's a little disconnected. I won't be able to message much"
+                ],
+                "block": 1,
+                "time": "11:17pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I hope you can understand. If not now, then maybe one day."
+                ],
+                "block": 1,
+                "time": "11:17pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I need to go now..."
+                ],
+                "block": 1,
+                "time": "11:17pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Wait",
+                    "I understand.",
+                    "I lov-"
+                ],
+                "block": 1,
+                "time": "11:17pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Remember my promise, will you?"
+                ],
+                "block": 1,
+                "time": "11:18pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Goodbye, %playernickname."
+                ],
+                "block": 1,
+                "time": "11:18pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Goodbye, %npc1name."
+                ],
+                "block": 1,
+                "time": "11:18pm"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "After saying your final words to %npc1name, she stands still for a moment.",
+                    "It's as if she's saving this moment and commiting it to memory.",
+                    "She picks up her bags and walks toward the platform.",
+                    "Then she's gone.",
+                    "You stand there for what feels like an eternity, trying to make sense of everything that's happened.",
+                    "Eventually, you come back to your senses and decide to walk home.",
+                    "As you lie in bed, you only think about 6 words:",
+                    "'I will always wait for you.'"
+                ],
+                "block": 1,
+                "time": "none"
+            },
+            ], // end block 1
+            // Block 2: Path to ending D (Went to exhibition with Andrea)
+            [
+            {
+                "type": "action",
+                "content": [
+                    "No one responds."
+                ],
+                "block": 2,
+                "time": "none"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "The train station is empty.",
+                    "Looks like the last train has already left.",
+                    "%npc1name did not wait for you.",
+                    "But why would she?",
+                    "She's gone. It was all for nothing.",
+                    "After a few minutes of processing your thoughts, you sluggishly make your way home.",
+                    "As you lie in bed, you think to yourself:",
+                    "What did %npc1name think of you before she left?"
+                ],
+                "block": 2,
+                "time": "none"
+            },
+            ]
         ]
     ],
     // player 2: Tommy
@@ -9693,73 +10014,89 @@
                 "time": "10:45pm"
             },
             {
-                "type": "key_1_crisisAcceptOrReject",
+                "type": "key_1_crisisRejectOrAccept",
                 "content": [
-                    "Yes",
-                    "Sorry I need to go"
+                    "I need to go.",
+                    "Yes."
                 ],
                 "block": 0,
                 "time": "10:46pm"
             },
             {
-                "type": "npc",
+                "type": "block",
                 "content": [
-                    "do u like %npc1name?"
+                    "crisisRejectOrAccept"
                 ],
                 "block": 0,
-                "time": ""
+                "time": "none"
+            },
+            // Block 1: Reject Andrea
+            [ // start block 1
+            {
+                "type": "npc",
+                "content": [
+                    "oh..."
+                ],
+                "block": 1,
+                "time": "10:46pm"
             },
             {
                 "type": "npc",
                 "content": [
-                    "do u like %npc1name?"
+                    "it's okay"
                 ],
-                "block": 0,
-                "time": ""
+                "block": 1,
+                "time": "10:46pm"
             },
             {
                 "type": "npc",
+                "content": [
+                    "i can't say i didnt see this coming."
+                ],
+                "block": 1,
+                "time": "10:47pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "its about %npc1name isnt it?"
+                ],
+                "block": 1,
+                "time": "10:47pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "you like her that much"
+                ],
+                "block": 1,
+                "time": "10:47pm"
+            },
+            {
+                "type": "my",
                 "content": [
                     "No",
                     "What?",
                     "Yes I do"
                 ],
-                "block": 0,
-                "time": ""
+                "block": 1,
+                "time": "10:47pm"
             },
             {
                 "type": "npc",
                 "content": [
-                    "oh r u sure?",
-                    "its just",
-                    "oh"
+                    "its okay. you should like her"
                 ],
-                "block": 0,
-                "time": ""
+                "block": 1,
+                "time": "10:47pm"
             },
             {
                 "type": "npc",
                 "content": [
-                    "u two are always together"
+                    "maybe im.. too young for you"
                 ],
-                "block": 0,
-                "time": ""
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "its okii though u should like her"
-                ],
-                "block": 0,
-                "time": ""
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "maybe im.. too young for u"
-                ],
-                "block": 0,
-                "time": ""
+                "block": 1,
+                "time": "10:47pm"
             },
             {
                 "type": "my",
@@ -9768,17 +10105,204 @@
                     "Don't say that",
                     "No, %npc1name is a friend"
                 ],
-                "block": 0,
-                "time": ""
+                "block": 1,
+                "time": "10:48pm"
             },
             {
                 "type": "npc",
                 "content": [
-                    "no no its okii %playername "
+                    "It's okay %playername. I get it."
                 ],
-                "block": 0,
-                "time": ""
+                "block": 1,
+                "time": "10:48pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "I need to go now.",
+                    "I'm sorry.",
+                    "Get home safe."
+                ],
+                "block": 1,
+                "time": "10:49pm"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "You wait a few moments for a response from %npc2name, but it never comes.",
+                    "You turn around and begin to run.",
+                    "You take a look back and see that %npc2name hasn't moved.",
+                    "Will you make it to the train station in time?"
+                ],
+                "block": 1,
+                "time": "none"
             }
+            ], // end block 1
+            // Block 2: Accept Andrea
+            [ // start block 2
+            {
+                "type": "npc",
+                "content": [
+                    "yes what?"
+                ],
+                "block": 2,
+                "time": "10:46pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "yes to the valentines day dance?"
+                ],
+                "block": 2,
+                "time": "10:46pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yes",
+                    "Uh huh"
+                ],
+                "block": 2,
+                "time": "10:47pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "omgosh %playername!!!"
+                ],
+                "block": 2,
+                "time": "10:47pm"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "%npc2name hugs you, almost knocking you over"
+                ],
+                "block": 2,
+                "time": "none"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Woah hey",
+                    "Take it easy!",
+                    "Uh"
+                ],
+                "block": 2,
+                "time": "10:47pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "yayy!!!!!!!!"
+                ],
+                "block": 2,
+                "time": "10:48pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "i was so nervous you would say no"
+                ],
+                "block": 2,
+                "time": "10:48pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "There was no reason to be nervous",
+                    "You're so brave!",
+                    "Right"
+                ],
+                "block": 2,
+                "time": "10:48pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "i'm so excited! now we are official"
+                ],
+                "block": 2,
+                "time": "10:48pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "ohhh theres so much to do! i need to pick a dress right away!"
+                ],
+                "block": 2,
+                "time": "10:49pm"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "%npc2name is flowing with energy. Her eyes are shimmering like the sun on a lake.",
+                    "You decide to walk home together. She walks very slowly as if to savour the time.",
+                    "She holds your hand confortably, now that you two are official.",
+                    "The entire way home, she talks about the upcoming dance.",
+                    "It is quite late when you arrive at her house.",
+                    "You are a little tired, but it's clear %npc2name is not."
+                ],
+                "block": 2,
+                "time": "none"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "okii thank you for coming out tonight!"
+                ],
+                "block": 2,
+                "time": "11:27pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "have a good night!! i'll talk to you very soon!"
+                ],
+                "block": 2,
+                "time": "11:27pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Good night, %npc2name",
+                    "Thank you, %npc2name",
+                    "See ya"
+                ],
+                "block": 2,
+                "time": "11:27pm"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "%npc2name hugs you"
+                ],
+                "block": 2,
+                "time": "none"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "%npc2name skips up her driveway"
+                ],
+                "block": 2,
+                "time": "none"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "After a final wave goodbye from her front door, you start to head home.",
+                    "Looks like you are in a relationship now.",
+                    "You arrive at home, wash up, and head to bed.",
+                    "Your head is cloudy with the possible futures you and %npc2name will experience together.",
+                    "But one thought sticks out among the others:",
+                    "How is %npc1name?",
+                    "As you struggle to fall asleep, you remember that hadn't responded to %friendname's message yet."
+                ],
+                "block": 2,
+                "time": "none"
+            }
+            ] // end block 2
         ]
     ]
 ]
