@@ -68,10 +68,6 @@ public class MessageViewModel extends AndroidViewModel {
         return repository.getSentMessages(owner, group);
     }
 
-//    public LiveData<List<Message>> getAllMessages() {
-//        return allMessages;
-//    }
-
     public void setUpcomingMessages(List<Message> upcomingMessages) {
         this.upcomingMessages = upcomingMessages;
     }

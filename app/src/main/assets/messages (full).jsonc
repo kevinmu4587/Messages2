@@ -14,11 +14,31 @@
             {
                 "type": "action",
                 "content": [
-                    "Friday, October 26th"
+                    "Friday, October 26th, 8:01pm"
                 ],
                 "block": 0,
                 "time": "none"
             },
+            {
+                "type": "note",
+                "content": [
+                    "...",
+                    "......",
+                    "Running.",
+                    "Running running running.",
+                    "Who's running?",
+                    "It starts to rain.",
+                    "They stop at a long bridge.",
+                    "They start to climb onto the railing.",
+                    "It's a long way down.",
+                    "One, two, three.",
+                    "Wait - it sounds like someone's coming.",
+                    "They take one final look back..."
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            
             {
                 "type": "npc",
                 "content": [
@@ -261,7 +281,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Thursday, November 1st"
+                    "Thursday, November 1st, 4:31pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -631,7 +651,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Wednesday, November 21st"
+                    "Wednesday, November 21st, 6:37pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -1102,7 +1122,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Tuesday, December 11th"
+                    "Tuesday, December 11th, 10:08pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -1503,7 +1523,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Sunday, December 23rd"
+                    "Sunday, December 23rd, 8:19pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -1836,7 +1856,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Monday, December 24th"
+                    "Monday, December 24th, 8:47pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -2711,7 +2731,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Tuesday, December 25th"
+                    "Tuesday, December 25th, 8:48pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -3703,7 +3723,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Wednesday, January 2nd"
+                    "Wednesday, January 2nd, 12:34am"
                 ],
                 "block": 0,
                 "time": "none"
@@ -3762,7 +3782,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Monday, January 28th"
+                    "Monday, January 28th, 7:17pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -3817,7 +3837,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Tuesday, January 29th"
+                    "Tuesday, January 29th, 11:14pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -4262,7 +4282,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Sunday, February 3rd"
+                    "Sunday, February 3rd, 11:12pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -4275,7 +4295,7 @@
                     "You hope that you aren't too late."
                 ],
                 "block": 0,
-                "time": ""
+                "time": "none"
             },
             {
                 "type": "my",
@@ -4541,7 +4561,7 @@
                 ],
                 "block": 1,
                 "time": "none"
-            },
+            }
             ], // end block 1
             // Block 2: Path to ending D (Went to exhibition with Andrea)
             [
@@ -4567,7 +4587,7 @@
                 ],
                 "block": 2,
                 "time": "none"
-            },
+            }
             ]
         ]
     ],
@@ -4586,7 +4606,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Tuesday, November 20th"
+                    "Tuesday, November 20th, 11:53pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -4845,7 +4865,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Wednesday, November 21st"
+                    "Wednesday, November 21st, 6:30pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -5024,7 +5044,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Monday, December 10th"
+                    "Monday, December 10th, 11:14am"
                 ],
                 "block": 0,
                 "time": "none"
@@ -5317,7 +5337,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Friday, December 21st"
+                    "Friday, December 21st, 2:15pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -5681,7 +5701,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Saturday, December 22nd"
+                    "Saturday, December 22nd. 7:17pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -5889,7 +5909,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Sunday, December 23rd"
+                    "Sunday, December 23rd, 10:24pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -6019,7 +6039,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Thursday, December 27th"
+                    "Thursday, December 27th, 3:43pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -6288,7 +6308,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Tuesday, January 15th"
+                    "Tuesday, January 15th, 4:17pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -6485,7 +6505,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Sunday, February 3rd"
+                    "Sunday, February 3rd, 10:37pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -6622,7 +6642,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Wednesday, November 21st"
+                    "Wednesday, November 21st, 10:43pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -6923,7 +6943,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Saturday, December 8th"
+                    "Saturday, December 8th, 8:47am"
                 ],
                 "block": 0,
                 "time": "none"
@@ -7168,7 +7188,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Thursday, December 13th"
+                    "Thursday, December 13th, 2:45pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -7399,7 +7419,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Sunday, December 23rd"
+                    "Sunday, December 23rd, 9:18pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -7816,7 +7836,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Tuesday, December 25th"
+                    "Tuesday, December 25th, 6:45pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -8105,7 +8125,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Monday, December 24th"
+                    "Monday, December 24th, 6:35pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -9353,7 +9373,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Thursday, January 17th"
+                    "Thursday, January 17th, 4:00pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -9620,7 +9640,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Thursday, January 24th"
+                    "Thursday, January 24th, 8:00pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -9765,7 +9785,7 @@
             {
                 "type": "action",
                 "content": [
-                    "Sunday, February 3rd"
+                    "Sunday, February 3rd, 9:58pm"
                 ],
                 "block": 0,
                 "time": "none"
@@ -9903,6 +9923,22 @@
         ],
         // group 9: Future | #27 | Sunday, February 3rd
         [
+            {
+                "type": "action",
+                "content": [
+                    "Chapter 27: Future"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Sunday, February 3rd, 10:41pm"
+                ],
+                "block": 0,
+                "time": "none"
+            },
             {
                 "type": "npc",
                 "content": [
@@ -10303,6 +10339,1509 @@
                 "time": "none"
             }
             ] // end block 2
+        ],
+        // group 10: Relationship | #28-2 | Monday, February 4th
+        [
+            {
+                "type": "action",
+                "content": [
+                    "Chapter 28-2: Relationship"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "Monday, February 4th, 1:18am"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "are u sleeping %playernickname"
+                ],
+                "block": 0,
+                "time": "1:18am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Nope",
+                    "What's with the nickname?",
+                    "What are you doing up?"
+                ],
+                "block": 0,
+                "time": "1:18am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "me too",
+                    "Oh idk i thought it was cute",
+                    "umm"
+                ],
+                "block": 0,
+                "time": "1:18am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "i cant sleep"
+                ],
+                "block": 0,
+                "time": "1:18am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Why?",
+                    "Me too.",
+                    "Everything okay?"
+                ],
+                "block": 0,
+                "time": "1:19am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "im just thinking of us ^^"
+                ],
+                "block": 0,
+                "time": "1:19am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "this is nice isnt it"
+                ],
+                "block": 0,
+                "time": "1:19am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yeah!",
+                    "Sure is",
+                    "Yes"
+                ],
+                "block": 0,
+                "time": "1:19am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "ive been wanting to tell you for a long time. since i was a child"
+                ],
+                "block": 0,
+                "time": "1:19am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "but i didnt really understand what i was feeling back then. i do now i think"
+                ],
+                "block": 0,
+                "time": "1:20am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "also i honestly wasnt sure if u would say yes but i just thought yolo"
+                ],
+                "block": 0,
+                "time": "1:20am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "I see",
+                    "You're very brave",
+                    "I feel the same"
+                ],
+                "block": 0,
+                "time": "1:20am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "^^"
+                ],
+                "block": 0,
+                "time": "1:20am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "i wish u were here now"
+                ],
+                "block": 0,
+                "time": "1:20am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Aww nooo",
+                    "Let's pretend I am",
+                    "I wish I was there too"
+                ],
+                "block": 0,
+                "time": "1:21am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "okii ill just pretend this pillow is you"
+                ],
+                "block": 0,
+                "time": "1:21am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "and give it a hug"
+                ],
+                "block": 0,
+                "time": "1:21am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Dang",
+                    "That's so cute",
+                    "I'll do the same."
+                ],
+                "block": 0,
+                "time": "1:21am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "(◍•ᴗ•◍)❤"
+                ],
+                "block": 0,
+                "time": "1:21am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "are u doing anything tmrw after school?"
+                ],
+                "block": 0,
+                "time": "1:22am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Nope",
+                    "No why?",
+                    "Yeah I have a club meeting"
+                ],
+                "block": 0,
+                "time": "1:22am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "okii",
+                    "okii",
+                    "oh choir? then youll be free after right?"
+                ],
+                "block": 0,
+                "time": "1:22am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "want to go to the mall with me? i need to get a dress for the dance"
+                ],
+                "block": 0,
+                "time": "1:22am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "we can go see a movie or eat something too"
+                ],
+                "block": 0,
+                "time": "1:23am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "im thinking the ramen place"
+                ],
+                "block": 0,
+                "time": "1:23am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "what do u think?"
+                ],
+                "block": 0,
+                "time": "1:23am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Sure",
+                    "That sounds good",
+                    "I'll let you know tomorrow"
+                ],
+                "block": 0,
+                "time": "1:23am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "yayy~",
+                    "yayy~",
+                    "oh okii"
+                ],
+                "block": 0,
+                "time": "1:24am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "it will be our first date!!",
+                ],
+                "block": 0,
+                "time": "1:24am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "It's exciting!",
+                    "That's pretty cool",
+                    "First one every for me too"
+                ],
+                "block": 0,
+                "time": "1:24am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "yesss",
+                    "^^",
+                    "me tooo"
+                ],
+                "block": 0,
+                "time": "1:24am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "what do u usually do before bed?"
+                ],
+                "block": 0,
+                "time": "1:25am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "I watch shows.",
+                    "I play games.",
+                    "I listen to music."
+                ],
+                "block": 0,
+                "time": "1:25am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "oh me too!"
+                ],
+                "block": 0,
+                "time": "1:25am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "ive been really into broken mirror recently"
+                ],
+                "block": 0,
+                "time": "1:25am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "have u heard of it?"
+                ],
+                "block": 0,
+                "time": "1:26am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "No",
+                    "Yes",
+                    "It sounds familiar"
+                ],
+                "block": 0,
+                "time": "1:26am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "oouu okay lets check it out together sometime",
+                    "its very exciting. not the best for before bed though since its quite intense",
+                    "ooou okiii ill show u next time we meet"
+                ],
+                "block": 0,
+                "time": "1:26am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "when r u gonna sleep"
+                ],
+                "block": 0,
+                "time": "1:27am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "I will go to sleep now",
+                    "Probably soon",
+                    "Never"
+                ],
+                "block": 0,
+                "time": "1:27am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "okii me too",
+                    "okii i will go to sleep now",
+                    "oh hehe okii i will go to sleep now though"
+                ],
+                "block": 0,
+                "time": "1:27am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "it is a monday tmrw after all... or i guess today"
+                ],
+                "block": 0,
+                "time": "1:27am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "okii sleeping party!"
+                ],
+                "block": 0,
+                "time": "1:28am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "ill see you in the dream world"
+                ],
+                "block": 0,
+                "time": "1:28am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "See you there!",
+                    "Okay",
+                    "Sleeping party!"
+                ],
+                "block": 0,
+                "time": "1:28am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "333 goodnight %playernickname"
+                ],
+                "block": 0,
+                "time": "1:28am"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "You put down your phone and get ready to sleep.",
+                    "Looks like you and %npc2name are in a full-on relationship now.",
+                    "%npc2name seems pretty happy about it.",
+                    "You can't help but think about %npc1name.",
+                    "You weren't able to get one final goodbye with her.",
+                    "Either way, you just hope you made the right choice."
+                ],
+                "block": 0,
+                "time": "none"
+            }
+        ] 
+    ],
+    // player 4: Police
+    [
+        // group 1: Red and Blue | #29 | Monday, February 4th
+        [
+            {
+                "type": "action",
+                "content": [
+                    "Chapter 29: Red and Blue"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "Monday, February 4th, 5:47am"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            // load 1 of 4 police blocks
+            {
+                "type": "block",
+                "content": [
+                    "exhibitionAxOrAndrea_crisisRejectOrAccept"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            // block 1-1: Ending A (exhibition with Sara, choose Sara)
+            [ // start block 1-1
+            {
+                "type": "note",
+                "content": [
+                    "It feels like you just managed to fall asleep, but then you hear knocking at the door.",
+                    "Three loud knocks.",
+                    "Who could be here at this hour?",
+                    "As you make your way to the front door, some flickering red and blue lights illuminate the inside of your house.",
+                    "Your heart sinks.",
+                    "You open the door, and see two police officers.",
+                    "They remove their hats."
+                ],
+                "block": 11,
+                "time": "note"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Are you Mr. %playername %playerlastname?"
+                ],
+                "block": 11,
+                "time": "5:47am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yes",
+                    "What happened?",
+                    "What is it?"
+                ],
+                "block": 11,
+                "time": "5:47am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "We are here to talk about a close friend of yours."
+                ],
+                "block": 11,
+                "time": "5:47am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I'm very sorry."
+                ],
+                "block": 11,
+                "time": "5:48am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Ms. %npc2name was a victim of a local mugging."
+                ],
+                "block": 11,
+                "time": "5:48am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "We responded to a call approximately 40 minutes ago. She was stabbed and found lying in the street."
+                ],
+                "block": 11,
+                "time": "5:48am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "We were told that you were her last contact."
+                ],
+                "block": 11,
+                "time": "5:49am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Is she okay?",
+                    "Oh no",
+                    "Where is she now?"
+                ],
+                "block": 11,
+                "time": "5:49am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "She's currently in the hospital. She's in critical condition."
+                ],
+                "block": 11,
+                "time": "5:49am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Oh no",
+                    "No",
+                    "It can't be"
+                ],
+                "block": 11,
+                "time": "5:49am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I'm very sorry."
+                ],
+                "block": 11,
+                "time": "5:50am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Would you happen to have any information about who the perpetrator might be?"
+                ],
+                "block": 11,
+                "time": "5:50am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "No",
+                    "I don't know anything",
+                    "I can't think of anything"
+                ],
+                "block": 11,
+                "time": "5:51am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright. We will be in touch if you think of something."
+                ],
+                "block": 11,
+                "time": "5:51am"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "The officer hands you a business card"
+                ],
+                "block": 11,
+                "time": "none"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Good night."
+                ],
+                "block": 11,
+                "time": "5:51am"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "The officers leave."
+                ],
+                "block": 11,
+                "time": "none"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "With quaking hands, you somehow manage to close the door.",
+                    "Your head is spinning.",
+                    "%npc2name was left by herself in the dead of night.",
+                    "You can't help but think that this is your fault.",
+                    "You chose to leave her by herself.",
+                    "Your vision starts to blur.",
+                    "You feel that there is only one thing to do.",
+                    "Open the door and run."
+                ],
+                "block": 11,
+                "time": "none"
+            }
+            ], // end block 1-1
+            // Block 2-2: Ending B (exhibition with Andrea, choose Andrea)
+            [ // start block 2-2
+            {
+                "type": "npc",
+                "content": [
+                    "EMERGENCY ALERT. CHILD ABDUCTED: Midas Regional Police have activated AMBER ALERT. VICTIM is 17 year old %npc1name %npc1lastname. VEHICLE is a red van with license plate #SCI3M. SUSPECT is Darvin %npc1lastname, the father of %npc1name. LAST SEEN at Midas Train Station at February 3rd at 11:49pm. Report ANY and ALL information to Midas Regional Police."
+                ],
+                "block": 22,
+                "time": "5:47am"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "You are violently awoken by the chilling sound of an emergency alert.",
+                    "Reading through the message sends shivers down to the bone.",
+                    "%npc1name has been abducted by her father.",
+                    "It takes a moment, but realization about %npc1name's relationship with her father suddenly hit you like a speeding car.",
+                    "%npc1name mentioned how her father was unhappy with her.",
+                    "You understand now, but it's too late.",
+                    "You can't help but think that if you had said something before, things would be different.",
+                    "You can't help but think that if you chose to run to the train station earlier tonight, you would've been able to stop her from leaving.",
+                    "You can't help but think that it's your fault she's gone.",
+                    "Your vision starts to blur. Your head starts to spin.",
+                    "You feel there is only one thing to do.",
+                    "Get up and run."
+                ],
+                "block": 22,
+                "time": "none"
+            }
+            ], // end block 2-2
+            // Block 1-2: Ending C (exhibition with Sara, choose Andrea)
+            [ // start block 1-2
+            {
+                "type": "note",
+                "content": [
+                    "It feels like you just managed to fall asleep, but then you hear knocking at the door.",
+                    "Three loud knocks.",
+                    "Who could be here at this hour?",
+                    "As you make your way to the front door, some flickering red and blue lights illuminate the inside of your house.",
+                    "Your heart sinks.",
+                    "You open the door, and see two police officers.",
+                    "They remove their hats."
+                ],
+                "block": 12,
+                "time": "none"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Are you Mr. %playername %playerlastname?"
+                ],
+                "block": 12,
+                "time": "5:47am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yes",
+                    "What happened?",
+                    "What is it?"
+                ],
+                "block": 12,
+                "time": "5:47am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Your friend %npc1name was a victim of a local mugging."
+                ],
+                "block": 12,
+                "time": "5:47am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Police responded to a call approximately 70 minutes ago from the Midas Train Station."
+                ],
+                "block": 12,
+                "time": "5:48am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "What happened?",
+                    "Is %npc1name okay?",
+                    "Where is %npc1name now?"
+                ],
+                "block": 12,
+                "time": "5:48am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "The victim was found dead with multiple stab wounds by the time first responders arrived."
+                ],
+                "block": 12,
+                "time": "5:48am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "We're very sorry."
+                ],
+                "block": 12,
+                "time": "5:48am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "My officers tell me that based on survelliance footage, she deliberately stayed on the train platform instead of getting on the train."
+                ],
+                "block": 12,
+                "time": "5:49am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "She was most likely waiting for someone to come."
+                ],
+                "block": 12,
+                "time": "5:49am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Would you happen to have any information regarding the perpetrator?"
+                ],
+                "block": 12,
+                "time": "5:49am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "No",
+                    "Nothing",
+                    "I don't know anything"
+                ],
+                "block": 12,
+                "time": "5:50am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright. Please give us a call if you think of something."
+                ],
+                "block": 12,
+                "time": "5:50am"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "The officer hands you a business card"
+                ],
+                "block": 12,
+                "time": "none"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Again, I'm truly sorry to bring you this news."
+                ],
+                "block": 12,
+                "time": "5:50am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Good night."
+                ],
+                "block": 12,
+                "time": "5:50am"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "The officers leave"
+                ],
+                "block": 12,
+                "time": "none"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "With trembling hands, you somehow manage to close the front door.",
+                    "You are still processing the news.",
+                    "%npc1name is dead.",
+                    "She's not coming back.",
+                    "She promised that she would always wait for you.",
+                    "You can't help but think that the promise got her killed.",
+                    "You can't help but think that her death was your fault.",
+                    "What would she think of you now?",
+                    "Your vision starts to blur.",
+                    "You feel there is only one thing left to do.",
+                    "Open the door and run."
+                ],
+                "block": 12,
+                "time": "none"
+            }
+            ], // end block 1-2
+            // Block 2-1: Ending D (exhibition with Andrea, choose Sara)
+            [ // start block 2-1
+            {
+                "type": "note",
+                "content": [
+                    "It feels like you just managed to fall asleep, but then you hear knocking at the door.",
+                    "Three loud knocks.",
+                    "Who could be here at this hour?",
+                    "As you make your way to the front door, some flickering red and blue lights illuminate the inside of your house.",
+                    "Your heart sinks.",
+                    "You open the door, and see two police officers.",
+                    "They remove their hats."
+                ],
+                "block": 21,
+                "time": "none"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Are you Mr. %playername %playerlastname?"
+                ],
+                "block": 21,
+                "time": "5:47am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Yes",
+                    "What happened?",
+                    "What is it?"
+                ],
+                "block": 21,
+                "time": "5:47am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "We responded to an emergency call approximate 90 minutes about a local mugging."
+                ],
+                "block": 21,
+                "time": "5:47am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I'm sorry to tell you that your friend %npc2name was the victim."
+                ],
+                "block": 21,
+                "time": "5:48am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "She was found dead with multiple stab wounds on the street."
+                ],
+                "block": 21,
+                "time": "5:48am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I'm truly sorry."
+                ],
+                "block": 21,
+                "time": "5:48am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "No",
+                    "Why did this happen?",
+                    "How could this happen>"
+                ],
+                "block": 21,
+                "time": "5:48am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Would you happen to have any information regarding the perpetrator?"
+                ],
+                "block": 21,
+                "time": "5:49am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "No",
+                    "Nothing",
+                    "I don't think so."
+                ],
+                "block": 21,
+                "time": "5:49am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Alright. Please don't hesitate to reach out to us if you remember something."
+                ],
+                "block": 21,
+                "time": "5:49am"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "The officer hands you a business card"
+                ],
+                "block": 21,
+                "time": "none"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Good night."
+                ],
+                "block": 21,
+                "time": "5:50am"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "The officers leave"
+                ],
+                "block": 21,
+                "time": "none"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "With quaking hands, you somehow manage to close the front door.",
+                    "You take a moment to process the news you just received.",
+                    "%npc2name is dead.",
+                    "She's not coming back.",
+                    "You did choose to leave her alone tonight.",
+                    "And for what? %npc1name was long gone by the time you arrived.",
+                    "%npc1name is gone. %npc2name is gone.",
+                    "Your vision blurs and your head starts to spin.",
+                    "There's only one thing left to do:",
+                    "Open the door and run."
+                ],
+                "block": 21,
+                "time": "none"
+            }
+            ] // end block 2-1
+        ]
+    ],
+    // player 5: ???
+    [
+        // group 1: Schism | #30 | Monday, February 4th
+        [
+            {
+                "type": "action",
+                "content": [
+                    "Chapter 30: Schism"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "Monday, February 4th, 6:25am"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "...",
+                    "......",
+                    "Running.",
+                    "Running running running.",
+                    "Who's running?",
+                    "You're running.",
+                    "It starts to rain.",
+                    "You stop at a long bridge.",
+                    "You start to climb onto the railing.",
+                    "It's a long way down.",
+                    "One, two, three.",
+                    "Wait - it sounds like someone's coming.",
+                    "They take one final look back..."
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            // go to 1 of 4 blocks
+            {
+                "type": "block",
+                "content": [
+                    "exhibitionAxOrAndrea_crisisRejectOrAccept"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            // Block 1-1: Ending A (exhibition with Sara, choose Sara)
+            [ // start block 1-1
+            {
+                "type": "action",
+                "content": [
+                    "There's no one there."
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "Looks like it was just your imagination.",
+                    "You take another look down.",
+                    "And then...",
+                    "'Maybe you should open this later. I wrote some important stuff in there...'",
+                    "' I think it's best to save it for another day.'",
+                    "You suddenly remember the pink envelope %npc1name gave you on Christmas Eve.",
+                    "You haven't opened it yet.",
+                    "Perhaps now is the right time.",
+                    "You gently open the envelope and pull out a neatly handwritten letter.",
+                    "'Hi %playernickname!'",
+                    "'Merry Christmas! I'm not sure when you'll get around to reading this but I just had a few things to say.'",
+                    "'Stay strong! You're one of the strongest people I know and I'm sure that you can get through anything.'",
+                    "'I'm pretty sure that with how things are in my life, I might not be around for too long...'",
+                    "'The thing is, when I said I support my own living, that wasn't entirely true.'",
+                    "'My father watches me. But he's a little strict.'",
+                    "'But I don't want you to worry. Which is why I wanted you to read this later.'",
+                    "'Just getting to know you has given me courage and hope.'",
+                    "'Hope that one day, things will be different.'",
+                    "'So I just wanted to say how grateful I am to have gotten to know you this year.'",
+                    "'And always remember that no matter what happens...'",
+                    "'No matter how many hours, days, months or years...'",
+                    "'I will wait for you.'",
+                    "'From %npc1name.'",
+                    "...",
+                    "After finishing the letter, you feel a tear run down your cheek.",
+                    "Or maybe that's the rain.",
+                    "She was so perfect.",
+                    "But now she's gone.",
+                    "But she is still waiting for you.",
+                    "Waiting for you to return home.",
+                    "Perhaps one day, in a distant future, you'll see her again.",
+                    "But there's only one way to find out for sure.",
+                    "You must wait for her.",
+                    "Fin | Ending A: 'Await the Sunrise'"
+                ],
+                "block": 11,
+                "time": "none"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "This chat is no longer available."
+                ],
+                "block": 11,
+                "time": "none"
+            }
+            ], // end block 1-1
+            // Block 2-2: Ending B (exhibition with Andrea, choose Andrea)
+            [ // start block 2-2
+            {
+                "type": "npc",
+                "content": [
+                    "%playername wait!!"
+                ],
+                "block": 22,
+                "time": "6:25am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "its me %npc2name"
+                ],
+                "block": 22,
+                "time": "6:25am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "i saw the amber alert"
+                ],
+                "block": 22,
+                "time": "6:25am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "She's dead isn't she",
+                    "This is all my fault.",
+                    "Why are you here"
+                ],
+                "block": 22,
+                "time": "6:26am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "no she's not!!",
+                    "no it's not!!",
+                    "%playername..."
+                ],
+                "block": 22,
+                "time": "6:26am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "can u listen to me for a second?"
+                ],
+                "block": 22,
+                "time": "6:26am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "i know how hard this might be for you. you blame yourself that she's is gone."
+                ],
+                "block": 22,
+                "time": "6:26am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "i felt the same way when we went our separate ways all those years ago."
+                ],
+                "block": 22,
+                "time": "6:27am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "i could've followed you to your school. but... i didn't. i blamed myself for a while."
+                ],
+                "block": 22,
+                "time": "6:27am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "so i know we can't give up now. we somehow found our way back to each other."
+                ],
+                "block": 22,
+                "time": "6:27am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "and that's how i know you will see %npc1name again."
+                ],
+                "block": 22,
+                "time": "6:27am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "You don't know her.",
+                    "I'm sorry.",
+                    "I need her."
+                ],
+                "block": 22,
+                "time": "6:27am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "you're right, i don't. but i know you. and you don't give up.",
+                    "it's okay %playername.",
+                    "i know you do."
+                ],
+                "block": 22,
+                "time": "6:28am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "look %playername, i don't know what i'd do without you..."
+                ],
+                "block": 22,
+                "time": "6:28am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "so i need you to come down from there."
+                ],
+                "block": 22,
+                "time": "6:28am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "please."
+                ],
+                "block": 22,
+                "time": "6:28am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "I don't know what I'd do without you."
+                ],
+                "block": 22,
+                "time": "6:29am"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "You climb down."
+                ],
+                "block": 22,
+                "time": "none"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "thank you, %playername."
+                ],
+                "block": 22,
+                "time": "6:29am"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "You climb down from the railing.",
+                    "%npc2name hugs you tightly.",
+                    "You are luckly to have her.",
+                    "You lose track of time.",
+                    "None of you say a word.",
+                    "You can only hope now.",
+                    "Hope that all the time you spent with %npc1name meant something.",
+                    "Hope that it was enough.",
+                    "Hope that wherever %npc1name is, she is fighting and resisting.",
+                    "Hope that she returns home safe and sound.",
+                    "Until then, you and %npc2name have each other.",
+                    "Fin | Ending B: 'Fight and Resist'"
+                ],
+                "block": 22,
+                "time": "none"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "This chat is no longer available."
+                ],
+                "block": 11,
+                "time": "none"
+            }
+            ], // end block 2-2
+            // Block 1-2: Ending C (exhibition with Sara, choose Andrea)
+            [ // start block 1-2
+            {
+                "type": "npc",
+                "content": [
+                    "%playername!"
+                ],
+                "block": 12,
+                "time": "6:25am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "It's me %friendname!"
+                ],
+                "block": 12,
+                "time": "6:25am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Hold on a second. I heard the news"
+                ],
+                "block": 12,
+                "time": "6:25am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "She's dead.",
+                    "Why are you here?",
+                    "It's all my fault."
+                ],
+                "block": 12,
+                "time": "6:25am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Listen to me"
+                ],
+                "block": 12,
+                "time": "6:26am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "You were right.",
+                    "I didn't stick with one.",
+                    "I didn't commit to one."
+                ],
+                "block": 12,
+                "time": "6:26am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "It's okay. It happens."
+                ],
+                "block": 12,
+                "time": "6:26am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Look, %npc1name wouldn't want this. She'd want you to keep living."
+                ],
+                "block": 12,
+                "time": "6:26am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "The dead don't want anything.",
+                    "How would you know?",
+                    "I'm going to join her."
+                ],
+                "block": 12,
+                "time": "6:27am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Maybe you're right. But what about your friends and family? They wouldn't want this",
+                    "You're right, I wouldn't know for sure. But I know you, and I know that the time you spent with her must have meant something.",
+                    "You can't. Not like this"
+                ],
+                "block": 12,
+                "time": "6:27am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Look, I might not know how it feels losing a close friend like this... and I know you blame yourself, but it's not your fault."
+                ],
+                "block": 12,
+                "time": "6:27am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "When we make a decision, there will always be a path we can't take. That's just the way it is."
+                ],
+                "block": 12,
+                "time": "6:27am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "And %npc2name... she needs you."
+                ],
+                "block": 12,
+                "time": "6:28am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "So... come on and step down from there."
+                ],
+                "block": 12,
+                "time": "6:28am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Please"
+                ],
+                "block": 12,
+                "time": "6:28am"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "You were always right."
+                ],
+                "block": 12,
+                "time": "6:29am"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "You step down from the railing."
+                ],
+                "block": 12,
+                "time": "none"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Heh. That's right"
+                ],
+                "block": 12,
+                "time": "6:30am"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "You collasp on the floor next to the railing.",
+                    "Your shoes and pants are soaked, but you don't mind.",
+                    "%friendname is a good friend.",
+                    "He reminded you that there is a lot to live for.",
+                    "It will be hard today, but maybe tomorrow will be easier.",
+                    "But there's a feeling you can't shake off.",
+                    "%npc1name promised you that she would always wait for you.",
+                    "Is she still waiting for you in death?",
+                    "Fin | Ending C: 'The Dead Lie Waiting'"
+                ],
+                "block": 12,
+                "time": "none"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "This chat is no longer available."
+                ],
+                "block": 11,
+                "time": "none"
+            }
+            ], // end block 1-2
+            // Block 2-1: Ending D (exhibition with Andrea, choose Sara)
+            [ // start block 2-1
+            {
+                "type": "action",
+                "content": [
+                    "No one is there."
+                ],
+                "block": 21,
+                "time": "none"
+            },
+            {
+                "type": "note",
+                "content": [
+                    "The streets are dead silent besides the sound of pouring rain.",
+                    "Not a single sign of life to be seen.",
+                    "You look down once more.",
+                    "%npc1name is gone. %npc2name is dead.",
+                    "She always said that she didn't know what she'd be without you.",
+                    "But the truth is...",
+                    "You don't know what you'd be without her.",
+                    "And that's the last sign of life in the street before a loud thud echoes through the night.",
+                    "Fin | Ending D: 'Depths of Despair'"
+                ],
+                "block": 21,
+                "time": "none"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "This chat is no longer available."
+                ],
+                "block": 21,
+                "time": "none"
+            }
+            ] // end block 2-1
         ]
     ]
 ]
