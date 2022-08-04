@@ -70,7 +70,9 @@ public abstract class ConversationDatabase extends RoomDatabase {
                     String lastName = jsonObject.getString("lastName");
                     String nickname = jsonObject.getString("nickname");
                     String description = jsonObject.getString("description");
-                    conversationDao.insert(new Conversation(firstName, lastName, nickname, description));
+                    boolean editable = jsonObject.getBoolean("editable");
+                    String conversationDialogTitle = jsonObject.getString("conversationDialogTitle");
+                    conversationDao.insert(new Conversation(firstName, lastName, nickname, description, editable, conversationDialogTitle));
                 }
             } catch (JSONException e) {
                 Log.e("ERROR", "JSONException when parsing conversations");

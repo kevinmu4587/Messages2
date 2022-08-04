@@ -1844,7 +1844,7 @@
                 "time": "none"
             },
             // Block 1 (Group 6-1): Christmas at the Exhibition
-            [ // comment this (start)
+            [ // start block 1
             {
                 "type": "action",
                 "content": [
@@ -2717,9 +2717,9 @@
                 "block": 1,
                 "time": "none"
             }
-            ], // comment this (end)
+            ], // end block 1
             // Block 2 (Group 6-2): Christmas at the Park
-            [ // comment this (start)
+            [ // start block 2
             {
                 "type": "action",
                 "content": [
@@ -3208,9 +3208,9 @@
                 "block": 2,
                 "time": "none"
             }
-            ], // comment this (end)
+            ], // end block 2
             // seeingChildren unconditional block: (block 3)
-            [ // comment this (start)
+            [ // start seeingChildren
             {
                 "type": "npc",
                 "content": [
@@ -3421,9 +3421,9 @@
                 "block": 3,
                 "time": "9:31pm"
             }
-            ], // comment this (end)
+            ], // end seeingChildren
             // going home unconditional block: (block 4)
-            [ // comment this (start)
+            [ // start goingHome
             {
                 "type": "npc",
                 "content": [
@@ -3538,9 +3538,9 @@
                 "block": 4,
                 "time": "none"
             }
-            ], // comment this (end)
+            ], // end goingHome
             // unconditional block: (block 5) giving my present to Ax
-            [ // comment this (start)
+            [ // start myPresent
             {
                 "type": "block",
                 "content": [
@@ -3708,7 +3708,7 @@
                 "block": 8,
                 "time": "none"
             }
-            ] // comment this (end)
+            ] // end myPresent
         ],
         // group 7: Failed Check-in | #19 | Wednesday, January 2nd
         [

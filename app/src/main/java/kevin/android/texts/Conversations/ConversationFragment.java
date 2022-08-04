@@ -89,12 +89,14 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                 // Log.e(TAG, "set " + conversations.size() + " inactive conversations.");
                 conversationViewModel.setInactiveConversations(conversations);
                 // load the first conversation at the start
-                if (conversations.size() == 3) {
+                if (conversations.size() == 5) {
                     for (int i = conversations.size() - 1; i >= 0; i--) {
                         Conversation conversation = conversations.get(i);
-                        EditTextDialog editTextDialog = new EditTextDialog("Enter NPC #" + (i+1) + " information:",
-                                conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
-                        editTextDialog.show(getChildFragmentManager(), "setup");
+                        if (conversation.isEditable()) {
+                            EditTextDialog editTextDialog = new EditTextDialog(conversation.getConversationDialogTitle(),
+                                    conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
+                            editTextDialog.show(getChildFragmentManager(), "setup");
+                        }
                     }
                     EditTextDialog editTextDialog = new EditTextDialog("Enter your player information:",
                             "Oliver", "Queen", "Oli", -1);
@@ -197,6 +199,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                     conversationIdToIncrement = Integer.parseInt(incrementInstructions[2]);
                 } else {
                     // value if false
+                    // only read the first character since the last instruction has a /r terminator character
                     conversationIdToIncrement = Integer.parseInt(incrementInstructions[3].substring(0,1));
                 }
             }

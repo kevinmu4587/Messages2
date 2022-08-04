@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
@@ -28,6 +29,9 @@ public class Conversation implements Parcelable  {
     private String lastMessage = "New message!";
     private String lastTime;
 
+    private boolean editable;
+    private String conversationDialogTitle;
+
     private int group = 1;
     private int conversationState;
     // private String bgState;
@@ -41,11 +45,14 @@ public class Conversation implements Parcelable  {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    public Conversation(String firstName, String lastName, String nickname, String description) {
+    public Conversation(String firstName, String lastName, String nickname, String description,
+                        boolean editable, String conversationDialogTitle) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.nickname = nickname;
         this.description = description;
+        this.editable = editable;
+        this.conversationDialogTitle = conversationDialogTitle;
         this.conversationState = Conversation.STATE_RUNNING;
         // this.bgState = "";
         this.currentBlocks.add(0);
@@ -232,5 +239,13 @@ public class Conversation implements Parcelable  {
 
     public void setLastTime(String lastTime) {
         this.lastTime = lastTime;
+    }
+
+    public String getConversationDialogTitle() {
+        return conversationDialogTitle;
+    }
+
+    public boolean isEditable() {
+        return editable;
     }
 }

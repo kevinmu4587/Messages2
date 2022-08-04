@@ -585,13 +585,19 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
             - bug: the first time Ax's conversation is closed, it still reads "New message!"
         - Also updated Conversation's timestamp to the time of the last message that was sent
         - Conversation's that return with a state of paused are now set unread=false
+[Wednesday, August 3rd, 2022]
+    - finished message json!
+    - added remaining conversations (police and ???)
+    - upgraded EditTextDialog setup; now conversations.json comes with a title for the dialog
+        - also only certain conversations can be edited (can't edit police and ???)
 
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
-    - looks like name replacement isn't working properly in my messages
-    - in conversationadapter we are checking if inactive conversation .length ==3 (don't do this, store in a config file somewhere)
+    - looks like name replacement isn't working properly in my messages <-- fixed?
+    - in conversationfragment we are checking if inactive conversation .length ==3 (don't do this, store in a config file somewhere)
+    - last name replacement
 
 
 Things to check at the end:
