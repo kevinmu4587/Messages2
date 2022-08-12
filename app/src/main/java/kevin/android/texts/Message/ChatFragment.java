@@ -316,7 +316,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             nextMessage.setChoice(lastPlayerChoice);
         }
         // replace any name placeholders
-        nextMessage.replaceNamePlaceholders();
+        // nextMessage.replaceNamePlaceholders();
         // Log.e(TAG, "Submitted message " + nextMessage.getContent()[nextMessage.getChoice()]);
         messageViewModel.submitMessage(nextMessage);
 
@@ -392,6 +392,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     sleep(2000);
                     continue;
                 }
+                nextMessage.replaceNamePlaceholders();
                 if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
                     sleep(2000);
                     Log.e(TAG, "current message does not match block; waiting for correct ones to load in");

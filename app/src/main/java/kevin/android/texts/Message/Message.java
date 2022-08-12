@@ -100,8 +100,10 @@ public class Message {
     }
 
     public void replaceNamePlaceholders() {
-       content[choice] = Utils.replaceName(content[choice]);
-        Log.e(TAG, "Replacing name. Result: " + content[choice]);
+       for (int i = 0; i < content.length; ++i) {
+           content[i] = Utils.replaceName(content[i]);
+           Log.e(TAG, "Replacing name. Result: " + content[i]);
+       }
     }
 
     public int getInsertNum() {

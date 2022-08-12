@@ -18,6 +18,23 @@
                 ],
                 "block": 0,
                 "time": "8:02pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "My firstname is %playername.",
+                    "My lastname is %playerlastname."
+                ],
+                "block": 0,
+                "time": "8:02pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "ok"
+                ],
+                "block": 0,
+                "time": "8:02pm"
             }
             // {
             //     "type": "my",

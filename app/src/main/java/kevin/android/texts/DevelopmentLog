@@ -592,8 +592,9 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - also only certain conversations can be edited (can't edit police and ???)
 [Thursday, August 12th, 2022]
     - proofread message json
-    - added last name replacement
+    - added last name replacement and generalized replacement to affect all content of all messages
     - replace == 5 comparison in ConversationFragment with automatic file check
+
 
 
 TODO
