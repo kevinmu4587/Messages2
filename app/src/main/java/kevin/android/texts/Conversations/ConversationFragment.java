@@ -89,7 +89,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                 // Log.e(TAG, "set " + conversations.size() + " inactive conversations.");
                 conversationViewModel.setInactiveConversations(conversations);
                 // load the first conversation at the start
-                if (conversations.size() == 5) {
+                if (conversations.size() == GameManager.numConversations) {
                     for (int i = conversations.size() - 1; i >= 0; i--) {
                         Conversation conversation = conversations.get(i);
                         if (conversation.isEditable()) {

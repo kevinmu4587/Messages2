@@ -14,7 +14,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Hi! I am %npc1name. You are %playername. Your friend is %friendname, and NPC2 is %npc2name. 🙂 \uD83E\uDD72 🥲 📧 "
+                    "Hi! I am %npc1name %npc1lastname. You are %playername %playerlastname. Your friend is %friendname, and NPC2 is %npc2name %npc2lastname. 🙂 \uD83E\uDD72 🥲 📧 "
                 ],
                 "block": 0,
                 "time": "8:02pm"

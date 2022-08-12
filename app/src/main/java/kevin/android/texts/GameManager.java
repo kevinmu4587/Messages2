@@ -27,6 +27,7 @@ public class GameManager {
     public static boolean isFastMode;
     public static int nextInsertNum = 0;
 
+    public static int numConversations;
     public static ArrayList<String> timeline = new ArrayList<>();
 
     public static Map<String, Integer> getKeyChoices() {
@@ -84,7 +85,7 @@ public class GameManager {
                 npc2Nickname = nickname;
                 break;
             default:
-                Log.e(TAG, "Error: ID " + id + " is not a valid conversation id");
+                Log.d(TAG, "Error: ID " + id + " is not a valid conversation id");
         }
     }
 }

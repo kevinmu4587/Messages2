@@ -57,9 +57,9 @@ public class ConversationViewModel extends AndroidViewModel {
         update(next);
     }
 
-    public LiveData<List<Conversation>> getAllConversations() {
-        return repository.getAllConversations();
-    }
+//    public LiveData<List<Conversation>> getAllConversations() {
+//        return repository.getAllConversations();
+//    }
 
     public void incrementConversationWithID(int id) {
         for (Conversation c : activeConversations) {

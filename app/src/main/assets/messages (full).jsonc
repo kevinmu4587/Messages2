@@ -139,7 +139,7 @@
                 "type": "my",
                 "content": [
                     "Sure!",
-                    "Sorry for the trouble :(",
+                    "Sorry for the trouble.",
                     "Thanks"
                 ],
                 "block": 0,
@@ -150,7 +150,7 @@
                 "content": [
                     "Okay perfect 🥰",
                     "Not at all! 🥰",
-                    "No probs! 🥰"
+                    "No problem! 🥰"
                 ],
                 "block": 0,
                 "time": "8:05pm"
@@ -178,7 +178,7 @@
                 "content": [
                     "I wish my notes were this pretty haha",
                     "Haha I admire your humbleness",
-                    "Oh sorry.. just thought it looked nice"
+                    "Oh sorry.. just thought it looked nice 🥲"
                 ],
                 "block": 0,
                 "time": "8:07pm"
@@ -297,7 +297,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "How was your day at school?"
+                    "How was your day at school? 😊"
                 ],
                 "block": 0,
                 "time": "4:31pm"
@@ -353,7 +353,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Honestly I’m just glad it’s over. I didn’t spend too much time studying for it"
+                    "Honestly I'm just glad it's over. I didn't spend too much time studying for it"
                 ],
                 "block": 0,
                 "time": "4:35pm"
@@ -433,7 +433,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "I personally don’t really have much free time"
+                    "I personally don't have much free time"
                 ],
                 "block": 0,
                 "time": "4:39pm"
@@ -469,7 +469,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "It’s just that well.. I live alone. My parents aren’t exactly around. So I have to support my own living and stuff"
+                    "It's just that well.. I live alone. My parents aren't exactly around. So I have to support my own living and stuff"
                 ],
                 "block": 0,
                 "time": "4:41pm"
@@ -487,7 +487,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Ohh that’s a story for another day haha. . I don’t have any relatives that live near here.",
+                    "Ohh that's a story for another day haha. . I don't have any relatives that live near here.",
                     "Don't be! It's cool",
                     "I do. It's just me 😊"
                 ],
@@ -497,7 +497,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "So you know Im usually working. That’s probably why you don’t see me much after school"
+                    "So you know I'm usually working. That's probably why you don't see me much after school"
                 ],
                 "block": 0,
                 "time": "4:42pm"
@@ -523,8 +523,8 @@
                 "type": "my",
                 "content": [
                     "Wow that must be hard.",
-                    "That’s tough.",
-                    "Sounds like you’ve been doing that for a while."
+                    "That's tough.",
+                    "Sounds like you've been doing that for a while."
                 ],
                 "block": 0,
                 "time": "4:43pm"
@@ -551,7 +551,7 @@
                 "type": "my",
                 "content": [
                     "So you do everything by yourself?",
-                    "And there’s no one to help you?",
+                    "And there's no one to help you?",
                     "You must be very mature."
                 ],
                 "block": 0,
@@ -561,7 +561,7 @@
                 "type": "npc",
                 "content": [
                     "Yup I do!",
-                    "No it's just me haha",
+                    "Noo it's just me haha",
                     "I guess so? lol"
                 ],
                 "block": 0,
@@ -570,7 +570,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "So yeah free time is hard to come by for me!"
+                    "So yeah free time is hard to come by for me 🥲"
                 ],
                 "block": 0,
                 "time": "4:45pm"
@@ -659,7 +659,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Hey %playername! Happy happy birthday!"
+                    "Hey %playername! Happy happy birthday! 🥰"
                 ],
                 "block": 0,
                 "time": "6:37pm"
@@ -678,8 +678,8 @@
                 "type": "npc",
                 "content": [
                     "No worries 😊",
-                    "I guess word spreads fast 😂",
-                    "Wooo"
+                    "I guess word spreads fast 🤔",
+                    "Wooo 🥰"
                 ],
                 "block": 0,
                 "time": "6:37pm"
@@ -714,7 +714,7 @@
                 "type": "npc",
                 "content": [
                     "In your mailbox!",
-                    "Aw I was hoping it would be a surprise 😂",
+                    "Aw I was hoping it would be a surprise 🥲",
                     "I wanted to 😊"
                 ],
                 "block": 0,
@@ -751,7 +751,7 @@
             {
                 "type": "action",
                 "content": [
-                    "You go check your mailbox and find a small blue box."
+                    "You go check your mailbox and find a small blue box"
                 ],
                 "block": 0,
                 "time": "6:39pm"
@@ -780,7 +780,7 @@
                     "myBirthdayGiftConversation"
                 ],
                 "block": 0,
-                "time": "4:47pm"
+                "time": "none"
             },
             // Block 1: Bunny Clock
             // [
@@ -892,7 +892,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "So I guess it's like stars are forever, you know?"
+                    "So I guess it's like stars are forever, you know? 🤔"
                 ],
                 "block": 2,
                 "time": "4:49pm"
@@ -940,7 +940,7 @@
                 "content": [
                     "Isn't it?",
                     "😇",
-                    "It is a little cheesy though 😂"
+                    "It is a little cheesy though 🥲"
                 ],
                 "block": 2,
                 "time": "4:51pm"
@@ -951,7 +951,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Yup! I thought that since your birthday is so close to Christmas, I should get a festive gift"
+                    "Yup! I thought that since your birthday is so close to Christmas, I should get a festive gift ❄️"
                 ],
                 "block": 3,
                 "time": "4:49pm"
@@ -1002,7 +1002,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Glad to hear that!",
+                    "Glad to hear that! 🥰",
                     "🥰",
                     "You're welcome 🥰"
                 ],
@@ -1013,7 +1013,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "So that was my gift! Thanks for listening to me ramble haha"
+                    "So that was my gift! Thanks for listening to me ramble haha 🥲"
                 ],
                 "block": 0,
                 "time": "4:51pm"
@@ -1068,8 +1068,8 @@
                 "type": "npc",
                 "content": [
                     "Perfect 😉",
-                    "Haha alright sounds good",
-                    "Alright how about I give it a try, you let me know if it doesn’t work 😉"
+                    "Haha alright sounds good 😉",
+                    "Alright how about I give it a try, you let me know if it doesn't work 😉"
                 ],
                 "block": 0,
                 "time": "4:53pm"
@@ -1085,7 +1085,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Have a great night! Happy birthday again"
+                    "Have a great evening! Happy birthday again"
                 ],
                 "block": 0,
                 "time": "4:53pm"
@@ -1130,7 +1130,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Hi %playernickname!"
+                    "Hi %playernickname! 😊"
                 ],
                 "block": 0,
                 "time": "10:08pm"
@@ -1185,7 +1185,7 @@
                 "type": "npc",
                 "content": [
                     "Haha I said to guess silly",
-                    "No not quite lol",
+                    "No not quite. lol",
                     "Oh I wish that were true 🥲"
                 ],
                 "block": 0,
@@ -1220,7 +1220,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Okay gotcha, so you're not picky",
+                    "Okay gotcha, so you're not picky 👍",
                     "You don't need to get me anything",
                     "Really? Nothing?"
                 ],
@@ -1256,8 +1256,8 @@
             {
                 "type": "npc",
                 "content": [
-                    "Oh I just love the atmosphere and the festivity. The music and snow and everything",
-                    "Don't be! It's still exciting",
+                    "Oh I just love the atmosphere and the festivity. The music and snow and everything 🥰",
+                    "Don't be! It's still exciting 🥰",
                     "You're right"
                 ],
                 "block": 0,
@@ -1358,7 +1358,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "I haven't properly celebrated Christmas in a while! It's going to be fun celebrating with a friend"
+                    "I haven't properly celebrated Christmas in a while! It's going to be fun celebrating with a friend 🙂"
                 ],
                 "block": 0,
                 "time": "10:14pm"
@@ -1406,7 +1406,7 @@
                 "content": [
                     "😉",
                     "Oh don't worry",
-                    "Hmm we can always discuss this later 🥰"
+                    "Hmm we can always discuss this later 👍"
                 ],
                 "block": 0,
                 "time": "10:15pm"
@@ -1450,7 +1450,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Thanks %playername! I'm excited" 
+                    "Thanks %playername! I'm excited 😊" 
                 ],
                 "block": 0,
                 "time": "10:17pm"
@@ -1476,7 +1476,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "ALrighty then 😊",
+                    "Alrighty then 😊",
                     "Don't worry I won't",
                     "Okayy"
                 ],
@@ -1486,7 +1486,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Alright I gotta go now. I'll be waiting for your decision!"
+                    "Alright I got to go now. I'll be waiting for your decision!"
                 ],
                 "block": 0,
                 "time": "10:18pm"
@@ -1531,7 +1531,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Hey %playernickname!"
+                    "Hey %playernickname! 😊"
                 ],
                 "block": 0,
                 "time": "8:19pm"
@@ -1844,7 +1844,7 @@
                 "time": "none"
             },
             // Block 1 (Group 6-1): Christmas at the Exhibition
-            [ // start block 1
+            //[ // start block 1
             {
                 "type": "action",
                 "content": [
@@ -1978,7 +1978,7 @@
             {
                 "type": "action",
                 "content": [
-                    "You see %npc1name waving at you."
+                    "You see %npc1name waving at you"
                 ],
                 "block": 1,
                 "time": "none"
@@ -2041,7 +2041,7 @@
                 "type": "npc",
                 "content": [
                     "Awesome! I brought yours too",
-                    "Mmmm it's kinda obvious <laugh>",
+                    "Mmmm it's kinda obvious 🙃",
                     "Haha very funny"
                 ],
                 "block": 1,
@@ -2050,7 +2050,7 @@
             {
                 "type": "action",
                 "content": [
-                    "You hand your present over to %npc1name."
+                    "You hand your present over to %npc1name"
                 ],
                 "block": 1,
                 "time": "8:51pm"
@@ -2119,7 +2119,7 @@
             {
                 "type": "action",
                 "content": [
-                    "%npc1name hands you a pink envelope with your name on it"
+                    "%npc1name hands you a pink envelope"
                 ],
                 "block": 1,
                 "time": "8:55pm"
@@ -2267,7 +2267,7 @@
                 "time": "8:58pm"
             },
             {
-                "type": "npc",
+                "type": "my",
                 "content": [
                     "Alright",
                     "Follow me!",
@@ -2291,7 +2291,7 @@
                 "content": [
                     "You and %npc1name chase each other through the exhibition, trying to find out where the music is coming from.",
                     "As you get farther from the main square, the sound of people chattering is slowly replaced by the calming sound of flowing water.",
-                    "You notice a large stone water fountain with crystal clear water, surrounded by a dozen or so trees illuminated with Christmas mights.",
+                    "You notice a large stone water fountain with crystal clear water, surrounded by a dozen or so trees illuminated with Christmas lights.",
                     "A large river flows behind the fountain and you can faintly see a stage on the other side."
                 ],
                 "block": 1,
@@ -2300,7 +2300,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Hahaha I beat you here!"
+                    "Hahaha I beat you here! 😊"
                 ],
                 "block": 1,
                 "time": "9:05pm"
@@ -2589,7 +2589,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Hey %playernickname did you forget?"
+                    "Hey %playernickname... did you forget?"
                 ],
                 "block": 1,
                 "time": "9:35pm"
@@ -2643,7 +2643,7 @@
             {
                 "type": "action",
                 "content": [
-                    "You pinky promise %npc1name."
+                    "You pinky promise %npc1name"
                 ],
                 "block": 1,
                 "time": "none"
@@ -2651,7 +2651,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Oh %playername I think the exhibition is closer now..."
+                    "Oh %playername I think the exhibition is closing now..."
                 ],
                 "block": 1,
                 "time": "9:37pm"
@@ -2687,7 +2687,8 @@
             {
                 "type": "note",
                 "content": [
-                    "As the people start to head home, the familiar sound of chatter starts to fade away into silence.",
+                    "You and %npc1name make your way back to the entrance of the exhibition.",
+                    "As you leave the exhibition, the familiar sound of chatter starts to fade away into silence.",
                     "You and %npc1name take the bus home. You decide to get off at her stop to walk her home."
                 ],
                 "block": 1,
@@ -2705,6 +2706,7 @@
             {
                 "type": "note",
                 "content": [
+                    "You watch as %npc1name walks towards the front door of the building.",
                     "As you head back towards the bus stop, you take a glance over your shoulder and seem to notice %npc1name's smile slowly fade away.",
                     "She looks troubled, but at the same time, at peace.",
                     "Or maybe it's just your mind playing tricks on you.",
@@ -2716,10 +2718,10 @@
                 ],
                 "block": 1,
                 "time": "none"
-            }
-            ], // end block 1
+            },
+            //], // end block 1
             // Block 2 (Group 6-2): Christmas at the Park
-            [ // start block 2
+            //[ // start block 2
             {
                 "type": "action",
                 "content": [
@@ -2786,7 +2788,7 @@
                 "type": "npc",
                 "content": [
                     "Haha that's nice 😊",
-                    "Oh realy? Even during winter break?",
+                    "Oh really? Even during winter break?",
                     "No worries!"
                 ],
                 "block": 2,
@@ -2833,7 +2835,7 @@
                 "content": [
                     "Ooh nice, I got yours here too!",
                     "Haha very funny %playernickname",
-                    "It's kinda hard to miss 😂"
+                    "It's kinda hard to miss 🙃"
                 ],
                 "block": 2,
                 "time": "8:50pm"
@@ -2882,7 +2884,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Merry Christmas %playernickname"
+                    "Merry Christmas %playernickname 🙂"
                 ],
                 "block": 2,
                 "time": "8:54pm"
@@ -2927,7 +2929,7 @@
                 "type": "note",
                 "content": [
                     "It's a neatly handwritten letter.",
-                    "Hi %playernickname! I'm so grateful to have gotten to know you this year - especially before we head out in different directions.",
+                    "Hi %playernickname! I'm so grateful to have gotten to know you this year - especially before we head out in different directions for university.",
                     "I wish you all the best for the future. I know it will be bright.",
                     "-- %npc1name",
                     "Attached is $25 gift card for the book store."
@@ -3179,7 +3181,7 @@
                 "content": [
                     "You and %npc1name take the bus home.",
                     "The trip is mostly silent, but neither of you seem to mind.",
-                    "You decide to get off at %npc1name's house to see her off."
+                    "You decide to get off at %npc1name's stop to see her off."
                 ],
                 "block": 2,
                 "time": "none"
@@ -3203,14 +3205,14 @@
                     "'Do you ever think about your decisions?'",
                     "What if you chose to go to the exhibition with %npc1name?",
                     "You begin to imagine some of the possibilities, which make it a little hard to sleep.",
-                    "After a few scenarios, you eventually fall asleep."
+                    "But after a few scenarios, you eventually drift off to asleep."
                 ],
                 "block": 2,
                 "time": "none"
-            }
-            ], // end block 2
+            },
+            //], // end block 2
             // seeingChildren unconditional block: (block 3)
-            [ // start seeingChildren
+            //[ // start block seeingChildren
             {
                 "type": "npc",
                 "content": [
@@ -3278,7 +3280,7 @@
                 "content": [
                     "Yeah they always have huge smiles across their faces. Especially around Christmas time.",
                     "They are especially happy during Christmas time",
-                    "Oh I'm the complete opposite"
+                    "Oh I'm the complete opposite then"
                 ],
                 "block": 3,
                 "time": "9:21pm"
@@ -3318,7 +3320,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "They are never happy with where they are… every day they commute far far away to work. And they might not even be happy when they return home"
+                    "They are never happy with where they are... every day they commute far far away to work. And they might not even be happy when they return home"
                 ],
                 "block": 3,
                 "time": "9:22pm"
@@ -3332,7 +3334,7 @@
                 "time": "9:23pm"
             },
             {
-                "type": "npc",
+                "type": "my",
                 "content": [
                     "You're right.",
                     "Wow...",
@@ -3344,7 +3346,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "I guess what I’m trying to say is that… you can tell when a child is raised in a loving family. It’s different when the child wants to be somewhere else"
+                    "I guess what I'm trying to say is that... you can tell when a child is raised in a loving family. It's different when the child wants to be somewhere else"
                 ],
                 "block": 3,
                 "time": "9:23pm"
@@ -3388,7 +3390,7 @@
                 "content": [
                     "You and %npc1name sit quietly and watch the children climb up and slide down the hill. %npc1name can't seem to look away from them.",
                     "As it gets late, the parents begin calling their children home.",
-                    "Soon, the laughter of the children fade away, and the only remaining sound is the flowing water of the water fountain."
+                    "Soon, the laughter of the children fade away, and the only remaining sound is the flowing water of the water fountain once again."
                 ],
                 "block": 3,
                 "time": "none"
@@ -3420,10 +3422,10 @@
                 ],
                 "block": 3,
                 "time": "9:31pm"
-            }
-            ], // end seeingChildren
+            },
+            //], // end sblock eeingChildren
             // going home unconditional block: (block 4)
-            [ // start goingHome
+            //[ // start block goingHome
             {
                 "type": "npc",
                 "content": [
@@ -3537,10 +3539,10 @@
                 ],
                 "block": 4,
                 "time": "none"
-            }
-            ], // end goingHome
+            },
+            //], // end goingHome
             // unconditional block: (block 5) giving my present to Ax
-            [ // start myPresent
+            //[ // start block myPresent
             {
                 "type": "block",
                 "content": [
@@ -3650,7 +3652,7 @@
             {
                 "type": "action",
                 "content": [
-                    "%npc1name tucks the tree into her bag."
+                    "%npc1name tucks the tree into her bag"
                 ],
                 "block": 7,
                 "time": "none"
@@ -3703,12 +3705,12 @@
             {
                 "type": "action",
                 "content": [
-                    "%npc1name puts a sticker of a bunny onto her phone case and puts the rest into her purse"
+                    "%npc1name puts a sticker of a bunny onto her phone"
                 ],
                 "block": 8,
                 "time": "none"
             }
-            ] // end myPresent
+            //] // end block myPresent
         ],
         // group 7: Failed Check-in | #19 | Wednesday, January 2nd
         [
@@ -3746,7 +3748,7 @@
                     "Why haven't you talked with me?"
                 ],
                 "block": 0,
-                "time": "12:34am"
+                "time": "12:36am"
             },
             {
                 "type": "my",
@@ -3756,7 +3758,7 @@
                     "Let me know if you're okay"
                 ],
                 "block": 0,
-                "time": "12:35am"
+                "time": "12:36am"
             },
             {
                 "type": "my",
@@ -3766,7 +3768,7 @@
                     "Alright take care"
                 ],
                 "block": 0,
-                "time": "12:35am"
+                "time": "12:39am"
             }
         ],
         // group 8: Distant | #22 | Wednesday, January 23rd
@@ -3810,7 +3812,7 @@
                 "content": [
                     "ive just been really busy with  work",
                     "yeah i know... sorry",
-                    "working.. i had to skip out on a bit of sc hool for work"
+                    "working.. i had to skip out on a bit of schol for work"
                 ],
                 "block": 0,
                 "time": "7:20pm"
@@ -3822,14 +3824,34 @@
                 ],
                 "block": 0,
                 "time": "7:20pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Wait",
+                    "Are you hiding something?",
+                    "Hold on, let's talk about this"
+                ],
+                "block": 0,
+                "time": "7:20pm"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "%npc2name?",
+                    "Come on",
+                    "I'm worried now"
+                ],
+                "block": 0,
+                "time": "7:25pm"
             }
         ],
-        // group 9: Crisis Ongoing | #24 | Tuesday, January 29th
+        // group 9: Crisis, Part 2 | #24 | Tuesday, January 29th
         [
             {
                 "type": "action",
                 "content": [
-                    "Chapter 24: Crisis Ongoing"
+                    "Chapter 24: Crisis, Part 2"
                 ],
                 "block": 0,
                 "time": "none"
@@ -3936,8 +3958,8 @@
                 "type": "npc",
                 "content": [
                     "Because..",
-                    "Yeah i did but",
-                    "uh.."
+                    "uh..",
+                    "Yeah i did but"
                 ],
                 "block": 0,
                 "time": "11:18pm"
@@ -3962,22 +3984,6 @@
                 "type": "npc",
                 "content": [
                     "they got into my house and took a bunch of stuff"
-                ],
-                "block": 0,
-                "time": "11:19pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "and my father, he"
-                ],
-                "block": 0,
-                "time": "11:19pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "he wasn't happy when he found out"
                 ],
                 "block": 0,
                 "time": "11:19pm"
@@ -4033,7 +4039,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "And my father, he"
+                    "And my father, when he found out... he"
                 ],
                 "block": 0,
                 "time": "11:20pm"
@@ -4267,6 +4273,14 @@
                 ],
                 "block": 0,
                 "time": "11:28pm"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "%npc1name has blocked you"
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 10: Train | #28-1 | Sunday, February 3rd
@@ -4292,7 +4306,7 @@
                 "content": [
                     "After a few minutes of non-stop running, you arrive at the train station.",
                     "The station is silent. It is pretty late after all.",
-                    "You hope that you aren't too late."
+                    "You just hope that you aren't too late."
                 ],
                 "block": 0,
                 "time": "none"
@@ -4316,7 +4330,7 @@
                 "time": "none"
             },
             // Block 1: Path to ending A (Went to exhibition with Ax)
-            [ // start block 1
+            //[ // start block 1
             {
                 "type": "npc",
                 "content": [
@@ -4402,7 +4416,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "I just knew that you wouldn't just let me leave without saying goodbye. So I waited for you."
+                    "I just knew that you wouldn't just let me leave without saying goodbye. So I waited for you"
                 ],
                 "block": 1,
                 "time": "11:14pm"
@@ -4551,7 +4565,7 @@
                 "type": "note",
                 "content": [
                     "After saying your final words to %npc1name, she stands still for a moment.",
-                    "It's as if she's saving this moment and commiting it to memory.",
+                    "It's as if she's grasping this memory like it would leave within seconds.",
                     "She picks up her bags and walks toward the platform.",
                     "Then she's gone.",
                     "You stand there for what feels like an eternity, trying to make sense of everything that's happened.",
@@ -4561,10 +4575,10 @@
                 ],
                 "block": 1,
                 "time": "none"
-            }
-            ], // end block 1
+            },
+            //], // end block 1
             // Block 2: Path to ending D (Went to exhibition with Andrea)
-            [
+            //[ // start block 2
             {
                 "type": "action",
                 "content": [
@@ -4588,7 +4602,7 @@
                 "block": 2,
                 "time": "none"
             }
-            ]
+            //] // end block 2
         ]
     ],
     // player 2: Tommy
@@ -4622,8 +4636,8 @@
             {
                 "type": "my",
                 "content": [
-                    "Hey %friendname!",
-                    "Hey how's it going?",
+                    "Hey %friendname",
+                    "Hey how's it going",
                     "Not much."
                 ],
                 "block": 0,
@@ -4686,7 +4700,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "WOW thats depressing lmao",
+                    "WOW thats tough lmao",
                     "Oo sounds like fun",
                     "Thats cool, no need for crazy plans"
                 ],
@@ -4934,7 +4948,7 @@
                 "type": "my",
                 "content": [
                     "What did she give you?",
-                    "I barely know her",
+                    "Oh that's cool",
                     "That's weird"
                 ],
                 "block": 0,
@@ -4944,7 +4958,7 @@
                 "type": "npc",
                 "content": [
                     "Lol dw i'm getting there",
-                    "Oh really?",
+                    "Yeahh",
                     "I don't know, she seemed nice"
                 ],
                 "block": 0,
@@ -5132,7 +5146,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "A few years ago some guy came up to me claiming he had a knife"
+                    "Ya know a few years ago some guy came up to me claiming he had a knife"
                 ],
                 "block": 0,
                 "time": "11:16am"
@@ -5158,7 +5172,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Well I handed him my stuff but as he was about to leave, I punched him and grabbed my stuff back"
+                    "Well I handed him my stuff but as he was about to leave, I punched him and grabbed my wallet back"
                 ],
                 "block": 0,
                 "time": "11:16am"
@@ -5274,7 +5288,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "So yeah all i'm saying is you gotta be 100% -"
+                    "So yeah all i'm saying is you gotta be 100%"
                 ],
                 "block": 0,
                 "time": "11:19am"
@@ -5290,7 +5304,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Oh and don’t walk by yourself at night. And also if you have the option, especially don’t let girls walk alone at night"
+                    "Oh and don't walk by yourself at night. And also if you have the option, especially don't leave girls to walk alone at night"
                 ],
                 "block": 0,
                 "time": "11:19am"
@@ -5298,7 +5312,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Anyway that’s all I wanted to say. Its almost lunch too"
+                    "Anyway that's all I wanted to say. Its almost lunch too"
                 ],
                 "block": 0,
                 "time": "11:20am"
@@ -5451,7 +5465,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "And you've decided what youre going to get her right?"
+                    "And you've decided what you're going to get her right?"
                 ],
                 "block": 0,
                 "time": "2:18pm"
@@ -5530,7 +5544,7 @@
                 "content": [
                     "Alright gotchu whatever u say",
                     "I never really talked with her so i wouldn't know",
-                    "alright sorry just teasing"
+                    "alright lol just teasing"
                 ],
                 "block": 0,
                 "time": "2:20pm"
@@ -5592,7 +5606,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "if you try to commit to both, it might not end very well. for you and them"
+                    "if you try to commit to both, it might not end very well. for both you and them"
                 ],
                 "block": 0,
                 "time": "2:21pm"
@@ -5617,7 +5631,7 @@
                 "block": 0,
                 "time": "2:22pm"
             },
-                        {
+            {
                 "type": "npc",
                 "content": [
                     "Anyway enjoy the rest of ur day"
@@ -5628,7 +5642,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Oh yeah and by the way I'm gonna be out of town for the next free weeks because I have my hockey tournament"
+                    "Oh yeah and by the way I'm gonna be out of tpwn for the next 2 months-ish because I have my hockey tournament. i'll be back in the beginning of february"
                 ],
                 "block": 0,
                 "time": "2:23pm"
@@ -5645,7 +5659,7 @@
                 "type": "my",
                 "content": [
                     "Thanks for telling me",
-                    "Good luck on the touranment",
+                    "Good luck on the tournament",
                     "I'll still get you something"
                 ],
                 "block": 0,
@@ -5664,7 +5678,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "cool so ill see you once school starts again"
+                    "cool so ill see you in february"
                 ],
                 "block": 0,
                 "time": "2:24pm"
@@ -5709,7 +5723,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "hey %playername! merry early christmas"
+                    "yo %playername merry early christmas"
                 ],
                 "block": 0,
                 "time": "7:17pm"
@@ -5949,7 +5963,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "I'm sure you wouldn't had the time to really think about this one"
+                    "I'm sure you would've had the time to really think about this one"
                 ],
                 "block": 0,
                 "time": "10:24pm"
@@ -6065,7 +6079,17 @@
             {
                 "type": "npc",
                 "content": [
-                    "nicee winter break really flew by huh"
+                    "Nicee",
+                    "Nicee",
+                    "Aw that sucks"
+                ],
+                "block": 0,
+                "time": "3:43pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "winter break really flew by huh"
                 ],
                 "block": 0,
                 "time": "3:43pm"
@@ -6081,7 +6105,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "But ya how was your night with %npc1name? What did you gus do?"
+                    "But ya how was your night with %npc1name? What did you guys do?"
                 ],
                 "block": 0,
                 "time": "3:44pm"
@@ -6091,7 +6115,7 @@
                 "content": [
                     "We talked about a lot of stuff",
                     "We had a long walk together.",
-                    "We exchanged gifts"
+                    "We exchanged gifts."
                 ],
                 "block": 0,
                 "time": "3:44pm"
@@ -6145,7 +6169,9 @@
             {
                 "type": "npc",
                 "content": [
-                    "ooo"
+                    "Oh that's good",
+                    "interesting",
+                    "Interesting..."
                 ],
                 "block": 0,
                 "time": "3:46pm"
@@ -6245,7 +6271,7 @@
                 "content": [
                     "Thanks",
                     "Sounds good",
-                    "How was your hockey tournament?"
+                    "How is your trip going?"
                 ],
                 "block": 0,
                 "time": "3:49pm"
@@ -6255,7 +6281,7 @@
                 "content": [
                     "npp",
                     "yee",
-                    "Oh it was good, we go 3rd place. I had to sit out on the last game cause I sprained my ankle lol"
+                    "Oh it was good, semi finals are tomorrow. I had to sit out on the last game cause I sprained my ankle lol"
                 ],
                 "block": 0,
                 "time": "3:49pm"
@@ -6336,7 +6362,7 @@
                 "content": [
                     "Alright thats nice",
                     "That's good",
-                    "Oof yeah i'm still in the winter break mood"
+                    "Oof yeah one of those days?"
                 ],
                 "block": 0,
                 "time": "4:17pm"
@@ -6378,7 +6404,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Its cause we have this English project together at school and she isnt responding my texts"
+                    "Its cause we have this online English project together at school and she isnt responding my texts"
                 ],
                 "block": 0,
                 "time": "4:18pm"
@@ -6666,7 +6692,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "i kno its been really long since we talked last but i wanted to wish u a happii birthday"
+                    "i kno its been really long since we talked last but i wanted to wish u a happii birthday (☞ﾟ∀ﾟ)☞"
                 ],
                 "block": 0,
                 "time": "10:43pm"
@@ -6746,7 +6772,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "so how have you been?"
+                    "so how have u been?"
                 ],
                 "block": 0,
                 "time": "10:45pm"
@@ -6802,7 +6828,7 @@
                 "content": [
                     "oh okii (◡‿◡✿)",
                     "i remember it was a cool house",
-                    "oh just curious ಡ_ಡ"
+                    "oh just curious"
                 ],
                 "block": 0,
                 "time": "10:47pm"
@@ -6888,9 +6914,9 @@
             {
                 "type": "npc",
                 "content": [
-                    "sweet dreams",
-                    "night nightt",
-                    "byebye (｡◕‿‿◕｡)"
+                    "sweet dreams (◡‿◡✿)",
+                    "night nightt (◡‿◡✿)",
+                    "byebye (◡‿◡✿)"
                 ],
                 "block": 0,
                 "time": "10:49pm"
@@ -6951,7 +6977,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "hi %playername"
+                    "hihi %playername"
                 ],
                 "block": 0,
                 "time": "8:47am"
@@ -7143,7 +7169,15 @@
             {
                 "type": "npc",
                 "content": [
-                    "okii i gotta get read for school now"
+                    "thank uuu (◡‿◡✿)"
+                ],
+                "block": 0,
+                "time": "8:52am"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "okii i gotta get ready for school now"
                 ],
                 "block": 0,
                 "time": "8:52am"
@@ -7154,7 +7188,7 @@
                     "maybe we'll see each other at school today?"
                 ],
                 "block": 0,
-                "time": "8:52am"
+                "time": "8:53am"
             },
             {
                 "type": "my",
@@ -7164,7 +7198,7 @@
                     "Hopefully"
                 ],
                 "block": 0,
-                "time": "8:52am"
+                "time": "8:53am"
             },
             {
                 "type": "npc",
@@ -7224,7 +7258,7 @@
                 "content": [
                     "Okii",
                     "(☞ﾟ∀ﾟ)☞",
-                    "ヽ(。_°)ノ"
+                    "ヽ(。_°)/"
                 ],
                 "block": 0,
                 "time": "2:45pm"
@@ -7326,8 +7360,8 @@
             {
                 "type": "my",
                 "content": [
-                    "We can hang out at the park.",
-                    "The Christmas exhibition.",
+                    "We could hang out at the park.",
+                    "The Christmas exhibition is an option.",
                     "It's up to you."
                 ],
                 "block": 0,
@@ -7338,7 +7372,7 @@
                 "content": [
                     "oh okii that sounds good",
                     "that sound like fun!!! ♥‿♥",
-                    "nooo im super indecisive (゜-゜)"
+                    "nooo im super indecisive (゜-゜) we can decide later"
                 ],
                 "block": 0,
                 "time": "2:49pm"
@@ -7591,7 +7625,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "okii thenn ill go to bed now. sweet dreams!"
+                    "okii thenn ill go to bed now. sweet dreams! (◡‿◡✿)"
                 ],
                 "block": 1,
                 "time": "9:22pm"
@@ -7653,7 +7687,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "where do u want to meet up? by the entrace maybe?"
+                    "where do u want to meet up? by the entrance maybe?"
                 ],
                 "block": 2,
                 "time": "9:19pm"
@@ -7811,7 +7845,7 @@
                 ],
                 "block": 2,
                 "time": "9:24pm"
-            },
+            }
         ],
         // group 5: Christmas | [#16 Tuesday, December 25th] / [#17 Monday, December 24th]
         [
@@ -7824,7 +7858,7 @@
                 "time": "none"
             },
             // Block 1 (Group 5-1): Christmas at the Park
-            [ // start Block 1 (Group 5-1): Christmas at the Park
+            //[ // start Block 1 (Group 5-1): Christmas at the Park
             {
                 "type": "action",
                 "content": [
@@ -7872,7 +7906,7 @@
                 "content": [
                     "Its okii",
                     "(◡‿◡✿)",
-                    "no u"
+                    "no uuu"
                 ],
                 "block": 1,
                 "time": "6:45pm"
@@ -7880,7 +7914,15 @@
             {
                 "type": "npc",
                 "content": [
-                    "merry christmas! do u want to exchange presents?"
+                    "merry christmas! (◍•ᴗ•◍)❤"
+                ],
+                "block": 1,
+                "time": "6:46pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "do u want to exchange presents?"
                 ],
                 "block": 1,
                 "time": "6:46pm"
@@ -7975,11 +8017,11 @@
                 "content": [
                     "%npc2name gave you a handmade Christmas ornament. You think it looks very pretty.",
                     "That's because you made it 7 years ago!",
-                    "There's something written on the back - it reads:",
+                    "There's something written on the back. It reads:",
                     "'to %npc2nameh, from %playername', with %npc2name's name mispelled." 
                 ],
                 "block": 1,
-                "time": "note"
+                "time": "none"
             },
             {
                 "type": "npc",
@@ -8110,10 +8152,10 @@
                 ],
                 "block": 4,
                 "time": "none"
-            }
-            ], // end Block 1 (Group 5-1): Christmas at the Park
+            },
+            //], // end Block 1 (Group 5-1): Christmas at the Park
             // Block 2 (Group 5-2): Christmas at the Exhibition
-            [ // start block 2
+            //[ // start block 2
             {
                 "type": "action",
                 "content": [
@@ -8522,7 +8564,7 @@
                 "content": [
                     "You examine the photograph that %npc2name gave you.",
                     "It has a light pink frame, with a date stamped on the bottom.",
-                    "'February 14th, 2009.",
+                    "'February 3rd, 2009.",
                     "The frame kept the decade-year old photo in prestine condition."
                 ],
                 "block": 2,
@@ -8597,7 +8639,8 @@
                 "content": [
                     "You and %npc2name begin walking through the exhibition.",
                     "It's a lot busier than you thought it would be.",
-                    "With one hand, %npc2name grabs a hold of your arm, while the other hand points to the various items in the shop windows.",
+                    "With one hand, %npc2name points to various cool toys and wares in the shop windows.",
+                    "Her other hand is tucked confortably on your elbow.",
                     "%npc2name has the biggest smile on her face."
                 ],
                 "block": 2,
@@ -8664,7 +8707,7 @@
                 "type": "my",
                 "content": [
                     "I can come back and visit",
-                    "I’ll always be with you.",
+                    "I'll always be with you.",
                     "It's not like leaving for war"
                 ],
                 "block": 2,
@@ -8737,7 +8780,7 @@
                 "content": [
                     "nooO u are %playername!!",
                     "okii",
-                    "ouuu its like a before and after photo"
+                    "ouuu yeahh its like a before and after photo"
                 ],
                 "block": 2,
                 "time": "7:31pm"
@@ -8821,6 +8864,42 @@
                 "time": "7:33pm"
             },
             {
+                "type": "npc",
+                "content": [
+                    "i like it!! i will make it my wallpaper"
+                ],
+                "block": 2,
+                "time": "7:33pm"
+            },
+            {
+                "type": "action",
+                "content": [
+                    "%npc2name puts her phone away"
+                ],
+                "block": 2,
+                "time": "none"
+            },
+            {
+                "type": "my",
+                "content": [
+                    "Shall we continue?",
+                    "Let's keep going.",
+                    "Send it to me later!"
+                ],
+                "block": 2,
+                "time": "7:33"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "yesss",
+                    "okiii",
+                    "will do! ^"
+                ],
+                "block": 2,
+                "time": "none"
+            },
+            {
                 "type": "action",
                 "content": [
                     "You and %npc2name start walking down the alleyway"
@@ -8831,7 +8910,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "%playername i guess… i just want to say thank you"
+                    "%playername i guess... i just want to say thank you"
                 ],
                 "block": 2,
                 "time": "7:35pm"
@@ -8886,6 +8965,7 @@
                     "%npc2name's words echo in your head.",
                     "What exactly does she mean?",
                     "You wonder how dependent she really is on you.",
+                    "Was it hard for her when you two split up?",
                     "You continue to wander the streets of the exhibition, stopping every once in a while to look at a cool decoration or to check directions.",
                     "Before you know it, you hear an announcement announcing the closure of the exhibition."
                 ],
@@ -8900,10 +8980,10 @@
                 ],
                 "block": 2,
                 "time": "none"
-            }
-            ], // end block 2
+            },
+            //], // end block 2
             // unconditional block (block 3): seeing children
-            [ // start block 3: seeing children
+            //[ // start block 3: seeing children
             {
                 "type": "npc",
                 "content": [
@@ -9016,10 +9096,10 @@
                 ],
                 "block": 3,
                 "time": "7:26pm"
-            }
-            ], // end block 3: seeing children
+            },
+            //], // end block 3: seeing children
             // unconditional block (block 4): going home
-            [ // start block 4: going home
+            //[ // start block 4: going home
             {
                 "type": "npc",
                 "content": [
@@ -9087,9 +9167,10 @@
             {
                 "type": "note",
                 "content": [
-                    "%npc2name calls her mother to come pick you up.",
+                    "%npc2name calls her mother to come pick you two up.",
                     "After a few minutes, she arrives.",
                     "The ride home is mostly quiet, besides some small talk with %npc2name's mother.",
+                    "She doesn't remember you all that well despite you and %npc2name spending most of your childhood together.",
                     "She drops you off at your house before returning home."
                 ],
                 "block": 4,
@@ -9133,10 +9214,10 @@
                 ],
                 "block": 4,
                 "time": "none"
-            }
-            ], // end block 4: going home
+            },
+            //], // end block 4: going home
             // unconditional block (Block 5): Give gift to Andrea
-            [ // start block 5: give my gift to andrea
+            //[ // start block 5: give my gift to andrea
                 {
                     "type": "block",
                     "content": [
@@ -9317,7 +9398,7 @@
                     "content": [
                         "yes yes yes",
                         "i love cats :3",
-                        "yeahh cats are soo cute"
+                        "yeahh cats are soo cute (◍•ᴗ•◍)❤"
                     ],
                     "block": 8,
                     "time": "6:48pm"
@@ -9358,7 +9439,7 @@
                     "block": 8,
                     "time": "6:49pm"
                 }
-            ] // end block 5: give my gift to andrea
+            //] // end block 5: give my gift to andrea
         ],
         // group 6: Check-in | #21 | Thursday, January 17th
         [
@@ -9627,12 +9708,12 @@
                 "time": "4:15pm"
             }
         ],
-        // group 7: Crisis Brewing | #23 | Thursday, January 24th
+        // group 7: Crisis, Part 1 | #23 | Thursday, January 24th
         [
             {
                 "type": "action",
                 "content": [
-                    "Chapter 23: Crisis Brewing"
+                    "Chapter 23: Crisis, Part 1"
                 ],
                 "block": 0,
                 "time": "none"
@@ -10008,6 +10089,14 @@
                 "time": "none"
             },
             {
+                "type": "npc",
+                "content": [
+                    "open it!!"
+                ],
+                "block": 0,
+                "time": "10:43pm"
+            },
+            {
                 "type": "my",
                 "content": [
                     "Chocolates?",
@@ -10067,7 +10156,7 @@
                 "time": "none"
             },
             // Block 1: Reject Andrea
-            [ // start block 1
+            //[ // start block 1
             {
                 "type": "npc",
                 "content": [
@@ -10132,13 +10221,13 @@
                     "maybe im.. too young for you"
                 ],
                 "block": 1,
-                "time": "10:47pm"
+                "time": "10:48pm"
             },
             {
                 "type": "my",
                 "content": [
                     "No it's not that",
-                    "Don't say that",
+                    "Look I just need to see her now",
                     "No, %npc1name is a friend"
                 ],
                 "block": 1,
@@ -10172,10 +10261,10 @@
                 ],
                 "block": 1,
                 "time": "none"
-            }
-            ], // end block 1
+            },
+            //], // end block 1
             // Block 2: Accept Andrea
-            [ // start block 2
+            //[ // start block 2
             {
                 "type": "npc",
                 "content": [
@@ -10274,7 +10363,7 @@
                 "content": [
                     "%npc2name is flowing with energy. Her eyes are shimmering like the sun on a lake.",
                     "You decide to walk home together. She walks very slowly as if to savour the time.",
-                    "She holds your hand confortably, now that you two are official.",
+                    "She holds your hand comfortably, now that you two are official.",
                     "The entire way home, she talks about the upcoming dance.",
                     "It is quite late when you arrive at her house.",
                     "You are a little tired, but it's clear %npc2name is not."
@@ -10329,16 +10418,16 @@
                 "content": [
                     "After a final wave goodbye from her front door, you start to head home.",
                     "Looks like you are in a relationship now.",
-                    "You arrive at home, wash up, and head to bed.",
+                    "You arrive at home, wash up, and get into bed.",
                     "Your head is cloudy with the possible futures you and %npc2name will experience together.",
                     "But one thought sticks out among the others:",
                     "How is %npc1name?",
-                    "As you struggle to fall asleep, you remember that hadn't responded to %friendname's message yet."
+                    "After struggling to fall asleep for a while, you notice your phone light up."
                 ],
                 "block": 2,
                 "time": "none"
-            }
-            ] // end block 2
+            },
+            //] // end block 2
         ],
         // group 10: Relationship | #28-2 | Monday, February 4th
         [
@@ -10607,7 +10696,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "it will be our first date!!",
+                    "it will be our first date!!"
                 ],
                 "block": 0,
                 "time": "1:24am"
@@ -10809,7 +10898,7 @@
                 "time": "none"
             },
             // block 1-1: Ending A (exhibition with Sara, choose Sara)
-            [ // start block 1-1
+            //[ // start block 1-1
             {
                 "type": "note",
                 "content": [
@@ -10861,7 +10950,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Ms. %npc2name was a victim of a local mugging."
+                    "Ms. %npc2name %npc2lastname was a victim of a local mugging."
                 ],
                 "block": 11,
                 "time": "5:48am"
@@ -10982,10 +11071,10 @@
                 ],
                 "block": 11,
                 "time": "none"
-            }
-            ], // end block 1-1
+            },
+            //], // end block 1-1
             // Block 2-2: Ending B (exhibition with Andrea, choose Andrea)
-            [ // start block 2-2
+            //[ // start block 2-2
             {
                 "type": "npc",
                 "content": [
@@ -11000,7 +11089,7 @@
                     "You are violently awoken by the chilling sound of an emergency alert.",
                     "Reading through the message sends shivers down to the bone.",
                     "%npc1name has been abducted by her father.",
-                    "It takes a moment, but realization about %npc1name's relationship with her father suddenly hit you like a speeding car.",
+                    "It takes a moment, but realization about %npc1name's relationship with her father suddenly hit you like a knife in your chest.",
                     "%npc1name mentioned how her father was unhappy with her.",
                     "You understand now, but it's too late.",
                     "You can't help but think that if you had said something before, things would be different.",
@@ -11012,10 +11101,10 @@
                 ],
                 "block": 22,
                 "time": "none"
-            }
-            ], // end block 2-2
+            },
+            //], // end block 2-2
             // Block 1-2: Ending C (exhibition with Sara, choose Andrea)
-            [ // start block 1-2
+            //[ // start block 1-2
             {
                 "type": "note",
                 "content": [
@@ -11181,10 +11270,10 @@
                 ],
                 "block": 12,
                 "time": "none"
-            }
-            ], // end block 1-2
+            },
+            //], // end block 1-2
             // Block 2-1: Ending D (exhibition with Andrea, choose Sara)
-            [ // start block 2-1
+            //[ // start block 2-1
             {
                 "type": "note",
                 "content": [
@@ -11236,7 +11325,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "She was found dead with multiple stab wounds on the street."
+                    "She was found dead on the street with multiple stab wounds."
                 ],
                 "block": 21,
                 "time": "5:48am"
@@ -11326,7 +11415,7 @@
                 "block": 21,
                 "time": "none"
             }
-            ] // end block 2-1
+            //] // end block 2-1
         ]
     ],
     // player 5: ???
@@ -11379,7 +11468,7 @@
                 "time": "none"
             },
             // Block 1-1: Ending A (exhibition with Sara, choose Sara)
-            [ // start block 1-1
+            //[ // start block 1-1
             {
                 "type": "action",
                 "content": [
@@ -11436,10 +11525,10 @@
                 ],
                 "block": 11,
                 "time": "none"
-            }
-            ], // end block 1-1
+            },
+            //], // end block 1-1
             // Block 2-2: Ending B (exhibition with Andrea, choose Andrea)
-            [ // start block 2-2
+            //[ // start block 2-2
             {
                 "type": "npc",
                 "content": [
@@ -11511,7 +11600,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "i could've followed you to your school. but... i didn't. i blamed myself for a while."
+                    "i could've followed you to your school. but... i didn't. i also blamed myself for a while."
                 ],
                 "block": 22,
                 "time": "6:27am"
@@ -11606,7 +11695,6 @@
                     "You climb down from the railing.",
                     "%npc2name hugs you tightly.",
                     "You are luckly to have her.",
-                    "You lose track of time.",
                     "None of you say a word.",
                     "You can only hope now.",
                     "Hope that all the time you spent with %npc1name meant something.",
@@ -11624,12 +11712,12 @@
                 "content": [
                     "This chat is no longer available."
                 ],
-                "block": 11,
+                "block": 22,
                 "time": "none"
-            }
-            ], // end block 2-2
+            },
+            //], // end block 2-2
             // Block 1-2: Ending C (exhibition with Sara, choose Andrea)
-            [ // start block 1-2
+            //[ // start block 1-2
             {
                 "type": "npc",
                 "content": [
@@ -11685,7 +11773,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "It's okay. It happens."
+                    "It's okay. I know."
                 ],
                 "block": 12,
                 "time": "6:26am"
@@ -11777,7 +11865,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Heh. That's right"
+                    "Heh. That's why you got me"
                 ],
                 "block": 12,
                 "time": "6:30am"
@@ -11803,12 +11891,12 @@
                 "content": [
                     "This chat is no longer available."
                 ],
-                "block": 11,
+                "block": 12,
                 "time": "none"
-            }
-            ], // end block 1-2
+            },
+            //], // end block 1-2
             // Block 2-1: Ending D (exhibition with Andrea, choose Sara)
-            [ // start block 2-1
+            //[ // start block 2-1
             {
                 "type": "action",
                 "content": [
@@ -11824,10 +11912,10 @@
                     "Not a single sign of life to be seen.",
                     "You look down once more.",
                     "%npc1name is gone. %npc2name is dead.",
-                    "She always said that she didn't know what she'd be without you.",
+                    "%npc2name always said that she didn't know what she'd be without you.",
                     "But the truth is...",
                     "You don't know what you'd be without her.",
-                    "And that's the last sign of life in the street before a loud thud echoes through the night.",
+                    "And that thought is the last sign of life in the street before a loud thud echoes through the night.",
                     "Fin | Ending D: 'Depths of Despair'"
                 ],
                 "block": 21,
@@ -11841,7 +11929,7 @@
                 "block": 21,
                 "time": "none"
             }
-            ] // end block 2-1
+            //] // end block 2-1
         ]
     ]
 ]

@@ -55,11 +55,20 @@ public class Utils {
         if (old.contains("%playername")) {
             old = old.replace("%playername", GameManager.playerFirstName);
         }
+        if (old.contains("%playerlastname")) {
+            old = old.replace("%playerlastname", GameManager.playerLastName);
+        }
         if (old.contains("%npc1name")) {
             old = old.replace("%npc1name", GameManager.npc1FirstName);
         }
+        if (old.contains("%npc1lastname")) {
+            old = old.replace("%npc1lastname", GameManager.npc1LastName);
+        }
         if (old.contains("%npc2name")) {
             old = old.replace("%npc2name", GameManager.npc2FirstName);
+        }
+        if (old.contains("%npc2lastname")) {
+            old = old.replace("%npc2lastname", GameManager.npc2LastName);
         }
         if (old.contains("%friendname")) {
             old = old.replace("%friendname", GameManager.friendFirstName);

@@ -14,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import kevin.android.texts.GameManager;
 import kevin.android.texts.Utils;
 
 @Database(entities = Conversation.class, version = 1)
@@ -64,6 +65,7 @@ public abstract class ConversationDatabase extends RoomDatabase {
             String json = Utils.loadFileFromAssets(activity, "conversations.jsonc");
             try {
                 JSONArray jsonArray = new JSONArray(json);
+                GameManager.numConversations = jsonArray.length();
                 for (int i = 0; i < jsonArray.length(); ++i) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     String firstName = jsonObject.getString("firstName");
