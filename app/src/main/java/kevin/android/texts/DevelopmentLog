@@ -594,15 +594,14 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - proofread message json
     - added last name replacement and generalized replacement to affect all content of all messages
     - replace == 5 comparison in ConversationFragment with automatic file check
+[Saturday, August 13th, 2022]
+    - added custom icon
 
 
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
-    - looks like name replacement isn't working properly in my messages <-- fixed?
-    - in conversationfragment we are checking if inactive conversation .length ==3 (don't do this, store in a config file somewhere)
-    - last name replacement
 
 
 Things to check at the end:
