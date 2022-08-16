@@ -1,6 +1,9 @@
 package kevin.android.texts;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.emoji2.bundled.BundledEmojiCompatConfig;
 import androidx.emoji2.text.EmojiCompat;
 import androidx.preference.PreferenceManager;
@@ -89,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadTimeline() {
-        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline");
+        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline (full)");
         Utils.setupTimeline(json);
     }
 }

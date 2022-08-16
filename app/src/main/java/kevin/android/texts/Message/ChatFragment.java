@@ -56,7 +56,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     private EditText chatBox;
     private PlayRunnable playRunnable;
     private FloatingActionButton jumpDownButton;
-    private FloatingActionButton testFinishGroup;
+    // private FloatingActionButton testFinishGroup;
     private LinearLayout noteContainer;
     private TextView noteContent;
     private TextView noteNext;
@@ -93,7 +93,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         sendButton = view.findViewById(R.id.chat_send_button);
         chatBox = view.findViewById(R.id.chat_edittext);
         jumpDownButton = view.findViewById(R.id.chat_jump_button);
-        testFinishGroup = view.findViewById(R.id.test_finish_group);
+        // testFinishGroup = view.findViewById(R.id.test_finish_group);
         noteContainer = view.findViewById(R.id.note_message_container);
         noteContent = view.findViewById(R.id.note_content);
         noteNext = view.findViewById(R.id.note_await_next);
@@ -102,7 +102,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         sendButton.setOnClickListener(this);
         chatBox.setOnClickListener(this);
         jumpDownButton.setOnClickListener(this);
-        testFinishGroup.setOnClickListener(this);
+        // testFinishGroup.setOnClickListener(this);
         noteContainer.setOnClickListener(this);
 
         // manage sound effects
@@ -254,10 +254,10 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 recyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);
                 jumpDownButton.setVisibility(View.INVISIBLE);
                 return;
-            case R.id.test_finish_group:
-                conversation.setConversationState(Conversation.STATE_DONE);
-                playRunnable.finished = true;
-                Log.e(TAG, "playrunnable killed, group finished early.");
+//            case R.id.test_finish_group:
+//                conversation.setConversationState(Conversation.STATE_DONE);
+//                playRunnable.finished = true;
+//                Log.e(TAG, "playrunnable killed, group finished early.");
         }
     }
 
@@ -459,7 +459,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     checkScroll();
                 }
             });
-            soundPool.play(npcTypingSound, 1, 1, 0, 0, 1);
+            soundPool.play(npcTypingSound, 0.5f, 0.5f, 0, 0, 1);
             // sleep as NPC is typing
             sleep(GameManager.isFastMode ? 750 : 3000);
             adapter.getSentMessages().remove(adapter.getItemCount() - 1);

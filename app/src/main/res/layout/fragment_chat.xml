@@ -112,15 +112,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/test_finish_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginTop="595dp"
-        android:backgroundTint="@android:color/holo_red_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/chat_recycler_view"
-        app:srcCompat="@android:drawable/ic_media_next" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/test_finish_group"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:layout_marginTop="595dp"-->
+<!--        android:backgroundTint="@android:color/holo_red_dark"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/chat_recycler_view"-->
+<!--        app:srcCompat="@android:drawable/ic_media_next" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

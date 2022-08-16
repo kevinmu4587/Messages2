@@ -741,7 +741,7 @@
             {
                 "type": "my",
                 "content": [
-                    "Well I didn't drop it off, I gave it to your friend %friendname. Not sure when he dropped it off though",
+                    "Well I didn't drop it off, I gave it to your friend %friendname. Not sure when they dropped it off though",
                     "Haha no worries!",
                     "Oh I don't, I asked your friend %friendname to give it to you"
                 ],
@@ -11876,7 +11876,7 @@
                     "You collasp on the floor next to the railing.",
                     "Your shoes and pants are soaked, but you don't mind.",
                     "%friendname is a good friend.",
-                    "He reminded you that there is a lot to live for.",
+                    "They reminded you that there is a lot to live for.",
                     "It will be hard today, but maybe tomorrow will be easier.",
                     "But there's a feeling you can't shake off.",
                     "%npc1name promised you that she would always wait for you.",

@@ -596,12 +596,26 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - replace == 5 comparison in ConversationFragment with automatic file check
 [Saturday, August 13th, 2022]
     - added custom icon
+**************************** PRE-ALPHA VERSION 0.0.0 HAS BEEN DEPLOYED *************************
+[Monday, August 15th, 2022]
+    - List of bugs found:
+        - Note fragment crashes when ending. It's really inconsistent.
+        - [SHOULD BE FIXED] Chat early finish button was not removed.
+        - [TRASHED] navigation home button bar should be hidden
+        - [FIXED: made npc sound quieter] sending my message sound should be louder
+        - There were errors with default names, i think because the app was not closed normally (crashed)
+           fixing the note fragment bug should fix this too
+        - [SHOULD BE FIXED: we were using the wrong timeline file] game skips chapter 2
+        - [SHOULD BE FIXED] going to settings fragment does not update app header to Settings
+        - messages are sometimes out of order when sent. double check the sorting
+
 
 
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
+    - test the build and generate APK!
 
 
 Things to check at the end:

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Texts</string>
+    <string name="app_name">Schism</string>
     <string name="time">45:87am</string>
     <string name="chatbox_hint">Send a message</string>
     <string name="send_button">SEND</string>

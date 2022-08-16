@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -45,12 +48,12 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        getActivity().setTitle("Schism");
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("Schism");
         return inflater.inflate(R.layout.fragment_conversations, container, false);
     }
 
@@ -99,7 +102,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                         }
                     }
                     EditTextDialog editTextDialog = new EditTextDialog("Enter your player information:",
-                            "Oliver", "Queen", "Oli", -1);
+                            "Oliver", "Green", "Oli", -1);
                     editTextDialog.show(getChildFragmentManager(), "setup");
                     // Log.e(TAG, "opened all EditTextDialog windows.");
                     checkAdvance();
@@ -200,7 +203,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                 } else {
                     // value if false
                     // only read the first character since the last instruction has a /r terminator character
-                    conversationIdToIncrement = Integer.parseInt(incrementInstructions[3].substring(0,1));
+                    conversationIdToIncrement = Integer.parseInt(incrementInstructions[3].substring(0, 1));
                 }
             }
             Log.e(TAG, "incremented conversation with id: " + conversationIdToIncrement);
@@ -218,7 +221,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         switch (item.getItemId()) {
             case R.id.menu_open_settings:
                 NavController navController = NavHostFragment.findNavController(this);
-               //  navController.navigate(SettingsFragment.actionChatFragmentToChatInfoFragment(conversation));
+                //  navController.navigate(SettingsFragment.actionChatFragmentToChatInfoFragment(conversation));
                 navController.navigate(ConversationFragmentDirections.actionConversationFragmentToSettingsFragment());
                 return true;
             default:
