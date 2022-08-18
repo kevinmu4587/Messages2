@@ -1,6 +1,7 @@
 package kevin.android.texts;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,7 +54,9 @@ public class Utils {
 
     public static String replaceName(String old) {
         if (old.contains("%playername")) {
+            Log.e(TAG, "replacing my first name. old: " + old);
             old = old.replace("%playername", GameManager.playerFirstName);
+            Log.e(TAG, "replacing my first name. result: " + old);
         }
         if (old.contains("%playerlastname")) {
             old = old.replace("%playerlastname", GameManager.playerLastName);

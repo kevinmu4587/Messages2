@@ -599,15 +599,42 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
 **************************** PRE-ALPHA VERSION 0.0.0 HAS BEEN DEPLOYED *************************
 [Monday, August 15th, 2022]
     - List of bugs found:
-        - Note fragment crashes when ending. It's really inconsistent.
+        - [MAYBE FIXED: Just added more delay when the note finishes] Note fragment crashes when ending. It's really inconsistent.
         - [SHOULD BE FIXED] Chat early finish button was not removed.
         - [TRASHED] navigation home button bar should be hidden
         - [FIXED: made npc sound quieter] sending my message sound should be louder
-        - There were errors with default names, i think because the app was not closed normally (crashed)
+        - [MAYBE FIXED since note was fixed] There were errors with default names, i think because the app was not closed normally (crashed)
            fixing the note fragment bug should fix this too
         - [SHOULD BE FIXED: we were using the wrong timeline file] game skips chapter 2
         - [SHOULD BE FIXED] going to settings fragment does not update app header to Settings
-        - messages are sometimes out of order when sent. double check the sorting
+        - [UNSURE. I think this only happens when there's a crash] messages are sometimes out of order when sent. double check the sorting
+[Tuesday, August 16th, 2022]
+    - deployed above bug fixes for version 0.0.1
+        - audio still could be balanced better
+        - headers are fixed
+        - note fragment bug looks alright
+        - timeline fixed
+    - new bugs TODO:
+        - [MAYBE FIXED don't notify on mainHandler] crash when returning from ChatInfoFragment
+        - name replacement in options doesn't seem to work still
+        - [FIXED] test on a real device. i don't see these bugs on the emulator so it's very difficult to debug
+[Wednesday, August 17th, 2022]
+    - tested on local hardware device
+    - fixed a missed JSONException
+    - all the errors we are seeing are a result of the threads being created/destroyed at weird times when we leave the fragment at the wrong time
+        - so i added a tacky solution of sleep(1500) whenever the thread starts. that way, if we exit shortly after creating, nothing bad happens
+    - attempted to fix the inconsistency bug by updating the notifying item inserted/deleted on the PlayThread
+        - i'm not actually sure why I originally had the notification in the mainHandler
+        - can no longer reproduce the bug
+    - Another issue: Leaving too quickly after sending my message results in the next npc message to default to choice 1
+        - this is non-trivial to fix. playerChoice is a local variable to the fragment and thus is not saved when the fragment closes
+            - maybe we should add playerChoice to the conversation object
+            - but then there is still the problem of saving conversation state. it's ok when the user navigates away but NOT ok if they close the app from Chat
+    - name replacement still isn't working
+        - it doesn't work for playername, i wonder if it's pulling an empty name from sharedPreferences after it sets from EditTextDialog
+            - add some log messages and make sure this isn't happening
+            - also may want to check if other name replacement works
+
 
 
 
@@ -615,7 +642,6 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
-    - test the build and generate APK!
 
 
 Things to check at the end:

@@ -62,7 +62,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     private TextView noteNext;
     private ImageView background;
 
-    private String state = "npc";
+    private String state = "waiting";
     private int lastPlayerChoice = 0;
     private Message nextMessage;
     private Conversation conversation;
@@ -189,6 +189,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             // start the background thread
             playRunnable = new PlayRunnable();
             new Thread(playRunnable).start();
+            Log.e(TAG, "started a new playrunnable thread.");
         }
 
         // get data back from ChatInfoFragment
@@ -230,6 +231,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     public void onDestroyView() {
         if (playRunnable != null) playRunnable.finished = true;
         playRunnable = null;
+        Log.e(TAG, "playrunnable set to null");
 //        Log.e(TAG, "Leaving chat fragment with blocks " + Arrays.toString(Utils.listToIntArray(conversation.getCurrentBlocks())));
         super.onDestroyView();
     }
@@ -359,6 +361,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
 
         @Override
         public void run() {
+            sleep(1500);
             while (!finished) {
                 if (Utils.contains(state, new String[]{"sending", "choose", "setting background"})) {
 //                if (state.equals("sending") || state.equals("choose") || state.equals("setting background")) {
@@ -373,11 +376,13 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     continue;
                 } else if (state.equals("note")) {
                     // A note is currently running. we shouldn't load more messages until it is done.
-                    sleep(2000);
+                    sleep(4000);
                     continue;
                 } else if (state.equals("note finished")) {
                     messageViewModel.submitMessage(nextMessage);
                     state = "note submitted";
+                    sleep(3000);
+                    continue;
                 }
                 nextMessage = messageViewModel.getNextMessage();
                 if (nextMessage == null) {
@@ -452,23 +457,23 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             // Log.e(TAG, "started typing anim");
             // add typing gif
             adapter.getSentMessages().add(null);
-            mainHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    adapter.notifyItemInserted(adapter.getItemCount() - 1);
-                    checkScroll();
-                }
-            });
+            adapter.notifyItemInserted(adapter.getItemCount() - 1);
+            checkScroll();
+//            mainHandler.post(new Runnable() {
+//                @Override
+//                public void run() {
+//                }
+//            });
             soundPool.play(npcTypingSound, 0.5f, 0.5f, 0, 0, 1);
             // sleep as NPC is typing
             sleep(GameManager.isFastMode ? 750 : 3000);
             adapter.getSentMessages().remove(adapter.getItemCount() - 1);
-            mainHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    adapter.notifyItemRemoved(adapter.getItemCount());
-                }
-            });
+            adapter.notifyItemRemoved(adapter.getItemCount());
+//            mainHandler.post(new Runnable() {
+//                @Override
+//                public void run() {
+//                }
+//            });
             // Log.e(TAG, "finished typing anim");
         }
 
@@ -498,7 +503,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
 
                         @Override
                         public void onClick(View view) {
-                            if (state.equals("note finished")) return;
+                            if (state.equals("note finished") || state.equals("note submitted")) return;
                             if (curNote >= notes.length) {
                                 // exit the note display
                                 noteContainer.setVisibility(View.INVISIBLE);
