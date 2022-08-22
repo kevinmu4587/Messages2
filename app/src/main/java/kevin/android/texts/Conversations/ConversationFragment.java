@@ -134,9 +134,9 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
 
         // retrieve stored values from settings fragment
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String playerFirstName = sharedPref.getString("playerFirstName", "");
-        String playerLastName = sharedPref.getString("playerLastName", "");
-        String playerNickname = sharedPref.getString("playerNickname", "");
+        String playerFirstName = sharedPref.getString("playerFirstName", GameManager.playerFirstName);
+        String playerLastName = sharedPref.getString("playerLastName", GameManager.playerLastName);
+        String playerNickname = sharedPref.getString("playerNickname", GameManager.playerNickname);
         boolean isFastMode = sharedPref.getBoolean("isFastMode", false);
         GameManager.playerFirstName = playerFirstName;
         GameManager.playerLastName = playerLastName;

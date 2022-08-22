@@ -27,10 +27,12 @@
                     "Running.",
                     "Running running running.",
                     "Who's running?",
-                    "It starts to rain.",
-                    "They stop at a long bridge.",
-                    "They start to climb onto the railing.",
+                    "The rain floods through the streets.",
+                    "They stop running at a long bridge.",
+                    "The railing is slippery from the rain.",
+                    "After a brief pause, they climb up onto the railing.",
                     "It's a long way down.",
+                    "...",
                     "One, two, three.",
                     "Wait - it sounds like someone's coming.",
                     "They take one final look back..."
@@ -252,7 +254,7 @@
                 "content": [
                     "Bye bye!",
                     "Thanks again!",
-                    "See you at school"
+                    "I'll see you at school"
                 ],
                 "block": 0,
                 "time": "8:11pm"
@@ -739,7 +741,7 @@
                 "time": "6:38pm"
             },
             {
-                "type": "my",
+                "type": "npc",
                 "content": [
                     "Well I didn't drop it off, I gave it to your friend %friendname. Not sure when they dropped it off though",
                     "Haha no worries!",
@@ -4957,7 +4959,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Lol dw i'm getting there",
+                    "Idk, I didn't open the box",
                     "Yeahh",
                     "I don't know, she seemed nice"
                 ],
@@ -5001,7 +5003,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "that's besides the point",
+                    "I guess so but those 5 seconds made an impression",
                     "i guess we have different tastes",
                     "Looks like i'm not the only one who thinks so"
                 ],
@@ -6876,7 +6878,7 @@
                 "time": "10:48pm"
             },
             {
-                "type": "my",
+                "type": "npc",
                 "content": [
                     "yeahhhh",
                     "yess ಠ‿↼",
@@ -6886,7 +6888,7 @@
                 "time": "10:48pm"
             },
             {
-                "type": "my",
+                "type": "npc",
                 "content": [
                     "anywayy its getting pretii late"
                 ],
@@ -11447,13 +11449,15 @@
                     "Running running running.",
                     "Who's running?",
                     "You're running.",
-                    "It starts to rain.",
-                    "You stop at a long bridge.",
-                    "You start to climb onto the railing.",
+                    "The rain floods through the streets.",
+                    "You stop running at a long bridge.",
+                    "The railing is slippery from the rain.",
+                    "After a brief pause, you climb up onto the railing.",
                     "It's a long way down.",
+                    "...",
                     "One, two, three.",
                     "Wait - it sounds like someone's coming.",
-                    "They take one final look back..."
+                    "You take one final look back..."
                 ],
                 "block": 0,
                 "time": "none"

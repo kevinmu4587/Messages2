@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-// this class is for saving game-wide decisions, like which blocks were picked, and what ending were reached
+// this class is for saving game-wide decisions, like which blocks were picked, and what key decisions were made
 public class GameManager {
     private static final String TAG = "GameManager";
 
     private static Map<String, Integer> keyChoices = new HashMap<String, Integer>();
     public static boolean firstRun = true;
-    public static String playerFirstName;
-    public static String playerLastName;
-    public static String playerNickname;
+    public static String playerFirstName = "playerFirstName";
+    public static String playerLastName = "playerLastName";
+    public static String playerNickname = "playerNickname";
     public static String npc1FirstName;
     public static String npc1LastName;
     public static String npc1Nickname;

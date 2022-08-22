@@ -634,6 +634,10 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - it doesn't work for playername, i wonder if it's pulling an empty name from sharedPreferences after it sets from EditTextDialog
             - add some log messages and make sure this isn't happening
             - also may want to check if other name replacement works
+[Sunday, August 21st, 2022]
+    - tested on emulator
+    - fixed name replacement bug; was because settings was returning an empty string
+[Monday, August22nd, 2022]
 
 
 

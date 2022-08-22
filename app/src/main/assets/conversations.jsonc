@@ -9,18 +9,18 @@
 
     },
     {
-        "firstName": "Sugar",
-        "lastName": "S",
-        "nickname": "Tommy",
+        "firstName": "Tammy",
+        "lastName": "T",
+        "nickname": "Tam",
         "description": "%friendname is your 17-year old best friend since the beginning of high school. They are non-binary, quite athletic, and enjoy playing hockey. They might not the strongest academically, but you can always count on them for advice and support. Their trustworthiness and funny attitude are just a few reasons as to why they are your best friend.",
         "editable": true,
         "conversationDialogTitle": "Enter Friend Information"
     },
     {
-        "firstName": "Andaya",
+        "firstName": "Andaia",
         "lastName": "Sea",
         "nickname": "Andie",
-        "description": "%npc2name is a 16-year old student currently in the 11th grade of your high school. You two were incredibly close when you were kids - in fact, people oftentimes thought of you as siblings. When you were 11, she left for an art school across the city, resulting in you two losing contact. Having reunited in the same high school, she seems to enjoy being with you and deeply treasures her childhood memories with you. %npc2name is very shy – even getting embarrassed others thank her. She loves cats, art, and hugs. She's also known to be quite spontaneous.",
+        "description": "%npc2name is a 16-year old student currently in the 11th grade of your high school. You two were incredibly close when you were kids - in fact, people oftentimes thought of you as siblings. When you were 11, she left for an art school across the city, resulting in you two losing contact. Having reunited in the same high school, she seems to enjoy being with you and deeply treasures her childhood memories together. %npc2name is very shy - even getting slightly embarrassed when others thank her. She loves cats, art, and hugs. She's also known to be quite spontaneous.",
         "editable": true,
         "conversationDialogTitle": "Enter NPC #2 Information"
     },
