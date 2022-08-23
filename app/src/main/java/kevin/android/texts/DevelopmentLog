@@ -350,6 +350,7 @@ General Notes
     If we want SQL/Room, then follow "Single Class Inheritance" -- one table with all columns of
     both independent and dependent NPC messages. We just need to check the type.
     We will need 3 tables, npc, my, and option.
+
 ----------------------------------------------------------------------------------------------------
 FULL REBUILD USING MVVM ARCHITECTURE:
 ----------------------------------------------------------------------------------------------------
@@ -637,7 +638,21 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
 [Sunday, August 21st, 2022]
     - tested on emulator
     - fixed name replacement bug; was because settings was returning an empty string
-[Monday, August22nd, 2022]
+[Monday, August 22nd, 2022]
+    - bug fixes from 0.0.2
+        - message fixes and improvements (switch some my type to npc type, improve writing)
+        - fix timestamp falling off on certain screen sizes
+        - add back button to ChatFragment and SettingsFragment
+        - fix crash from jump scroll button. could not update button view from PlayThread
+        - QOL: add pause before action message
+        - QOL: Remove top margin above recycler view
+        - QOL: Make primary colour slightly darker
+        - QOL: Remove negative button on options dialog
+        - QOL: NPC typing now is now dependent on message length
+        - Not sure why we were skipping from Chapter 7 to Chapter 10. Can't reproduce.
+        - Add nickname replacement
+        - lower audio of send and receive messages
+        - disabled SoundPool audio when ChatActivity is paused
 
 
 

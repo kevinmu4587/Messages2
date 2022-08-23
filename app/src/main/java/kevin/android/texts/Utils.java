@@ -54,12 +54,13 @@ public class Utils {
 
     public static String replaceName(String old) {
         if (old.contains("%playername")) {
-            Log.e(TAG, "replacing my first name. old: " + old);
             old = old.replace("%playername", GameManager.playerFirstName);
-            Log.e(TAG, "replacing my first name. result: " + old);
         }
         if (old.contains("%playerlastname")) {
             old = old.replace("%playerlastname", GameManager.playerLastName);
+        }
+        if (old.contains("%playernickname")) {
+            old = old.replace("%playernickname", GameManager.playerNickname);
         }
         if (old.contains("%npc1name")) {
             old = old.replace("%npc1name", GameManager.npc1FirstName);

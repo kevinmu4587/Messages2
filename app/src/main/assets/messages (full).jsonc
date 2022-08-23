@@ -554,7 +554,7 @@
                 "content": [
                     "So you do everything by yourself?",
                     "And there's no one to help you?",
-                    "You must be very mature."
+                    "You must be very hardworking then."
                 ],
                 "block": 0,
                 "time": "4:44pm"
@@ -6829,7 +6829,7 @@
                 "type": "npc",
                 "content": [
                     "oh okii (◡‿◡✿)",
-                    "i remember it was a cool house",
+                    "ooh okii",
                     "oh just curious"
                 ],
                 "block": 0,
@@ -7162,8 +7162,8 @@
                 "type": "my",
                 "content": [
                     "Of course",
-                    "Call me",
-                    "Text me"
+                    "Sure, call me",
+                    "Sure, text me"
                 ],
                 "block": 0,
                 "time": "8:52am"

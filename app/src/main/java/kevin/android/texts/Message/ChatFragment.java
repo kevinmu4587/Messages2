@@ -1,5 +1,6 @@
 package kevin.android.texts.Message;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
@@ -64,6 +65,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
 
     private String state = "waiting";
     private int lastPlayerChoice = 0;
+    private boolean isSoundpoolDisabled = false;
     private Message nextMessage;
     private Conversation conversation;
 
@@ -83,6 +85,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
     }
 
@@ -111,13 +114,13 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                 .build();
         soundPool = new SoundPool.Builder()
-                .setMaxStreams(2)
+                .setMaxStreams(1)
                 .setAudioAttributes(audioAttributes)
                 .build();
 
         npcTypingSound = soundPool.load(getContext(), R.raw.typing, 1);
-        sendMessageSound = soundPool.load(getContext(), R.raw.send_message, 1);
-        receivedMessageSound = soundPool.load(getContext(), R.raw.receive_message, 1);
+        sendMessageSound = soundPool.load(getContext(), R.raw.pitch_down, 1);
+        receivedMessageSound = soundPool.load(getContext(), R.raw.pitch_up, 1);
         return view;
     }
 
@@ -151,10 +154,10 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
         messageViewModel.getSentMessages(conversation.getId(), conversation.getGroup()).observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
             @Override
-            public void onChanged(List<Message> notes) {
+            public void onChanged(List<Message> sentMessages) {
                 // update recycler view
-                if (notes.size() > 0) {
-                    adapter.setSentMessages(notes);
+                if (sentMessages.size() > 0) {
+                    adapter.setSentMessages(sentMessages);
                     checkScroll();
                 }
             }
@@ -228,6 +231,12 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        isSoundpoolDisabled = true;
+    }
+
+    @Override
     public void onDestroyView() {
         if (playRunnable != null) playRunnable.finished = true;
         playRunnable = null;
@@ -244,7 +253,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     state = "sent";
                     submitMessage();
                     chatBox.setText("");
-                    soundPool.play(sendMessageSound, 0.5f, 0.5f, 0, 0, 1);
+                    if (!isSoundpoolDisabled) soundPool.play(sendMessageSound, 1, 1, 0, 0, 1);
                 }
                 return;
             case R.id.chat_edittext:
@@ -307,6 +316,9 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 NavController navController = NavHostFragment.findNavController(this);
                 navController.navigate(ChatFragmentDirections.actionChatFragmentToChatInfoFragment(conversation));
                 return true;
+            case android.R.id.home:
+                Log.e(TAG, "user clicked back on chat fragment");
+                getActivity().onBackPressed();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -343,11 +355,21 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             if (!recyclerView.canScrollVertically(1)) {
                 // jump to bottom
                 recyclerView.smoothScrollToPosition(adapter.getItemCount());
-                jumpDownButton.setVisibility(View.INVISIBLE);
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        jumpDownButton.setVisibility(View.INVISIBLE);
+                    }
+                });
                 // Log.e(TAG, "cannot scroll vertically. num sent messages: " + adapter.getItemCount());
             } else {
-                // make jump button appear
-                jumpDownButton.setVisibility(View.VISIBLE);
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        // make jump button appear
+                        jumpDownButton.setVisibility(View.VISIBLE);
+                    }
+                });
             }
         }
     }
@@ -381,7 +403,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 } else if (state.equals("note finished")) {
                     messageViewModel.submitMessage(nextMessage);
                     state = "note submitted";
-                    sleep(3000);
+                    sleep(2000);
                     continue;
                 }
                 nextMessage = messageViewModel.getNextMessage();
@@ -408,7 +430,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     state = "npc";
                     typingAnim();   // an npc message is next, so do a typing animation
                     submitMessage();    // submit the npc messages
-                    soundPool.play(receivedMessageSound, 1, 1, 0, 0, 1);
+                    if (!isSoundpoolDisabled) soundPool.play(receivedMessageSound, 1, 1, 0, 0, 1);
                     sleep(1500);
                 } else if (type.equals("my") || type.substring(0, 3).equals("key")) {
                     // or if it is a key decision
@@ -440,6 +462,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                         Log.e(TAG, "moving to new block: " + newBlockNum);
                     }
                 } else if (type.equals("action")) {
+                    sleep(1000);
                     submitMessage();
                     sleep(1500);
                 } else if (type.equals("note")) {
@@ -464,9 +487,10 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
 //                public void run() {
 //                }
 //            });
-            soundPool.play(npcTypingSound, 0.5f, 0.5f, 0, 0, 1);
+            if (!isSoundpoolDisabled) soundPool.play(npcTypingSound, 1, 1, 0, 0, 1);
             // sleep as NPC is typing
-            sleep(GameManager.isFastMode ? 750 : 3000);
+            String message = nextMessage.getContent()[nextMessage.getChoice()];
+            sleep(GameManager.isFastMode ? 750 : message.length() * 100);
             adapter.getSentMessages().remove(adapter.getItemCount() - 1);
             adapter.notifyItemRemoved(adapter.getItemCount());
 //            mainHandler.post(new Runnable() {
@@ -494,7 +518,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 @Override
                 public void run() {
                     ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-                    final String [] notes = nextMessage.getContent();
+                    final String[] notes = nextMessage.getContent();
                     noteContainer.setVisibility(View.VISIBLE);
                     noteContent.setText(notes[0]);
                     noteContainer.setOnClickListener(new View.OnClickListener() {
@@ -503,7 +527,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
 
                         @Override
                         public void onClick(View view) {
-                            if (state.equals("note finished") || state.equals("note submitted")) return;
+                            if (state.equals("note finished") || state.equals("note submitted"))
+                                return;
                             if (curNote >= notes.length) {
                                 // exit the note display
                                 noteContainer.setVisibility(View.INVISIBLE);

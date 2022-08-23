@@ -22,8 +22,8 @@
             {
                 "type": "my",
                 "content": [
-                    "My firstname is %playername.",
-                    "My lastname is %playerlastname."
+                    "My firstname is %playername. My firstname is %playername. My firstname is %playername. My firstname is %playername. My firstname is %playername.",
+                    "My lastname is %playerlastname. My lastname is %playerlastname. My lastname is %playerlastname. My lastname is %playerlastname. My lastname is %playerlastname."
                 ],
                 "block": 0,
                 "time": "8:02pm"
