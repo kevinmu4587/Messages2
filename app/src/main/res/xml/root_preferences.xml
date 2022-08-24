@@ -27,6 +27,11 @@
             app:key="isFastMode"
             app:title="Fast Mode"
             app:summaryOn="NPC typing time is reduced."/>
+
+        <SwitchPreferenceCompat
+            app:key="isAutoMode"
+            app:title="Auto Play"
+            app:summary="Warning: Your messages will be sent automatically."/>
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -140,10 +140,12 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         String playerLastName = sharedPref.getString("playerLastName", GameManager.playerLastName);
         String playerNickname = sharedPref.getString("playerNickname", GameManager.playerNickname);
         boolean isFastMode = sharedPref.getBoolean("isFastMode", false);
+        boolean isAutoMode = sharedPref.getBoolean("isAutoMode", false);
         GameManager.playerFirstName = playerFirstName;
         GameManager.playerLastName = playerLastName;
         GameManager.playerNickname = playerNickname;
         GameManager.isFastMode = isFastMode;
+        GameManager.isAutoMode = isAutoMode;
 
 
 //        testNextConversationButton = view.findViewById(R.id.test_add_conversation_button);

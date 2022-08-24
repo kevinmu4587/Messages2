@@ -435,6 +435,14 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 } else if (type.equals("my") || type.substring(0, 3).equals("key")) {
                     // or if it is a key decision
                     // get the choice by opening the dialog
+                    if (GameManager.isAutoMode) {
+                        // if autoplay, just choose the first option
+                        lastPlayerChoice = 0;
+                        nextMessage.setChoice(0);
+                        submitMessage();
+                        state = "sent";
+                        continue;
+                    }
                     state = "choose";
                 } else if (type.equals("block")) {
                     String[] blockInformation = nextMessage.getContent()[0].split("_");
@@ -479,25 +487,30 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         private void typingAnim() {
             // Log.e(TAG, "started typing anim");
             // add typing gif
-            adapter.getSentMessages().add(null);
-            adapter.notifyItemInserted(adapter.getItemCount() - 1);
-            checkScroll();
-//            mainHandler.post(new Runnable() {
-//                @Override
-//                public void run() {
-//                }
-//            });
-            if (!isSoundpoolDisabled) soundPool.play(npcTypingSound, 1, 1, 0, 0, 1);
+//            adapter.getSentMessages().add(null);
+//            adapter.notifyItemInserted(adapter.getItemCount() - 1);
+//            checkScroll();
+            mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    adapter.getSentMessages().add(null);
+                    checkScroll();
+                    adapter.notifyItemInserted(adapter.getItemCount() - 1);
+                }
+            });
+            if (!isSoundpoolDisabled) soundPool.play(npcTypingSound, 0.5f, 0.5f, 0, 0, 1);
             // sleep as NPC is typing
             String message = nextMessage.getContent()[nextMessage.getChoice()];
             sleep(GameManager.isFastMode ? 750 : message.length() * 100);
-            adapter.getSentMessages().remove(adapter.getItemCount() - 1);
-            adapter.notifyItemRemoved(adapter.getItemCount());
-//            mainHandler.post(new Runnable() {
-//                @Override
-//                public void run() {
-//                }
-//            });
+//            adapter.getSentMessages().remove(adapter.getItemCount() - 1);
+//            adapter.notifyItemRemoved(adapter.getItemCount());
+            mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    adapter.getSentMessages().remove(adapter.getItemCount() - 1);
+                    adapter.notifyItemRemoved(adapter.getItemCount());
+                }
+            });
             // Log.e(TAG, "finished typing anim");
         }
 

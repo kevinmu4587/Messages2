@@ -653,6 +653,11 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - Add nickname replacement
         - lower audio of send and receive messages
         - disabled SoundPool audio when ChatActivity is paused
+[Tuesday, August 23rd, 2022]
+    - changes from 0.0.3
+        - block number fixes for Christmas chapter 16/17
+        - added autoplay feature
+            - not exhaustively tested. test this on the local device to confirm
 
 
 

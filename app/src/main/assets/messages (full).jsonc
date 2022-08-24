@@ -1852,7 +1852,7 @@
                 "content": [
                     "Chapter 16-1: Christmas at the Exhibition"
                 ],
-                "block": 0,
+                "block": 1,
                 "time": "none"
             },
             {
@@ -1860,7 +1860,7 @@
                 "content": [
                     "Monday, December 24th, 8:47pm"
                 ],
-                "block": 0,
+                "block": 1,
                 "time": "none"
             },
             {
@@ -2729,7 +2729,7 @@
                 "content": [
                     "Chapter 17-2: Christmas at the Park"
                 ],
-                "block": 0,
+                "block": 2,
                 "time": "none"
             },
             {
@@ -2737,7 +2737,7 @@
                 "content": [
                     "Tuesday, December 25th, 8:48pm"
                 ],
-                "block": 0,
+                "block": 2,
                 "time": "none"
             },
             {
@@ -7866,7 +7866,7 @@
                 "content": [
                     "Chapter 17-2: Christmas at the Park"
                 ],
-                "block": 0,
+                "block": 1,
                 "time": "none"
             },
             {
@@ -7874,7 +7874,7 @@
                 "content": [
                     "Tuesday, December 25th, 6:45pm"
                 ],
-                "block": 0,
+                "block": 1,
                 "time": "none"
             },
             {
@@ -8152,7 +8152,7 @@
                 "content": [
                     "unconditional_4"
                 ],
-                "block": 4,
+                "block": 1,
                 "time": "none"
             },
             //], // end Block 1 (Group 5-1): Christmas at the Park
@@ -8163,7 +8163,7 @@
                 "content": [
                     "Chapter 16-1: Christmas at the Exhibition"
                 ],
-                "block": 0,
+                "block": 2,
                 "time": "none"
             },
             {
@@ -8171,7 +8171,7 @@
                 "content": [
                     "Monday, December 24th, 6:35pm"
                 ],
-                "block": 0,
+                "block": 2,
                 "time": "none"
             },
             {
@@ -9220,6 +9220,14 @@
             //], // end block 4: going home
             // unconditional block (Block 5): Give gift to Andrea
             //[ // start block 5: give my gift to andrea
+                {
+                    "type": "action",
+                    "content": [
+                        "You hand %npc2name a present"
+                    ],
+                    "block": 5,
+                    "time": "none"
+                }, 
                 {
                     "type": "block",
                     "content": [

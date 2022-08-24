@@ -29,9 +29,9 @@ incr1
 % Andrea 4 Final Preparations, Part 2 #15
 incr3
 % Either Ax 6 Exhibition || Andrea 5 Exhibition as #16
-incr_exhibitionDecision=1_1_3
+incr_exhibitionAxOrAndrea=1_1_3
 % Either Ax 6 Park || Andrea 5 Park as #17
-incr_exhibitionDecision=1_3_1
+incr_exhibitionAxOrAndrea=1_3_1
 % Tommy 7 Aftermath #18
 incr2
 % Ax 7 Failed-Checkin #19
