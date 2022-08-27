@@ -658,6 +658,11 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - block number fixes for Christmas chapter 16/17
         - added autoplay feature
             - not exhaustively tested. test this on the local device to confirm
+[Friday, August 26th, 2022]
+    - removed old unused sounds
+    - added remaining profile picture
+    - minor story changes
+    - tested autoplay on local device
 
 
 

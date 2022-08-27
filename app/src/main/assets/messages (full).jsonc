@@ -345,7 +345,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Nice, you sound confident 😇.",
+                    "Nice, you sound confident 😇",
                     "Aw that's okay you did your best",
                     "Wow smartie alert 😳"
                 ],
@@ -4640,7 +4640,7 @@
                 "content": [
                     "Hey %friendname",
                     "Hey how's it going",
-                    "Not much."
+                    "Not much"
                 ],
                 "block": 0,
                 "time": "11:53pm"
@@ -4836,7 +4836,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Alright well my phone's at 2%, i'm gonna head off to bed"
+                    "Alright well my phone's at 2%, i'm gonna head out"
                 ],
                 "block": 0,
                 "time": "12:04am"
@@ -5246,7 +5246,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "i gave up my stuff AND took it back"
+                    "i gave up my stuff AND got into a fight"
                 ],
                 "block": 0,
                 "time": "11:18am"
@@ -5536,7 +5536,7 @@
                 "content": [
                     "Yeah they are good friends.",
                     "Yeah she's cute.",
-                    "Stop"
+                    "Oh stop it"
                 ],
                 "block": 0,
                 "time": "2:19pm"

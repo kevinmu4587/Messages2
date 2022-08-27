@@ -20,7 +20,7 @@ public class Conversation implements Parcelable  {
     public static final int STATE_RUNNING = 0;
     public static final int STATE_PAUSED = 1;
     public static final int STATE_DONE = 2;
-    public static final int[] profilePictures = { R.drawable.rose, R.drawable.market, R.drawable.cat };
+    public static final int[] profilePictures = { R.drawable.rose,R.drawable.ferris_wheel, R.drawable.cat, R.drawable.police, R.drawable.moon };
 
     private String firstName;
     private String lastName;
