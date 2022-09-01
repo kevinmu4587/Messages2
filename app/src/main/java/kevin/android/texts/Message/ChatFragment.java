@@ -77,6 +77,19 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     private Animation fadeOut;
 
     private static final String TAG = "ChatFragment";
+    private Thread.UncaughtExceptionHandler defaultUEH;
+
+    private Thread.UncaughtExceptionHandler myUEH = new Thread.UncaughtExceptionHandler() {
+        @Override
+        public void uncaughtException(@NonNull Thread thread, @NonNull Throwable throwable) {
+            Log.e(TAG, "uncaughtException");
+            playRunnable.finished = true;
+            playRunnable = null;
+            System.exit(2);
+            // rethrow the exception again (important)
+            defaultUEH.uncaughtException(thread, throwable);
+        }
+    };
 
     // required empty constructor
     public ChatFragment() {
@@ -87,6 +100,9 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         super.onCreate(savedInstanceState);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
+        // defaultUEH = Thread.getDefaultUncaughtExceptionHandler();
+        // setup custom exception handler
+        // Thread.setDefaultUncaughtExceptionHandler(myUEH);
     }
 
     @Nullable
@@ -312,12 +328,14 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_open_chat_info:
+//                artificial crash, for testing
+//                String s = null;
+//                Log.e(TAG, "" + s.length());
                 // navigate to ChatInfoFragment
                 NavController navController = NavHostFragment.findNavController(this);
                 navController.navigate(ChatFragmentDirections.actionChatFragmentToChatInfoFragment(conversation));
                 return true;
             case android.R.id.home:
-                Log.e(TAG, "user clicked back on chat fragment");
                 getActivity().onBackPressed();
             default:
                 return super.onOptionsItemSelected(item);
@@ -380,6 +398,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     class PlayRunnable implements Runnable {
         private static final String TAG = "PlayRunnable";
         public boolean finished = false;
+        private int numReloadUpcomingMessages = 0;
 
         @Override
         public void run() {
@@ -415,10 +434,17 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     }
                     // at the start, maybe the upcoming messages haven't loaded yet
                     Log.e(TAG, "Waiting for the first upcoming messages to arrive");
-                    state = "waiting";
                     sleep(2000);
+                    state = "waiting";
+                    numReloadUpcomingMessages++;
+                    if (numReloadUpcomingMessages >= 2) {
+                        conversation.setConversationState(Conversation.STATE_DONE);
+                        sharedViewModel.setCurrentRunning(conversation);
+                        playRunnable.finished = true;
+                    }
                     continue;
                 }
+                numReloadUpcomingMessages = 0;
                 nextMessage.replaceNamePlaceholders();
                 if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
                     sleep(2000);

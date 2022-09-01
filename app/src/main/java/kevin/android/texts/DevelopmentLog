@@ -663,14 +663,28 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - added remaining profile picture
     - minor story changes
     - tested autoplay on local device
-
-
+    - deployed 0.0.4
+        - fixed back button on ChatInfoFragment not going back
+        - crash from remove typing anim, cannot reproduce again
+[Tuesday, August 30th, 2022]
+    - added UncaughtExceptionHandler in MainActivity
+        - sharedPreferences are now supposedly saved after a crash
+        - the sent messages are no longer super messed up after a crash (i think cause insertNum is now saved)
+        - timeline wasn't being saved properly, but now it works? double check this
+        - see if you can make just one instance of sharedPreferences. the player name is not being saved (since it lives in conversation fragment)
+[Thursday, September 1st, 2022]
+    - i think player names and settings are now saved after an app crash (should be good)
+    - added backup: if we wait for upcoming messages twice, end the conversation.
+    - I think all sharedPreferences are now saved in a crash. (remove artificial crash)
 
 
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
+    - reset game button and is game finished check
+
+
 
 
 Things to check at the end:

@@ -1,7 +1,9 @@
 package kevin.android.texts;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -11,11 +13,13 @@ import android.widget.TextView;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import kevin.android.texts.Conversations.Conversation;
+import kevin.android.texts.Message.ChatFragmentDirections;
 
 public class ChatInfoFragment  extends Fragment {
     private ImageView profilePicture;
@@ -27,6 +31,13 @@ public class ChatInfoFragment  extends Fragment {
     public static final String CHAT_INFO_KEY = "chat_info_key";
 
     public ChatInfoFragment() {
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -66,5 +77,15 @@ public class ChatInfoFragment  extends Fragment {
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                getActivity().onBackPressed();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

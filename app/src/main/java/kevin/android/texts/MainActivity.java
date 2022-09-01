@@ -1,5 +1,6 @@
 package kevin.android.texts;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -22,6 +23,17 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    private Thread.UncaughtExceptionHandler defaultUEH;
+
+    private Thread.UncaughtExceptionHandler myUEH = new Thread.UncaughtExceptionHandler() {
+        @Override
+        public void uncaughtException(@NonNull Thread thread, @NonNull Throwable throwable) {
+            Log.e(TAG, "uncaughtException");
+            saveSharedPreferences();
+            // rethrow the exception again (important)
+            defaultUEH.uncaughtException(thread, throwable);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         EmojiCompat.Config config = new BundledEmojiCompatConfig(this);
         EmojiCompat.init(config);
+        defaultUEH = Thread.getDefaultUncaughtExceptionHandler();
+        // setup custom exception handler
+        Thread.setDefaultUncaughtExceptionHandler(myUEH);
     }
 
     @Override
@@ -41,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         if (jsonTimeline != null) {
             Type type = new TypeToken<ArrayList<String>>() {}.getType();
             GameManager.timeline = gson.fromJson(jsonTimeline, type);
+            Log.e(TAG, "loaded timeline as " + GameManager.timeline);
         } else {
             loadTimeline();
         }
@@ -68,11 +84,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        saveSharedPreferences();
+    }
+
+    private void saveSharedPreferences() {
+        Log.e(TAG, "saving shared preferences");
         // save the GameManager key decisions to shared preferences
         // SharedPreferences sharedPref = getSharedPreferences("MyPreference", Context.MODE_PRIVATE);
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("MyHashMap", new Gson().toJson(GameManager.getKeyChoices()));
+        Gson gson = new Gson();
+        editor.putString("MyHashMap", gson.toJson(GameManager.getKeyChoices()));
         editor.putBoolean("firstRun", GameManager.firstRun);
         editor.putString("npc1FirstName", GameManager.npc1FirstName);
         editor.putString("npc1LastName", GameManager.npc1LastName);
@@ -84,11 +106,11 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("npc2LastName", GameManager.npc2LastName);
         editor.putString("npc2Nickname", GameManager.npc2Nickname);
         editor.putInt("nextInsertNum", GameManager.nextInsertNum);
-        Gson gson = new Gson();
         String timeline = gson.toJson(GameManager.timeline);
+        Log.e(TAG, "saving timeline to sharedPrefs: " + timeline);
         editor.putString("Timeline", timeline);
-        editor.apply();
-        // Log.e(TAG, "Saved " + GameManager.getKeyChoices().size() + " key decisions to shared preferences");
+        editor.commit();
+        Log.e(TAG, "Saved " + GameManager.getKeyChoices().size() + " key decisions to shared preferences");
     }
 
     private void loadTimeline() {

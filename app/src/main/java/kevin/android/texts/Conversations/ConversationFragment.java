@@ -54,6 +54,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         getActivity().setTitle("Schism");
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         return inflater.inflate(R.layout.fragment_conversations, container, false);
@@ -62,7 +63,6 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         RecyclerView recyclerView = view.findViewById(R.id.conversation_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
@@ -135,7 +135,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         });
 
         // retrieve stored values from settings fragment
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         String playerFirstName = sharedPref.getString("playerFirstName", GameManager.playerFirstName);
         String playerLastName = sharedPref.getString("playerLastName", GameManager.playerLastName);
         String playerNickname = sharedPref.getString("playerNickname", GameManager.playerNickname);
