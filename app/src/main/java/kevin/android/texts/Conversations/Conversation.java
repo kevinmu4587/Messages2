@@ -3,7 +3,6 @@ package kevin.android.texts.Conversations;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kevin.android.texts.Converters;
-import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
 
 @Entity(tableName = "conversation_table")
@@ -22,47 +20,48 @@ public class Conversation implements Parcelable  {
     public static final int STATE_RUNNING = 0;
     public static final int STATE_PAUSED = 1;
     public static final int STATE_DONE = 2;
-    public static final int[] profilePictures = { R.drawable.rose, R.drawable.cat };
+    public static final int[] profilePictures = { R.drawable.rose,R.drawable.ferris_wheel, R.drawable.cat, R.drawable.police, R.drawable.moon };
 
     private String firstName;
     private String lastName;
     private String nickname;
-    private String lastMessage;
+    private String description;
+    private String lastMessage = "New message!";
+    private String lastTime;
 
-    @Ignore
-    private int profilePictureID;
+    private boolean editable;
+    private String conversationDialogTitle;
 
-    private int group;
+    private int group = 1;
     private int conversationState;
-    private String bgState;
+    // private String bgState;
 
-    private boolean active;
+    private boolean active = false; // whether the conversation is displayed on the ConversationFragment
 //    private int recentValue;
-    private boolean unread;
-    private boolean initialized;
+    private boolean unread = true;
+    private boolean initialized = false;
     private List<Integer> currentBlocks = new ArrayList<>();
 
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    public Conversation(String firstName, String lastName, String nickname) {
+    public Conversation(String firstName, String lastName, String nickname, String description,
+                        boolean editable, String conversationDialogTitle) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.nickname = nickname;
-        this.lastMessage = "New message!";
-        this.group = 1;
+        this.description = description;
+        this.editable = editable;
+        this.conversationDialogTitle = conversationDialogTitle;
         this.conversationState = Conversation.STATE_RUNNING;
-        this.bgState = "";
-        this.active = false;
-        this.initialized = false;
-//        this.recentValue = recentValue;
-        this.unread = true;
+        // this.bgState = "";
         this.currentBlocks.add(0);
     }
 
     protected Conversation(Parcel in) {
         firstName = in.readString();
         lastName = in.readString();
+        description = in.readString();
         lastMessage = in.readString();
         group = in.readInt();
         conversationState = in.readInt();
@@ -98,6 +97,10 @@ public class Conversation implements Parcelable  {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public void setDescription(String description) { this.description = description; }
+
+    public String getDescription() { return description; }
 
     public String getFullName() {
         return firstName + " " + lastName;
@@ -205,13 +208,13 @@ public class Conversation implements Parcelable  {
 //        this.profilePictureID = profilePictureID;
 //    }
 
-    public String getBgState() {
-        return bgState;
-    }
+//    public String getBgState() {
+//        return bgState;
+//    }
 
-    public void setBgState(String bgState) {
-        this.bgState = bgState;
-    }
+//    public void setBgState(String bgState) {
+//        this.bgState = bgState;
+//    }
 
     @Override
     public int describeContents() {
@@ -228,5 +231,21 @@ public class Conversation implements Parcelable  {
         parcel.writeByte((byte) (active ? 1 : 0));
         parcel.writeInt(id);
         parcel.writeByte((byte) (unread ? 1 : 0));
+    }
+
+    public String getLastTime() {
+        return lastTime;
+    }
+
+    public void setLastTime(String lastTime) {
+        this.lastTime = lastTime;
+    }
+
+    public String getConversationDialogTitle() {
+        return conversationDialogTitle;
+    }
+
+    public boolean isEditable() {
+        return editable;
     }
 }

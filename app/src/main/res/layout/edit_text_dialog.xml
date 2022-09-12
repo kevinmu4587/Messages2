@@ -9,7 +9,7 @@
         android:id="@+id/edit_text_dialog_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="16dp"
         android:text="You can change this later."
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"

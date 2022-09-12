@@ -1,19 +1,15 @@
 package kevin.android.texts.Conversations;
 
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.textclassifier.ConversationAction;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -42,7 +38,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
         if (current.isUnread()) {
             holder.lastMessage.setTypeface(null, Typeface.BOLD);
         }
-        holder.timestamp.setText("12:34am");
+        holder.timestamp.setText(current.getLastTime());
         holder.readIndication.setImageResource(R.drawable.ic_check_filled);
         holder.screen.setTag(current);
     }
@@ -82,7 +78,8 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
             screen.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Conversation conversation = (Conversation) screen.getTag();
+                    int position = getLayoutPosition();
+                    Conversation conversation = activeConversations.get(position);
                     // navigate to chat fragment
                     Navigation.findNavController(view).navigate(ConversationFragmentDirections.
                             actionConversationFragmentToChatFragment(conversation));

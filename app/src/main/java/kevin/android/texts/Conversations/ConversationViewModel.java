@@ -8,11 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
-import kevin.android.texts.Message.Message;
-import kevin.android.texts.Message.MessageRepository;
 
 public class ConversationViewModel extends AndroidViewModel {
     private static final String TAG = "ConversationViewModel";
@@ -49,16 +45,21 @@ public class ConversationViewModel extends AndroidViewModel {
         this.inactiveConversations = inactiveConversations;
     }
 
-    public void loadNextConversation() {
+    public void loadNextConversation(int id) {
         Conversation next = inactiveConversations.get(0);
-        Log.e(TAG, "Requested next conversation. name: " + next.getFullName() + ", id: " + next.getId());
+        if (next.getId() != id) {
+            Log.e(TAG, "FATAL: Requesting incorrect next conversation. Requesting " + id + ", received " + next.getId());
+            throw new RuntimeException();
+        }
+        Log.e(TAG, "Requested next conversation (SET TO RUNNING). name: " + next.getFullName() + ", id: " + next.getId());
         next.setActive(true);
+        next.setConversationState(Conversation.STATE_RUNNING);
         update(next);
     }
 
-    public LiveData<List<Conversation>> getAllConversations() {
-        return repository.getAllConversations();
-    }
+//    public LiveData<List<Conversation>> getAllConversations() {
+//        return repository.getAllConversations();
+//    }
 
     public void incrementConversationWithID(int id) {
         for (Conversation c : activeConversations) {
@@ -66,6 +67,9 @@ public class ConversationViewModel extends AndroidViewModel {
                 c.setGroup(c.getGroup() + 1);
                 // not tested
                 c.setConversationState(Conversation.STATE_RUNNING);
+                c.setLastMessage("New message!");
+                c.setUnread(true);
+                update(c);
                 Log.e(TAG, "conversation " + c.getFullName() + " is now on group " + c.getGroup());
                 update(c);
                 return;

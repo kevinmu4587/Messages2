@@ -1,0 +1,37 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SettingsFragment">
+
+    <PreferenceCategory
+        app:icon="@drawable/ic_baseline_person_24"
+        app:title="Player Settings">
+
+        <EditTextPreference
+            app:key="playerFirstName"
+            app:title="Player First Name" />
+
+        <EditTextPreference
+            app:key="playerLastName"
+            app:title="Player Last Name" />
+
+        <EditTextPreference
+            app:key="playerNickname"
+            app:title="Player Nickname" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:icon="@drawable/ic_baseline_videogame_asset_24"
+        app:title="Gameplay Settings">
+
+        <SwitchPreferenceCompat
+            app:key="isFastMode"
+            app:title="Fast Mode"
+            app:summaryOn="NPC typing time is reduced."/>
+
+        <SwitchPreferenceCompat
+            app:key="isAutoMode"
+            app:title="Auto Play"
+            app:summary="Warning: Your messages will be sent automatically."/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

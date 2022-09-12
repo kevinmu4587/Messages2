@@ -1,5 +1,6 @@
 package kevin.android.texts.Message;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
@@ -43,6 +44,7 @@ import kevin.android.texts.Dialog;
 import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
 import kevin.android.texts.SharedViewModel;
+import kevin.android.texts.Utils;
 
 public class ChatFragment extends Fragment implements View.OnClickListener, Dialog.DialogListener {
     private MessageViewModel messageViewModel;
@@ -55,14 +57,15 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     private EditText chatBox;
     private PlayRunnable playRunnable;
     private FloatingActionButton jumpDownButton;
-    private FloatingActionButton testFinishGroup;
+    // private FloatingActionButton testFinishGroup;
     private LinearLayout noteContainer;
     private TextView noteContent;
     private TextView noteNext;
     private ImageView background;
 
-    private String state = "npc";
+    private String state = "waiting";
     private int lastPlayerChoice = 0;
+    private boolean isSoundpoolDisabled = false;
     private Message nextMessage;
     private Conversation conversation;
 
@@ -82,6 +85,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
     }
 
@@ -92,7 +96,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         sendButton = view.findViewById(R.id.chat_send_button);
         chatBox = view.findViewById(R.id.chat_edittext);
         jumpDownButton = view.findViewById(R.id.chat_jump_button);
-        testFinishGroup = view.findViewById(R.id.test_finish_group);
+        // testFinishGroup = view.findViewById(R.id.test_finish_group);
         noteContainer = view.findViewById(R.id.note_message_container);
         noteContent = view.findViewById(R.id.note_content);
         noteNext = view.findViewById(R.id.note_await_next);
@@ -101,7 +105,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         sendButton.setOnClickListener(this);
         chatBox.setOnClickListener(this);
         jumpDownButton.setOnClickListener(this);
-        testFinishGroup.setOnClickListener(this);
+        // testFinishGroup.setOnClickListener(this);
         noteContainer.setOnClickListener(this);
 
         // manage sound effects
@@ -110,13 +114,13 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                 .build();
         soundPool = new SoundPool.Builder()
-                .setMaxStreams(2)
+                .setMaxStreams(1)
                 .setAudioAttributes(audioAttributes)
                 .build();
 
         npcTypingSound = soundPool.load(getContext(), R.raw.typing, 1);
-        sendMessageSound = soundPool.load(getContext(), R.raw.send_message, 1);
-        receivedMessageSound = soundPool.load(getContext(), R.raw.receive_message, 1);
+        sendMessageSound = soundPool.load(getContext(), R.raw.pitch_down, 1);
+        receivedMessageSound = soundPool.load(getContext(), R.raw.pitch_up, 1);
         return view;
     }
 
@@ -140,6 +144,9 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         adapter = new MessageAdapter(conversation.getProfilePictureID());
         recyclerView.setAdapter(adapter);
 
+        fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.slow_fade_in);
+        fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.slow_fade_out);
+
         // observe the sent messages
         messageViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
                 getInstance(getActivity().getApplication())).get(MessageViewModel.class);
@@ -147,37 +154,46 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
         messageViewModel.getSentMessages(conversation.getId(), conversation.getGroup()).observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
             @Override
-            public void onChanged(List<Message> notes) {
+            public void onChanged(List<Message> sentMessages) {
                 // update recycler view
-                if (notes.size() > 0) {
-                    adapter.setSentMessages(notes);
+                if (sentMessages.size() > 0) {
+                    adapter.setSentMessages(sentMessages);
                     checkScroll();
                 }
             }
         });
 
-        // observe the upcoming messages
-        messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
-        messageViewModel.getUpcomingMessages().
-                observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
-                    @Override
-                    public void onChanged(List<Message> messages) {
-                        // Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
-                        messageViewModel.setUpcomingMessages(messages);
-                        if (messages.size() == 0 && playRunnable != null) {
-                            if (conversation.getCurrentBlock() == 0) {
-                                // we already finished this chat
-                                conversation.setConversationState(Conversation.STATE_DONE);
-                                playRunnable.finished = true;
-                                Log.e(TAG, "Chat is finished, playRunnable killed");
-                            } else {
-                                int top = conversation.popTopBlock();
-                                messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
-                                Log.e(TAG, "popped block " + top);
+        Log.e(TAG, "Conversation state stars as " + conversation.getConversationState());
+        if (conversation.getConversationState() == Conversation.STATE_RUNNING) {
+            // observe the upcoming messages
+            messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
+            messageViewModel.getUpcomingMessages().
+                    observe(getViewLifecycleOwner(), new Observer<List<Message>>() {
+                        @Override
+                        public void onChanged(List<Message> messages) {
+                            // Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
+                            messageViewModel.setUpcomingMessages(messages);
+                            if (messages.size() == 0 && playRunnable != null && !state.equals("waiting")) {
+                                if (conversation.getCurrentBlock() == 0) {
+                                    // we already finished this chat
+                                    conversation.setConversationState(Conversation.STATE_DONE);
+                                    sharedViewModel.setCurrentRunning(conversation);
+                                    playRunnable.finished = true;
+                                    Log.e(TAG, "Chat is finished, playRunnable killed. Set conversation state to DONE");
+                                } else {
+                                    // when we finish the current block
+                                    int top = conversation.popTopBlock();
+                                    messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
+                                    Log.e(TAG, "popped block " + top);
+                                }
                             }
                         }
-                    }
-                });
+                    });
+            // start the background thread
+            playRunnable = new PlayRunnable();
+            new Thread(playRunnable).start();
+            Log.e(TAG, "started a new playrunnable thread.");
+        }
 
         // get data back from ChatInfoFragment
         NavController navController = NavHostFragment.findNavController(this);
@@ -212,19 +228,19 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 }
             }
         });
+    }
 
-        fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.slow_fade_in);
-        fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.slow_fade_out);
-
-        // start the background thread
-        playRunnable = new PlayRunnable();
-        new Thread(playRunnable).start();
+    @Override
+    public void onPause() {
+        super.onPause();
+        isSoundpoolDisabled = true;
     }
 
     @Override
     public void onDestroyView() {
-        playRunnable.finished = true;
+        if (playRunnable != null) playRunnable.finished = true;
         playRunnable = null;
+        Log.e(TAG, "playrunnable set to null");
 //        Log.e(TAG, "Leaving chat fragment with blocks " + Arrays.toString(Utils.listToIntArray(conversation.getCurrentBlocks())));
         super.onDestroyView();
     }
@@ -237,7 +253,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     state = "sent";
                     submitMessage();
                     chatBox.setText("");
-                    soundPool.play(sendMessageSound, 0.5f, 0.5f, 0, 0, 1);
+                    if (!isSoundpoolDisabled) soundPool.play(sendMessageSound, 1, 1, 0, 0, 1);
                 }
                 return;
             case R.id.chat_edittext:
@@ -249,10 +265,10 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 recyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);
                 jumpDownButton.setVisibility(View.INVISIBLE);
                 return;
-            case R.id.test_finish_group:
-                conversation.setConversationState(Conversation.STATE_DONE);
-                playRunnable.finished = true;
-                Log.e(TAG, "playrunnable killed, group finished early.");
+//            case R.id.test_finish_group:
+//                conversation.setConversationState(Conversation.STATE_DONE);
+//                playRunnable.finished = true;
+//                Log.e(TAG, "playrunnable killed, group finished early.");
         }
     }
 
@@ -265,7 +281,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     }
 
     /*
-        - set the player choice
+        - set the player choice (zero-indexed)
         - fill the chat box with the selected choice of text
      */
     @Override
@@ -277,9 +293,12 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         state = "sending";
         String type = nextMessage.getType();
         if (type.length() >= 3 && type.substring(0, 3).equals("key")) {
-            String blockName = type.substring(4);
-            GameManager.addKeyDecision(blockName, choice);
-            Log.e(TAG, "Added key decision " + blockName + " with choice " + choice);
+            String[] blockInformation = type.split("_");
+            String firstBlockNum = blockInformation[1];
+            String blockName = blockInformation[2];
+            GameManager.addKeyDecision(blockName, choice + Integer.parseInt(firstBlockNum));
+            Log.e(TAG, "Added key decision " + blockName + " with choice " + (choice + Integer.parseInt(firstBlockNum)));
+            //  submit this message normally
             nextMessage.setType("my");
         }
     }
@@ -293,10 +312,15 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_open_chat_info:
+//                artificial crash, for testing
+//                String s = null;
+//                Log.e(TAG, "" + s.length());
                 // navigate to ChatInfoFragment
                 NavController navController = NavHostFragment.findNavController(this);
                 navController.navigate(ChatFragmentDirections.actionChatFragmentToChatInfoFragment(conversation));
                 return true;
+            case android.R.id.home:
+                getActivity().onBackPressed();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -307,11 +331,14 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         if (nextMessage.getContent().length > 1) {
             nextMessage.setChoice(lastPlayerChoice);
         }
-        Log.e(TAG, "Submitted message " + nextMessage.getContent()[nextMessage.getChoice()]);
+        // replace any name placeholders
+        // nextMessage.replaceNamePlaceholders();
+        // Log.e(TAG, "Submitted message " + nextMessage.getContent()[nextMessage.getChoice()]);
         messageViewModel.submitMessage(nextMessage);
 
-        // update sharedViewModel for the last message
+        // update sharedViewModel for the last sent message
         String lastMessage = nextMessage.getContent()[nextMessage.getChoice()];
+        String lastTime = nextMessage.getTime();
         if (nextMessage.getType().equals("npc")) {
             lastMessage = conversation.getFirstName() + ": " + lastMessage;
             conversation.setUnread(true);
@@ -320,6 +347,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             conversation.setUnread(false);
         }
         conversation.setLastMessage(lastMessage);
+        conversation.setLastTime(lastTime);
         sharedViewModel.setCurrentRunning(conversation);
     }
 
@@ -329,11 +357,21 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             if (!recyclerView.canScrollVertically(1)) {
                 // jump to bottom
                 recyclerView.smoothScrollToPosition(adapter.getItemCount());
-                jumpDownButton.setVisibility(View.INVISIBLE);
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        jumpDownButton.setVisibility(View.INVISIBLE);
+                    }
+                });
                 // Log.e(TAG, "cannot scroll vertically. num sent messages: " + adapter.getItemCount());
             } else {
-                // make jump button appear
-                jumpDownButton.setVisibility(View.VISIBLE);
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        // make jump button appear
+                        jumpDownButton.setVisibility(View.VISIBLE);
+                    }
+                });
             }
         }
     }
@@ -344,83 +382,142 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     class PlayRunnable implements Runnable {
         private static final String TAG = "PlayRunnable";
         public boolean finished = false;
+        private int numReloadUpcomingMessages = 0;
 
         @Override
         public void run() {
+            sleep(1500);
             while (!finished) {
-                if (state.equals("sending") || state.equals("choose") || state.equals("setting background")) {
+                if (Utils.contains(state, new String[]{"sending", "choose", "setting background"})) {
+//                if (state.equals("sending") || state.equals("choose") || state.equals("setting background")) {
                     // wait, we are waiting for user input
 //                    Log.e(TAG, "Runnable paused. state: " + state);
                     sleep(1000);
                     continue;
                 } else if (state.equals("sent")) {
-                    Log.e(TAG, "message sent, waiting some time");
+                    // Log.e(TAG, "message sent, waiting some time");
+                    sleep(GameManager.isFastMode ? 500 : 2000);
+                    state = "can load next message";
+                    continue;
+                } else if (state.equals("note")) {
+                    // A note is currently running. we shouldn't load more messages until it is done.
+                    sleep(4000);
+                    continue;
+                } else if (state.equals("note finished")) {
+                    messageViewModel.submitMessage(nextMessage);
+                    state = "note submitted";
                     sleep(2000);
-                    state = "npc";
+                    continue;
                 }
                 nextMessage = messageViewModel.getNextMessage();
                 if (nextMessage == null) {
-                    if (finished) break;
+                    // the thread is over, conversation ended
+                    if (finished) {
+                        Log.e(TAG, "No more upcoming messages since Thread is over");
+                        break;
+                    }
+                    // at the start, maybe the upcoming messages haven't loaded yet
+                    Log.e(TAG, "Waiting for the first upcoming messages to arrive");
                     sleep(2000);
-                } else {
-                    if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
-                        sleep(2000);
-                        Log.e(TAG, "current message does not match block; waiting for correct ones");
+                    state = "waiting";
+                    numReloadUpcomingMessages++;
+                    if (numReloadUpcomingMessages >= 2) {
+                        conversation.setConversationState(Conversation.STATE_DONE);
+                        sharedViewModel.setCurrentRunning(conversation);
+                        // if (playRunnable != null) playRunnable.finished = true;
+                    }
+                    continue;
+                }
+                numReloadUpcomingMessages = 0;
+                nextMessage.replaceNamePlaceholders();
+                if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
+                    sleep(2000);
+                    Log.e(TAG, "current message does not match block; waiting for correct ones to load in");
+                    continue;
+                }
+                String type = nextMessage.getType();
+                if (type.equals("npc") && !state.equals("choose")) {
+                    state = "npc";
+                    typingAnim();   // an npc message is next, so do a typing animation
+                    submitMessage();    // submit the npc messages
+                    if (!isSoundpoolDisabled) soundPool.play(receivedMessageSound, 1, 1, 0, 0, 1);
+                    sleep(1500);
+                } else if (type.equals("my") || type.substring(0, 3).equals("key")) {
+                    // or if it is a key decision
+                    // get the choice by opening the dialog
+                    if (GameManager.isAutoMode) {
+                        // if autoplay, just choose the first option
+                        lastPlayerChoice = 0;
+                        nextMessage.setChoice(0);
+                        submitMessage();
+                        state = "sent";
                         continue;
                     }
-                    String type = nextMessage.getType();
-                    if (type.equals("npc") && !state.equals("choose")) {
-                        typingAnim();
-                        submitMessage();
-                        soundPool.play(receivedMessageSound, 1, 1, 0, 0, 1);
-                        sleep(1500);
-                    } else if (type.equals("my") || type.substring(0, 3).equals("key")) {
-                        // or if it is a key decision
-                        // get the choice by opening the dialog
-                        state = "choose";
-                    } else if (type.equals("block")) {
-                        String blockName = nextMessage.getContent()[0];
-                        int blockChoice = GameManager.getKeyDecision(blockName) + 1;
-                        conversation.pushBlock(blockChoice);
-                        messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
-                        if (!finished) {
-                            messageViewModel.submitMessage(nextMessage);
-                            messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
-                            Log.e(TAG, "found block " + blockName + ", choice " + blockChoice);
+                    state = "choose";
+                } else if (type.equals("block")) {
+                    String[] blockInformation = nextMessage.getContent()[0].split("_");
+                    int newBlockNum = -1;
+                    // a basic conditional block
+                    if (blockInformation.length == 1) {
+                        String blockName = blockInformation[0];
+                        newBlockNum = GameManager.getKeyDecision(blockName);
+                    } else if (blockInformation.length == 2) {
+                        if (blockInformation[0].equals("unconditional")) {
+                            // an unconditional block. just switch to the block num
+                            newBlockNum = Integer.parseInt(blockInformation[1]);
+                        } else {
+                            // complex blocks
+                            String block1 = blockInformation[0];
+                            String block2 = blockInformation[1];
+                            newBlockNum = Integer.parseInt(GameManager.getKeyDecision(block1) + "" + GameManager.getKeyDecision(block2));
                         }
-                    } else if (type.equals("action")) {
-                        submitMessage();
-                        sleep(1500);
-                    } else if (type.equals("note") && !state.equals("note")) {
-                        state = "note";
-                        displayNote();
                     }
+                    conversation.pushBlock(newBlockNum);
+                    messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
+                    if (!finished) {
+                        messageViewModel.submitMessage(nextMessage);  // get rid of the message of type 'block'
+                        messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
+                        Log.e(TAG, "moving to new block: " + newBlockNum);
+                    }
+                } else if (type.equals("action")) {
+                    sleep(1000);
+                    submitMessage();
+                    sleep(1500);
+                } else if (type.equals("note")) {
+                    state = "note";
+                    displayNote();
+                }
 //                    } else if (type.equals("background")) {
 //                        manageBackgrounds();
 //                        state = "setting background";
 //                    }
-                }
             }
         }
 
         private void typingAnim() {
             // Log.e(TAG, "started typing anim");
             // add typing gif
-            adapter.getSentMessages().add(null);
+//            adapter.getSentMessages().add(null);
+//            adapter.notifyItemInserted(adapter.getItemCount() - 1);
+//            checkScroll();
             mainHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    adapter.notifyItemInserted(adapter.getItemCount() - 1);
+                    adapter.getSentMessages().add(null);
                     checkScroll();
+                    adapter.notifyItemInserted(adapter.getItemCount() - 1);
                 }
             });
-            soundPool.play(npcTypingSound, 1, 1, 0, 0, 1);
+            if (!isSoundpoolDisabled) soundPool.play(npcTypingSound, 0.5f, 0.5f, 0, 0, 1);
             // sleep as NPC is typing
-            sleep(3000);
-            adapter.getSentMessages().remove(adapter.getItemCount() - 1);
+            String message = nextMessage.getContent()[nextMessage.getChoice()];
+            sleep(GameManager.isFastMode ? 750 : message.length() * 100);
+//            adapter.getSentMessages().remove(adapter.getItemCount() - 1);
+//            adapter.notifyItemRemoved(adapter.getItemCount());
             mainHandler.post(new Runnable() {
                 @Override
                 public void run() {
+                    adapter.getSentMessages().remove(adapter.getItemCount() - 1);
                     adapter.notifyItemRemoved(adapter.getItemCount());
                 }
             });
@@ -444,7 +541,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 @Override
                 public void run() {
                     ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-                    final String [] notes = nextMessage.getContent();
+                    final String[] notes = nextMessage.getContent();
                     noteContainer.setVisibility(View.VISIBLE);
                     noteContent.setText(notes[0]);
                     noteContainer.setOnClickListener(new View.OnClickListener() {
@@ -453,15 +550,16 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
 
                         @Override
                         public void onClick(View view) {
+                            if (state.equals("note finished") || state.equals("note submitted"))
+                                return;
                             if (curNote >= notes.length) {
                                 // exit the note display
                                 noteContainer.setVisibility(View.INVISIBLE);
-                                messageViewModel.submitMessage(nextMessage);
+                                // messageViewModel.submitMessage(nextMessage);
                                 noteContainer.setAnimation(fadeOut);
                                 fadeOut.start();
-                                state = "";
                                 ((AppCompatActivity) getActivity()).getSupportActionBar().show();
-                                return;
+                                state = "note finished";
                             } else if (noteState == TEXT_DISPLAYED) {
                                 noteState = AWAIT_NEXT;
                                 noteNext.setVisibility(View.VISIBLE);

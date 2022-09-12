@@ -3,18 +3,18 @@
     [
         // group 1
         [
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Hello"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:01pm"
+            // },
             {
                 "type": "npc",
                 "content": [
-                    "Hello"
-                ],
-                "block": 0,
-                "time": "8:01pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "What is your name?"
+                    "Hi! I am %npc1name %npc1lastname. You are %playername %playerlastname. Your friend is %friendname, and NPC2 is %npc2name %npc2lastname. 🙂 \uD83E\uDD72 🥲 📧 "
                 ],
                 "block": 0,
                 "time": "8:02pm"
@@ -22,43 +22,8 @@
             {
                 "type": "my",
                 "content": [
-                    "Alice",
-                    "Bob",
-                    "Charlie"
-                ],
-                "block": 0,
-                "time": "8:03pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Hello Alice",
-                    "Hi Bob",
-                    "Nice to meet you Charlie"
-                ],
-                "block": 0,
-                "time": "8:04pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Okay bye!"
-                ],
-                "block": 0,
-                "time": "8:05pm"
-            },
-            {
-                "type": "action",
-                "content": [
-                    "Spike used the gadget"
-                ],
-                "block": 0,
-                "time": "8:01pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Bug after this message"
+                    "My firstname is %playername. My firstname is %playername. My firstname is %playername. My firstname is %playername. My firstname is %playername.",
+                    "My lastname is %playerlastname. My lastname is %playerlastname. My lastname is %playerlastname. My lastname is %playerlastname. My lastname is %playerlastname."
                 ],
                 "block": 0,
                 "time": "8:02pm"
@@ -66,11 +31,71 @@
             {
                 "type": "npc",
                 "content": [
-                    "qwertyuiopqwertyuiopqweruiopqweriupeortiupwoqweiryqowieuryqweoirtqweiurqoweiuryqoweiruyqwoer"
+                    "ok"
                 ],
                 "block": 0,
                 "time": "8:02pm"
             }
+            // {
+            //     "type": "my",
+            //     "content": [
+            //         "Alice",
+            //         "Bob",
+            //         "Charlie"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:03pm"
+            // },
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Again: I am %npc1name. You are %playername. Your friend is %friendname, and NPC2 is %npc2name."
+            //     ],
+            //     "block": 0,
+            //     "time": "8:02pm"
+            // }
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Hello Alice",
+            //         "Hi Bob",
+            //         "Nice to meet you Charlie"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:04pm"
+            // }
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Okay bye!"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:05pm"
+            // }
+            // {
+            //     "type": "action",
+            //     "content": [
+            //         "Spike used the gadget"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:01pm"
+            // },
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Bug after this message"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:02pm"
+            // },
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "qwertyuiopqwertyuiopqweruiopqweriupeortiupwoqweiryqowieuryqweoirtqweiurqoweiuryqoweiruyqwoer"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:02pm"
+            // }
         ],
         // group 2
         [
@@ -81,184 +106,369 @@
                 ],
                 "block": 0,
                 "time": "9:01pm"
-            },
-            // {
-            //     "type": "background",
-            //     "content": ["market"],
-            //     "block": 0,
-            //     "time": ""
-            // },
-            {
-                "type": "npc",
-                "content": ["We are in the market now."],
-                "block": 0,
-                "time": "12:21pm"
-            },
-            {
-                "type": "my",
-                "content": [
-                    "Looks good.",
-                    "Doesn't look very good.",
-                    "Okay, so it works."
-                ],
-                "block": 0,
-                "time": "12:22pm"
-            },
-            // {
-            //     "type": "background",
-            //     "content": ["fadeout"],
-            //     "block": 0,
-            //     "time": "12:23pm"
-            // },
-            {
-                "type": "npc",
-                "content": ["background is done now."],
-                "block": 0,
-                "time": "12:23pm"
-            },
-            {
-                "type": "note",
-                "content": [
-                    "After getting the blocks and groups to work, I started working on the notes.",
-                    "Soon we will be done.",
-                    "Still need to do sounds though."
-                ],
-                "block": 0,
-                "time": "10:10pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Note is done"
-                ],
-                "block": 0,
-                "time": "9:00pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Okay bye!"
-                ],
-                "block": 0,
-                "time": "9:00pm"
             }
+        //     {
+        //         "type": "background",
+        //         "content": ["market"],
+        //         "block": 0,
+        //         "time": ""
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": ["We are in the market now."],
+        //         "block": 0,
+        //         "time": "12:21pm"
+        //     },
+        //     {
+        //         "type": "my",
+        //         "content": [
+        //             "Looks good.",
+        //             "Doesn't look very good.",
+        //             "Okay, so it works."
+        //         ],
+        //         "block": 0,
+        //         "time": "12:22pm"
+        //     },
+        //     {
+        //         "type": "background",
+        //         "content": ["fadeout"],
+        //         "block": 0,
+        //         "time": "12:23pm"
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": ["background is done now."],
+        //         "block": 0,
+        //         "time": "12:23pm"
+        //     },
+        //     {
+        //         "type": "note",
+        //         "content": [
+        //             "After getting the blocks and groups to work, I started working on the notes.",
+        //             "Soon we will be done.",
+        //             "Still need to do sounds though."
+        //         ],
+        //         "block": 0,
+        //         "time": "10:10pm"
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "Note is done"
+        //         ],
+        //         "block": 0,
+        //         "time": "9:00pm"
+        //     }
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "Okay bye!"
+        //         ],
+        //         "block": 0,
+        //         "time": "9:00pm"
+        //     }
         ],
         // group 3
+        // [
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "It's time to test blocks."
+        //         ],
+        //         "block": 0,
+        //         "time": "9:01am"
+        //     },
+        //     {
+        //         "type": "key_1_blockTest",  // key_<block_name> saves a key decision for an upcoming block
+        //         "content": [
+        //             "Let's test block 1.",
+        //             "I want block 2"
+        //         ],
+        //         "block": 0,
+        //         "time": "9:01pm"
+        //     },
+        //     {
+        //         "type": "block",
+        //         "content": [
+        //             "blockTest"  // use this to fetch the saved decision
+        //         ],
+        //         "block": 0,
+        //         "time": "9:01pm"
+        //     },
+        //     //////////////////////// V V BLOCK 1 V V ///////////////////////////////
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "This is the first block. Let's try another layer of blocks."
+        //         ],
+        //         "block": 1,
+        //         "time": "9:01am"
+        //     },
+        //     {
+        //         "type": "key_3_nestedBlocks",
+        //         "content": [
+        //             "To the first sub-block",
+        //             "To the second sub-block."
+        //         ],
+        //         "block": 1,
+        //         "time": "9:01am"
+        //     },
+        //     {
+        //         "type": "block",
+        //         "content": [
+        //             "nestedBlocks"  // use this to fetch the saved decision
+        //         ],
+        //         "block": 1,
+        //         "time": "9:01pm"
+        //     },
+        //     // -------------------------------------- first sub-block -----------------------
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "We are at the first sub-block. Returning to block 1:"
+        //         ],
+        //         "block": 3,
+        //         "time": "9:01am"
+        //     },
+        //     // ------------------------------------ second sub-block ---------------------
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "We are at the second sub-block. Returning to block 1:"
+        //         ],
+        //         "block": 4,
+        //         "time": "9:01am"
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "returned to block 1. it's finishing now though"
+        //         ],
+        //         "block": 1,
+        //         "time": "9:01am"
+        //     },
+        //     //////////////////////// ^ ^ BLOCK 1 ^ ^ ///////////////////////////////
+        //     //////////////////////// V V BLOCK 2 V V /////////////////////////////////
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "Okay, let's talk about the second block."
+        //         ],
+        //         "block": 2,
+        //         "time": "9:01am"
+        //     },
+        //     {
+        //         "type": "my",
+        //         "content": [
+        //             "Number 2 is better.",
+        //             "Second time is a charm.",
+        //             "I should've chose the first block."
+        //         ],
+        //         "block": 2,
+        //         "time": "9:01am"
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "I agree.",
+        //             "Actually, it's the third time.",
+        //             "Too bad."
+        //         ],
+        //         "block": 2,
+        //         "time": "9:01am"
+        //     },
+        //     //////////////////////// ^ ^ BLOCK 2 ^ ^ ///////////////////////////////
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "All blocks are done, I hope they worked."
+        //         ],
+        //         "block": 0,
+        //         "time": "9:01am"
+        //     },
+        //     {
+        //         "type": "my",
+        //         "content": [
+        //             "It did.",
+        //             "It was a lot of work.",
+        //             "It did not work."
+        //         ],
+        //         "block": 0,
+        //         "time": "9:01am"
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "That's good. Bye!",
+        //             "At least it works. bye!",
+        //             "Unfortunate. See ya."
+        //         ],
+        //         "block": 0,
+        //         "time": "9:01am"
+        //     }
+            
+        // ]
+        // group 4: unconditional blocks
+        // [
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "I want to test unconditional blocks"
+        //         ],
+        //         "block": 0,
+        //         "time": "9:01am"
+        //     },
+        //     // go to the unconditional block id #1
+        //     {
+        //         "type": "block",
+        //         "content": [
+        //             "unconditional_1"
+        //         ],
+        //         "block": 0,
+        //         "time": ""
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "We returned from unconditional block 1. let's go to unconditional block 2."
+        //         ],
+        //         "block": 0,
+        //         "time": "1:23pm"
+        //     },
+        //     // go to the unconditional block id #2
+        //     {
+        //         "type": "block",
+        //         "content": [
+        //             "unconditional_2"
+        //         ],
+        //         "block": 0,
+        //         "time": ""
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "everything is done. goodbye."
+        //         ],
+        //         "block": 0,
+        //         "time": "1:23pm"
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "this is an uncondtional block 1 message"
+        //         ],
+        //         "block": 1,
+        //         "time": "1:23pm"
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "okay, unconditional block 1 is ending."
+        //         ],
+        //         "block": 1,
+        //         "time": ""
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "uncondtional block 2 message"
+        //         ],
+        //         "block": 2,
+        //         "time": "1:23pm"
+        //     },
+        //     {
+        //         "type": "npc",
+        //         "content": [
+        //             "go home"
+        //         ],
+        //         "block": 2,
+        //         "time": "11:11pm"
+        //     }
+        // ]
+        // group 5: multiple decisions leading to >2 blocks
         [
             {
                 "type": "npc",
                 "content": [
-                    "It's time to test blocks."
+                    "Pick 2 numbers twice"
                 ],
                 "block": 0,
-                "time": "9:01am"
+                "time": "11:11pm"
             },
             {
-                "type": "key_blockTest",  // key_<block_name> saves a key decision for an upcoming block
+                "type": "key_1_firstChoice",
                 "content": [
-                    "Let's test block 1.",
-                    "I want block 2"
+                    "First choice #1",
+                    "Second choice #1"
                 ],
                 "block": 0,
-                "time": "9:01pm"
+                "time": "11:11pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "Again."
+                ],
+                "block": 0,
+                "time": "11:11pm"
+            },
+            {
+                "type": "key_1_secondChoice",
+                "content": [
+                    "First choice #2",
+                    "Second choice #2"
+                ],
+                "block": 0,
+                "time": "11:11pm"
             },
             {
                 "type": "block",
                 "content": [
-                    "blockTest"  // use this to fetch the saved decision
+                    "firstChoice_secondChoice"
                 ],
                 "block": 0,
-                "time": "9:01pm"
-            },
-            //////////////////////// V V BLOCK 1 V V ///////////////////////////////
-            {
-                "type": "npc",
-                "content": [
-                    "This is the first block."
-                ],
-                "block": 1,
-                "time": "9:01am"
-            },
-            {
-                "type": "my",
-                "content": [
-                    "I like the first block.",
-                    "The first block is pretty interesting.",
-                    "Actually, the first block sucks."
-                ],
-                "block": 1,
-                "time": "9:01am"
+                "time": "11:11pm"
             },
             {
                 "type": "npc",
                 "content": [
-                    "I like it too.",
-                    "A little interesting.",
-                    "I think it's pretty good."
+                    "you picked the first choice twice"
                 ],
-                "block": 1,
-                "time": "9:01am"
-            },
-            //////////////////////// ^ ^ BLOCK 1 ^ ^ ///////////////////////////////
-            //////////////////////// V V BLOCK 2 V V /////////////////////////////////
-            {
-                "type": "npc",
-                "content": [
-                    "Okay, let's talk about the second block."
-                ],
-                "block": 2,
-                "time": "9:01am"
-            },
-            {
-                "type": "my",
-                "content": [
-                    "Number 2 is better.",
-                    "Second time is a charm.",
-                    "I should've chose the first block."
-                ],
-                "block": 2,
-                "time": "9:01am"
+                "block": 11,
+                "time": "11:11pm"
             },
             {
                 "type": "npc",
                 "content": [
-                    "I agree.",
-                    "Actually, it's the third time.",
-                    "Too bad."
+                    "you picked the first choice, then the second choice"
                 ],
-                "block": 2,
-                "time": "9:01am"
+                "block": 12,
+                "time": "11:11pm"
             },
-            //////////////////////// ^ ^ BLOCK 2 ^ ^ ///////////////////////////////
             {
                 "type": "npc",
                 "content": [
-                    "Blocks are done, I hope they worked."
+                    "you picked the second choice, then the first choice"
+                ],
+                "block": 21,
+                "time": "11:11pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "you picked the second choice twice"
+                ],
+                "block": 22,
+                "time": "11:11pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "everything is done. that's kinda complicated"
                 ],
                 "block": 0,
-                "time": "9:01am"
-            },
-            {
-                "type": "my",
-                "content": [
-                    "It did.",
-                    "It was a lot of work.",
-                    "It did not work."
-                ],
-                "block": 0,
-                "time": "9:01am"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "That's good. Bye!",
-                    "At least it works. bye!",
-                    "Unfortunate. See ya."
-                ],
-                "block": 0,
-                "time": "9:01am"
+                "time": "11:11pm"
             }
-            
         ]
     ],
     // player 2
@@ -268,17 +478,16 @@
             {
                 "type": "npc",
                 "content": [
-                    "Hi this should be player 2 right?"
+                    "Make the exhibition decision"
                 ],
                 "block": 0,
                 "time": "7:09am"
             },
             {
-                "type": "my",
+                "type": "key_1_exhibitionDecision",
                 "content": [
-                    "Yes.",
-                    "No.",
-                    "I don't know."
+                    "go with ax",
+                    "go with you"
                 ],
                 "block": 0,
                 "time": "7:07am"
@@ -286,22 +495,10 @@
             {
                 "type": "npc",
                 "content": [
-                    "Good to hear.",
-                    "Whoops.",
-                    "That's strange."
+                    "cool lets see. whoever you picked should be incremented next."
                 ],
                 "block": 0,
                 "time": "7:10am"
-            },
-            {
-                "type": "my",
-                "content": [
-                    "Bye",
-                    "See you later.",
-                    "Adios."
-                ],
-                "block": 0,
-                "time": "7:17am"
             }
         ],
         // group 2

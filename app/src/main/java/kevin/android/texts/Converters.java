@@ -8,11 +8,13 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.List;
 
 public class Converters {
     @TypeConverter
     public String arrayToString(String[] array) {
+        if (array.length == 0) return "";
         String string = array[0];
         for (int i = 1; i < array.length; ++i) {
             string = string + "|" + array[i];
@@ -28,8 +30,6 @@ public class Converters {
 //            Log.e("CONVERTER", s);
 //        }
         return array;
-//        Type type = new TypeToken<String[]>() {}.getType();
-//        return new Gson().fromJson(string, type);
     }
 
     @TypeConverter

@@ -14,15 +14,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import kevin.android.texts.Utils;
 
 @Database(entities = Message.class, version = 1)
 public abstract class MessageDatabase extends RoomDatabase {
     private static MessageDatabase instance;  // database instance (singleton)
+
     public abstract MessageDao messageDao();  // our DAO
+
     public static Context activity;
     private static final String TAG = "MessageDatabase";
 
@@ -67,11 +66,11 @@ public abstract class MessageDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             // prepopulate
-            String json = Utils.loadJSONFromAssets(activity, "messages.jsonc");
+            String json = Utils.loadFileFromAssets(activity, "messages (full).jsonc");
             int count = 0;
             try {
                 JSONArray players = new JSONArray(json);
-                // for each player
+                // for each playernp
                 for (int i = 0; i < players.length(); ++i) {
                     JSONArray player = players.getJSONArray(i);
                     // for each group
@@ -99,22 +98,6 @@ public abstract class MessageDatabase extends RoomDatabase {
             } catch (JSONException e) {
                 Log.e("MessageDatabase", "JSONException " + e);
             }
-//            messageDao.insert(new Message(1, "npc", new String[] {"Message 1", "Message 2", "Message 3"},
-//                      1, 1, "12:30pm" ));
-//            messageDao.insert(new Message(1, "my", new String[] {"Response 1", "Response 2", "Response 3"},
-//                    1, 1, "12:31pm" ));
-//            messageDao.insert(new Message(1, "npc", new String[] {"Message 4", "Message 5", "Message 6"},
-//                      1, 1, "12:32pm" ));
-//            messageDao.insert(new Message(1, "my", new String[] {"Response 4", "Response 5", "Response 6"},
-//                     1, 1, "12:33pm" ));
-//            messageDao.insert(new Message(1, "npc", new String[] {"Message 7", "Message 8", "Message 9"},
-//                      1, 1, "12:30pm" ));
-//            messageDao.insert(new Message(1, "my", new String[] {"Response 7", "Response 8", "Response 9"},
-//                      1, 1, "12:31pm" ));
-//            messageDao.insert(new Message(1, "npc", new String[] {"Message 10", "Message 11", "Message 12"},
-//                    1, 1, "12:32pm" ));
-//            messageDao.insert(new Message(1, "my", new String[] {"Response 10", "Response 11", "Response 12"},
-//                     1, 1, "12:33pm" ));
             Log.e("MessageDatabase", "Added " + count + " messages");
             return null;
         }

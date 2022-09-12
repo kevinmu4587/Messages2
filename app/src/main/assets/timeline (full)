@@ -1,0 +1,60 @@
+% Ax 1 Introduction #1
+open1
+% Ax 2 Acquintance #2
+incr1
+% Tommy 1 Birthday #3
+open2
+% Tommy 2 Mailbox #4
+incr2
+% Ax 3 Present #5
+incr1
+% Andrea 1 Reconnection #6
+open3
+% Andrea 2 Muggings, Part 1 #7
+incr3
+% Tommy 3 Muggings, Part 2 #8
+incr2
+% Ax 4 Christmas Preparations, Part 1 #9
+incr1
+% Andrea 3 Christmas Preparations, Part 2 #10
+incr3
+% Tommy 4 Shopping #11
+incr2
+% Tommy 5 Upcoming Decision #12
+incr2
+% Tommy 7 Ultimate Decision #13
+incr2
+% Ax 5 Final Preparations, Part 1 #14
+incr1
+% Andrea 4 Final Preparations, Part 2 #15
+incr3
+% Either Ax 6 Exhibition || Andrea 5 Exhibition as #16
+incr_exhibitionAxOrAndrea=1_1_3
+% Either Ax 6 Park || Andrea 5 Park as #17
+incr_exhibitionAxOrAndrea=1_3_1
+% Tommy 7 Aftermath #18
+incr2
+% Ax 7 Failed-Checkin #19
+incr1
+% Tommy 8 Missing #20
+incr2
+% Andrea 6 Check-in #21
+incr3
+% Ax 8 Distant #22
+incr1
+% Andrea 7 Crisis, Part 1 #23
+incr3
+% Ax 9 Crisis, Part 2 #24
+incr1
+% Andrea 8 Past #25
+incr3
+% Tommy 9 Present #26
+incr2
+% Andrea 9 Future #27
+incr3
+% Either Ax 10 Train #28-1 or Andrea 10 Relationship #28-2
+incr_crisisRejectOrAccept=1_1_3
+% Police 1 Red and Blue #29
+open4
+% ??? 1 Schism #30
+open5

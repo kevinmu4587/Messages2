@@ -2,6 +2,7 @@ package kevin.android.texts.Conversations;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -13,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import kevin.android.texts.GameManager;
 import kevin.android.texts.Utils;
 
 @Database(entities = Conversation.class, version = 1)
@@ -60,17 +62,22 @@ public abstract class ConversationDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             // prepopulate
-            String json = Utils.loadJSONFromAssets(activity, "conversations.jsonc");
+            String json = Utils.loadFileFromAssets(activity, "conversations.jsonc");
             try {
                 JSONArray jsonArray = new JSONArray(json);
+                GameManager.numConversations = jsonArray.length();
                 for (int i = 0; i < jsonArray.length(); ++i) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     String firstName = jsonObject.getString("firstName");
                     String lastName = jsonObject.getString("lastName");
                     String nickname = jsonObject.getString("nickname");
-                    conversationDao.insert(new Conversation(firstName, lastName, nickname));
+                    String description = jsonObject.getString("description");
+                    boolean editable = jsonObject.getBoolean("editable");
+                    String conversationDialogTitle = jsonObject.getString("conversationDialogTitle");
+                    conversationDao.insert(new Conversation(firstName, lastName, nickname, description, editable, conversationDialogTitle));
                 }
             } catch (JSONException e) {
+                Log.e("ERROR", "JSONException when parsing conversations");
                 e.printStackTrace();
             }
             return null;
