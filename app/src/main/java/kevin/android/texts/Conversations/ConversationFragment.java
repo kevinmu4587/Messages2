@@ -83,6 +83,9 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                     // update recycler view
                     adapter.setActiveConversations(activeConversations);
                     conversationViewModel.setActiveConversations(activeConversations);
+                    for (Conversation c : activeConversations) {
+                        GameManager.setNPCNames(c.getId(), c.getFirstName(), c.getLastMessage(), c.getNickname());
+                    }
                     Log.e(TAG, "active conversations updated");
                 }
             }

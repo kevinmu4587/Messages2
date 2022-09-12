@@ -77,19 +77,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     private Animation fadeOut;
 
     private static final String TAG = "ChatFragment";
-    private Thread.UncaughtExceptionHandler defaultUEH;
-
-    private Thread.UncaughtExceptionHandler myUEH = new Thread.UncaughtExceptionHandler() {
-        @Override
-        public void uncaughtException(@NonNull Thread thread, @NonNull Throwable throwable) {
-            Log.e(TAG, "uncaughtException");
-            playRunnable.finished = true;
-            playRunnable = null;
-            System.exit(2);
-            // rethrow the exception again (important)
-            defaultUEH.uncaughtException(thread, throwable);
-        }
-    };
 
     // required empty constructor
     public ChatFragment() {
@@ -100,9 +87,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         super.onCreate(savedInstanceState);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
-        // defaultUEH = Thread.getDefaultUncaughtExceptionHandler();
-        // setup custom exception handler
-        // Thread.setDefaultUncaughtExceptionHandler(myUEH);
     }
 
     @Nullable
@@ -440,7 +424,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     if (numReloadUpcomingMessages >= 2) {
                         conversation.setConversationState(Conversation.STATE_DONE);
                         sharedViewModel.setCurrentRunning(conversation);
-                        playRunnable.finished = true;
+                        // if (playRunnable != null) playRunnable.finished = true;
                     }
                     continue;
                 }

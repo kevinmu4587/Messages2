@@ -674,8 +674,12 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - see if you can make just one instance of sharedPreferences. the player name is not being saved (since it lives in conversation fragment)
 [Thursday, September 1st, 2022]
     - i think player names and settings are now saved after an app crash (should be good)
+        - it still happens sometimes
     - added backup: if we wait for upcoming messages twice, end the conversation.
     - I think all sharedPreferences are now saved in a crash. (remove artificial crash)
+    - TODO: the app is in a good spot if we follow the flows properly. bad things happen when the user exits via home or crash after a conversation is finished.
+        - i'm getting multiple conversations advancing, last messages not being saved
+            -
 
 
 
