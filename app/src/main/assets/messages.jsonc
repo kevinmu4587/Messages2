@@ -3,39 +3,73 @@
     [
         // group 1
         [
-            // {
-            //     "type": "npc",
-            //     "content": [
-            //         "Hello"
-            //     ],
-            //     "block": 0,
-            //     "time": "8:01pm"
-            // },
             {
                 "type": "npc",
                 "content": [
-                    "Hi! I am %npc1name %npc1lastname. You are %playername %playerlastname. Your friend is %friendname, and NPC2 is %npc2name %npc2lastname. 🙂 \uD83E\uDD72 🥲 📧 "
+                    "Hello, %playername"
                 ],
                 "block": 0,
-                "time": "8:02pm"
+                "time": "8:01pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "What is your favourite colour?"
+                ],
+                "block": 0,
+                "time": "8:01pm"
             },
             {
                 "type": "my",
                 "content": [
-                    "My firstname is %playername. My firstname is %playername. My firstname is %playername. My firstname is %playername. My firstname is %playername.",
-                    "My lastname is %playerlastname. My lastname is %playerlastname. My lastname is %playerlastname. My lastname is %playerlastname. My lastname is %playerlastname."
+                    "Red",
+                    "Green",
+                    "Blue"
                 ],
                 "block": 0,
-                "time": "8:02pm"
+                "time": "8:01pm"
             },
             {
                 "type": "npc",
                 "content": [
-                    "ok"
+                    "I hope this game is fun!"
                 ],
                 "block": 0,
-                "time": "8:02pm"
+                "time": "8:01pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "I also hope it works!"
+                ],
+                "block": 0,
+                "time": "8:01pm"
             }
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Hi! I am %npc1name %npc1lastname. You are %playername %playerlastname. Your friend is %friendname, and NPC2 is %npc2name %npc2lastname. 🙂 \uD83E\uDD72 🥲 📧 "
+            //     ],
+            //     "block": 0,
+            //     "time": "8:02pm"
+            // },
+            // {
+            //     "type": "my",
+            //     "content": [
+            //         "My firstname is %playername. My firstname is %playername. My firstname is %playername. My firstname is %playername. My firstname is %playername.",
+            //         "My lastname is %playerlastname. My lastname is %playerlastname. My lastname is %playerlastname. My lastname is %playerlastname. My lastname is %playerlastname."
+            //     ],
+            //     "block": 0,
+            //     "time": "8:02pm"
+            // },
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "ok"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:02pm"
+            // }
             // {
             //     "type": "my",
             //     "content": [
