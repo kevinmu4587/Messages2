@@ -12,8 +12,6 @@ The UI is built using `xml` and the code is written in `Java`. The app is design
 This is just the source code.
 
 ### Screenshots
-Basic Gameplay Screen
-![Screenshot 1](Screenshot%201.jpg)
+| --- Basic Gameplay Screenshot --- | --- Choosing a message to send --- |
 
-Choosing a message to send
-![Screenshot 2](Screenshot%202.jpg)
+<img src="Screenshot%201.jpg"  width=26% height=26%> <img src="Screenshot%202.jpg"  width=22% height=22%>
