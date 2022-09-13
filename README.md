@@ -12,6 +12,8 @@ The UI is built using `xml` and the code is written in `Java`. The app is design
 This is just the source code.
 
 ### Screenshots
-| --- Basic Gameplay Screenshot --- | --- Choosing a message to send --- |
+Basic gameplay screenshot - a chat with an NPC:  
+<img src="Screenshot%201.jpg"  width=26% height=26%>  
 
-<img src="Screenshot%201.jpg"  width=26% height=26%> <img src="Screenshot%202.jpg"  width=22% height=22%>
+Choosing a message to send:  
+<img src="Screenshot%202.jpg"  width=22% height=22%>
