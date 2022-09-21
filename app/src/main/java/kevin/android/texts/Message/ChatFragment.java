@@ -163,7 +163,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             }
         });
 
-        Log.e(TAG, "Conversation state stars as " + conversation.getConversationState());
+        Log.e(TAG, "Conversation state starts as " + conversation.getConversationState());
         if (conversation.getConversationState() == Conversation.STATE_RUNNING) {
             // observe the upcoming messages
             messageViewModel.loadUpcomingMessages(conversation.getId(), conversation.getGroup());
@@ -174,13 +174,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                             // Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
                             messageViewModel.setUpcomingMessages(messages);
                             if (messages.size() == 0 && playRunnable != null && !state.equals("waiting")) {
-                                // if (conversation.getCurrentBlock() == 0) {
-                                    // we already finished this chat
-//                                    conversation.setConversationState(Conversation.STATE_DONE);
-//                                    sharedViewModel.setCurrentRunning(conversation);
-//                                    playRunnable.finished = true;
-                                    Log.e(TAG, "Chat is finished, playRunnable killed. Set conversation state to DONE");
-                                // } else {
                                 if (conversation.getCurrentBlock() != 0) {
                                     // when we finish the current block
                                     int top = conversation.popTopBlock();
@@ -334,8 +327,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         if (nextMessage.getContent().length > 1) {
             nextMessage.setChoice(lastPlayerChoice);
         }
-        // replace any name placeholders
-        // nextMessage.replaceNamePlaceholders();
         // Log.e(TAG, "Submitted message " + nextMessage.getContent()[nextMessage.getChoice()]);
         messageViewModel.submitMessage(nextMessage);
 
@@ -385,15 +376,12 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     class PlayRunnable implements Runnable {
         private static final String TAG = "PlayRunnable";
         public boolean finished = false;
-//        private int numReloadUpcomingMessages = 0;
 
         @Override
         public void run() {
             sleep(1500);
             while (!finished) {
                 if (Utils.contains(state, new String[]{"sending", "choose", "setting background"})) {
-//                if (state.equals("sending") || state.equals("choose") || state.equals("setting background")) {
-                    // wait, we are waiting for user input
 //                    Log.e(TAG, "Runnable paused. state: " + state);
                     sleep(1000);
                     continue;
@@ -423,15 +411,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     Log.e(TAG, "Waiting for the first upcoming messages to arrive");
                     sleep(2000);
                     state = "waiting";
-//                    numReloadUpcomingMessages++;
-//                    if (numReloadUpcomingMessages >= 2) {
-//                        conversation.setConversationState(Conversation.STATE_DONE);
-//                        sharedViewModel.setCurrentRunning(conversation);
-//                        // if (playRunnable != null) playRunnable.finished = true;
-//                    }
                     continue;
                 }
-                // numReloadUpcomingMessages = 0;
                 nextMessage.replaceNamePlaceholders();
                 if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
                     sleep(2000);
@@ -509,9 +490,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         private void typingAnim() {
             // Log.e(TAG, "started typing anim");
             // add typing gif
-//            adapter.getSentMessages().add(null);
-//            adapter.notifyItemInserted(adapter.getItemCount() - 1);
-//            checkScroll();
             mainHandler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -524,8 +502,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
             // sleep as NPC is typing
             String message = nextMessage.getContent()[nextMessage.getChoice()];
             sleep(GameManager.isFastMode ? 750 : message.length() * 100);
-//            adapter.getSentMessages().remove(adapter.getItemCount() - 1);
-//            adapter.notifyItemRemoved(adapter.getItemCount());
             mainHandler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -567,7 +543,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                             if (curNote >= notes.length) {
                                 // exit the note display
                                 noteContainer.setVisibility(View.INVISIBLE);
-                                // messageViewModel.submitMessage(nextMessage);
                                 noteContainer.setAnimation(fadeOut);
                                 fadeOut.start();
                                 ((AppCompatActivity) getActivity()).getSupportActionBar().show();
