@@ -14,36 +14,18 @@
             {
                 "type": "npc",
                 "content": [
-                    "What is your favourite colour?"
+                    "Okay, bye."
                 ],
                 "block": 0,
                 "time": "8:01pm"
             },
             {
-                "type": "my",
+                "type": "terminator",
                 "content": [
-                    "Red",
-                    "Green",
-                    "Blue"
+                    "None"
                 ],
                 "block": 0,
-                "time": "8:01pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "I hope this game is fun!"
-                ],
-                "block": 0,
-                "time": "8:01pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "I also hope it works!"
-                ],
-                "block": 0,
-                "time": "8:01pm"
+                "time": "none"
             }
             // {
             //     "type": "npc",

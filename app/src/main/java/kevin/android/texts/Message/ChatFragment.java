@@ -174,17 +174,20 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                             // Log.e(TAG, "loaded " + messages.size() + " upcoming messages");
                             messageViewModel.setUpcomingMessages(messages);
                             if (messages.size() == 0 && playRunnable != null && !state.equals("waiting")) {
-                                if (conversation.getCurrentBlock() == 0) {
+                                // if (conversation.getCurrentBlock() == 0) {
                                     // we already finished this chat
-                                    conversation.setConversationState(Conversation.STATE_DONE);
-                                    sharedViewModel.setCurrentRunning(conversation);
-                                    playRunnable.finished = true;
+//                                    conversation.setConversationState(Conversation.STATE_DONE);
+//                                    sharedViewModel.setCurrentRunning(conversation);
+//                                    playRunnable.finished = true;
                                     Log.e(TAG, "Chat is finished, playRunnable killed. Set conversation state to DONE");
-                                } else {
+                                // } else {
+                                if (conversation.getCurrentBlock() != 0) {
                                     // when we finish the current block
                                     int top = conversation.popTopBlock();
                                     messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
                                     Log.e(TAG, "popped block " + top);
+                                } else {
+                                    Log.e(TAG, "Unexpected error: No upcoming messages for some reason");
                                 }
                             }
                         }
@@ -382,7 +385,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     class PlayRunnable implements Runnable {
         private static final String TAG = "PlayRunnable";
         public boolean finished = false;
-        private int numReloadUpcomingMessages = 0;
+//        private int numReloadUpcomingMessages = 0;
 
         @Override
         public void run() {
@@ -420,15 +423,15 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     Log.e(TAG, "Waiting for the first upcoming messages to arrive");
                     sleep(2000);
                     state = "waiting";
-                    numReloadUpcomingMessages++;
-                    if (numReloadUpcomingMessages >= 2) {
-                        conversation.setConversationState(Conversation.STATE_DONE);
-                        sharedViewModel.setCurrentRunning(conversation);
-                        // if (playRunnable != null) playRunnable.finished = true;
-                    }
+//                    numReloadUpcomingMessages++;
+//                    if (numReloadUpcomingMessages >= 2) {
+//                        conversation.setConversationState(Conversation.STATE_DONE);
+//                        sharedViewModel.setCurrentRunning(conversation);
+//                        // if (playRunnable != null) playRunnable.finished = true;
+//                    }
                     continue;
                 }
-                numReloadUpcomingMessages = 0;
+                // numReloadUpcomingMessages = 0;
                 nextMessage.replaceNamePlaceholders();
                 if (nextMessage.getBlock() != conversation.getCurrentBlock()) {
                     sleep(2000);
@@ -486,6 +489,15 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 } else if (type.equals("note")) {
                     state = "note";
                     displayNote();
+                } else if (type.equals("terminator")) {
+                    conversation.setConversationState(Conversation.STATE_DONE);
+                    sharedViewModel.setCurrentRunning(conversation);
+                    playRunnable.finished = true;
+                    playRunnable = null;
+                    messageViewModel.submitMessage(nextMessage);
+                    Log.e(TAG, "No more upcoming messages. Chat finished and Play killed.");
+                } else {
+                    Log.e(TAG, "Unknown message type. Ignorning.");
                 }
 //                    } else if (type.equals("background")) {
 //                        manageBackgrounds();

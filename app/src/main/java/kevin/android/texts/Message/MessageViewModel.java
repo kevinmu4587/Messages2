@@ -78,7 +78,7 @@ public class MessageViewModel extends AndroidViewModel {
     }
 
     public void submitMessage(Message next) {
-        if (next == null || upcomingMessages.size() == 0) return;
+        // if (next == null || upcomingMessages.size() == 0) return;
         next.setSent(true);
         upcomingMessages.remove(0);
         next.setInsertNum(GameManager.nextInsertNum);
