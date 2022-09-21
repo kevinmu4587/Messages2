@@ -268,6 +268,14 @@
                 ],
                 "block": 0,
                 "time": "8:12pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 2: Acquintance | #2 | Thursday, November 1st
@@ -638,6 +646,14 @@
                 ],
                 "block": 0,
                 "time": "4:48pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 3: Present | #5 | Wednesday, November 21st
@@ -949,7 +965,7 @@
             },
             //]
             // Block 3: Snowglobe
-            // [
+            //[
             {
                 "type": "npc",
                 "content": [
@@ -1109,6 +1125,14 @@
                 ],
                 "block": 0,
                 "time": "4:54pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 4: Christmas Preparations, Part 1 | #9 | Tuesday, December 11th
@@ -1510,6 +1534,14 @@
                 ],
                 "block": 0,
                 "time": "10:18pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 5: Final Preparations, Part 1 | #14 | Sunday, December 23rd
@@ -1833,6 +1865,14 @@
                 ],
                 "block": 2,
                 "time": "8:23pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 6: Christmas | [#16 Monday, December 24th] / [#17 Tuesday, December 25th]
@@ -1841,6 +1881,14 @@
                 "type": "block",
                 "content": [
                     "exhibitionAxOrAndrea"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
                 ],
                 "block": 0,
                 "time": "none"
@@ -3771,6 +3819,14 @@
                 ],
                 "block": 0,
                 "time": "12:39am"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 8: Distant | #22 | Wednesday, January 23rd
@@ -3846,6 +3902,14 @@
                 ],
                 "block": 0,
                 "time": "7:25pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 9: Crisis, Part 2 | #24 | Tuesday, January 29th
@@ -4283,6 +4347,14 @@
                 ],
                 "block": 0,
                 "time": "none"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 10: Train | #28-1 | Sunday, February 3rd
@@ -4327,6 +4399,14 @@
                 "type": "block",
                 "content": [
                     "exhibitionAxOrAndrea"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
                 ],
                 "block": 0,
                 "time": "none"
@@ -4866,6 +4946,14 @@
                 ],
                 "block": 0,
                 "time": "12:06am"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 2: Mailbox | #4 | Wednesday, November 21st
@@ -5045,6 +5133,14 @@
                 ],
                 "block": 0,
                 "time": "6:35pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 3: Muggings, Part 2 | #8 | Monday, December 10th
@@ -5338,6 +5434,14 @@
                 ],
                 "block": 0,
                 "time": "11:20am"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 4: Shopping | #11 | Friday, December 21st
@@ -5702,6 +5806,14 @@
                 ],
                 "block": 0,
                 "time": "2:25pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 5: Upcoming Decision | #12 | Saturday, December 22nd
@@ -5910,6 +6022,14 @@
                 ],
                 "block": 0,
                 "time": "7:22pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 6: Ultimate Decision | #13 | Sunday, December 23rd
@@ -6040,6 +6160,14 @@
                 ],
                 "block": 0,
                 "time": "10:28pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 7: Aftermath | #18 | Thursday, December 27th
@@ -6321,6 +6449,14 @@
                 ],
                 "block": 0,
                 "time": "3:50pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 8: Missing | #20 | Tuesday, January 15th
@@ -6518,6 +6654,14 @@
                 ],
                 "block": 0,
                 "time": "4:23pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 9: Present | #26 | Sunday, February 3rd
@@ -6652,6 +6796,14 @@
                 ],
                 "block": 0,
                 "time": "10:41pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ]
     ],
@@ -6956,6 +7108,14 @@
                 ],
                 "block": 0,
                 "time": "10:50pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 2: Muggings, Part 1 | #7 | Saturday, December 8th
@@ -7209,6 +7369,14 @@
                 ],
                 "block": 0,
                 "time": "8:53am"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 3: Christmas Preparations, Part 2 | #10 | Thursday, December 13th
@@ -7440,6 +7608,14 @@
                 ],
                 "block": 0,
                 "time": "2:50pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 4: Final Preparations, Part 2 | #15 | Sunday, December 23rd
@@ -7496,6 +7672,14 @@
                 "type": "block",
                 "content": [
                     "exhibitionAxOrAndrea"  // use this to fetch the saved decision
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
                 ],
                 "block": 0,
                 "time": "none"
@@ -7855,6 +8039,14 @@
                 "type": "block",
                 "content": [
                     "exhibitionAxOrAndrea"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
                 ],
                 "block": 0,
                 "time": "none"
@@ -9716,6 +9908,14 @@
                 ],
                 "block": 0,
                 "time": "4:15pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 7: Crisis, Part 1 | #23 | Thursday, January 24th
@@ -9861,6 +10061,14 @@
                 ],
                 "block": 0,
                 "time": "8:15pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 8: Past | #25 | Sunday, February 3rd
@@ -10010,6 +10218,14 @@
                 ],
                 "block": 0,
                 "time": "10:02pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ],
         // group 9: Future | #27 | Sunday, February 3rd
@@ -10161,6 +10377,14 @@
                 "type": "block",
                 "content": [
                     "crisisRejectOrAccept"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
                 ],
                 "block": 0,
                 "time": "none"
@@ -10875,6 +11099,14 @@
                 ],
                 "block": 0,
                 "time": "none"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ] 
     ],
@@ -10898,6 +11130,14 @@
                 "block": 0,
                 "time": "none"
             },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
+            }
             // load 1 of 4 police blocks
             {
                 "type": "block",
@@ -11088,7 +11328,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "EMERGENCY ALERT. CHILD ABDUCTED: Midas Regional Police have activated AMBER ALERT. VICTIM is 17 year old %npc1name %npc1lastname. VEHICLE is a red van with license plate #SCI3M. SUSPECT is Darvin %npc1lastname, the father of %npc1name. LAST SEEN at Midas Train Station at February 3rd at 11:49pm. Report ANY and ALL information to Midas Regional Police."
+                    "EMERGENCY ALERT. CHILD ABDUCTED: Midas Regional Police have activated AMBER ALERT. VICTIM is 17 year old %npc1name %npc1lastname. VEHICLE is a red van with license plate number: SCI3M. SUSPECT is Darvin %npc1lastname, the father of %npc1name. LAST SEEN at Midas Train Station at February 3rd at 11:49pm. Report ANY and ALL information to Midas Regional Police."
                 ],
                 "block": 22,
                 "time": "5:47am"
@@ -11466,6 +11706,14 @@
                     "One, two, three.",
                     "Wait - it sounds like someone's coming.",
                     "You take one final look back..."
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
                 ],
                 "block": 0,
                 "time": "none"
