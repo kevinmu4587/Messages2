@@ -21,7 +21,7 @@ public interface MessageDao {
     LiveData<List<Message>> getUpcomingMessages(int owner, int msg_group, int... block);
 
     // load ones that were previously sent, but don't load blocks, etc
-    @Query("SELECT * FROM messages_table WHERE owner = :owner AND msg_group = :msg_group AND sent = 1 AND type NOT IN ('block', 'background', 'note') ORDER BY insertNum")
+    @Query("SELECT * FROM messages_table WHERE owner = :owner AND msg_group = :msg_group AND sent = 1 AND type NOT IN ('block', 'background', 'note', 'terminator') ORDER BY insertNum")
     LiveData<List<Message>>  getSentMessages(int owner, int msg_group);
 
     @Query("SELECT * FROM messages_table")

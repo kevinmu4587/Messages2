@@ -679,7 +679,8 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - I think all sharedPreferences are now saved in a crash. (remove artificial crash)
     - TODO: the app is in a good spot if we follow the flows properly. bad things happen when the user exits via home or crash after a conversation is finished.
         - i'm getting multiple conversations advancing, last messages not being saved
-            -
+[Tuesday, September 20th, 2022]
+    - Replace the timed upcoming message checker with a custom message that forces termination
 
 
 
