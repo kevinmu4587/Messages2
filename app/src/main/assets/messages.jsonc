@@ -12,6 +12,26 @@
                 "time": "8:01pm"
             },
             {
+                "type": "my",
+                "content": [
+                    "Barbossa",
+                    "Jones",
+                    "Blackbeard"
+                ],
+                "block": 0,
+                "time": "8:01pm"
+            },
+            {
+                "type": "npc",
+                "content": [
+                    "COTBP",
+                    "AWE",
+                    "OST"
+                ],
+                "block": 0,
+                "time": "8:01pm"
+            },
+            {
                 "type": "npc",
                 "content": [
                     "Okay, bye."

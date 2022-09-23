@@ -34,7 +34,7 @@ public class Conversation implements Parcelable  {
 
     private int group = 1;
     private int conversationState;
-    // private int lastPlayerChoice;
+    private int lastPlayerChoice;
     // private String bgState;
 
     private boolean active = false; // whether the conversation is displayed on the ConversationFragment
@@ -129,6 +129,14 @@ public class Conversation implements Parcelable  {
 
     public void setConversationState(int conversationState) {
         this.conversationState = conversationState;
+    }
+
+    public int getLastPlayerChoice() {
+        return lastPlayerChoice;
+    }
+
+    public void setLastPlayerChoice(int lastPlayerChoice) {
+        this.lastPlayerChoice = lastPlayerChoice;
     }
 
     public int getId() {

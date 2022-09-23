@@ -41,6 +41,7 @@ import java.util.List;
 
 import kevin.android.texts.ChatInfoFragment;
 import kevin.android.texts.Conversations.Conversation;
+import kevin.android.texts.Conversations.ConversationViewModel;
 import kevin.android.texts.Dialog;
 import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
@@ -49,6 +50,7 @@ import kevin.android.texts.Utils;
 
 public class ChatFragment extends Fragment implements View.OnClickListener, Dialog.DialogListener {
     private MessageViewModel messageViewModel;
+    private ConversationViewModel conversationViewModel;
     private SharedViewModel sharedViewModel;
     private MessageAdapter adapter = null;
     private RecyclerView recyclerView;
@@ -65,7 +67,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     private ImageView background;
 
     private String state = "waiting";
-    private int lastPlayerChoice = 0;
+    // private int lastPlayerChoice = 0;
     private boolean isSoundpoolDisabled = false;
     private Message nextMessage;
     private Conversation conversation;
@@ -135,6 +137,10 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         // get the conversation object
         conversation = ChatFragmentArgs.fromBundle(getArguments()).getConversation();
         // sharedViewModel.setCurrentRunning(conversation);
+
+        conversationViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
+                getInstance(getActivity().getApplication())).get(ConversationViewModel.class);
+
         getActivity().setTitle(conversation.getFullName());
         // Log.e(TAG, "Conversation Owner: " + conversation.getFullName());
 
@@ -296,8 +302,10 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
      */
     @Override
     public void applyText(int choice) {
-        lastPlayerChoice = choice;
+        // lastPlayerChoice = choice;
         nextMessage.setChoice(choice);
+        conversation.setLastPlayerChoice(choice);
+        conversationViewModel.update(conversation);
         chatBox.setText(nextMessage.getContent()[choice]);
         // if it was a key decision, add it to the gameManager
         state = "sending";
@@ -340,7 +348,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     public void submitMessage() {
         // add the message
         if (nextMessage.getContent().length > 1) {
-            nextMessage.setChoice(lastPlayerChoice);
+          nextMessage.setChoice(conversation.getLastPlayerChoice());
         }
         // Log.e(TAG, "Submitted message " + nextMessage.getContent()[nextMessage.getChoice()]);
         messageViewModel.submitMessage(nextMessage);
@@ -357,6 +365,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         }
         conversation.setLastMessage(lastMessage);
         conversation.setLastTime(lastTime);
+        conversationViewModel.update(conversation);
         // sharedViewModel.setCurrentRunning(conversation);
     }
 
@@ -446,7 +455,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     // get the choice by opening the dialog
                     if (GameManager.isAutoMode) {
                         // if autoplay, just choose the first option
-                        lastPlayerChoice = 0;
                         nextMessage.setChoice(0);
                         submitMessage();
                         state = "sent";
@@ -487,6 +495,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     displayNote();
                 } else if (type.equals("terminator")) {
                     conversation.setConversationState(Conversation.STATE_DONE);
+                    conversationViewModel.update(conversation);
                     // sharedViewModel.setCurrentRunning(conversation);
                     playRunnable.finished = true;
                     playRunnable = null;

@@ -681,6 +681,16 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - i'm getting multiple conversations advancing, last messages not being saved
 [Tuesday, September 20th, 2022]
     - Replace the timed upcoming message checker with a custom message that forces termination
+[Thursday, September 22nd, 2022]
+    - Replaced sharedViewModel with conversationViewModel in ChatFragment
+        - removed sharedViewModel
+        - Added backstack livedata from ChatFragment to return new conversation object from ChatFragment
+            - this is just so we can check increment immediately (since then there's no longer a livedata watch from sharedViewModel)
+        - added ConversationViewModel to ChatFragment to immediately update conversation object
+            - When the user swipes up the app (without pressing back), the lastPlayerChoice desync bug is now fixed
+            - As well as the chat getting stuck if the user swipes up bug is fixed too
+            - added lastPlayerChoice field to Conversation
+    - TODO: so should be good now, but test exhaustively. then u can remove dead code and merge
 
 
 
@@ -688,8 +698,6 @@ TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
     - reset game button and is game finished check
-    - save flags in chat fragment, such as playerChoice, isTerminated which are not saved when the chat exits
-        - can also try making an instance of conversationviewmodel in the chatfragment since it's write only. We don't need any livedata listeners. Try this.
 
 
 
