@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -77,6 +78,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     private Animation fadeOut;
 
     private static final String TAG = "ChatFragment";
+    public static final String CHAT_FRAGMENT_KEY = "chat_fragment_key";
 
     // required empty constructor
     public ChatFragment() {
@@ -127,12 +129,12 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // for updating the shared ViewModel
-        sharedViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
-                getInstance(getActivity().getApplication())).get(SharedViewModel.class);
+        // for updating the sharedViewModel
+//        sharedViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
+//                getInstance(getActivity().getApplication())).get(SharedViewModel.class);
         // get the conversation object
         conversation = ChatFragmentArgs.fromBundle(getArguments()).getConversation();
-        sharedViewModel.setCurrentRunning(conversation);
+        // sharedViewModel.setCurrentRunning(conversation);
         getActivity().setTitle(conversation.getFullName());
         // Log.e(TAG, "Conversation Owner: " + conversation.getFullName());
 
@@ -224,6 +226,18 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 }
             }
         });
+
+        // back pressed listener to send data back to the ConversationFragment
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                NavController navController = NavHostFragment.findNavController(ChatFragment.this);
+                navController.getPreviousBackStackEntry().getSavedStateHandle().set(CHAT_FRAGMENT_KEY, conversation);
+                this.setEnabled(false);
+                requireActivity().onBackPressed();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
     }
 
     @Override
@@ -316,6 +330,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 navController.navigate(ChatFragmentDirections.actionChatFragmentToChatInfoFragment(conversation));
                 return true;
             case android.R.id.home:
+                // this is called R.id.home but it refers to the back button on the top left of the screen
                 getActivity().onBackPressed();
             default:
                 return super.onOptionsItemSelected(item);
@@ -342,7 +357,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         }
         conversation.setLastMessage(lastMessage);
         conversation.setLastTime(lastTime);
-        sharedViewModel.setCurrentRunning(conversation);
+        // sharedViewModel.setCurrentRunning(conversation);
     }
 
     private void checkScroll() {
@@ -472,7 +487,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     displayNote();
                 } else if (type.equals("terminator")) {
                     conversation.setConversationState(Conversation.STATE_DONE);
-                    sharedViewModel.setCurrentRunning(conversation);
+                    // sharedViewModel.setCurrentRunning(conversation);
                     playRunnable.finished = true;
                     playRunnable = null;
                     messageViewModel.submitMessage(nextMessage);

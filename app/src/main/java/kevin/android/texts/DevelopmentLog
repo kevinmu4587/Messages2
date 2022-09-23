@@ -688,6 +688,8 @@ TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
     - reset game button and is game finished check
+    - save flags in chat fragment, such as playerChoice, isTerminated which are not saved when the chat exits
+        - can also try making an instance of conversationviewmodel in the chatfragment since it's write only. We don't need any livedata listeners. Try this.
 
 
 

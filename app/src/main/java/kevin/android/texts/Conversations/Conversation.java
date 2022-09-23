@@ -34,6 +34,7 @@ public class Conversation implements Parcelable  {
 
     private int group = 1;
     private int conversationState;
+    // private int lastPlayerChoice;
     // private String bgState;
 
     private boolean active = false; // whether the conversation is displayed on the ConversationFragment
