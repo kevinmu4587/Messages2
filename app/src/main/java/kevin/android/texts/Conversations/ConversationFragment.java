@@ -37,12 +37,10 @@ import kevin.android.texts.GameManager;
 import kevin.android.texts.Message.ChatFragment;
 import kevin.android.texts.Message.ChatFragmentDirections;
 import kevin.android.texts.R;
-import kevin.android.texts.SharedViewModel;
 
 public class ConversationFragment extends Fragment implements EditTextDialog.EditTextDialogListener {
     private static final String TAG = "ConversationFragment";
     private ConversationViewModel conversationViewModel;
-    private SharedViewModel sharedViewModel;
     SharedPreferences settingsSharedPref;
     // private FloatingActionButton testNextConversationButton;
 
@@ -119,27 +117,6 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             }
         });
 
-        // shared ViewModel for the last message
-//        sharedViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
-//                getInstance(getActivity().getApplication())).get(SharedViewModel.class);
-//        sharedViewModel.getCurrentRunning().observe(getViewLifecycleOwner(), new Observer<Conversation>() {
-//            @Override
-//            public void onChanged(Conversation conversation) {
-//                // update last message and read status
-//                conversationViewModel.update(conversation);
-//                Log.e(TAG, "Conversation returned a state of " + conversation.getConversationState());
-//                if (conversation.getConversationState() == Conversation.STATE_DONE) {
-//                    // advance group
-//                    Log.e(TAG, "Conversation " + conversation.getFullName() + " set to PAUSED");
-//                    conversation.setConversationState(Conversation.STATE_PAUSED);
-//                    conversationViewModel.update(conversation);
-//                    checkAdvance();
-//                } else if (conversation.getConversationState() == Conversation.STATE_PAUSED) {
-//                    conversation.setUnread(false);
-//                    conversationViewModel.update(conversation);
-//                }
-//            }
-//        });
 
         // get data back from ChatInfoFragment
         NavController navController = NavHostFragment.findNavController(this);
@@ -262,7 +239,6 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         switch (item.getItemId()) {
             case R.id.menu_open_settings:
                 NavController navController = NavHostFragment.findNavController(this);
-                //  navController.navigate(SettingsFragment.actionChatFragmentToChatInfoFragment(conversation));
                 navController.navigate(ConversationFragmentDirections.actionConversationFragmentToSettingsFragment());
                 return true;
             default:

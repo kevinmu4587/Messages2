@@ -689,7 +689,7 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - added ConversationViewModel to ChatFragment to immediately update conversation object - fixes a handful of hard-to-crush bugs
             - When the user swipes up the app (without pressing back), the lastPlayerChoice desync bug is now fixed
             - As well as the chat getting stuck if the user swipes up bug is fixed too
-            - added lastPlayerChoice field to Conversation
+            - added lastPlayerChoice field to Conversation, removed from ChatActivity (global variable)
     - TODO: so should be good now, but test exhaustively. then u can remove dead code and merge
 [Wednesday, December 28th, 2022]
     - I'm back!

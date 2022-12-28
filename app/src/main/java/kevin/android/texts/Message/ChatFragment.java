@@ -45,13 +45,11 @@ import kevin.android.texts.Conversations.ConversationViewModel;
 import kevin.android.texts.Dialog;
 import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
-import kevin.android.texts.SharedViewModel;
 import kevin.android.texts.Utils;
 
 public class ChatFragment extends Fragment implements View.OnClickListener, Dialog.DialogListener {
     private MessageViewModel messageViewModel;
     private ConversationViewModel conversationViewModel;
-    private SharedViewModel sharedViewModel;
     private MessageAdapter adapter = null;
     private RecyclerView recyclerView;
     private Handler mainHandler = new Handler();
@@ -67,7 +65,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     private ImageView background;
 
     private String state = "waiting";
-    // private int lastPlayerChoice = 0;
     private boolean isSoundpoolDisabled = false;
     private Message nextMessage;
     private Conversation conversation;
@@ -131,12 +128,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // for updating the sharedViewModel
-//        sharedViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
-//                getInstance(getActivity().getApplication())).get(SharedViewModel.class);
         // get the conversation object
         conversation = ChatFragmentArgs.fromBundle(getArguments()).getConversation();
-        // sharedViewModel.setCurrentRunning(conversation);
 
         conversationViewModel = new ViewModelProvider(getActivity(), ViewModelProvider.AndroidViewModelFactory.
                 getInstance(getActivity().getApplication())).get(ConversationViewModel.class);
@@ -302,7 +295,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
      */
     @Override
     public void applyText(int choice) {
-        // lastPlayerChoice = choice;
         nextMessage.setChoice(choice);
         conversation.setLastPlayerChoice(choice);
         conversationViewModel.update(conversation);
@@ -330,9 +322,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_open_chat_info:
-//                artificial crash, for testing
-//                String s = null;
-//                Log.e(TAG, "" + s.length());
                 // navigate to ChatInfoFragment
                 NavController navController = NavHostFragment.findNavController(this);
                 navController.navigate(ChatFragmentDirections.actionChatFragmentToChatInfoFragment(conversation));
@@ -353,7 +342,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         // Log.e(TAG, "Submitted message " + nextMessage.getContent()[nextMessage.getChoice()]);
         messageViewModel.submitMessage(nextMessage);
 
-        // update sharedViewModel for the last sent message
+        // update conversation for the last sent message
         String lastMessage = nextMessage.getContent()[nextMessage.getChoice()];
         String lastTime = nextMessage.getTime();
         if (nextMessage.getType().equals("npc")) {
@@ -366,7 +355,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         conversation.setLastMessage(lastMessage);
         conversation.setLastTime(lastTime);
         conversationViewModel.update(conversation);
-        // sharedViewModel.setCurrentRunning(conversation);
     }
 
     private void checkScroll() {
@@ -496,7 +484,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                 } else if (type.equals("terminator")) {
                     conversation.setConversationState(Conversation.STATE_DONE);
                     conversationViewModel.update(conversation);
-                    // sharedViewModel.setCurrentRunning(conversation);
                     playRunnable.finished = true;
                     playRunnable = null;
                     messageViewModel.submitMessage(nextMessage);
