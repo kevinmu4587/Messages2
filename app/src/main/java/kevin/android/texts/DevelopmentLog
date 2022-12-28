@@ -686,13 +686,19 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - removed sharedViewModel
         - Added backstack livedata from ChatFragment to return new conversation object from ChatFragment
             - this is just so we can check increment immediately (since then there's no longer a livedata watch from sharedViewModel)
-        - added ConversationViewModel to ChatFragment to immediately update conversation object
+        - added ConversationViewModel to ChatFragment to immediately update conversation object - fixes a handful of hard-to-crush bugs
             - When the user swipes up the app (without pressing back), the lastPlayerChoice desync bug is now fixed
             - As well as the chat getting stuck if the user swipes up bug is fixed too
             - added lastPlayerChoice field to Conversation
     - TODO: so should be good now, but test exhaustively. then u can remove dead code and merge
-
-
+[Wednesday, December 28th, 2022]
+    - I'm back!
+    - Did some testing on the refactor with deleting sharedViewModel
+    - Fixed bug where player name was reset to default if app was swiped up on ChatFragment
+    - By the way:
+        - STATE_RUNNING is when the chat is actively running. Pressing back does NOT change the state
+        - STATE_PAUSE is right after it is STATE_FINISHED. Is set back to STATE_RUNNING if it is my turn to advance group
+        - STATE_DONE is after the chat receives a terminator.
 
 TODO
     - backgrounds and mediaplayer sounds

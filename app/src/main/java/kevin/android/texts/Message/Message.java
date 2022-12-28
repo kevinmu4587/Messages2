@@ -101,8 +101,9 @@ public class Message {
 
     public void replaceNamePlaceholders() {
        for (int i = 0; i < content.length; ++i) {
-           content[i] = Utils.replaceName(content[i]);
-           Log.e(TAG, "Replacing name. Result: " + content[i]);
+           String replaced = Utils.replaceName(content[i]);
+           Log.e(TAG, "Replacing name. Old: " + content[i] + ", New: " + replaced);
+           content[i] = replaced;
        }
     }
 

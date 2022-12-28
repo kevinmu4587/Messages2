@@ -43,6 +43,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     private static final String TAG = "ConversationFragment";
     private ConversationViewModel conversationViewModel;
     private SharedViewModel sharedViewModel;
+    SharedPreferences settingsSharedPref;
     // private FloatingActionButton testNextConversationButton;
 
     public ConversationFragment() {
@@ -165,12 +166,12 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         });
 
         // retrieve stored values from settings fragment
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        String playerFirstName = sharedPref.getString("playerFirstName", GameManager.playerFirstName);
-        String playerLastName = sharedPref.getString("playerLastName", GameManager.playerLastName);
-        String playerNickname = sharedPref.getString("playerNickname", GameManager.playerNickname);
-        boolean isFastMode = sharedPref.getBoolean("isFastMode", false);
-        boolean isAutoMode = sharedPref.getBoolean("isAutoMode", false);
+        settingsSharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        String playerFirstName = settingsSharedPref.getString("playerFirstName", GameManager.playerFirstName);
+        String playerLastName = settingsSharedPref.getString("playerLastName", GameManager.playerLastName);
+        String playerNickname = settingsSharedPref.getString("playerNickname", GameManager.playerNickname);
+        boolean isFastMode = settingsSharedPref.getBoolean("isFastMode", false);
+        boolean isAutoMode = settingsSharedPref.getBoolean("isAutoMode", false);
         GameManager.playerFirstName = playerFirstName;
         GameManager.playerLastName = playerLastName;
         GameManager.playerNickname = playerNickname;
@@ -191,9 +192,15 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     @Override
     public void applyNames(final String firstName, final String lastName, final String nickname, final int id) {
         if (id == -1) {
+            SharedPreferences.Editor editor = settingsSharedPref.edit();
             GameManager.playerFirstName = firstName;
             GameManager.playerLastName = lastName;
             GameManager.playerNickname = nickname;
+            Log.e(TAG, "Writing player names to settings sharedPreferences");
+            editor.putString("playerFirstName", GameManager.playerFirstName);
+            editor.putString("playerLastName", GameManager.playerLastName);
+            editor.putString("playerNickname", GameManager.playerNickname);
+            editor.commit();
             return;
         }
         final LiveData<Conversation> liveData = conversationViewModel.getConversationById(id);

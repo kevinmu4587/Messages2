@@ -31,7 +31,7 @@
         <SwitchPreferenceCompat
             app:key="isAutoMode"
             app:title="Auto Play"
-            app:summary="Warning: Your messages will be sent automatically."/>
+            app:summary="Your responses will be chosen automatically."/>
     </PreferenceCategory>
 
 </PreferenceScreen>
