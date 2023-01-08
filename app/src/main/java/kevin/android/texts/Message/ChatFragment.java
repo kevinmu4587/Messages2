@@ -181,7 +181,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                                     messageViewModel.setCurrentBlocks(conversation.getCurrentBlocks());
                                     Log.e(TAG, "popped block " + top);
                                 } else {
-                                    Log.e(TAG, "Unexpected error: No upcoming messages for some reason");
+                                    Log.e(TAG, "Unexpected error: No upcoming messages for some reason. Did you forget to ad a terminator?");
                                 }
                             }
                         }

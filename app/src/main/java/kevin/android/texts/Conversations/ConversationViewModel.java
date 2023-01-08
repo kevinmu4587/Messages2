@@ -45,21 +45,32 @@ public class ConversationViewModel extends AndroidViewModel {
         this.inactiveConversations = inactiveConversations;
     }
 
-    public void loadNextConversation(int id) {
-        Conversation next = inactiveConversations.get(0);
-        if (next.getId() != id) {
-            Log.e(TAG, "FATAL: Requesting incorrect next conversation. Requesting " + id + ", received " + next.getId());
-            throw new RuntimeException();
+    public void loadConversation(int id) {
+//        Conversation next = inactiveConversations.get(0);
+        for (int i = 0; i < inactiveConversations.size(); ++i) {
+            Conversation c = inactiveConversations.get(i);
+            if (c.getId() == id) {
+                inactiveConversations.remove(i);
+                Log.e(TAG, "Requested next conversation (SET TO RUNNING). name: " + c.getFullName() + ", id: " + c.getId());
+                c.setActive(true);
+                c.setConversationState(Conversation.STATE_RUNNING);
+                update(c);
+            }
         }
-        Log.e(TAG, "Requested next conversation (SET TO RUNNING). name: " + next.getFullName() + ", id: " + next.getId());
-        next.setActive(true);
-        next.setConversationState(Conversation.STATE_RUNNING);
-        update(next);
+//        if (next.getId() != id) {
+//            Log.e(TAG, "FATAL: Requesting incorrect next conversation. Requesting " + id + ", received " + next.getId());
+//            throw new RuntimeException();
+//        }
+//        Log.e(TAG, "Requested next conversation (SET TO RUNNING). name: " + next.getFullName() + ", id: " + next.getId());
+//        next.setActive(true);
+//        next.setConversationState(Conversation.STATE_RUNNING);
+//        update(next);
     }
 
 //    public LiveData<List<Conversation>> getAllConversations() {
 //        return repository.getAllConversations();
 //    }
+
 
     public void incrementConversationWithID(int id) {
         for (Conversation c : activeConversations) {

@@ -39,5 +39,13 @@
         "description": "Who is this?",
         "editable": false,
         "conversationDialogTitle": null
+    },
+    {
+        "firstName": "Thank",
+        "lastName": "you!",
+        "nickname": "",
+        "description": "Thank you for playing!",
+        "editable": false,
+        "conversationDialogTitle": null
     }
 ]

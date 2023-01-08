@@ -1,5 +1,6 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     tools:context=".SettingsFragment">
 
     <PreferenceCategory
@@ -32,6 +33,11 @@
             app:key="isAutoMode"
             app:title="Auto Play"
             app:summary="Your responses will be chosen automatically."/>
-    </PreferenceCategory>
 
+        <Preference
+            app:title="Start Over"
+            app:key="gameReset"
+            app:summary="Warning: Game will restart back to Chapter 1"
+            />
+    </PreferenceCategory>
 </PreferenceScreen>

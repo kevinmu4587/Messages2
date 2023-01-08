@@ -42,6 +42,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     private static final String TAG = "ConversationFragment";
     private ConversationViewModel conversationViewModel;
     SharedPreferences settingsSharedPref;
+//    MenuItem endingsGuide;
     // private FloatingActionButton testNextConversationButton;
 
     public ConversationFragment() {
@@ -198,6 +199,13 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     }
 
     private void checkAdvance() {
+        if (GameManager.timeline.size() == 0) {
+            // trigger the endgame
+            GameManager.gameCompleted = true;
+            getActivity().invalidateOptionsMenu();
+//            endingsGuide.setVisible(true);
+            return;
+        }
         String cmd = GameManager.timeline.get(0);
         Log.e(TAG, "command: " + cmd);
         // timeline is saved by shared preferences in MainActivity
@@ -205,7 +213,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         if (cmd.substring(0, 4).equals("open")) {
             int conversationId = cmd.charAt(4) - '0';
             Log.e(TAG, "opened next conversation of id: " + conversationId);
-            conversationViewModel.loadNextConversation(conversationId);
+            conversationViewModel.loadConversation(conversationId);
         } else if (cmd.substring(0, 4).equals("incr")) {
             String[] incrementInstructions = cmd.split("_");
             int conversationIdToIncrement = 0;
@@ -232,6 +240,9 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.menu_conversation_fragment, menu);
+        MenuItem endingsGuide = menu.findItem(R.id.endings_guide);
+        Log.e(TAG, "Is game completed? " + GameManager.gameCompleted);
+        endingsGuide.setVisible(GameManager.gameCompleted);
     }
 
     @Override
@@ -240,6 +251,8 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             case R.id.menu_open_settings:
                 NavController navController = NavHostFragment.findNavController(this);
                 navController.navigate(ConversationFragmentDirections.actionConversationFragmentToSettingsFragment());
+                return true;
+            case R.id.endings_guide:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

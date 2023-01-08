@@ -699,6 +699,12 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - STATE_RUNNING is when the chat is actively running. Pressing back does NOT change the state
         - STATE_PAUSE is right after it is STATE_FINISHED. Is set back to STATE_RUNNING if it is my turn to advance group
         - STATE_DONE is after the chat receives a terminator.
+[Saturday, January 7th, 2023]
+    - Info: incr_<condition: keyBlock name>=<choice>_<conversation id if true>_<conversation id if false>
+    - Removed first run flag from GameManager - it wasn't being used
+    - Replaced "loadNextConversation" with the more general "loadConversation"
+        - there was no need to constrain the next chronological order conversation to be loaded
+    - Added menu item on MainActivity for endings guide
 
 TODO
     - backgrounds and mediaplayer sounds

@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         // load the GameManager key decisions from shared preferences
         String json = sharedPref.getString("MyHashMap", null);
-        GameManager.firstRun = sharedPref.getBoolean("firstRun", true);
+        GameManager.gameCompleted = sharedPref.getBoolean("gameCompleted", false);
         GameManager.npc1FirstName = sharedPref.getString("npc1FirstName", "Default NPC1 First Name");
         GameManager.npc1LastName = sharedPref.getString("npc1LastName", "Default NPC1 Last Name");
         GameManager.npc1Nickname = sharedPref.getString("npc1Nickname", "Default NPC1 Nickname");
@@ -95,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         Gson gson = new Gson();
         editor.putString("MyHashMap", gson.toJson(GameManager.getKeyChoices()));
-        editor.putBoolean("firstRun", GameManager.firstRun);
+//        editor.putBoolean("firstRun", GameManager.firstRun);
+        editor.putBoolean("gameCompleted", GameManager.gameCompleted);
         editor.putString("npc1FirstName", GameManager.npc1FirstName);
         editor.putString("npc1LastName", GameManager.npc1LastName);
         editor.putString("npc1Nickname", GameManager.npc1Nickname);
@@ -114,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadTimeline() {
-        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline (full)");
+//        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline (full)");
+        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline");
         Utils.setupTimeline(json);
     }
 }

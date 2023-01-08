@@ -11,7 +11,8 @@ public class GameManager {
     private static final String TAG = "GameManager";
 
     private static Map<String, Integer> keyChoices = new HashMap<String, Integer>();
-    public static boolean firstRun = true;
+//    public static boolean firstRun = true;
+    public static boolean gameCompleted = false;
     public static String playerFirstName = "playerFirstName";
     public static String playerLastName = "playerLastName";
     public static String playerNickname = "playerNickname";

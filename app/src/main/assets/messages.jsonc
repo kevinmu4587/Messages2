@@ -11,34 +11,34 @@
                 "block": 0,
                 "time": "8:01pm"
             },
-            {
-                "type": "my",
-                "content": [
-                    "Barbossa",
-                    "Jones",
-                    "Blackbeard"
-                ],
-                "block": 0,
-                "time": "8:01pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "COTBP",
-                    "AWE",
-                    "OST"
-                ],
-                "block": 0,
-                "time": "8:01pm"
-            },
-            {
-                "type": "npc",
-                "content": [
-                    "Okay, bye."
-                ],
-                "block": 0,
-                "time": "8:01pm"
-            },
+            // {
+            //     "type": "my",
+            //     "content": [
+            //         "Barbossa",
+            //         "Jones",
+            //         "Blackbeard"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:01pm"
+            // },
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "COTBP",
+            //         "AWE",
+            //         "OST"
+            //     ],
+            //     "block": 0,
+            //     "time": "8:01pm"
+            // },
+            // {
+            //     "type": "npc",
+            //     "content": [
+            //         "Okay, bye."
+            //     ],
+            //     "block": 0,
+            //     "time": "8:01pm"
+            // },
             {
                 "type": "terminator",
                 "content": [
@@ -566,6 +566,37 @@
                 ],
                 "block": 0,
                 "time": "1:05pm"
+            }
+        ]
+    ],
+    // player 3
+    [
+    ],
+    // player 4
+    [
+    ],
+    // player 5
+    [
+    ],
+    // player 6
+    [
+        // group 1
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "Thank you for playing! Endings guide has now been unlocked. Check the \"i\" icon in the home page."
+                ],
+                "block": 0,
+                "time": "8:01pm"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "Terminator."
+                ],
+                "block": 0,
+                "time": "none"
             }
         ]
     ]
