@@ -17,20 +17,4 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <string name="endingAGuide">
-        Ending A is the true ending of the game. You commit to %npc1name\'s theme of \"I will wait for you\" fully. %npc1name will wait until the day you two see each other again.
-        \nAchieved by going to the exhibition with %npc1name and rejecting %npc2name.
-    </string>
-    <string name="endingBGuide">
-        Ending B is an alternative ending of the game. You commit to %npc2name\'s theme of \"I am nothing without you\" fully, resulting in a stable relationship.
-        \nAchieved by going to the exhibition with %npc2name and accepting %npc2name.
-    </string>
-    <string name="endingCGuide">
-        Ending C is a bad ending to the game. You betray %npc1name\'s theme of \"I will wait for you,\" resulting in her waiting to her death.
-        \nAchieved by going to the exhibition with %npc1name but accepting %npc2name.
-    </string>
-    <string name="endingDGuide">
-        Ending D is a bad ending to the game. You betray %npc2name\'s theme of \"I am nothing without you,\" where in truth, you are nothing without %npc2name.
-        \nAchieved by going to the exhibition with %npc2name but rejecting %npc2name.
-    </string>
 </resources>
