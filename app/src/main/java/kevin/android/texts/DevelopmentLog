@@ -716,7 +716,9 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
-    - reset game button and is game finished check
+    - reset game button
+    - Dynamic ending identifier
+    - Jump ahead chapters
 
 
 

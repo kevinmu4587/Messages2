@@ -115,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadTimeline() {
-//        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline (full)");
-        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline");
+        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline (full)");
+//        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline");
         Utils.setupTimeline(json);
     }
 }

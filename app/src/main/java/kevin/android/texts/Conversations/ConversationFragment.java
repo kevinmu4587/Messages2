@@ -217,13 +217,17 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             String[] incrementInstructions = cmd.split("_");
             int conversationIdToIncrement = 0;
             if (incrementInstructions.length == 1) {
+                // simple increment
                 conversationIdToIncrement = cmd.charAt(4) - '0';
             } else {
+                // increment based on a key decision
                 String[] conditionParts = incrementInstructions[1].split("=");
                 String keyBlockName = conditionParts[0];
                 int blockCondition = Integer.parseInt(conditionParts[1]);
-                if (GameManager.getKeyDecision(keyBlockName) == blockCondition) {
-                    // value if true
+                int savedChoice = GameManager.getKeyDecision(keyBlockName);
+//                if (savedChoice == blockCondition || savedChoice == -1) {
+                if (savedChoice == blockCondition) {
+                    // value if true, or a safety net: if the choice was not saved (ex. by skipping ahead)
                     conversationIdToIncrement = Integer.parseInt(incrementInstructions[2]);
                 } else {
                     // value if false

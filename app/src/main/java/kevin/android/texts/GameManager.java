@@ -87,7 +87,7 @@ public class GameManager {
                 npc2Nickname = nickname;
                 break;
             default:
-                Log.d(TAG, "Error: ID " + id + " is not a valid conversation id");
+                Log.e(TAG, "Setting NPC names error: ID " + id + " is not a valid conversation id");
         }
     }
 }
