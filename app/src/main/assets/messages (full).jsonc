@@ -11130,19 +11130,19 @@
                 "block": 0,
                 "time": "none"
             },
-            {
-                "type": "terminator",
-                "content": [
-                    "<Group Terminator>."
-                ],
-                "block": 0,
-                "time": "none"
-            },
             // load 1 of 4 police blocks
             {
                 "type": "block",
                 "content": [
                     "exhibitionAxOrAndrea_crisisRejectOrAccept"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "<Group Terminator>."
                 ],
                 "block": 0,
                 "time": "none"
@@ -12190,6 +12190,28 @@
                 "time": "none"
             }
             //] // end block 2-1
+        ]
+    ],
+    // player 6: Thank you!
+    [
+        // group 1: Thank you!
+        [
+            {
+                "type": "npc",
+                "content": [
+                    "Thank you for playing! Endings guide has now been unlocked. Check the \"i\" icon in the home page."
+                ],
+                "block": 0,
+                "time": "TY:SM"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "<Group Terminator>."
+                ],
+                "block": 0,
+                "time": "none"
+            }
         ]
     ]
 ]

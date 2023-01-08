@@ -42,7 +42,6 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     private static final String TAG = "ConversationFragment";
     private ConversationViewModel conversationViewModel;
     SharedPreferences settingsSharedPref;
-//    MenuItem endingsGuide;
     // private FloatingActionButton testNextConversationButton;
 
     public ConversationFragment() {
@@ -131,7 +130,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                 conversationViewModel.update(conversation);
                 Log.e(TAG, "Conversation returned a state of " + conversation.getConversationState());
                 if (conversation.getConversationState() == Conversation.STATE_DONE) {
-                    // advance group
+                    // chat is finished, now grab new timeline instruction
                     Log.e(TAG, "Conversation " + conversation.getFullName() + " set to PAUSED");
                     conversation.setConversationState(Conversation.STATE_PAUSED);
                     conversationViewModel.update(conversation);
