@@ -2,21 +2,21 @@
   {
       "endingName": "Ending A",
       "description": "Ending A is the true ending of the game. You commit to %npc1name's theme of \"I will wait for you\" fully. %npc1name will wait until the day you two see each other again.",
-      "unlockBy": "Achieved by going to the exhibition with %npc1name and rejecting %npc2name."
+      "unlockBy": "Going to the exhibition with %npc1name and rejecting %npc2name."
   },
   {
     "endingName": "Ending B",
     "description": "Ending B is an alternative ending of the game. You commit to %npc2name's theme of \"I am nothing without you\" fully, resulting in a stable relationship.",
-    "unlockBy": "Achieved by going to the exhibition with %npc2name and accepting %npc2name."
+    "unlockBy": "Going to the exhibition with %npc2name and accepting %npc2name."
   },
   {
     "endingName": "Ending C",
     "description": "Ending C is a bad ending to the game. You betray %npc1name's theme of \"I will wait for you,\" resulting in her waiting to her death.",
-    "unlockBy": "Achieved by going to the exhibition with %npc1name but accepting %npc2name."
+    "unlockBy": "Going to the exhibition with %npc1name but accepting %npc2name."
   },
   {
     "endingName": "Ending D",
     "description": "Ending D is a bad ending to the game. You betray %npc2name's theme of \"I am nothing without you,\" where in truth, you are nothing without %npc2name.",
-    "unlockBy": "Achieved by going to the exhibition with %npc2name but rejecting %npc2name."
+    "unlockBy": "Going to the exhibition with %npc2name but rejecting %npc2name."
   }
 ]

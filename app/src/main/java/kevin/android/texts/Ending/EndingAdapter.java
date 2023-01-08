@@ -29,8 +29,13 @@ public class EndingAdapter extends RecyclerView.Adapter<EndingAdapter.EndingView
         Ending current = GameManager.endingList.get(position);
 
         holder.title.setText(current.getTitle());
-        holder.description.setText(Utils.replaceName(current.getDescription()));
-        holder.guide.setText(Utils.replaceName(current.getGuide()));
+        if (GameManager.endingsAreFound[position] == 0) {
+            holder.description.setText("???");
+            holder.guide.setText("Unlock by: ???");
+        } else {
+            holder.description.setText(Utils.replaceName(current.getDescription()));
+            holder.guide.setText("Unlock by: " + Utils.replaceName(current.getGuide()));
+        }
     }
 
     @Override

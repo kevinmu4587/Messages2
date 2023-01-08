@@ -16,6 +16,7 @@ public class GameManager {
     private static Map<String, Integer> keyChoices = new HashMap<String, Integer>();
 //    public static boolean firstRun = true;
     public static List<Ending> endingList = new ArrayList<>();
+    public static int[] endingsAreFound;
     public static boolean gameCompleted = false;
     public static String playerFirstName = "playerFirstName";
     public static String playerLastName = "playerLastName";

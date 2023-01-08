@@ -11710,19 +11710,19 @@
                 "block": 0,
                 "time": "none"
             },
-            {
-                "type": "terminator",
-                "content": [
-                    "<Group Terminator>."
-                ],
-                "block": 0,
-                "time": "none"
-            },
             // go to 1 of 4 blocks
             {
                 "type": "block",
                 "content": [
                     "exhibitionAxOrAndrea_crisisRejectOrAccept"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
+                "type": "terminator",
+                "content": [
+                    "<Group Terminator>."
                 ],
                 "block": 0,
                 "time": "none"

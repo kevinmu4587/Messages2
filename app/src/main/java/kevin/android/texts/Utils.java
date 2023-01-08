@@ -53,13 +53,17 @@ public class Utils {
         try {
             JSONArray endings = new JSONArray(json);
             int len = endings.length();
+            GameManager.endingsAreFound = new int[len];
             for (int i = 0; i < len; ++i) {
                 JSONObject jsonObject = endings.getJSONObject(i);
                 String title = jsonObject.getString("endingName");
                 String description = jsonObject.getString("description");
                 String guide = jsonObject.getString("unlockBy");
                 GameManager.endingList.add(new Ending(title, description, guide));
+                GameManager.endingsAreFound[i] = 0;
             }
+            // REMOVE ME
+            GameManager.endingsAreFound[2] = 1;
         } catch (JSONException x) {
             Log.e(TAG, "JSONException when parsing endings," + x);
         }

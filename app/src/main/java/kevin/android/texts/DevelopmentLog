@@ -712,6 +712,10 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - TODO: Refactor the EndgameFragment to allow a dynamic number of endings.
             - Then we introduce a new type of message, the ending identifier. It specifies which ending we got, so we can use it to "check off" which endings we achieved
             - This way the number of endings is arbitrary and we don't need any logic in the code itself where we read which decisions were made
+[Sunday, January 8th, 2023]
+    - Added RecyclerView for Ending's to be displayed dynamically
+        - Added endings.jsonc setup file
+        - Endings are loaded into GameManager at the first boot, then loaded from SharedPreferences
 
 TODO
     - backgrounds and mediaplayer sounds
