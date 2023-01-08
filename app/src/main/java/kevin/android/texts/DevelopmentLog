@@ -704,7 +704,14 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - Removed first run flag from GameManager - it wasn't being used
     - Replaced "loadNextConversation" with the more general "loadConversation"
         - there was no need to constrain the next chronological order conversation to be loaded
+    - added a "Thank you" game closer conversation
     - Added menu item on MainActivity for endings guide
+        - activated when no more timeline items exist
+    - Added EndgameFragment to display all ending information
+        - this is hard coded now
+        - TODO: Refactor the EndgameFragment to allow a dynamic number of endings.
+            - Then we introduce a new type of message, the ending identifier. It specifies which ending we got, so we can use it to "check off" which endings we achieved
+            - This way the number of endings is arbitrary and we don't need any logic in the code itself where we read which decisions were made
 
 TODO
     - backgrounds and mediaplayer sounds

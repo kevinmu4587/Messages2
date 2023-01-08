@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_conversationFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_conversationFragment_to_endgameFragment"
+            app:destination="@id/endgameFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
@@ -45,4 +48,9 @@
         android:id="@+id/settingsFragment"
         android:name="kevin.android.texts.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/endgameFragment"
+        android:name="kevin.android.texts.EndgameFragment"
+        android:label="fragment_endgame"
+        tools:layout="@layout/fragment_endgame" />
 </navigation>

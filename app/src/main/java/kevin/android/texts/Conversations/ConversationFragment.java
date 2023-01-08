@@ -240,19 +240,20 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.menu_conversation_fragment, menu);
-        MenuItem endingsGuide = menu.findItem(R.id.endings_guide);
+        MenuItem endingsGuide = menu.findItem(R.id.menu_endings_guide);
         Log.e(TAG, "Is game completed? " + GameManager.gameCompleted);
         endingsGuide.setVisible(GameManager.gameCompleted);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        NavController navController = NavHostFragment.findNavController(this);
         switch (item.getItemId()) {
             case R.id.menu_open_settings:
-                NavController navController = NavHostFragment.findNavController(this);
                 navController.navigate(ConversationFragmentDirections.actionConversationFragmentToSettingsFragment());
                 return true;
-            case R.id.endings_guide:
+            case R.id.menu_endings_guide:
+                navController.navigate(ConversationFragmentDirections.actionConversationFragmentToEndgameFragment());
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
