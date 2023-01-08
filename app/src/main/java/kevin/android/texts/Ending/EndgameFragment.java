@@ -1,10 +1,12 @@
-package kevin.android.texts;
+package kevin.android.texts.Ending;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -12,13 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class EndgameFragment extends Fragment {
-    TextView endingAGuide;
-    TextView endingBGuide;
-    TextView endingCGuide;
-    TextView endingDGuide;
+import kevin.android.texts.Conversations.ConversationAdapter;
+import kevin.android.texts.R;
+import kevin.android.texts.Utils;
 
-    public EndgameFragment() {
+public class EndgameFragment extends Fragment {
+        public EndgameFragment() {
         // Required empty public constructor
     }
 
@@ -34,19 +35,13 @@ public class EndgameFragment extends Fragment {
                              Bundle savedInstanceState) {
         getActivity().setTitle("Endings Guide");
         View view = inflater.inflate(R.layout.fragment_endgame, container, false);
-        endingAGuide = view.findViewById(R.id.endingAguide);
-        endingBGuide = view.findViewById(R.id.endingBguide);
-        endingCGuide = view.findViewById(R.id.endingCguide);
-        endingDGuide = view.findViewById(R.id.endingDguide);
 
-        String old = (String) endingAGuide.getText();
-        endingAGuide.setText(Utils.replaceName(old));
-        old = (String) endingBGuide.getText();
-        endingBGuide.setText(Utils.replaceName(old));
-        old = (String) endingCGuide.getText();
-        endingCGuide.setText(Utils.replaceName(old));
-        old = (String) endingDGuide.getText();
-        endingDGuide.setText(Utils.replaceName(old));
+        RecyclerView recyclerView = view.findViewById(R.id.endings_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setHasFixedSize(true);
+        EndingAdapter adapter = new EndingAdapter();
+        recyclerView.setAdapter(adapter);
+
         return view;
     }
 

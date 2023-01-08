@@ -50,7 +50,7 @@
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/endgameFragment"
-        android:name="kevin.android.texts.EndgameFragment"
+        android:name="kevin.android.texts.Ending.EndgameFragment"
         android:label="fragment_endgame"
         tools:layout="@layout/fragment_endgame" />
 </navigation>

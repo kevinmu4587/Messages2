@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         Gson gson = new Gson();
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        // load timeline
+        // load existing timeline/endings
         String jsonTimeline = sharedPref.getString("Timeline", null);
         if (jsonTimeline != null) {
             Type type = new TypeToken<ArrayList<String>>() {}.getType();
@@ -115,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadTimeline() {
-        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline (full)");
-//        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline");
+//        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline (full)");
+        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline");
         Utils.setupTimeline(json);
     }
 }
