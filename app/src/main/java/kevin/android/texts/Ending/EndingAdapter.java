@@ -12,12 +12,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
+import kevin.android.texts.Utils;
 
 public class EndingAdapter extends RecyclerView.Adapter<EndingAdapter.EndingViewHolder> {
-    Ending e = new Ending("Ending A", "Ending A is the true ending", "NPC1/NPC2");
-    private List<Ending> endings = Arrays.asList(e);
-
     @NonNull
     @Override
     public EndingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -27,16 +26,16 @@ public class EndingAdapter extends RecyclerView.Adapter<EndingAdapter.EndingView
 
     @Override
     public void onBindViewHolder(@NonNull EndingViewHolder holder, int position) {
-        Ending current = endings.get(position);
+        Ending current = GameManager.endingList.get(position);
 
         holder.title.setText(current.getTitle());
-        holder.description.setText(current.getDescription());
-        holder.guide.setText(current.getGuide());
+        holder.description.setText(Utils.replaceName(current.getDescription()));
+        holder.guide.setText(Utils.replaceName(current.getGuide()));
     }
 
     @Override
     public int getItemCount() {
-        return endings.size();
+        return GameManager.endingList.size();
     }
 
     class EndingViewHolder extends RecyclerView.ViewHolder {

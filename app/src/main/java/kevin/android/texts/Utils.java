@@ -3,9 +3,15 @@ package kevin.android.texts;
 import android.content.Context;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+
+import kevin.android.texts.Ending.Ending;
 
 public class Utils {
     private static final String TAG = "Utils";
@@ -41,6 +47,23 @@ public class Utils {
                 GameManager.timeline.add(line);
             }
         }
+    }
+
+    public static void setupEndings(String json) {
+        try {
+            JSONArray endings = new JSONArray(json);
+            int len = endings.length();
+            for (int i = 0; i < len; ++i) {
+                JSONObject jsonObject = endings.getJSONObject(i);
+                String title = jsonObject.getString("endingName");
+                String description = jsonObject.getString("description");
+                String guide = jsonObject.getString("unlockBy");
+                GameManager.endingList.add(new Ending(title, description, guide));
+            }
+        } catch (JSONException x) {
+            Log.e(TAG, "JSONException when parsing endings," + x);
+        }
+
     }
 
     public static boolean contains(String needle, String[] haystack) {

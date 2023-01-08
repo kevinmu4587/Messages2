@@ -585,7 +585,7 @@
             {
                 "type": "npc",
                 "content": [
-                    "Thank you for playing! Endings guide has now been unlocked. Check the \"i\" icon in the home page."
+                    "Thanks for playing"
                 ],
                 "block": 0,
                 "time": "8:01pm"

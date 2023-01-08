@@ -18,7 +18,10 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+
+import kevin.android.texts.Ending.Ending;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -53,12 +56,15 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         // load existing timeline/endings
         String jsonTimeline = sharedPref.getString("Timeline", null);
+        String jsonEndings = sharedPref.getString("endings", null);
         if (jsonTimeline != null) {
             Type type = new TypeToken<ArrayList<String>>() {}.getType();
             GameManager.timeline = gson.fromJson(jsonTimeline, type);
+            type = new TypeToken<List<Ending>>() {}.getType();
+            GameManager.endingList = gson.fromJson(jsonEndings, type);
             Log.e(TAG, "loaded timeline as " + GameManager.timeline);
         } else {
-            loadTimeline();
+            loadSetupFiles();
         }
 
         // load the GameManager key decisions from shared preferences
@@ -108,15 +114,19 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("npc2Nickname", GameManager.npc2Nickname);
         editor.putInt("nextInsertNum", GameManager.nextInsertNum);
         String timeline = gson.toJson(GameManager.timeline);
+        String endings = gson.toJson(GameManager.endingList);
         Log.e(TAG, "saving timeline to sharedPrefs: " + timeline);
         editor.putString("Timeline", timeline);
+        editor.putString("endings", endings);
         editor.commit();
         Log.e(TAG, "Saved " + GameManager.getKeyChoices().size() + " key decisions to shared preferences");
     }
 
-    private void loadTimeline() {
+    private void loadSetupFiles() {
 //        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline (full)");
-        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline");
-        Utils.setupTimeline(json);
+        String timelineJson = Utils.loadFileFromAssets(getApplicationContext(), "timeline");
+        Utils.setupTimeline(timelineJson);
+        String endingsJson = Utils.loadFileFromAssets(getApplicationContext(), "endings.jsonc");
+        Utils.setupEndings(endingsJson);
     }
 }

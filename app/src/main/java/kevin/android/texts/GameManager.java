@@ -4,7 +4,10 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import kevin.android.texts.Ending.Ending;
 
 // this class is for saving game-wide decisions, like which blocks were picked, and what key decisions were made
 public class GameManager {
@@ -12,6 +15,7 @@ public class GameManager {
 
     private static Map<String, Integer> keyChoices = new HashMap<String, Integer>();
 //    public static boolean firstRun = true;
+    public static List<Ending> endingList = new ArrayList<>();
     public static boolean gameCompleted = false;
     public static String playerFirstName = "playerFirstName";
     public static String playerLastName = "playerLastName";
