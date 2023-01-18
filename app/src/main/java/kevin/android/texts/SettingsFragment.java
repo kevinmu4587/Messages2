@@ -14,12 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.EditTextPreference;
+import androidx.preference.ListPreference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
 import kevin.android.texts.Message.ChatFragmentDirections;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
+    private static final String TAG="SettingsFragment";
+
     EditTextPreference firstNameEntry, lastNameEntry, nicknameEntry;
 
     @Override
@@ -42,6 +45,20 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
+        ListPreference chapterSelect = findPreference("chapterSelect");
+        int numChapters = GameManager.timeline.size();
+        String[] entries = new String[numChapters];
+        String[] values = new String[numChapters];
+        for (int i = 0; i < numChapters; ++i) {
+            String line = GameManager.timeline.get(i);
+            // this gives the chapter name (ex. Chapter 2: Acquaintance)
+            entries[i] = line.substring(line.indexOf(' ') + 1);
+            // this is an integer telling us how many chapters to skip relative to our current chapter
+            values[i] = i + 1 + "";
+        }
+        Log.e(TAG, "Our chapters: " + entries + "Should be " + numChapters + " entries");
+        chapterSelect.setEntries(entries);
+        chapterSelect.setEntryValues(values);
     }
 
     @Override

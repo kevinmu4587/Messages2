@@ -697,7 +697,7 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - Fixed bug where player name was reset to default if app was swiped up on ChatFragment
     - By the way:
         - STATE_RUNNING is when the chat is actively running. Pressing back does NOT change the state
-        - STATE_PAUSE is right after it is STATE_FINISHED. Is set back to STATE_RUNNING if it is my turn to advance group
+        - STATE_PAUSE is right after it is STATE_DONE. Is set back to STATE_RUNNING if it is my turn to advance group
         - STATE_DONE is after the chat receives a terminator.
 [Saturday, January 7th, 2023]
     - Info: incr_<condition: keyBlock name>=<choice>_<conversation id if true>_<conversation id if false>
@@ -714,6 +714,18 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - Added endings.jsonc setup file
         - Endings are loaded into GameManager at the first boot, then loaded from SharedPreferences
     - TODO: Add an ending message type to specify which ending we got
+[Monday, January 17th, 2023]
+    - Added new Message type: Ending
+        - Now the ending the player achieved can now be detected and endings guide displays this accordingly
+    - Jump ahead chapters
+        - Added ListPreference to select chapter to skip to
+        - Modified timeline to contain chapter name after the instruction
+        - Chapter names are automatically populated
+        - Added functionality to increment over instructions to skip to the chapter we want
+        - TODO: though what we have works, improve it by letting the user know when a conversation was skipped instead of showing "New Message!" everytime
+            - can do this by adding a boolean field "isSkip" to executeNextTimelineInstruction. if isSkip == true, set the message to "Skipped"
+            - Just make sure that the last skip turns off this field so that it displays the proper "New message!" text
+            - We will probably need a getConversationByID function
 
 TODO
     - backgrounds and mediaplayer sounds

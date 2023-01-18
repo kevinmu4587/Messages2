@@ -1,62 +1,63 @@
-% Ax 1 Introduction #1
-open1
-% Ax 2 Acquintance #2
-incr1
-% Tommy 1 Birthday #3
-open2
-% Tommy 2 Mailbox #4
-incr2
-% Ax 3 Present #5
-incr1
-% Andrea 1 Reconnection #6
-open3
-% Andrea 2 Muggings, Part 1 #7
-incr3
-% Tommy 3 Muggings, Part 2 #8
-incr2
-% Ax 4 Christmas Preparations, Part 1 #9
-incr1
-% Andrea 3 Christmas Preparations, Part 2 #10
-incr3
-% Tommy 4 Shopping #11
-incr2
-% Tommy 5 Upcoming Decision #12
-incr2
-% Tommy 7 Ultimate Decision #13
-incr2
-% Ax 5 Final Preparations, Part 1 #14
-incr1
-% Andrea 4 Final Preparations, Part 2 #15
-incr3
-% Either Ax 6 Exhibition || Andrea 5 Exhibition as #16
-incr_exhibitionAxOrAndrea=1_1_3
-% Either Ax 6 Park || Andrea 5 Park as #17
-incr_exhibitionAxOrAndrea=1_3_1
-% Tommy 7 Aftermath #18
-incr2
-% Ax 7 Failed-Checkin #19
-incr1
-% Tommy 8 Missing #20
-incr2
-% Andrea 6 Check-in #21
-incr3
-% Ax 8 Distant #22
-incr1
-% Andrea 7 Crisis, Part 1 #23
-incr3
+% A line with % at the start is a comment and will be ignored by the engine
+% Ax 1  #1
+open1 Chapter 1: Introduction
+% Ax 2 #2
+incr1 Chapter 2: Acquintance
+% Tommy 1 #3
+open2 Chapter 3: Birthday
+% Tommy 2 #4
+incr2 Chapter 4: Mailbox
+% Ax 3 #5
+incr1 Chapter 5: Present
+% Andrea 1 #6
+open3 Chapter 6: Reconnection
+% Andrea 2 #7
+incr3 Chapter 7: Muggings, Part 1
+% Tommy 3 #8
+incr2 Chapter 8: Muggings, Part 2
+% Ax 4 #9
+incr1 Chapter 9: Christmas Preparations, Part 1
+% Andrea 3 #10
+incr3 Chapter 10: Christmas Preparations, Part 2
+% Tommy 4  #11
+incr2 Chapter 11: Shopping
+% Tommy 5 #12
+incr2 Chapter 12: Upcoming Decision
+% Tommy 7 #13
+incr2 Chapter 13: Ultimate Decision
+% Ax 5 #14
+incr1 Chapter 14: Final Preparations, Part 1
+% Andrea 4 #15
+incr3 Chapter 15: Final Preparations, Part 2
+% Either Ax 6  || Andrea 5 as #16
+incr_exhibitionAxOrAndrea=1_1_3 Chapter 16: Exhibition
+% Either Ax 6 || Andrea 5 as #17
+incr_exhibitionAxOrAndrea=1_3_1 Chapter 17: Park
+% Tommy 7 #18
+incr2 Chapter 18: Aftermath
+% Ax 7 #19
+incr1 Chapter 19: Failed Check-in 
+% Tommy 8 #20
+incr2 Chapter 20: Missing
+% Andrea 6 #21
+incr3 Chapter 21: Check-in
+% Ax 8 #22
+incr1 Chapter 22: Distant
+% Andrea 7 #23
+incr3 Chapter 23: Crisis, Part 1
 % Ax 9 Crisis, Part 2 #24
-incr1
-% Andrea 8 Past #25
-incr3
-% Tommy 9 Present #26
-incr2
-% Andrea 9 Future #27
-incr3
+incr1 CHapter 24: Crisis, Part 2
+% Andrea 8 #25
+incr3 Chapter 25: Past
+% Tommy 9 #26
+incr2 Chapter 26: Present
+% Andrea 9 #27
+incr3 Chapter 27: Future
 % Either Ax 10 Train #28-1 or Andrea 10 Relationship #28-2
-incr_crisisRejectOrAccept=1_1_3
-% Police 1 Red and Blue #29
-open4
-% ??? 1 Schism #30
-open5
+incr_crisisRejectOrAccept=1_1_3 Chapter 28: Train/Relationship
+% Police 1 #29
+open4 Chapter 29: Red and Blue
+% ??? 1 #30
+open5 Chapter 30: Schism
 % Thank you for playing!
-open6
+open6 Chapter End

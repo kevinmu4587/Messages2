@@ -121,8 +121,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadSetupFiles() {
-//        String timelineJson = Utils.loadFileFromAssets(getApplicationContext(), "timeline (full)");
-        String timelineJson = Utils.loadFileFromAssets(getApplicationContext(), "timeline");
+        String timelineJson = Utils.loadFileFromAssets(getApplicationContext(), "timeline (full)");
+//        String timelineJson = Utils.loadFileFromAssets(getApplicationContext(), "timeline");
         Utils.setupTimeline(timelineJson);
         String endingsJson = Utils.loadFileFromAssets(getApplicationContext(), "endings.jsonc");
         Utils.setupEndings(endingsJson);

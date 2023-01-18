@@ -9,4 +9,24 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+    <string-array name="chapter_entries">
+        <item>Chapter 1: The Beginning</item>
+        <item>Chapter 2: The Dawn</item>
+        <item>Chapter 3: The Daw</item>
+        <item>Chapter 4: The Dan</item>
+        <item>Chapter 5: The Dwn</item>
+        <item>Chapter 6: The awn</item>
+        <item>Chapter 7: TheDawn</item>
+    </string-array>
+
+    <string-array name="chapter_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
 </resources>

@@ -41,7 +41,8 @@ import kevin.android.texts.R;
 public class ConversationFragment extends Fragment implements EditTextDialog.EditTextDialogListener {
     private static final String TAG = "ConversationFragment";
     private ConversationViewModel conversationViewModel;
-    SharedPreferences settingsSharedPref;
+    private SharedPreferences settingsSharedPref;
+    private SharedPreferences.Editor editor;
     // private FloatingActionButton testNextConversationButton;
 
     public ConversationFragment() {
@@ -51,6 +52,8 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        settingsSharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        editor = settingsSharedPref.edit();
     }
 
     @Nullable
@@ -112,7 +115,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                             "Oliver", "Green", "Oli", -1);
                     editTextDialog.show(getChildFragmentManager(), "setup");
                     // Log.e(TAG, "opened all EditTextDialog windows.");
-                    checkAdvance();
+                    executeNextTimelineInstruction();
                 }
             }
         });
@@ -134,7 +137,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                     Log.e(TAG, "Conversation " + conversation.getFullName() + " set to PAUSED");
                     conversation.setConversationState(Conversation.STATE_PAUSED);
                     conversationViewModel.update(conversation);
-                    checkAdvance();
+                    executeNextTimelineInstruction();
                 } else if (conversation.getConversationState() == Conversation.STATE_PAUSED) {
                     conversation.setUnread(false);
                     conversationViewModel.update(conversation);
@@ -143,10 +146,10 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         });
 
         // retrieve stored values from settings fragment
-        settingsSharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         String playerFirstName = settingsSharedPref.getString("playerFirstName", GameManager.playerFirstName);
         String playerLastName = settingsSharedPref.getString("playerLastName", GameManager.playerLastName);
         String playerNickname = settingsSharedPref.getString("playerNickname", GameManager.playerNickname);
+        String skipChapters = settingsSharedPref.getString("chapterSelect",  null);
         boolean isFastMode = settingsSharedPref.getBoolean("isFastMode", false);
         boolean isAutoMode = settingsSharedPref.getBoolean("isAutoMode", false);
         GameManager.playerFirstName = playerFirstName;
@@ -154,6 +157,17 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         GameManager.playerNickname = playerNickname;
         GameManager.isFastMode = isFastMode;
         GameManager.isAutoMode = isAutoMode;
+        if (skipChapters != null) {
+            int numSkip = Integer.parseInt(skipChapters);
+            for (int i = 0; i < numSkip; ++i) {
+                Log.e(TAG, "SKIPPING " + (i+1) + " CHAPTER");
+                // when we skip ahead, we need to ensure to pause all active conversations
+                conversationViewModel.pauseAllActiveConversations();
+                executeNextTimelineInstruction();
+            }
+            editor.putString("chapterSelect", null);
+            editor.commit();
+        }
 
 
 //        testNextConversationButton = view.findViewById(R.id.test_add_conversation_button);
@@ -169,7 +183,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
     @Override
     public void applyNames(final String firstName, final String lastName, final String nickname, final int id) {
         if (id == -1) {
-            SharedPreferences.Editor editor = settingsSharedPref.edit();
+//            SharedPreferences.Editor editor = settingsSharedPref.edit();
             GameManager.playerFirstName = firstName;
             GameManager.playerLastName = lastName;
             GameManager.playerNickname = nickname;
@@ -197,7 +211,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         });
     }
 
-    private void checkAdvance() {
+    private void executeNextTimelineInstruction() {
         if (GameManager.timeline.size() == 0) {
             // trigger the endgame
             GameManager.gameCompleted = true;

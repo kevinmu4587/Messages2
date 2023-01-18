@@ -71,18 +71,23 @@ public class ConversationViewModel extends AndroidViewModel {
 //        return repository.getAllConversations();
 //    }
 
+    public void pauseAllActiveConversations() {
+        for (Conversation c : activeConversations) {
+            c.setConversationState(Conversation.STATE_PAUSED);
+            update(c);
+        }
+    }
 
     public void incrementConversationWithID(int id) {
         for (Conversation c : activeConversations) {
             if (c.getId() == id) {
                 c.setGroup(c.getGroup() + 1);
-                // not tested
                 c.setConversationState(Conversation.STATE_RUNNING);
                 c.setLastMessage("New message!");
                 c.setUnread(true);
                 update(c);
                 Log.e(TAG, "conversation " + c.getFullName() + " is now on group " + c.getGroup());
-                update(c);
+//                update(c);
                 return;
             }
         }
