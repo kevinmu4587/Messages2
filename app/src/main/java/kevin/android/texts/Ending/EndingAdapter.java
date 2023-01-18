@@ -8,10 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
 import kevin.android.texts.Utils;
@@ -26,10 +22,10 @@ public class EndingAdapter extends RecyclerView.Adapter<EndingAdapter.EndingView
 
     @Override
     public void onBindViewHolder(@NonNull EndingViewHolder holder, int position) {
-        Ending current = GameManager.endingList.get(position);
+        Ending current = GameManager.allEndingsList.get(position);
 
         holder.title.setText(current.getTitle());
-        if (GameManager.endingsAreFound[position] == 0) {
+        if (GameManager.endingsFound[position] == 0) {
             holder.description.setText("???");
             holder.guide.setText("Unlock by: ???");
         } else {
@@ -40,7 +36,7 @@ public class EndingAdapter extends RecyclerView.Adapter<EndingAdapter.EndingView
 
     @Override
     public int getItemCount() {
-        return GameManager.endingList.size();
+        return GameManager.allEndingsList.size();
     }
 
     class EndingViewHolder extends RecyclerView.ViewHolder {

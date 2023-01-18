@@ -1,6 +1,5 @@
 package kevin.android.texts.Message;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
@@ -488,6 +487,11 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
                     playRunnable = null;
                     messageViewModel.submitMessage(nextMessage);
                     Log.e(TAG, "No more upcoming messages. Chat finished and Play killed.");
+                } else if (type.equals("ending")){
+                    int endingID = Integer.parseInt(nextMessage.getContent()[0]);
+                    // mark this ending as found
+                    GameManager.endingsFound[endingID] = 1;
+                    messageViewModel.submitMessage(nextMessage);
                 } else {
                     Log.e(TAG, "Unknown message type. Ignorning.");
                 }

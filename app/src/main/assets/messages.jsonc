@@ -591,6 +591,14 @@
                 "time": "8:01pm"
             },
             {
+                "type": "ending",
+                "content": [
+                    "0"
+                ],
+                "block": 0,
+                "time": "none"
+            },
+            {
                 "type": "terminator",
                 "content": [
                     "Terminator."

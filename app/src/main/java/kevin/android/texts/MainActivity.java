@@ -2,9 +2,6 @@ package kevin.android.texts;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.emoji2.bundled.BundledEmojiCompatConfig;
 import androidx.emoji2.text.EmojiCompat;
 import androidx.preference.PreferenceManager;
@@ -61,14 +58,13 @@ public class MainActivity extends AppCompatActivity {
             Type type = new TypeToken<ArrayList<String>>() {}.getType();
             GameManager.timeline = gson.fromJson(jsonTimeline, type);
             type = new TypeToken<List<Ending>>() {}.getType();
-            GameManager.endingList = gson.fromJson(jsonEndings, type);
+            GameManager.allEndingsList = gson.fromJson(jsonEndings, type);
             Log.e(TAG, "loaded timeline as " + GameManager.timeline);
         } else {
             loadSetupFiles();
         }
 
         // load the GameManager key decisions from shared preferences
-        String json = sharedPref.getString("MyHashMap", null);
         GameManager.gameCompleted = sharedPref.getBoolean("gameCompleted", false);
         GameManager.npc1FirstName = sharedPref.getString("npc1FirstName", "Default NPC1 First Name");
         GameManager.npc1LastName = sharedPref.getString("npc1LastName", "Default NPC1 Last Name");
@@ -80,9 +76,13 @@ public class MainActivity extends AppCompatActivity {
         GameManager.npc2LastName = sharedPref.getString("npc2LastName", "Default NPC2 Last Name");
         GameManager.npc2Nickname = sharedPref.getString("npc2Nickname", "Default NPC2 Nickname");
         GameManager.nextInsertNum = sharedPref.getInt("nextInsertNum", 0);
-        if (json == null) return;
+        String keyChoicesJson = sharedPref.getString("keyChoicesMap", null);
+        String endingsFoundJson = sharedPref.getString("endingsFound", null);
+        if (keyChoicesJson == null) return;
         Type myType = new TypeToken<Map<String, Integer>>() {}.getType();
-        Map<String, Integer> keyChoices = gson.fromJson(json, myType);
+        Map<String, Integer> keyChoices = gson.fromJson(keyChoicesJson, myType);
+        myType = new TypeToken<int []>() {}.getType();
+        GameManager.endingsFound = gson.fromJson(endingsFoundJson, myType);
         Log.e(TAG, "loading key decisions from sharedPrefs. size: " + keyChoices.size());
         GameManager.setKeyChoices(keyChoices);
     }
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = sharedPref.edit();
         Gson gson = new Gson();
-        editor.putString("MyHashMap", gson.toJson(GameManager.getKeyChoices()));
+        editor.putString("keyChoicesMap", gson.toJson(GameManager.getKeyChoices()));
 //        editor.putBoolean("firstRun", GameManager.firstRun);
         editor.putBoolean("gameCompleted", GameManager.gameCompleted);
         editor.putString("npc1FirstName", GameManager.npc1FirstName);
@@ -113,17 +113,15 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("npc2LastName", GameManager.npc2LastName);
         editor.putString("npc2Nickname", GameManager.npc2Nickname);
         editor.putInt("nextInsertNum", GameManager.nextInsertNum);
-        String timeline = gson.toJson(GameManager.timeline);
-        String endings = gson.toJson(GameManager.endingList);
-        Log.e(TAG, "saving timeline to sharedPrefs: " + timeline);
-        editor.putString("Timeline", timeline);
-        editor.putString("endings", endings);
+        editor.putString("Timeline", gson.toJson(GameManager.timeline));
+        editor.putString("endings", gson.toJson(GameManager.allEndingsList));
+        editor.putString("endingsFound", gson.toJson(GameManager.endingsFound));
         editor.commit();
         Log.e(TAG, "Saved " + GameManager.getKeyChoices().size() + " key decisions to shared preferences");
     }
 
     private void loadSetupFiles() {
-//        String json = Utils.loadFileFromAssets(getApplicationContext(), "timeline (full)");
+//        String timelineJson = Utils.loadFileFromAssets(getApplicationContext(), "timeline (full)");
         String timelineJson = Utils.loadFileFromAssets(getApplicationContext(), "timeline");
         Utils.setupTimeline(timelineJson);
         String endingsJson = Utils.loadFileFromAssets(getApplicationContext(), "endings.jsonc");
