@@ -115,32 +115,8 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                             "Oliver", "Green", "Oli", -1);
                     editTextDialog.show(getChildFragmentManager(), "setup");
                     // Log.e(TAG, "opened all EditTextDialog windows.");
-                    executeNextTimelineInstruction();
-                }
-            }
-        });
-
-
-        // get data back from ChatInfoFragment
-        NavController navController = NavHostFragment.findNavController(this);
-        MutableLiveData<Conversation> liveData = navController.getCurrentBackStackEntry()
-                .getSavedStateHandle()
-                .getLiveData(ChatFragment.CHAT_FRAGMENT_KEY);
-        liveData.observe(getViewLifecycleOwner(), new Observer<Conversation>() {
-            @Override
-            public void onChanged(Conversation conversation) {
-                Log.e(TAG, "Received updated conversation from ChatFragment");
-                conversationViewModel.update(conversation);
-                Log.e(TAG, "Conversation returned a state of " + conversation.getConversationState());
-                if (conversation.getConversationState() == Conversation.STATE_DONE) {
-                    // chat is finished, now grab new timeline instruction
-                    Log.e(TAG, "Conversation " + conversation.getFullName() + " set to PAUSED");
-                    conversation.setConversationState(Conversation.STATE_PAUSED);
-                    conversationViewModel.update(conversation);
-                    executeNextTimelineInstruction();
-                } else if (conversation.getConversationState() == Conversation.STATE_PAUSED) {
-                    conversation.setUnread(false);
-                    conversationViewModel.update(conversation);
+                    //
+                    executeNextTimelineInstruction(false);
                 }
             }
         });
@@ -149,7 +125,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         String playerFirstName = settingsSharedPref.getString("playerFirstName", GameManager.playerFirstName);
         String playerLastName = settingsSharedPref.getString("playerLastName", GameManager.playerLastName);
         String playerNickname = settingsSharedPref.getString("playerNickname", GameManager.playerNickname);
-        String skipChapters = settingsSharedPref.getString("chapterSelect",  null);
+        final String skipChapters = settingsSharedPref.getString("chapterSelect",  null);
         boolean isFastMode = settingsSharedPref.getBoolean("isFastMode", false);
         boolean isAutoMode = settingsSharedPref.getBoolean("isAutoMode", false);
         GameManager.playerFirstName = playerFirstName;
@@ -157,13 +133,42 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         GameManager.playerNickname = playerNickname;
         GameManager.isFastMode = isFastMode;
         GameManager.isAutoMode = isAutoMode;
+
+        // get data back from ChatFragment
+        NavController navController = NavHostFragment.findNavController(this);
+        final MutableLiveData<Conversation> liveData = navController.getCurrentBackStackEntry()
+                .getSavedStateHandle()
+                .getLiveData(ChatFragment.CHAT_FRAGMENT_KEY);
+        liveData.observe(getViewLifecycleOwner(), new Observer<Conversation>() {
+            @Override
+            public void onChanged(Conversation conversation) {
+                Conversation old = liveData.getValue();
+                if (old.getGroup() != conversation.getGroup()) return;
+                Log.e(TAG, "Received updated conversation from ChatFragment");
+                conversationViewModel.update(conversation);
+                Log.e(TAG, "Conversation returned a state of " + conversation.getConversationState());
+                if (conversation.getConversationState() == Conversation.STATE_DONE) {
+                    // chat is finished, now grab new timeline instruction
+                    Log.e(TAG, "Conversation " + conversation.getFullName() + " set to PAUSED");
+                    conversation.setConversationState(Conversation.STATE_PAUSED);
+                    conversationViewModel.update(conversation);
+                    executeNextTimelineInstruction(false);
+                } else if (conversation.getConversationState() == Conversation.STATE_PAUSED) {
+                    conversation.setUnread(false);
+                    conversationViewModel.update(conversation);
+                }
+            }
+        });
+
+        // skip chapter logic
         if (skipChapters != null) {
-            int numSkip = Integer.parseInt(skipChapters);
-            for (int i = 0; i < numSkip; ++i) {
-                Log.e(TAG, "SKIPPING " + (i+1) + " CHAPTER");
-                // when we skip ahead, we need to ensure to pause all active conversations
-                conversationViewModel.pauseAllActiveConversations();
-                executeNextTimelineInstruction();
+            // when we skip ahead, we need to ensure to pause all active conversations
+            conversationViewModel.pauseAllActiveConversations();
+            int numToSkip = Integer.parseInt(skipChapters);
+            for (int i = 0; i < numToSkip; ++i) {
+                Log.e(TAG, "SKIPPING " + (i+1) + " CHAPTERS");
+                // skip everything until the last one (the one we actually need)
+                executeNextTimelineInstruction(i < (numToSkip - 1));
             }
             editor.putString("chapterSelect", null);
             editor.commit();
@@ -211,7 +216,7 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         });
     }
 
-    private void executeNextTimelineInstruction() {
+    private void executeNextTimelineInstruction(boolean isSkip) {
         if (GameManager.timeline.size() == 0) {
             // trigger the endgame
             GameManager.gameCompleted = true;
@@ -219,22 +224,23 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
 //            endingsGuide.setVisible(true);
             return;
         }
+        // timeline is saved by shared preferences in MainActivity
         String cmd = GameManager.timeline.get(0);
         Log.e(TAG, "command: " + cmd);
-        // timeline is saved by shared preferences in MainActivity
         GameManager.timeline.remove(0);
+        int conversationID = 0;
         if (cmd.substring(0, 4).equals("open")) {
-            int conversationId = cmd.charAt(4) - '0';
-            Log.e(TAG, "opened next conversation of id: " + conversationId);
-            conversationViewModel.loadConversation(conversationId);
+            conversationID = cmd.charAt(4) - '0';
+            Log.e(TAG, "opened next conversation of id: " + conversationID);
+            conversationViewModel.loadConversation(conversationID, isSkip);
         } else if (cmd.substring(0, 4).equals("incr")) {
             String[] incrementInstructions = cmd.split("_");
-            int conversationIdToIncrement = 0;
             if (incrementInstructions.length == 1) {
                 // simple increment
-                conversationIdToIncrement = cmd.charAt(4) - '0';
+                conversationID = cmd.charAt(4) - '0';
             } else {
                 // increment based on a key decision
+                // format: incr_<keyBlock name>=<choice>_<conversation id if true>_<conversation id if false>
                 String[] conditionParts = incrementInstructions[1].split("=");
                 String keyBlockName = conditionParts[0];
                 int blockCondition = Integer.parseInt(conditionParts[1]);
@@ -242,15 +248,15 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
 //                if (savedChoice == blockCondition || savedChoice == -1) {
                 if (savedChoice == blockCondition) {
                     // value if true, or a safety net: if the choice was not saved (ex. by skipping ahead)
-                    conversationIdToIncrement = Integer.parseInt(incrementInstructions[2]);
+                    conversationID = Integer.parseInt(incrementInstructions[2]);
                 } else {
                     // value if false
                     // only read the first character since the last instruction has a /r terminator character
-                    conversationIdToIncrement = Integer.parseInt(incrementInstructions[3].substring(0, 1));
+                    conversationID = Integer.parseInt(incrementInstructions[3].substring(0, 1));
                 }
             }
-            Log.e(TAG, "incremented conversation with id: " + conversationIdToIncrement);
-            conversationViewModel.incrementConversationWithID(conversationIdToIncrement);
+            Log.e(TAG, "incremented conversation with id: " + conversationID);
+            conversationViewModel.incrementConversationWithID(conversationID, isSkip);
         }
     }
 

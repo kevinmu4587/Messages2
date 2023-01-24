@@ -722,16 +722,21 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - Modified timeline to contain chapter name after the instruction
         - Chapter names are automatically populated
         - Added functionality to increment over instructions to skip to the chapter we want
-        - TODO: though what we have works, improve it by letting the user know when a conversation was skipped instead of showing "New Message!" everytime
-            - can do this by adding a boolean field "isSkip" to executeNextTimelineInstruction. if isSkip == true, set the message to "Skipped"
-            - Just make sure that the last skip turns off this field so that it displays the proper "New message!" text
-            - We will probably need a getConversationByID function
+[Monday, January 23rd, 2023]
+    - Modified the skip chapter algorithm so it no longer needs to pause all conversations each time
+        - Added isSkip field to executeNextTimelineInstruction
+        - This works well if the user does not enter a chat before a skip
+    - TODO: Bug: If the user enters a chat, then exits, then uses a skip on that conversation, it will not update since the LiveData observer
+        from ChatFragment is triggered.
+            - This has the old group
+            - It automatically assumes that what we got back is correct
+            - We need to NOT update the conversation after a skip, since the skip has the correct group number
+            - Find out why the LiveData observer is only triggered after the chat is opened (doesn't the observer still exist otherwise? Why isn't it called after a skip?)
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
     - reset game button
-    - Dynamic ending identifier
     - Jump ahead chapters
 
 

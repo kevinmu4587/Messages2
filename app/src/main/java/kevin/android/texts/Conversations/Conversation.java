@@ -26,7 +26,7 @@ public class Conversation implements Parcelable  {
     private String lastName;
     private String nickname;
     private String description;
-    private String lastMessage = "New message!";
+    private String lastMessage;
     private String lastTime;
 
     private boolean editable;

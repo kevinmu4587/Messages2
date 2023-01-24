@@ -22,6 +22,7 @@ public class ConversationViewModel extends AndroidViewModel {
     }
 
     public void update(Conversation conversation) {
+
         repository.update(conversation);
     }
 
@@ -45,7 +46,7 @@ public class ConversationViewModel extends AndroidViewModel {
         this.inactiveConversations = inactiveConversations;
     }
 
-    public void loadConversation(int id) {
+    public void loadConversation(int id, boolean isSkip) {
 //        Conversation next = inactiveConversations.get(0);
         for (int i = 0; i < inactiveConversations.size(); ++i) {
             Conversation c = inactiveConversations.get(i);
@@ -54,6 +55,7 @@ public class ConversationViewModel extends AndroidViewModel {
                 Log.e(TAG, "Requested next conversation (SET TO RUNNING). name: " + c.getFullName() + ", id: " + c.getId());
                 c.setActive(true);
                 c.setConversationState(Conversation.STATE_RUNNING);
+                c.setLastMessage(isSkip ? "(Chapter skipped)" : "New message!");
                 update(c);
             }
         }
@@ -78,12 +80,12 @@ public class ConversationViewModel extends AndroidViewModel {
         }
     }
 
-    public void incrementConversationWithID(int id) {
+    public void incrementConversationWithID(int id, boolean isSkip) {
         for (Conversation c : activeConversations) {
             if (c.getId() == id) {
                 c.setGroup(c.getGroup() + 1);
                 c.setConversationState(Conversation.STATE_RUNNING);
-                c.setLastMessage("New message!");
+                c.setLastMessage(isSkip ? "(Chapter Skipped)" : "New message!");
                 c.setUnread(true);
                 update(c);
                 Log.e(TAG, "conversation " + c.getFullName() + " is now on group " + c.getGroup());
