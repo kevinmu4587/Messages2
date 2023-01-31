@@ -60,14 +60,6 @@ public class ConversationViewModel extends AndroidViewModel {
                 update(c);
             }
         }
-//        if (next.getId() != id) {
-//            Log.e(TAG, "FATAL: Requesting incorrect next conversation. Requesting " + id + ", received " + next.getId());
-//            throw new RuntimeException();
-//        }
-//        Log.e(TAG, "Requested next conversation (SET TO RUNNING). name: " + next.getFullName() + ", id: " + next.getId());
-//        next.setActive(true);
-//        next.setConversationState(Conversation.STATE_RUNNING);
-//        update(next);
     }
 
 //    public LiveData<List<Conversation>> getAllConversations() {
@@ -90,7 +82,6 @@ public class ConversationViewModel extends AndroidViewModel {
                 c.setUnread(true);
                 update(c);
                 Log.e(TAG, "conversation " + c.getFullName() + " is now on group " + c.getGroup());
-//                update(c);
                 return;
             }
         }

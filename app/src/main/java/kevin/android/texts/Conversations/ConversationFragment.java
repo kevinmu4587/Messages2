@@ -1,6 +1,5 @@
 package kevin.android.texts.Conversations;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,9 +13,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -28,14 +24,10 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.List;
 
-import kevin.android.texts.ChatInfoFragment;
 import kevin.android.texts.GameManager;
 import kevin.android.texts.Message.ChatFragment;
-import kevin.android.texts.Message.ChatFragmentDirections;
 import kevin.android.texts.R;
 
 public class ConversationFragment extends Fragment implements EditTextDialog.EditTextDialogListener {
@@ -115,7 +107,6 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                             "Oliver", "Green", "Oli", -1);
                     editTextDialog.show(getChildFragmentManager(), "setup");
                     // Log.e(TAG, "opened all EditTextDialog windows.");
-                    //
                     executeNextTimelineInstruction(false);
                 }
             }
@@ -156,8 +147,6 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             liveData.observe(getViewLifecycleOwner(), new Observer<Conversation>() {
                 @Override
                 public void onChanged(Conversation conversation) {
-                    Conversation old = liveData.getValue();
-                    if (old.getGroup() != conversation.getGroup()) return;
                     Log.e(TAG, "Received updated conversation from ChatFragment");
                     conversationViewModel.update(conversation);
                     Log.e(TAG, "Conversation returned a state of " + conversation.getConversationState());
@@ -245,7 +234,6 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
                 String keyBlockName = conditionParts[0];
                 int blockCondition = Integer.parseInt(conditionParts[1]);
                 int savedChoice = GameManager.getKeyDecision(keyBlockName);
-//                if (savedChoice == blockCondition || savedChoice == -1) {
                 if (savedChoice == blockCondition) {
                     // value if true, or a safety net: if the choice was not saved (ex. by skipping ahead)
                     conversationID = Integer.parseInt(incrementInstructions[2]);
