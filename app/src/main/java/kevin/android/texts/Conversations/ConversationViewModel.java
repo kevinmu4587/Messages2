@@ -54,7 +54,8 @@ public class ConversationViewModel extends AndroidViewModel {
                 inactiveConversations.remove(i);
                 Log.e(TAG, "Requested next conversation (SET TO RUNNING). name: " + c.getFullName() + ", id: " + c.getId());
                 c.setActive(true);
-                c.setConversationState(Conversation.STATE_RUNNING);
+                activeConversations.add(c);
+                c.setConversationState(isSkip ? Conversation.STATE_PAUSED : Conversation.STATE_RUNNING);
                 c.setLastMessage(isSkip ? "(Chapter skipped)" : "New message!");
                 update(c);
             }
@@ -84,7 +85,7 @@ public class ConversationViewModel extends AndroidViewModel {
         for (Conversation c : activeConversations) {
             if (c.getId() == id) {
                 c.setGroup(c.getGroup() + 1);
-                c.setConversationState(Conversation.STATE_RUNNING);
+                c.setConversationState(isSkip ? Conversation.STATE_PAUSED : Conversation.STATE_RUNNING);
                 c.setLastMessage(isSkip ? "(Chapter Skipped)" : "New message!");
                 c.setUnread(true);
                 update(c);

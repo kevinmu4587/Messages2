@@ -726,18 +726,16 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - Modified the skip chapter algorithm so it no longer needs to pause all conversations each time
         - Added isSkip field to executeNextTimelineInstruction
         - This works well if the user does not enter a chat before a skip
-    - TODO: Bug: If the user enters a chat, then exits, then uses a skip on that conversation, it will not update since the LiveData observer
-        from ChatFragment is triggered.
-            - This has the old group
-            - It automatically assumes that what we got back is correct
-            - We need to NOT update the conversation after a skip, since the skip has the correct group number
-            - Find out why the LiveData observer is only triggered after the chat is opened (doesn't the observer still exist otherwise? Why isn't it called after a skip?)
+[Monday, January 30th, 2023]
+    - Finished skip chapters
+        - Fixed bug where opening a chat first overwrote the results of the skip
+        - Fixed bug where block did not have a default value if no keyDecision was made
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
     - reset game button
-    - Jump ahead chapters
+    - make code shorter
 
 
 

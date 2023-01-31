@@ -48,7 +48,8 @@ public class GameManager {
     public static int getKeyDecision(String block) {
         Integer choice = keyChoices.get(block);
         if (choice == null) {
-            return -1;
+            // we default to block 1
+            return 1;
         } else {
             return choice;
         }

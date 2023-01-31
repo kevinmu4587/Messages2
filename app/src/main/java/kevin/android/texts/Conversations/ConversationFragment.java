@@ -139,26 +139,6 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         final MutableLiveData<Conversation> liveData = navController.getCurrentBackStackEntry()
                 .getSavedStateHandle()
                 .getLiveData(ChatFragment.CHAT_FRAGMENT_KEY);
-        liveData.observe(getViewLifecycleOwner(), new Observer<Conversation>() {
-            @Override
-            public void onChanged(Conversation conversation) {
-                Conversation old = liveData.getValue();
-                if (old.getGroup() != conversation.getGroup()) return;
-                Log.e(TAG, "Received updated conversation from ChatFragment");
-                conversationViewModel.update(conversation);
-                Log.e(TAG, "Conversation returned a state of " + conversation.getConversationState());
-                if (conversation.getConversationState() == Conversation.STATE_DONE) {
-                    // chat is finished, now grab new timeline instruction
-                    Log.e(TAG, "Conversation " + conversation.getFullName() + " set to PAUSED");
-                    conversation.setConversationState(Conversation.STATE_PAUSED);
-                    conversationViewModel.update(conversation);
-                    executeNextTimelineInstruction(false);
-                } else if (conversation.getConversationState() == Conversation.STATE_PAUSED) {
-                    conversation.setUnread(false);
-                    conversationViewModel.update(conversation);
-                }
-            }
-        });
 
         // skip chapter logic
         if (skipChapters != null) {
@@ -172,8 +152,28 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
             }
             editor.putString("chapterSelect", null);
             editor.commit();
+        } else {
+            liveData.observe(getViewLifecycleOwner(), new Observer<Conversation>() {
+                @Override
+                public void onChanged(Conversation conversation) {
+                    Conversation old = liveData.getValue();
+                    if (old.getGroup() != conversation.getGroup()) return;
+                    Log.e(TAG, "Received updated conversation from ChatFragment");
+                    conversationViewModel.update(conversation);
+                    Log.e(TAG, "Conversation returned a state of " + conversation.getConversationState());
+                    if (conversation.getConversationState() == Conversation.STATE_DONE) {
+                        // chat is finished, now grab new timeline instruction
+                        Log.e(TAG, "Conversation " + conversation.getFullName() + " set to PAUSED");
+                        conversation.setConversationState(Conversation.STATE_PAUSED);
+                        conversationViewModel.update(conversation);
+                        executeNextTimelineInstruction(false);
+                    } else if (conversation.getConversationState() == Conversation.STATE_PAUSED) {
+                        conversation.setUnread(false);
+                        conversationViewModel.update(conversation);
+                    }
+                }
+            });
         }
-
 
 //        testNextConversationButton = view.findViewById(R.id.test_add_conversation_button);
 //        testNextConversationButton.setOnClickListener(new View.OnClickListener() {
