@@ -526,7 +526,7 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
 [Sunday, May 29th, 2022]
     - finally figured out how to display 5-digit unicode emojis
         - added bundled-emoji dependency & init in MainActivity
-    - i think i figured out why the edit text dialog were appearing at the wrong times
+    - i think i figured out why the edit text messageChoiceDialog were appearing at the wrong times
         - no need to observe all conversations; overlapping observers caused difficult-to-track behaviour
 [Tuesday, May 31st, 2022]
     - added group 2 into json format
@@ -589,7 +589,7 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
 [Wednesday, August 3rd, 2022]
     - finished message json!
     - added remaining conversations (police and ???)
-    - upgraded EditTextDialog setup; now conversations.json comes with a title for the dialog
+    - upgraded EditTextDialog setup; now conversations.json comes with a title for the messageChoiceDialog
         - also only certain conversations can be edited (can't edit police and ???)
 [Thursday, August 12th, 2022]
     - proofread message json
@@ -647,7 +647,7 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - QOL: add pause before action message
         - QOL: Remove top margin above recycler view
         - QOL: Make primary colour slightly darker
-        - QOL: Remove negative button on options dialog
+        - QOL: Remove negative button on options messageChoiceDialog
         - QOL: NPC typing now is now dependent on message length
         - Not sure why we were skipping from Chapter 7 to Chapter 10. Can't reproduce.
         - Add nickname replacement
@@ -730,12 +730,22 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - Finished skip chapters
         - Fixed bug where opening a chat first overwrote the results of the skip
         - Fixed bug where block did not have a default value if no keyDecision was made
+[Thursday, February 2nd, 2023]
+    - Removed multiple EditTextDialog calls
+        - Replaced EditTextDialog with NameSetterDialog
+        - Replaced AlertDialog with Dialog
+        - TODO: Dialog size fixed
+            - Dialog won't dismiss
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
     - reset game button
     - make code shorter
+        - can we make just 1 EditTextDialog that handles all names?
+            - rename EditTextDialog to EditNamesDialog
+            - modify the positive button to just change to the new set of names
+        - do we need to observe inactiveConversations? Why don't we just open the first conversation if activeConversation.size() == 0?
 
 
 

@@ -41,12 +41,12 @@ import java.util.List;
 import kevin.android.texts.ChatInfoFragment;
 import kevin.android.texts.Conversations.Conversation;
 import kevin.android.texts.Conversations.ConversationViewModel;
-import kevin.android.texts.Dialog;
+import kevin.android.texts.MessageChoiceDialog;
 import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
 import kevin.android.texts.Utils;
 
-public class ChatFragment extends Fragment implements View.OnClickListener, Dialog.DialogListener {
+public class ChatFragment extends Fragment implements View.OnClickListener, MessageChoiceDialog.MessageChoiceDialogListener {
     private MessageViewModel messageViewModel;
     private ConversationViewModel conversationViewModel;
     private MessageAdapter adapter = null;
@@ -284,8 +284,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Dial
         - open the options dialog
      */
     public void openDialog() {
-        Dialog dialog = new Dialog(nextMessage.getContent());
-        dialog.show(getChildFragmentManager(), "options");
+        MessageChoiceDialog messageChoiceDialog = new MessageChoiceDialog(nextMessage.getContent());
+        messageChoiceDialog.show(getChildFragmentManager(), "options");
     }
 
     /*

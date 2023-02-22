@@ -25,12 +25,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import kevin.android.texts.GameManager;
 import kevin.android.texts.Message.ChatFragment;
 import kevin.android.texts.R;
 
-public class ConversationFragment extends Fragment implements EditTextDialog.EditTextDialogListener {
+public class ConversationFragment extends Fragment implements NameSetterDialog.NameSetterDialogListener {
     private static final String TAG = "ConversationFragment";
     private ConversationViewModel conversationViewModel;
     private SharedPreferences settingsSharedPref;
@@ -91,21 +92,29 @@ public class ConversationFragment extends Fragment implements EditTextDialog.Edi
         conversationViewModel.getInactiveConversations().observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
             @Override
             public void onChanged(List<Conversation> conversations) {
-                // Log.e(TAG, "set " + conversations.size() + " inactive conversations.");
+                 Log.e(TAG, "set " + conversations.size() + " inactive conversations. Total: " + GameManager.numConversations);
                 conversationViewModel.setInactiveConversations(conversations);
                 // load the first conversation at the start
                 if (conversations.size() == GameManager.numConversations) {
-                    for (int i = conversations.size() - 1; i >= 0; i--) {
-                        Conversation conversation = conversations.get(i);
-                        if (conversation.isEditable()) {
-                            EditTextDialog editTextDialog = new EditTextDialog(conversation.getConversationDialogTitle(),
-                                    conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
-                            editTextDialog.show(getChildFragmentManager(), "setup");
-                        }
-                    }
-                    EditTextDialog editTextDialog = new EditTextDialog("Enter your player information:",
-                            "Oliver", "Green", "Oli", -1);
-                    editTextDialog.show(getChildFragmentManager(), "setup");
+                    // create a NameSetterDialog and pass it all Conversations with names we will edit
+                    List<Conversation> editableConversations = conversations.stream()
+                            .filter(Conversation::isEditable)
+                            .collect(Collectors.toList());
+                    NameSetterDialog nameSetterDialog = new NameSetterDialog(editableConversations);
+                    nameSetterDialog.show(getChildFragmentManager(), "setup");
+                    Log.e(TAG, "Opened the NameSetterDialog");
+//                    for (int i = conversations.size() - 1; i >= 0; i--) {
+//                        Conversation conversation = conversations.get(i);
+//                        if (conversation.isEditable()) {
+//                            NameSetterDialog nameSetterDialog = new NameSetterDialog(conversation.getConversationDialogTitle(),
+//                                    conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
+//                            nameSetterDialog.show(getChildFragmentManager(), "setup");
+//                        }
+//                    }
+//                    //
+//                    NameSetterDialog nameSetterDialog = new NameSetterDialog("Enter your player information:",
+//                            "Oliver", "Green", "Oli", -1);
+//                    nameSetterDialog.show(getChildFragmentManager(), "setup");
                     // Log.e(TAG, "opened all EditTextDialog windows.");
                     executeNextTimelineInstruction(false);
                 }

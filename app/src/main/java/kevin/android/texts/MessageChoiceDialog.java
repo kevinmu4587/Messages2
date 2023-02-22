@@ -12,12 +12,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class Dialog extends AppCompatDialogFragment {
+public class MessageChoiceDialog extends AppCompatDialogFragment {
     private String[] choices;
     private int choice;
-    private DialogListener listener;
+    private MessageChoiceDialogListener listener;
 
-    public Dialog(String[] choices) {
+    public MessageChoiceDialog(String[] choices) {
         this.choices = choices;
     }
 
@@ -51,13 +51,13 @@ public class Dialog extends AppCompatDialogFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
-            listener = (DialogListener) getParentFragment();
+            listener = (MessageChoiceDialogListener) getParentFragment();
         } catch (ClassCastException x) {
             Log.e("Dialog", "Parent does not implement DialogListener interface");
         }
     }
 
-    public interface DialogListener {
+    public interface MessageChoiceDialogListener {
         void applyText(int choice);
     }
 }

@@ -656,12 +656,12 @@
                 "time": "none"
             }
         ],
-        // group 3: Present | #5 | Wednesday, November 21st
+        // group 3: Gift | #5 | Wednesday, November 21st
         [
             {
                 "type": "action",
                 "content": [
-                    "Chapter 5: Present"
+                    "Chapter 5: Gift"
                 ],
                 "block": 0,
                 "time": "none"
