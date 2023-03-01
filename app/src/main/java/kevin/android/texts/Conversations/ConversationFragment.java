@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -191,7 +190,6 @@ public class ConversationFragment extends Fragment implements NameSetterDialog.N
         conversation.setLastName(lastName);
         conversation.setNickname(nickname);
         GameManager.setNPCNames(id, firstName, lastName, nickname);
-//        conversation.setInitialized(true);
         conversationViewModel.update(conversation);
     }
 

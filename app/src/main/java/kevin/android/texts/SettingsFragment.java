@@ -11,14 +11,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
-
-import kevin.android.texts.Message.ChatFragmentDirections;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     private static final String TAG="SettingsFragment";
@@ -31,9 +27,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
 
-        firstNameEntry = (EditTextPreference)findPreference("playerFirstName");
-        lastNameEntry = (EditTextPreference)findPreference("playerLastName");
-        nicknameEntry = (EditTextPreference)findPreference("playerNickname");
+        firstNameEntry = findPreference("playerFirstName");
+        lastNameEntry = findPreference("playerLastName");
+        nicknameEntry = findPreference("playerNickname");
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         firstNameEntry.setText(sharedPref.getString("playerFirstName", GameManager.playerFirstName));

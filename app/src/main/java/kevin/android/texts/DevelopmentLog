@@ -740,6 +740,7 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
 [Tuesday, February 28th, 2023]
     - Fixed bug where NameSetterDialog was being created multiple times due to not updating the inactive conversations (always stuck at 6)
     - Removed unnecessary Conversation livedata listener in ConversationViewModel, replaced with basic search & update.
+    - Removed isInitialized field in Conversation
     - Finished EditTextDialog -> NameSetterDialog refactor
     - RESOLVED: do we need to observe inactiveConversations? Why don't we just open the first conversation if activeConversation.size() == 0?
         - i think we can mess around with it being initialized. this deserves a whole refactor
@@ -747,24 +748,13 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
             - one for active conversations, to be updated regularly throughout gameplay
             - one for initialization. (we can't just track activeConversations == 0 since it will always be zero at the start.
                 we wouldn't be able to differentiate between initialized & waiting for first to arrive)
+    - Finished: code cleanup refactors. merged
 
 
 TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
     - reset game button
-    - make code shorter
-        - can we make just 1 EditTextDialog that handles all names?
-            - rename EditTextDialog to EditNamesDialog
-            - modify the positive button to just change to the new set of names
-        - do we need to observe inactiveConversations? Why don't we just open the first conversation if activeConversation.size() == 0?
-            - i think we can mess around with it being initialized. this deserves a whole refactor
-            - actually no, we will need two observers regardless:
-                - one for active conversations, to be updated regularly throughout gameplay
-                - one for initialization. (we can't just track activeConversations == 0 since it will always be zero at the start.
-                    we wouldn't be able to differentiate between initialized & waiting for first to arrive)
-    - looks like terminator in Chapter 30: Schism isn't working
-
 
 
 
