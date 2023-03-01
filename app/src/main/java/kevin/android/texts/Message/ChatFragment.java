@@ -489,6 +489,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Mess
                     Log.e(TAG, "No more upcoming messages. Chat finished and Play killed.");
                 } else if (type.equals("ending")){
                     int endingID = Integer.parseInt(nextMessage.getContent()[0]);
+                    Log.e(TAG, "Found ending #" + endingID);
                     // mark this ending as found
                     GameManager.endingsFound[endingID] = 1;
                     messageViewModel.submitMessage(nextMessage);

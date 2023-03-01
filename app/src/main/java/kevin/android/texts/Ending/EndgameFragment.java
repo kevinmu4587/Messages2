@@ -8,18 +8,24 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Arrays;
+
 import kevin.android.texts.Conversations.ConversationAdapter;
+import kevin.android.texts.GameManager;
 import kevin.android.texts.R;
 import kevin.android.texts.Utils;
 
 public class EndgameFragment extends Fragment {
-        public EndgameFragment() {
+    private static final String TAG = "EndgameFragment";
+
+    public EndgameFragment() {
         // Required empty public constructor
     }
 
@@ -28,6 +34,7 @@ public class EndgameFragment extends Fragment {
         super.onCreate(savedInstanceState);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
+        Log.e(TAG, "These are the endings I found: " + Arrays.toString(GameManager.endingsFound));
     }
 
     @Override

@@ -11779,6 +11779,14 @@
                 "time": "none"
             },
             {
+                "type": "ending",
+                "content": [
+                    "0"
+                ],
+                "block": 11,
+                "time": "none"
+            },
+            {
                 "type": "action",
                 "content": [
                     "This chat is no longer available."
@@ -11968,6 +11976,14 @@
                 "time": "none"
             },
             {
+                "type": "ending",
+                "content": [
+                    "1"
+                ],
+                "block": 22,
+                "time": "none"
+            },
+            {
                 "type": "action",
                 "content": [
                     "This chat is no longer available."
@@ -12147,6 +12163,14 @@
                 "time": "none"
             },
             {
+                "type": "ending",
+                "content": [
+                    "2"
+                ],
+                "block": 12,
+                "time": "none"
+            },
+            {
                 "type": "action",
                 "content": [
                     "This chat is no longer available."
@@ -12177,6 +12201,14 @@
                     "You don't know what you'd be without her.",
                     "And that thought is the last sign of life in the street before a loud thud echoes through the night.",
                     "Fin | Ending D: 'Depths of Despair'"
+                ],
+                "block": 21,
+                "time": "none"
+            },
+            {
+                "type": "ending",
+                "content": [
+                    "3"
                 ],
                 "block": 21,
                 "time": "none"

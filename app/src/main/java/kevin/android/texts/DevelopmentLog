@@ -748,6 +748,7 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
             - one for active conversations, to be updated regularly throughout gameplay
             - one for initialization. (we can't just track activeConversations == 0 since it will always be zero at the start.
                 we wouldn't be able to differentiate between initialized & waiting for first to arrive)
+    - Fixed bug where ending messages were not in messages json
     - Finished: code cleanup refactors. merged
 
 
@@ -755,6 +756,10 @@ TODO
     - backgrounds and mediaplayer sounds
     - loading screen when populating conversations/messages
     - reset game button
+    - one thing we could do: refactor profile picture system
+        - don't store R.drawable.id in project code, instead read a specific file name based on ID
+            ex. npc_profile_picture_1
+        - then we just save any custom photo with that name
 
 
 
