@@ -56,7 +56,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             // this is an integer telling us how many chapters to skip relative to our current chapter
             values[i] = i + 1 + "";
         }
-        Log.e(TAG, "Our chapters: " + entries + "Should be " + numChapters + " entries");
+        Log.e(TAG, "I found " + numChapters + " possible chapters");
         chapterSelect.setEntries(entries);
         chapterSelect.setEntryValues(values);
     }

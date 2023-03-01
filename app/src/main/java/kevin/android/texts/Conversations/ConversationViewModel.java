@@ -38,8 +38,14 @@ public class ConversationViewModel extends AndroidViewModel {
         return repository.getInactiveConversations();
     }
 
-    public LiveData<Conversation> getConversationById(int id) {
-        return repository.getConversationById(id);
+    public Conversation getConversationById(int id) {
+        for (Conversation inactive : inactiveConversations) {
+            if (inactive.getId() == id) return inactive;
+        }
+        for (Conversation active : activeConversations) {
+            if (active.getId() == id) return active;
+        }
+        return null;
     }
 
     public void setInactiveConversations(List<Conversation> inactiveConversations) {

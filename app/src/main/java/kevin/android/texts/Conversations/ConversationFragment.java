@@ -73,7 +73,7 @@ public class ConversationFragment extends Fragment implements NameSetterDialog.N
         // start observing the active conversation list
         conversationViewModel.getActiveConversations().observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
             @Override
-            // when an update is changed
+            // update conversations (ex. when name is modified)
             public void onChanged(List<Conversation> activeConversations) {
                 if (activeConversations.size() == 0) {
                     Log.e(TAG, "waiting for first conversations to arrive");
@@ -89,12 +89,12 @@ public class ConversationFragment extends Fragment implements NameSetterDialog.N
             }
         });
 
+        // this is only needed to run once at the start to initialize names and execute the first timeline instruction
         conversationViewModel.getInactiveConversations().observe(getViewLifecycleOwner(), new Observer<List<Conversation>>() {
             @Override
             public void onChanged(List<Conversation> conversations) {
                  Log.e(TAG, "set " + conversations.size() + " inactive conversations. Total: " + GameManager.numConversations);
-                conversationViewModel.setInactiveConversations(conversations);
-                // load the first conversation at the start
+                 conversationViewModel.setInactiveConversations(conversations);
                 if (conversations.size() == GameManager.numConversations) {
                     // create a NameSetterDialog and pass it all Conversations with names we will edit
                     List<Conversation> editableConversations = conversations.stream()
@@ -103,19 +103,7 @@ public class ConversationFragment extends Fragment implements NameSetterDialog.N
                     NameSetterDialog nameSetterDialog = new NameSetterDialog(editableConversations);
                     nameSetterDialog.show(getChildFragmentManager(), "setup");
                     Log.e(TAG, "Opened the NameSetterDialog");
-//                    for (int i = conversations.size() - 1; i >= 0; i--) {
-//                        Conversation conversation = conversations.get(i);
-//                        if (conversation.isEditable()) {
-//                            NameSetterDialog nameSetterDialog = new NameSetterDialog(conversation.getConversationDialogTitle(),
-//                                    conversation.getFirstName(), conversation.getLastName(), conversation.getNickname(), conversation.getId());
-//                            nameSetterDialog.show(getChildFragmentManager(), "setup");
-//                        }
-//                    }
-//                    //
-//                    NameSetterDialog nameSetterDialog = new NameSetterDialog("Enter your player information:",
-//                            "Oliver", "Green", "Oli", -1);
-//                    nameSetterDialog.show(getChildFragmentManager(), "setup");
-                    // Log.e(TAG, "opened all EditTextDialog windows.");
+                    // load the first conversation at the start
                     executeNextTimelineInstruction(false);
                 }
             }
@@ -197,21 +185,14 @@ public class ConversationFragment extends Fragment implements NameSetterDialog.N
             editor.commit();
             return;
         }
-        final LiveData<Conversation> liveData = conversationViewModel.getConversationById(id);
-        liveData.observe(getViewLifecycleOwner(), new Observer<Conversation>() {
-            @Override
-            public void onChanged(Conversation conversation) {
-                Log.e(TAG, "Updating names for ID #" + id + " , their name is " + firstName);
-                conversation.setFirstName(firstName);
-                conversation.setLastName(lastName);
-                conversation.setNickname(nickname);
-                GameManager.setNPCNames(id, firstName, lastName, nickname);
-                conversation.setInitialized(true);
-                conversationViewModel.update(conversation);
-//                Log.e(TAG, "initialized conversation. name: " + conversation.getFullName());
-                liveData.removeObserver(this);
-            }
-        });
+        Conversation conversation = conversationViewModel.getConversationById(id);
+        Log.e(TAG, "Updating names for ID #" + id + " , their name is " + firstName);
+        conversation.setFirstName(firstName);
+        conversation.setLastName(lastName);
+        conversation.setNickname(nickname);
+        GameManager.setNPCNames(id, firstName, lastName, nickname);
+//        conversation.setInitialized(true);
+        conversationViewModel.update(conversation);
     }
 
     private void executeNextTimelineInstruction(boolean isSkip) {

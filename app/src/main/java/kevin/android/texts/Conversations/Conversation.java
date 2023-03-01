@@ -40,7 +40,7 @@ public class Conversation implements Parcelable  {
     private boolean active = false; // whether the conversation is displayed on the ConversationFragment
 //    private int recentValue;
     private boolean unread = true;
-    private boolean initialized = false;
+//    private boolean initialized = false;
     private List<Integer> currentBlocks = new ArrayList<>();
 
     @PrimaryKey(autoGenerate = true)
@@ -187,13 +187,13 @@ public class Conversation implements Parcelable  {
         this.nickname = nickname;
     }
 
-    public boolean isInitialized() {
-        return initialized;
-    }
+//    public boolean isInitialized() {
+//        return initialized;
+//    }
 
-    public void setInitialized(boolean initialized) {
-        this.initialized = initialized;
-    }
+//    public void setInitialized(boolean initialized) {
+//        this.initialized = initialized;
+//    }
 
     public int getCurrentBlock() {
         return currentBlocks.get(currentBlocks.size() - 1);

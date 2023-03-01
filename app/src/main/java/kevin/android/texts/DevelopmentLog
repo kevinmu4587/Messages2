@@ -713,7 +713,6 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
     - Added RecyclerView for Ending's to be displayed dynamically
         - Added endings.jsonc setup file
         - Endings are loaded into GameManager at the first boot, then loaded from SharedPreferences
-    - TODO: Add an ending message type to specify which ending we got
 [Monday, January 17th, 2023]
     - Added new Message type: Ending
         - Now the ending the player achieved can now be detected and endings guide displays this accordingly
@@ -727,15 +726,28 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - Added isSkip field to executeNextTimelineInstruction
         - This works well if the user does not enter a chat before a skip
 [Monday, January 30th, 2023]
-    - Finished skip chapters
+    - Finished skip chapters (merged branch jump_chapters)
         - Fixed bug where opening a chat first overwrote the results of the skip
         - Fixed bug where block did not have a default value if no keyDecision was made
 [Thursday, February 2nd, 2023]
     - Removed multiple EditTextDialog calls
         - Replaced EditTextDialog with NameSetterDialog
         - Replaced AlertDialog with Dialog
-        - TODO: Dialog size fixed
-            - Dialog won't dismiss
+[Tuesday, February 21st, 2023]
+    - Fixed dialog sizing by using default title instead of custom
+    - Fixed dialog not dismissing
+    - TODO: Bug where Dialog is being opened multiple times (triggered by clicking OK). is some sort of race condition
+[Tuesday, February 28th, 2023]
+    - Fixed bug where NameSetterDialog was being created multiple times due to not updating the inactive conversations (always stuck at 6)
+    - Removed unnecessary Conversation livedata listener in ConversationViewModel, replaced with basic search & update.
+    - Finished EditTextDialog -> NameSetterDialog refactor
+    - RESOLVED: do we need to observe inactiveConversations? Why don't we just open the first conversation if activeConversation.size() == 0?
+        - i think we can mess around with it being initialized. this deserves a whole refactor
+        - actually no, we will need two observers regardless:
+            - one for active conversations, to be updated regularly throughout gameplay
+            - one for initialization. (we can't just track activeConversations == 0 since it will always be zero at the start.
+                we wouldn't be able to differentiate between initialized & waiting for first to arrive)
+
 
 TODO
     - backgrounds and mediaplayer sounds
@@ -746,6 +758,12 @@ TODO
             - rename EditTextDialog to EditNamesDialog
             - modify the positive button to just change to the new set of names
         - do we need to observe inactiveConversations? Why don't we just open the first conversation if activeConversation.size() == 0?
+            - i think we can mess around with it being initialized. this deserves a whole refactor
+            - actually no, we will need two observers regardless:
+                - one for active conversations, to be updated regularly throughout gameplay
+                - one for initialization. (we can't just track activeConversations == 0 since it will always be zero at the start.
+                    we wouldn't be able to differentiate between initialized & waiting for first to arrive)
+    - looks like terminator in Chapter 30: Schism isn't working
 
 
 
