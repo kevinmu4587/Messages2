@@ -79,9 +79,9 @@ public class Message {
         return block;
     }
 
-    public void setBlock(int block) {
-        this.block = block;
-    }
+//    public void setBlock(int block) {
+//        this.block = block;
+//    }
 
     public boolean isSent() {
         return sent;

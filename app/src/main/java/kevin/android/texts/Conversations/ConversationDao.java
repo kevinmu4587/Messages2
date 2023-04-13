@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
 import java.util.List;
@@ -27,4 +28,16 @@ public interface ConversationDao {
 
     @Query("SELECT * FROM conversation_table")
     LiveData<List<Conversation>> getAllConversations();
+
+    @Query("UPDATE conversation_table SET active = 0, conversationState = 0, lastMessage = 'New message!', " + "lastTime = '', lastPlayerChoice = 0")
+    void resetConversations();
+
+    @Query("UPDATE messages_table SET sent = 0, insertNum = -1, choice = 0 WHERE sent = 0")
+    void resetMessages();
+
+    @Transaction
+    abstract void resetGame() {
+        resetConversations();
+        resetMessages();
+    }
 }

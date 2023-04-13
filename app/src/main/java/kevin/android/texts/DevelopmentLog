@@ -750,7 +750,13 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
                 we wouldn't be able to differentiate between initialized & waiting for first to arrive)
     - Fixed bug where ending messages were not in messages json
     - Finished: code cleanup refactors. merged
-
+[Wednesday, April 12th, 2023]
+    - came back after a month hiatus.
+    - endings fragment/endgame is fully functional
+    - working on reset game
+        - added dao functions to reset game to ConversationDao
+        - try to figure out how to execute both updates within one function so we don't need to make a trip to the database twice
+        - tried transactions, making dao abstract...
 
 TODO
     - backgrounds and mediaplayer sounds

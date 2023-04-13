@@ -21,7 +21,7 @@ public class MessageViewModel extends AndroidViewModel {
     private MessageRepository repository;
     private LiveData<List<Message>> liveUpcomingMessages;
     private List<Message> upcomingMessages = new ArrayList<>();
-    private LiveData<List<Message>> allMessages;
+//    private LiveData<List<Message>> allMessages;
     private MutableLiveData<List<Integer>> liveCurrentBlocks = new MutableLiveData<>();
 
     private static final String TAG = "MessageViewModel";
@@ -29,7 +29,7 @@ public class MessageViewModel extends AndroidViewModel {
     public MessageViewModel(@NonNull Application application) {
         super(application);
         repository = new MessageRepository(application);
-        allMessages = repository.getAllMessages();
+//        allMessages = repository.getAllMessages();
     }
 
     public void update(Message message) {

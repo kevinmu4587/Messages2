@@ -13,8 +13,8 @@ import kevin.android.texts.GameManager;
 
 public class MessageRepository {
     private MessageDao messageDao;
-    private LiveData<List<Message>> sentMessages;
-    private LiveData<List<Message>> allMessages;
+//    private LiveData<List<Message>> sentMessages;
+//    private LiveData<List<Message>> allMessages;
     //private List<Message> upcomingMessages;
     private static final String TAG = "MessageRepository";
 
@@ -22,7 +22,7 @@ public class MessageRepository {
         MessageDatabase database = MessageDatabase.getInstance(application);
         messageDao = database.messageDao();
         //sentMessages = messageDao.getSentMessages(1, 1);
-        allMessages = messageDao.getAllMessages();
+//        allMessages = messageDao.getAllMessages();
     }
 
     // API for the ViewModel
@@ -44,9 +44,9 @@ public class MessageRepository {
         //return sentMessages;
     }
 
-    public LiveData<List<Message>> getAllMessages() {
-        return allMessages;
-    }
+//    public LiveData<List<Message>> getAllMessages() {
+//        return allMessages;
+//    }
 
     private static class UpdateMessageAsyncTask extends AsyncTask<Message, Void, Void> {
         private MessageDao messageDao; // passed to this class
