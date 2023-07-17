@@ -750,7 +750,9 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
                 we wouldn't be able to differentiate between initialized & waiting for first to arrive)
     - Fixed bug where ending messages were not in messages json
     - Finished: code cleanup refactors. merged
-
+[Monday, July 10th, 2023]
+    - check to make sure the app still runs in CS349 class
+    - stashed some changes on the resetGame branch - but honestly you should probably just redo it
 
 TODO
     - backgrounds and mediaplayer sounds
