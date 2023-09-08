@@ -17,7 +17,7 @@ import org.json.JSONObject;
 import kevin.android.texts.GameManager;
 import kevin.android.texts.Utils;
 
-@Database(entities = Conversation.class, version = 1)
+@Database(entities = Conversation.class, version = 2)
 public abstract class ConversationDatabase extends RoomDatabase {
     private static ConversationDatabase instance;  // database instance (singleton)
     public abstract ConversationDao conversationDao();  // our DAO
