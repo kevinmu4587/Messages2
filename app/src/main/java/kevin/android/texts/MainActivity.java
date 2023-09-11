@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         // load the GameManager key decisions from shared preferences
         GameManager.gameCompleted = sharedPref.getBoolean("gameCompleted", false);
+        GameManager.numConversations = sharedPref.getInt("numConversations", 0);
         GameManager.npc1FirstName = sharedPref.getString("npc1FirstName", "Default NPC1 First Name");
         GameManager.npc1LastName = sharedPref.getString("npc1LastName", "Default NPC1 Last Name");
         GameManager.npc1Nickname = sharedPref.getString("npc1Nickname", "Default NPC1 Nickname");
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("keyChoicesMap", gson.toJson(GameManager.getKeyChoices()));
 //        editor.putBoolean("firstRun", GameManager.firstRun);
         editor.putBoolean("gameCompleted", GameManager.gameCompleted);
+        editor.putInt("numConversations", GameManager.numConversations);
         editor.putString("npc1FirstName", GameManager.npc1FirstName);
         editor.putString("npc1LastName", GameManager.npc1LastName);
         editor.putString("npc1Nickname", GameManager.npc1Nickname);

@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 import kevin.android.texts.Utils;
 
-@Database(entities = Message.class, version = 1)
+@Database(entities = Message.class, version = 2)
 public abstract class MessageDatabase extends RoomDatabase {
     private static MessageDatabase instance;  // database instance (singleton)
 

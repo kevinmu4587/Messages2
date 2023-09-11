@@ -30,6 +30,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -323,7 +324,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener, Mess
             case R.id.menu_open_chat_info:
                 // navigate to ChatInfoFragment
                 NavController navController = NavHostFragment.findNavController(this);
-                navController.navigate(ChatFragmentDirections.actionChatFragmentToChatInfoFragment(conversation));
+                navController.navigate((NavDirections) ChatFragmentDirections.actionChatFragmentToChatInfoFragment(conversation));
                 return true;
             case android.R.id.home:
                 // this is called R.id.home but it refers to the back button on the top left of the screen

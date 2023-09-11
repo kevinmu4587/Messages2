@@ -757,6 +757,15 @@ TODO: finalize what causes the weird desync between open/incr commands. i've onl
         - added dao functions to reset game to ConversationDao
         - try to figure out how to execute both updates within one function so we don't need to make a trip to the database twice
         - tried transactions, making dao abstract...
+[Monday, July 10th, 2023]
+    - check to make sure the app still runs in CS349 class
+    - stashed some changes on the resetGame branch - but honestly you should probably just redo it
+[Monday, July 17th, 2023]
+    - upgraded gradle plugin to 8.0.2
+    - FIXED: initial testing seems okay, but player setup cards are not showing up
+[Wednesday, August 8th, 2023]
+    - bugfix: updated DB version, player setup cards now show up properly
+    - TODO: Bug where Player setup card is shown upon return to conversation screen
 
 TODO
     - backgrounds and mediaplayer sounds

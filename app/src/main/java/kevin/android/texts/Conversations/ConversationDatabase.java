@@ -17,7 +17,7 @@ import org.json.JSONObject;
 import kevin.android.texts.GameManager;
 import kevin.android.texts.Utils;
 
-@Database(entities = Conversation.class, version = 1)
+@Database(entities = Conversation.class, version = 2)
 public abstract class ConversationDatabase extends RoomDatabase {
     private static ConversationDatabase instance;  // database instance (singleton)
     public abstract ConversationDao conversationDao();  // our DAO
@@ -66,6 +66,7 @@ public abstract class ConversationDatabase extends RoomDatabase {
             try {
                 JSONArray jsonArray = new JSONArray(json);
                 GameManager.numConversations = jsonArray.length();
+//                Log.e("ERROR", "loaded " + GameManager.numConversations + " conversations");
                 for (int i = 0; i < jsonArray.length(); ++i) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     String firstName = jsonObject.getString("firstName");
