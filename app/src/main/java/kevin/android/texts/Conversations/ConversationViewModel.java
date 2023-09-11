@@ -93,6 +93,10 @@ public class ConversationViewModel extends AndroidViewModel {
         }
     }
 
+    public void resetGame() {
+        repository.resetGame();
+    }
+
 //    public void bubbleToTop(Conversation conversation) {
 //        List<Conversation> list = activeConversations.getValue();
 ////        Log.e(TAG, "size: " + list.size());

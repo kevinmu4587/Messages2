@@ -32,11 +32,11 @@ public interface ConversationDao {
     @Query("UPDATE conversation_table SET active = 0, conversationState = 0, lastMessage = 'New message!', " + "lastTime = '', lastPlayerChoice = 0")
     void resetConversations();
 
-    @Query("UPDATE messages_table SET sent = 0, insertNum = -1, choice = 0 WHERE sent = 0")
+    @Query("UPDATE messages_table SET sent = 0, choice = 0")
     void resetMessages();
 
     @Transaction
-    abstract void resetGame() {
+    default void resetGame() {
         resetConversations();
         resetMessages();
     }

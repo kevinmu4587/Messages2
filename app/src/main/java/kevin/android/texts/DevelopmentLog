@@ -775,6 +775,7 @@ TODO
         - don't store R.drawable.id in project code, instead read a specific file name based on ID
             ex. npc_profile_picture_1
         - then we just save any custom photo with that name
+    - if the interface call from settings fragment works, refactor chapter skipping (if you want)
 
 
 

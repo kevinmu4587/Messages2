@@ -29,8 +29,10 @@ import java.util.stream.Collectors;
 import kevin.android.texts.GameManager;
 import kevin.android.texts.Message.ChatFragment;
 import kevin.android.texts.R;
+import kevin.android.texts.SettingsFragment;
 
-public class ConversationFragment extends Fragment implements NameSetterDialog.NameSetterDialogListener {
+public class ConversationFragment extends Fragment implements NameSetterDialog.NameSetterDialogListener,
+        SettingsFragment.ResetGameListener {
     private static final String TAG = "ConversationFragment";
     private ConversationViewModel conversationViewModel;
     private SharedPreferences settingsSharedPref;
@@ -191,6 +193,12 @@ public class ConversationFragment extends Fragment implements NameSetterDialog.N
         conversation.setNickname(nickname);
         GameManager.setNPCNames(id, firstName, lastName, nickname);
         conversationViewModel.update(conversation);
+    }
+
+    @Override
+    public void resetGame() {
+        Log.e(TAG, "Got the interface call. Going to reset game now");
+        conversationViewModel.resetGame();
     }
 
     private void executeNextTimelineInstruction(boolean isSkip) {

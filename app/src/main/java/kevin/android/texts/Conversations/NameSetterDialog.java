@@ -75,7 +75,7 @@ public class NameSetterDialog extends AppCompatDialogFragment {
         try {
             listener = (NameSetterDialogListener) getParentFragment();
         } catch (ClassCastException x) {
-            Log.e(TAG, "Parent does not implement EditTextDialogListener interface");
+            Log.e(TAG, "Parent does not implement NameSetterDialog interface");
         }
     }
 

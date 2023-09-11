@@ -2,6 +2,7 @@ package kevin.android.texts.Conversations;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 
 public class ConversationRepository {
+    private static final String TAG = "ConversationRepository";
     private ConversationDao conversationDao;
     private LiveData<List<Conversation>> activeConversations;
 
@@ -36,6 +38,11 @@ public class ConversationRepository {
 
     public LiveData<List<Conversation>> getInactiveConversations() {
         return conversationDao.getInactiveConversations();
+    }
+
+    public void resetGame() {
+        Log.e(TAG, "Calling reset game in ConversationRepository");
+        conversationDao.resetGame();
     }
 
 //    public LiveData<List<Conversation>> getAllConversations() {

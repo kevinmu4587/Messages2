@@ -1,5 +1,6 @@
 package kevin.android.texts;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,13 +14,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     private static final String TAG="SettingsFragment";
 
-    EditTextPreference firstNameEntry, lastNameEntry, nicknameEntry;
+    private EditTextPreference firstNameEntry, lastNameEntry, nicknameEntry;
+    private Preference resetGameButton;
+
+    private ResetGameListener listener;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -27,6 +32,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setHasOptionsMenu(true);
 
+        // set the current values for the Player names
         firstNameEntry = findPreference("playerFirstName");
         lastNameEntry = findPreference("playerLastName");
         nicknameEntry = findPreference("playerNickname");
@@ -35,6 +41,18 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         firstNameEntry.setText(sharedPref.getString("playerFirstName", GameManager.playerFirstName));
         lastNameEntry.setText(sharedPref.getString("playerLastName", GameManager.playerLastName));
         nicknameEntry.setText(sharedPref.getString("playerNickname", GameManager.playerNickname));
+
+
+        // handle clicks for reset game
+        resetGameButton = findPreference("resetGameButton");
+        resetGameButton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Log.e(TAG, "Got the CLICK. Calling interface method now.");
+                listener.resetGame();
+                return true;
+            }
+        });
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -65,5 +83,19 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try {
+            listener = (ResetGameListener) getParentFragment();
+        } catch (ClassCastException x) {
+            Log.e(TAG, "Parent does not implement NameSetterDialog interface");
+        }
+    }
+
+    public interface ResetGameListener {
+        void resetGame();
     }
 }

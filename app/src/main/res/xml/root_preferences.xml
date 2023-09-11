@@ -36,7 +36,7 @@
 
         <Preference
             app:title="Start Over"
-            app:key="gameReset"
+            app:key="resetGameButton"
             app:summary="Warning: Game will restart back to Chapter 1"
             />
 
@@ -44,8 +44,6 @@
             app:title="Skip To Chapter"
             app:key="chapterSelect"
             app:summary="Warning: Once you pick a chapter, you cannot go to previous ones."
-            android:entries="@array/chapter_entries"
-            android:entryValues="@array/chapter_values"
             />
     </PreferenceCategory>
 </androidx.preference.PreferenceScreen>

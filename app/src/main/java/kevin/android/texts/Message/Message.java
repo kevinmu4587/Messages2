@@ -30,6 +30,7 @@ public class Message {
     @ColumnInfo(name = "msg_group")
     private int group;
     private String time;
+    // for displaying the messages in the correct order
     private int insertNum;
 
     public Message(int owner, String type, String[] content, int group, int block, String time) {
